@@ -80,8 +80,8 @@ rule "No hay extraccion  semantica del texto del interlocutor  "
     Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ExtraccionSemanticaNull)
    then
-     TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoInicialCita.class);
-     tarea.ejecutar(identInterlc,VocabularioGestionCitas.preambuloNoHeEntendido,VocabularioGestionCitas.peticionInfoIicialCita1  );
+     TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoInicialPeli.class);
+     tarea.ejecutar(identInterlc);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end

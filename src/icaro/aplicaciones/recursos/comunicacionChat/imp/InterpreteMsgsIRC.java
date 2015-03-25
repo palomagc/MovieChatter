@@ -217,13 +217,13 @@ public class InterpreteMsgsIRC {
         
         // Check for normal messages to the channel.
         if (command.equals("PRIVMSG") && (target.startsWith("#") || target.startsWith("&"))) {
-            this.onMessage(target, sourceNick, sourceLogin, sourceHostname, line.substring(line.indexOf(" :") + 2));
+            this.onMessage(target, sourceNick, sourceLogin, sourceHostname, (line.substring(line.indexOf(" :") + 2)).toLowerCase());
             return;
         }
         
         // Check for private messages to us.
         if (command.equals("PRIVMSG") && target.equalsIgnoreCase(_userNameAgente)) {
-            this.onPrivateMessage(sourceNick, sourceLogin, sourceHostname, line.substring(line.indexOf(" :") + 2));
+            this.onPrivateMessage(sourceNick, sourceLogin, sourceHostname, (line.substring(line.indexOf(" :") + 2)).toLowerCase());
             return;
         }
         

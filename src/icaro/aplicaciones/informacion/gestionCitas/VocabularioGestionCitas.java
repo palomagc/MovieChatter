@@ -29,6 +29,11 @@ public class VocabularioGestionCitas {
     public static final String NombreTipoNotificacionDespedida="Despedida";
     public static final String[] Despedida = {"Adios", "Hasta la proxima", "Nos vemos", "Que te vaya bien"};
     
+    // NO ENTENDER
+
+    public static final String[] preambuloNoEntendido = {"No he entendido lo que me has dicho.", "Perdona, pero no he entendido bien.",
+    		"Lo siento, no he comprendido bien.", "Perdona, no comprendo que quieres decir."};
+    
     public static final String ResultadoAutenticacion_DatosNoValidos= "usuarioNoValido";
     public static final String ResultadoAutenticacion_DatosValidos= "usuarioValido";
     public static final String NotificacionAccesoAutorizado="Autorizacion_Acceso_Notificado_Al_Usuario";
@@ -45,6 +50,5 @@ public class VocabularioGestionCitas {
     public static final String RespuestaNoEniendo3="definitivamente no me entero de lo que dice , creo que vamos a terminar la conversación";
     public static final String Despedida1="Bueno tenemos que dejarlo ha sido un placer";
     public static final String ExtraccionSemanticaNull= "SinSemantica";
-    public static final String preambuloNoHeEntendido = " No he compredido bien lo que me ha dicho, pero vayamos al grano";
-    public static final String peticionInfoIicialCita1 = " podría decirme con quien quiere la cita ";
+    public static final String peticionInfoIicialCita1 = " Podría recomendarte alguna película?";
 }

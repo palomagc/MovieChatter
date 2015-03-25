@@ -19,7 +19,7 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
  * 
  * @author F Garijo
  */
-public class SolicitarInfoInicialCita extends TareaSincrona {
+public class SolicitarInfoInicialPeli extends TareaSincrona {
     private String identAgenteOrdenante;
     private Objetivo contextoEjecucionTarea = null;
 	@Override
@@ -28,17 +28,15 @@ public class SolicitarInfoInicialCita extends TareaSincrona {
           String identDeEstaTarea=this.getIdentTarea();
             String identAgenteOrdenante = this.getIdentAgente();
           String identInterlocutor = (String)params[0];
-          String preambulo =(String)params[1];
-          String textoPeticion =(String)params[2];
                     try {
 //         // Se busca la interfaz del recurso en el repositorio de interfaces 
 		ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(
 						VocabularioGestionCitas.IdentRecursoComunicacionChat);          
                 if (recComunicacionChat!=null){
                     recComunicacionChat.comenzar(identAgenteOrdenante);
-                    String mensajeAenviar = VocabularioGestionCitas.SaludoInicial2+ "  "+ identInterlocutor + "  "+
-                            preambulo + "  "+
-                            textoPeticion;
+                    int numEntender = (int) ((100 * Math.random()) % VocabularioGestionCitas.preambuloNoEntendido.length);
+                    String mensajeAenviar = VocabularioGestionCitas.preambuloNoEntendido[numEntender] + "  " +
+                    		VocabularioGestionCitas.peticionInfoIicialCita1;
                     recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
                 }
                 else {

@@ -11319,3 +11319,269 @@ java.lang.NullPointerException
 6414 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
 6517 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
 10139 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+331  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1179 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1216 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1229 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1276 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1295 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+6685 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+6695 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+6786 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+11588 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+290  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1095 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1134 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1148 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1191 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1210 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+617172 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@11fac3a
+6260 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+6268 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+6388 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+622189 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@8025bf
+622195 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1b22f62
+622229 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+10227 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+624234 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@9f1462
+624259 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+624299 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+626265 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1717a41
+626291 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+744659 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@e01c6c
+745820 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@a08d25
+745826 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1515018
+745861 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+747872 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@c631a
+747895 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+747936 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+749899 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@907a3e
+749927 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+263  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+993  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1029 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1042 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1087 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1105 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+4773 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+4781 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4869 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+7841 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+142236 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@98c80e
+143626 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@8025bf
+143632 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1b22f62
+143665 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+145669 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@14ea388
+145695 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+145735 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+147701 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1576627
+147728 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+327  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1085 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1122 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1133 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1175 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1192 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+4770 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+4778 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4864 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+7587 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+29398 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1fb21cc
+31250 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1b3ca63
+31255 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@15e55a9
+31288 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+33292 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@19dc5ec
+33315 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+33352 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+35319 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@17cdd99
+35346 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+292  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1067 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1099 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1112 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1157 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1175 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+4620 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+4628 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4720 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+8572 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+58817 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@39dc03
+60453 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@11fec5a
+60458 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1314536
+60492 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+62496 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@a28478
+62517 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+62556 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+64522 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1e1b81f
+64548 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+254  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1006 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1044 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1057 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1097 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1114 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+4746 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+4754 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4841 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+7275 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+295685 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@156e5e8
+297256 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1263a23
+297261 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@14e54dd
+297294 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+299299 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@109ed53
+299325 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+299363 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+301329 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@c4f181
+301356 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+242  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+937  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+974  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+987  [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1027 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1044 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+4569 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+4577 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4666 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+9109 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+185615 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1b464a0
+186832 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1914f06
+186837 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@cc7012
+186869 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+188873 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@182a8d4
+188896 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+188934 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+190900 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@b0bb25
+190926 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+299  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1067 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1106 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1120 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1161 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1180 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+4537 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+4544 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4631 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+7238 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+330487 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1fb21cc
+331708 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@17ad06a
+331713 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@10cf1fd
+331746 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+333750 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@16cf54a
+333776 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+333814 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+335781 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@119cf04
+335808 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+263  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+981  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1018 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1031 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1072 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1090 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+3969 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+3978 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4071 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+6623 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+778523 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@133539a
+779714 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@11fec5a
+779719 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1314536
+779753 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+781757 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@10eef54
+781779 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+781816 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+783784 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@c74fae
+783817 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+282  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+976  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1008 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1022 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1064 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1082 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+3950 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+3961 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4060 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+5766 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+24434 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@462efd
+25745 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@c3e363
+25750 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@bb03ae
+25783 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+27787 [Thread-8] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@2dd308
+27808 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+27844 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+29812 [Thread-9] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1bf0741
+29837 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+267  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1009 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1047 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1060 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1102 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1121 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+4047 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+4054 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4144 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+28575 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+164203 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@98c80e
+165750 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1397441
+165755 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1d00e96
+165789 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+167793 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1ea6de7
+167815 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+167854 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+169820 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1c9ec93
+169849 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+246  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+943  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+981  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+994  [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1037 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1056 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+3858 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+3865 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+3960 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+6343 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+111212 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@118e463
+112503 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@11fec5a
+112509 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1314536
+112542 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+114546 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@591187
+114569 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+114607 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+116573 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@4b94c7
+116599 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+251  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+946  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+985  [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+999  [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1039 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1058 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+3977 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+3985 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4077 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+9425 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+455534 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@118e463
+456848 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@addc9c
+456855 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@80b109
+456887 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+458892 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@be89fe
+458914 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+458952 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+460919 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@17cdd99
+460945 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()
+300  [main] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: arranca()
+1036 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: arranca()
+1073 [Thread-3] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Iniciador: termina()
+1091 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorRecursos. Gestor: GestorOrganizacion
+1136 [Thread-4] INFO  icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - Estableciendo gestor a reportar. Agente: GestorAgentes. Gestor: GestorOrganizacion
+1155 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: arranca()
+3901 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+3907 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: arranca()
+4003 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorRecursos, Receptor: GestorOrganizacion
+6711 [Thread-6] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorAgentes, Receptor: GestorOrganizacion
+183047 [AWT-EventQueue-0] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@98c80e
+184267 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1397441
+184273 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@1d00e96
+184305 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorAgentes: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorAgentes
+186311 [Thread-12] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@131c6fe
+186333 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: Ha llegado un mensaje por el interfaz de Uso:Emisor: GestorOrganizacion, Receptor: GestorRecursos
+186372 [Thread-5] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorRecursos: termina()
+188338 [Thread-13] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: Ha llegado un evento por el interfaz de Uso:icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte@18da0a0
+188363 [Thread-4] DEBUG icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.AgenteReactivoImp2  - GestorOrganizacion: termina()

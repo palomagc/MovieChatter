@@ -43,8 +43,8 @@ public class SaludarYPresentarFuncionalidad extends TareaSincrona{
 						VocabularioGestionCitas.IdentRecursoComunicacionChat);
                 if (recComunicacionChat!=null){
                     recComunicacionChat.comenzar(identAgenteOrdenante);
-                    int numSaludo = (int) ((100 * Math.random()) % 4);
-                    int numPeticion = (int) ((100 * Math.random()) % 3);
+                    int numSaludo = (int) ((100 * Math.random()) % VocabularioGestionCitas.SaludoInicial2.length);
+                    int numPeticion = (int) ((100 * Math.random()) % VocabularioGestionCitas.PeticionInformacionGeneral1.length);
                     String mensajeAenviar = VocabularioGestionCitas.SaludoInicial2[numSaludo]+ "  "+ identInterlocutor + ",  "+
                             VocabularioGestionCitas.InfoGeneralFuncionalidad.toLowerCase() + ".  "+
                             VocabularioGestionCitas.PeticionInformacionGeneral1[numPeticion];

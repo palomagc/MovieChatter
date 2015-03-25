@@ -34,7 +34,7 @@ public class Despedirse extends TareaSincrona{
 						VocabularioGestionCitas.IdentRecursoComunicacionChat);
                 if (recComunicacionChat!=null){
                     recComunicacionChat.comenzar(identAgenteOrdenante);
-                    int numDespedida = (int) ((100 * Math.random()) % 4);
+                    int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
                     String mensajeAenviar = VocabularioGestionCitas.Despedida[numDespedida]+ "  "+ identInterlocutor;
                     recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
                 }
