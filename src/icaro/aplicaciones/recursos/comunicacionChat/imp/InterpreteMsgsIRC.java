@@ -396,6 +396,7 @@ public class InterpreteMsgsIRC {
     // de esta forma el agente recibe mensajes con entidades del modelo de información
         HashSet anotacionesBusquedaPrueba = new HashSet();
         anotacionesBusquedaPrueba.add("Saludo");
+        anotacionesBusquedaPrueba.add("Despedida");
         anotacionesBusquedaPrueba.add("Lookup");
     // esto habria que pasarlo como parametro
         if(infoConecxInterlocutor==null)infoConecxInterlocutor= new InfoConexionUsuario();
@@ -1228,6 +1229,10 @@ private ArrayList interpretarAnotaciones(String interlocutor,String contextoInte
                  anotacionesInterpretadas.add(interpretarAnotacionSaludo(contextoInterpretacion, annot));
 //                 i++;
              }
+             else if(anotType.equalsIgnoreCase("despedida")){
+                 anotacionesInterpretadas.add(interpretarAnotacionDespedida(contextoInterpretacion, annot));
+//               i++;
+             }
 //                 fet = annot.getFeatures();
                 
 //                string= (String) annot.getFeatures().get("string");
@@ -1247,5 +1252,20 @@ private Notificacion interpretarAnotacionSaludo(String conttextoInterpretacion,A
         notif.setTipoNotificacion(anotacionSaludo.getType());
         notif.setMensajeNotificacion(msgNotif);
         return notif;
+}
+
+private Notificacion interpretarAnotacionDespedida(String conttextoInterpretacion,Annotation anotacionDespedida){
+//  if(anotacionSaludo.getType()!="saludo"){
+//  return null;
+//}
+Notificacion notif= new Notificacion(this.infoConecxInterlocutor.getuserName());
+// obtenemos el texto del saludo a partir de la anotacion
+      
+  int posicionComienzoTexto =anotacionDespedida.getStartNode().getOffset().intValue();
+  int posicionFinTexto =anotacionDespedida.getEndNode().getOffset().intValue();
+  String msgNotif =conttextoInterpretacion.substring(posicionComienzoTexto, posicionFinTexto);
+  notif.setTipoNotificacion(anotacionDespedida.getType());
+  notif.setMensajeNotificacion(msgNotif);
+  return notif;
 }
 }

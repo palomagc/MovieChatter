@@ -26,6 +26,7 @@ public class VocabularioGestionCitas {
     public static final String[] PeticionInformacionGeneral1={"Te puedo sugerir alguna hoy?", "Quieres que te recomiende alguna?", "Necesitas ayuda para encontrar alguna?"};
     
     // DESPEDIDA
+    public static final String NombreTipoNotificacionDespedida="Despedida";
     public static final String[] Despedida = {"Adios", "Hasta la proxima", "Nos vemos", "Que te vaya bien"};
     
     public static final String ResultadoAutenticacion_DatosNoValidos= "usuarioNoValido";
