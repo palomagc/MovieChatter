@@ -19,7 +19,7 @@ public class VocabularioGestionCitas {
 	public static final String SaludoInicial1="Hola, yo soy " + Constantes.SYSTEM_NAME + ", tu recomendador de peliculas";
     public static final String[] SaludoInicial2={"Hola", "Que tal", "Buenas", "Que hay"};
 	
-    // PRESENTACI�N
+    // PRESENTACIÓN
     public static final String InfoGeneralFuncionalidad= "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas";
     
     // PEDIR INFO AL USUARIO
@@ -47,8 +47,8 @@ public class VocabularioGestionCitas {
     public static final String InfoUsuarioAltaGuardada="InfoAltaUsuarioGuardada"; 
     public static final String RespuestaNoEniendo1="Lo siento pero no entiendo nada de lo que dice";
     public static final String RespuestaNoEniendo2="Lo siento pero sigo sin entender nada";
-    public static final String RespuestaNoEniendo3="definitivamente no me entero de lo que dice , creo que vamos a terminar la conversación";
+    public static final String RespuestaNoEniendo3="definitivamente no me entero de lo que dice , creo que vamos a terminar la conversaciÃ³n";
     public static final String Despedida1="Bueno tenemos que dejarlo ha sido un placer";
     public static final String ExtraccionSemanticaNull= "SinSemantica";
-    public static final String peticionInfoIicialCita1 = " Podría recomendarte alguna película?";
+    public static final String peticionInfoIicialCita1 = " PodrÃ­a recomendarte alguna pelÃ­cula?";
 }

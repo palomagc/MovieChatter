@@ -1,3 +1,4 @@
 /build/
 /dist/
+/log/*.log
 /src/icaro/aplicaciones/recursos/extractorSemantico/ConfigRutasExtractorSemantico.java

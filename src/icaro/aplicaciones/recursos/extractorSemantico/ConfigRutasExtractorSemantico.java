@@ -13,7 +13,7 @@ package icaro.aplicaciones.recursos.extractorSemantico;
 public class ConfigRutasExtractorSemantico {
     public static final String DirectorioGateHome= "C:\\GATE_Developer_8.0";
 //    public static final String DirectorioAppFile= "E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1";
-    // TODO aquí hay que cambiar al directorio donde tengais el proyecto
+    // TODO aquÃ­ hay que cambiar al directorio donde tengais el proyecto
     public static final String DirectorioAppFile= "C:\\hlocal\\MovieChatter\\anniePruebaEjemplo1";
     
 }
