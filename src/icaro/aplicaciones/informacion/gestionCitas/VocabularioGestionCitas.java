@@ -18,6 +18,10 @@ public class VocabularioGestionCitas {
 	public static final String NombreTipoNoticacionSaludo="Saludo";
 	public static final String SaludoInicial1="Hola, yo soy " + Constantes.SYSTEM_NAME + ", tu recomendador de peliculas";
     public static final String[] SaludoInicial2={"Hola", "Que tal", "Buenas", "Que hay"};
+    
+    // RECOMIENDA
+    public static final String NombreTipoNotificacionGeneroComedia="GeneroComedia";
+    public static final String[] Recomienda={"podrias ver"};
 	
     // PRESENTACIÓN
     public static final String InfoGeneralFuncionalidad= "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas";

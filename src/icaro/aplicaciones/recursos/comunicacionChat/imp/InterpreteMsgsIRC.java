@@ -397,6 +397,7 @@ public class InterpreteMsgsIRC {
         HashSet anotacionesBusquedaPrueba = new HashSet();
         anotacionesBusquedaPrueba.add("Saludo");
         anotacionesBusquedaPrueba.add("Despedida");
+        anotacionesBusquedaPrueba.add("GeneroComedia");
         anotacionesBusquedaPrueba.add("Lookup");
     // esto habria que pasarlo como parametro
         if(infoConecxInterlocutor==null)infoConecxInterlocutor= new InfoConexionUsuario();
@@ -1233,6 +1234,10 @@ private ArrayList interpretarAnotaciones(String interlocutor,String contextoInte
                  anotacionesInterpretadas.add(interpretarAnotacionDespedida(contextoInterpretacion, annot));
 //               i++;
              }
+             else if(anotType.equalsIgnoreCase("generoComedia")){
+                 anotacionesInterpretadas.add(interpretarAnotacionRecomienda(contextoInterpretacion, annot));
+//               i++;
+             }
 //                 fet = annot.getFeatures();
                 
 //                string= (String) annot.getFeatures().get("string");
@@ -1268,4 +1273,20 @@ Notificacion notif= new Notificacion(this.infoConecxInterlocutor.getuserName());
   notif.setMensajeNotificacion(msgNotif);
   return notif;
 }
+
+private Notificacion interpretarAnotacionRecomienda(String conttextoInterpretacion,Annotation anotacionRecomendacion){
+//  if(anotacionSaludo.getType()!="saludo"){
+//  return null;
+//}
+Notificacion notif= new Notificacion(this.infoConecxInterlocutor.getuserName());
+// obtenemos el texto del saludo a partir de la anotacion
+      
+  int posicionComienzoTexto =anotacionRecomendacion.getStartNode().getOffset().intValue();
+  int posicionFinTexto =anotacionRecomendacion.getEndNode().getOffset().intValue();
+  String msgNotif =conttextoInterpretacion.substring(posicionComienzoTexto, posicionFinTexto);
+  notif.setTipoNotificacion(anotacionRecomendacion.getType());
+  notif.setMensajeNotificacion(msgNotif);
+  return notif;
+}
+
 }

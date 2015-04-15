@@ -74,6 +74,17 @@ rule "Despedida  "
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
+rule "RecomiendaGenero  "
+   when
+    obj:ObtenerInfoInterlocutor(state==Objetivo.SOLVING)
+    Focus(foco == obj)
+    notif:Notificacion(identInterlc:identNotificador, genero:tipoNotificacion, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia)
+   then
+     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaGenero.class);
+     tarea.ejecutar(genero, identInterlc);
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
 rule "No hay extraccion  semantica del texto del interlocutor  "
    when
     obj:ObtenerInfoInterlocutor(state==Objetivo.SOLVING)
