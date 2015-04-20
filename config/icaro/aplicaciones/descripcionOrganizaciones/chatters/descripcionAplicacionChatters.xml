@@ -96,7 +96,22 @@
 				<icaro:listaPropiedades>
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
-			</icaro:Instancia>		
+			</icaro:Instancia>
+			<!--icaro:Instancia id="AgenteGuia1" refDescripcion="AgenteAplicacionAcceso">
+				<icaro:listaPropiedades>
+					<icaro:propiedad atributo="" valor=""/>
+				</icaro:listaPropiedades>
+			</icaro:Instancia-->
+			<!--icaro:Instancia id="AgenteUsuario1" refDescripcion="AgenteAplicacionAcceso">
+				<icaro:listaPropiedades>
+					<icaro:propiedad atributo="" valor=""/>
+				</icaro:listaPropiedades>
+			</icaro:Instancia-->
+			<!--icaro:Instancia id="AgenteTMBD1" refDescripcion="AgenteAplicacionAcceso">
+				<icaro:listaPropiedades>
+					<icaro:propiedad atributo="" valor=""/>
+				</icaro:listaPropiedades>
+			</icaro:Instancia-->
 		</icaro:AgentesAplicacion>
 	<!--******************************************************************************************************
 	******************   Instancias de Recursos de aplicación								******************
