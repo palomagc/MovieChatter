@@ -31,18 +31,18 @@
 					localizacionComportamiento="icaro.aplicaciones.agentes.agenteAplicacionDialogoCitasCognitivo"
                     localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteAplicacionDialogoCitasCognitivo.procesoResolucionObjetivos.reglasAgenteDialogoCitas.drl"
 					tipo="Cognitivo" />
-				<!--icaro:DescComportamientoAgente
+				<icaro:DescComportamientoAgente
 					nombreComportamiento="AgenteGuia" rol="AgenteAplicacion" 
 					localizacionComportamiento="icaro.aplicaciones.agentes.agenteGuia"
                     localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteGuia.procesoResolucionObjetivos.reglasAgenteGuia.drl"
-					tipo="Cognitivo" /-->
+					tipo="Cognitivo" />
 				<!--icaro:DescComportamientoAgente
-					nombreComportamiento="AgenteGuia" rol="AgenteAplicacion" 
+					nombreComportamiento="AgenteUsuario" rol="AgenteAplicacion" 
 					localizacionComportamiento="icaro.aplicaciones.agentes.agenteUsuario"
                     localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteUsuario.procesoResolucionObjetivos.reglasAgenteUsuario.drl"
 					tipo="Cognitivo" /-->
 				<!--icaro:DescComportamientoAgente
-					nombreComportamiento="AgenteGuia" rol="AgenteAplicacion" 
+					nombreComportamiento="AgenteTMDB" rol="AgenteAplicacion" 
 					localizacionComportamiento="icaro.aplicaciones.agentes.agenteTMDB"
                     localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteTMDB.procesoResolucionObjetivos.reglasAgenteTMDB.drl"
 					tipo="Cognitivo" /-->
@@ -78,7 +78,8 @@
 			</icaro:InstanciaGestor>
 			<icaro:InstanciaGestor id="GestorAgentes" refDescripcion="GestorAgentes">
 				<icaro:componentesGestionados>		
-                                <icaro:componenteGestionado refId="AgenteAplicacionDialogoCitas1" tipoComponente="AgenteAplicacion"/>		
+                                <icaro:componenteGestionado refId="AgenteAplicacionDialogoCitas1" tipoComponente="AgenteAplicacion"/>
+								<icaro:componenteGestionado refId="AgenteGuia1" tipoComponente="AgenteAplicacion"/>
                                 </icaro:componentesGestionados>
 			</icaro:InstanciaGestor>	
 			<icaro:InstanciaGestor id="GestorRecursos" refDescripcion="GestorRecursos" >
@@ -97,17 +98,17 @@
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
 			</icaro:Instancia>
-			<!--icaro:Instancia id="AgenteGuia1" refDescripcion="AgenteAplicacionAcceso">
+			<icaro:Instancia id="AgenteGuia1" refDescripcion="AgenteGuia">
+				<icaro:listaPropiedades>
+					<icaro:propiedad atributo="" valor=""/>
+				</icaro:listaPropiedades>
+			</icaro:Instancia>
+			<!--icaro:Instancia id="AgenteUsuario1" refDescripcion="AgenteUsuario">
 				<icaro:listaPropiedades>
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
 			</icaro:Instancia-->
-			<!--icaro:Instancia id="AgenteUsuario1" refDescripcion="AgenteAplicacionAcceso">
-				<icaro:listaPropiedades>
-					<icaro:propiedad atributo="" valor=""/>
-				</icaro:listaPropiedades>
-			</icaro:Instancia-->
-			<!--icaro:Instancia id="AgenteTMBD1" refDescripcion="AgenteAplicacionAcceso">
+			<!--icaro:Instancia id="AgenteTMBD1" refDescripcion="AgenteTMDB">
 				<icaro:listaPropiedades>
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
