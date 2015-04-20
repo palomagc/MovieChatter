@@ -11,9 +11,9 @@ package icaro.aplicaciones.recursos.extractorSemantico;
  * @author FGarijo
  */
 public class ConfigRutasExtractorSemantico {
-    public static final String DirectorioGateHome= "/Applications/GATE_Developer_8.0";
+    public static final String DirectorioGateHome= "C:\\GATE_Developer_8.0";
 //    public static final String DirectorioAppFile= "E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1";
     // TODO aquí hay que cambiar al directorio donde tengais el proyecto
-    public static final String DirectorioAppFile= "/Users/Teresa/EclipseWorkspace/MovieChatter/anniePruebaEjemplo1";
+    public static final String DirectorioAppFile= "C:\\hlocal\\MovieChatter\\anniePruebaEjemplo1";
     
 }
