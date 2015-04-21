@@ -5,7 +5,7 @@ import icaro.infraestructura.patronAgenteCognitivo.procesadorObjetivos.gestorTar
 import icaro.infraestructura.entidadesBasicas.PerformativaUsuario;
 import icaro.infraestructura.entidadesBasicas.comunicacion.*
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.*;
-//import icaro.aplicaciones.informacion.gestionCitas.*;
+import icaro.aplicaciones.informacion.gestionCitas.*;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas.*;
 
 global ItfGestorTareas gestorTareas;
@@ -14,7 +14,19 @@ global String agentId;
 
 rule "Creacion de los objectivos iniciales"
 when 
-then 
+then  
+TareaSincrona tarea = gestorTareas.crearTareaSincrona(InicializarInfoWorkMem.class);
+    tarea.ejecutar();
+recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
-
-
+// =======================================================================
+//Reglas de focalizacion.
+rule "Regla de focalizacion en objetivo ReconocerUsuario"
+ when
+    f:Focus(foco == null )
+    obj:ReconocerUsuario()
+ then
+    f.setFoco(obj);
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+    update(f);
+end
