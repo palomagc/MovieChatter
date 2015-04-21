@@ -37,14 +37,14 @@
                     localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteAplicacionGuia.procesoResolucionObjetivos.reglasAgenteGuia.drl"
 					tipo="Cognitivo" />
 				<!--icaro:DescComportamientoAgente
-					nombreComportamiento="AgenteUsuario" rol="AgenteAplicacion" 
-					localizacionComportamiento="icaro.aplicaciones.agentes.agenteUsuario"
-                    localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteUsuario.procesoResolucionObjetivos.reglasAgenteUsuario.drl"
+					nombreComportamiento="AgenteAplicacionUsuario" rol="AgenteAplicacion" 
+					localizacionComportamiento="icaro.aplicaciones.agentes.agenteAplicacionUsuario"
+                    localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteAplicacionUsuario.procesoResolucionObjetivos.reglasAgenteUsuario.drl"
 					tipo="Cognitivo" /-->
 				<!--icaro:DescComportamientoAgente
-					nombreComportamiento="AgenteTMDB" rol="AgenteAplicacion" 
-					localizacionComportamiento="icaro.aplicaciones.agentes.agenteTMDB"
-                    localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteTMDB.procesoResolucionObjetivos.reglasAgenteTMDB.drl"
+					nombreComportamiento="AgenteAplicacionTMDB" rol="AgenteAplicacion" 
+					localizacionComportamiento="icaro.aplicaciones.agentes.agenteAplicacionTMDB"
+                    localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteAplicacionTMDB.procesoResolucionObjetivos.reglasAgenteTMDB.drl"
 					tipo="Cognitivo" /-->
 			</icaro:DescComportamientoAgentesAplicacion>
 			
@@ -59,8 +59,8 @@
                         localizacionClaseGeneradora="icaro.aplicaciones.recursos.extractorSemantico.ClaseGeneradoraExtractorSemantico"/>
             <!--icaro:DescRecursoAplicacion nombre="RecursoTMDB"
                         localizacionClaseGeneradora="icaro.aplicaciones.recursos.recursoTMDB.ClaseGeneradoraRecursoTMDB"/-->
-            <!--icaro:DescRecursoAplicacion nombre="RecursoUsuarios"
-                        localizacionClaseGeneradora="icaro.aplicaciones.recursos.recursoUsuarios.ClaseGeneradoraRecursoUsuarios"/-->
+            <!--icaro:DescRecursoAplicacion nombre="RecursoUsuario"
+                        localizacionClaseGeneradora="icaro.aplicaciones.recursos.recursoUsuario.ClaseGeneradoraRecursoUsuario"/-->
 		</icaro:DescRecursosAplicacion>
 	</icaro:DescripcionComponentes>
 	<icaro:DescInstancias>
@@ -78,12 +78,16 @@
 				<icaro:componentesGestionados>		
                                 <icaro:componenteGestionado refId="AgenteAplicacionDialogoCitas1" tipoComponente="AgenteAplicacion"/>
 								<icaro:componenteGestionado refId="AgenteAplicacionGuia1" tipoComponente="AgenteAplicacion"/>
+								<!--icaro:componenteGestionado refId="AgenteAplicacionUsuario1" tipoComponente="AgenteAplicacion"/-->
+								<!--icaro:componenteGestionado refId="AgenteAplicacionTMDB1" tipoComponente="AgenteAplicacion"/-->
                 </icaro:componentesGestionados>
 			</icaro:InstanciaGestor>	
 			<icaro:InstanciaGestor id="GestorRecursos" refDescripcion="GestorRecursos" >
 				<icaro:componentesGestionados>
 					<icaro:componenteGestionado refId="ExtractorSemantico1" tipoComponente="RecursoAplicacion"/>
-                                        <icaro:componenteGestionado refId="ComunicacionChat1" tipoComponente="RecursoAplicacion"/>  
+                    <icaro:componenteGestionado refId="ComunicacionChat1" tipoComponente="RecursoAplicacion"/>  
+                    <!--icaro:componenteGestionado refId="RecursoTMDB1" tipoComponente="RecursoAplicacion"/-->
+                    <!--icaro:componenteGestionado refId="RecursoUsuario1" tipoComponente="RecursoAplicacion"/-->
 				</icaro:componentesGestionados>
 			</icaro:InstanciaGestor>
 		</icaro:Gestores>
@@ -101,12 +105,12 @@
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
 			</icaro:Instancia>
-			<!--icaro:Instancia id="AgenteUsuario1" refDescripcion="AgenteUsuario">
+			<!--icaro:Instancia id="AgenteAplicacionUsuario1" refDescripcion="AgenteAplicacionUsuario">
 				<icaro:listaPropiedades>
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
 			</icaro:Instancia-->
-			<!--icaro:Instancia id="AgenteTMBD1" refDescripcion="AgenteTMDB">
+			<!--icaro:Instancia id="AgenteAplicacionTMBD1" refDescripcion="AgenteAplicacionTMDB">
 				<icaro:listaPropiedades>
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
@@ -127,6 +131,8 @@
 			</icaro:Instancia>
 				<icaro:Instancia id="ComunicacionChat1" refDescripcion="ComunicacionChat" xsi:type="icaro:Instancia"/>
 				<icaro:Instancia id="ExtractorSemantico1" refDescripcion="ExtractorSemantico" xsi:type="icaro:Instancia"/>
+				<!--icaro:Instancia id="RecursoTMDB1" refDescripcion="RecursoTMDB" xsi:type="icaro:Instancia"/-->
+				<!--icaro:Instancia id="RecursoUsuario1" refDescripcion="RecursoUsuario" xsi:type="icaro:Instancia"/-->
 		</icaro:RecursosAplicacion>
 	<!--******************************************************************************************************
 	******************   Descripción común del nodo en el que se despliegan las instancias	******************
