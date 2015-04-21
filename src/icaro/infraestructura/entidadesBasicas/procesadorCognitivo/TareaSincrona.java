@@ -121,6 +121,7 @@ public abstract class TareaSincrona {
         } catch (RemoteException ex) {
             Logger.getLogger(TareaSincrona.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
      
     public ItfProcesadorObjetivos getEnvioHechos() {
