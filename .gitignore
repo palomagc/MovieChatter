@@ -2,3 +2,4 @@
 /dist/
 /log/*.log
 /src/icaro/aplicaciones/recursos/extractorSemantico/ConfigRutasExtractorSemantico.java
+src/icaro/aplicaciones/recursos/extractorSemantico/ConfigRutasExtractorSemantico.java
