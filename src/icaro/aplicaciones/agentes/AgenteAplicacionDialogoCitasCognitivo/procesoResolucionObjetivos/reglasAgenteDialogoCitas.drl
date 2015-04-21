@@ -56,8 +56,9 @@ rule "Saludo Inicial al interlocutor y peticion de datos iniciales "
    when
     obj:ObtenerInfoInterlocutor(state==Objetivo.SOLVING)
     Focus(foco == obj)
-    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNoticacionSaludo)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSaludo)
    then
+   // CREAR TAREA ASINCRONA QUE ENVIA UNA NOTIFICACION AL AGENTE GUIA CON EL NOBRE DEL USUARIO
      TareaSincrona tarea = gestorTareas.crearTareaSincrona(SaludarYPresentarFuncionalidad.class);
      tarea.ejecutar(identInterlc);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));

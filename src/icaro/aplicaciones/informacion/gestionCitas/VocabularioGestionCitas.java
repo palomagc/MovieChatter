@@ -15,7 +15,7 @@ import constantes.Constantes;
 public class VocabularioGestionCitas {
 	
 	// SALUDO
-	public static final String NombreTipoNoticacionSaludo="Saludo";
+	public static final String NombreTipoNotificacionSaludo="Saludo";
 	public static final String SaludoInicial1="Hola, yo soy " + Constantes.SYSTEM_NAME + ", tu recomendador de peliculas";
     public static final String[] SaludoInicial2={"Hola", "Que tal", "Buenas", "Que hay"};
     
@@ -37,6 +37,9 @@ public class VocabularioGestionCitas {
 
     public static final String[] preambuloNoEntendido = {"No he entendido lo que me has dicho.", "Perdona, pero no he entendido bien.",
     		"Lo siento, no he comprendido bien.", "Perdona, no comprendo que quieres decir."};
+    
+	// Comunicación Citas con Guia
+	public static final String NombreTipoNotificacionCitasConGuia="CitasConGuia";
     
     public static final String ResultadoAutenticacion_DatosNoValidos= "usuarioNoValido";
     public static final String ResultadoAutenticacion_DatosValidos= "usuarioValido";

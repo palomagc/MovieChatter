@@ -30,3 +30,26 @@ rule "Regla de focalizacion en objetivo ReconocerUsuario"
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
     update(f);
 end
+//=======================================================================
+///Reglas de Consecucion del Objetivo ReconocerUsuario
+rule "Inicio del proceso de consecucion del  objetivo ReconocerUsuario"
+  when
+    obj:ReconocerUsuario(state==Objetivo.PENDING)
+    Focus(foco ==obj)
+  then
+    obj.setSolving();
+    update(obj);
+end
+rule "Comprobar si existe el usuario"
+   when
+    obj:ReconocerUsuario(state==Objetivo.SOLVING)
+    Focus(foco == obj)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionCitasConGuia)
+   then
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
+     TareaSincrona tarea = gestorTareas.crearTareaSincrona(BuscarUsuario.class);
+     tarea.ejecutar(identInterlc);
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+
