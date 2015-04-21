@@ -6,7 +6,7 @@
  * Telefonica I+D Copyright 2006-2007
  */
 
-package icaro.aplicaciones.agentes.AgenteGuia.objetivos;
+package icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos;
 
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 
@@ -16,10 +16,10 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
  *
  * @author 
  */
-public class RecomendarPelicula extends Objetivo {
+public class ReconocerPelicula extends Objetivo {
     
     /** Crea una nueva instancia de DarAcceso */
-    public RecomendarPelicula() {
+    public ReconocerPelicula() {
         super.setgoalId("AutorizarAccesoUsuarios");
     }
     

@@ -31,11 +31,11 @@
 					localizacionComportamiento="icaro.aplicaciones.agentes.agenteAplicacionDialogoCitasCognitivo"
                     localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteAplicacionDialogoCitasCognitivo.procesoResolucionObjetivos.reglasAgenteDialogoCitas.drl"
 					tipo="Cognitivo" />
-				<!--<icaro:DescComportamientoAgente
-					nombreComportamiento="AgenteGuia" rol="AgenteAplicacion" 
-					localizacionComportamiento="icaro.aplicaciones.agentes.agenteGuia"
-                    localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteGuia.procesoResolucionObjetivos.reglasAgenteGuia.drl"
-					tipo="Cognitivo" />-->
+				<icaro:DescComportamientoAgente
+					nombreComportamiento="AgenteAplicacionGuia" rol="AgenteAplicacion" 
+					localizacionComportamiento="icaro.aplicaciones.agentes.agenteAplicacionGuia"
+                    localizacionFicheroReglas="icaro.aplicaciones.agentes.agenteAplicacionGuia.procesoResolucionObjetivos.reglasAgenteGuia.drl"
+					tipo="Cognitivo" />
 				<!--icaro:DescComportamientoAgente
 					nombreComportamiento="AgenteUsuario" rol="AgenteAplicacion" 
 					localizacionComportamiento="icaro.aplicaciones.agentes.agenteUsuario"
@@ -77,8 +77,8 @@
 			<icaro:InstanciaGestor id="GestorAgentes" refDescripcion="GestorAgentes">
 				<icaro:componentesGestionados>		
                                 <icaro:componenteGestionado refId="AgenteAplicacionDialogoCitas1" tipoComponente="AgenteAplicacion"/>
-								<!--<icaro:componenteGestionado refId="AgenteGuia1" tipoComponente="AgenteAplicacion"/>-->
-                                </icaro:componentesGestionados>
+								<icaro:componenteGestionado refId="AgenteAplicacionGuia1" tipoComponente="AgenteAplicacion"/>
+                </icaro:componentesGestionados>
 			</icaro:InstanciaGestor>	
 			<icaro:InstanciaGestor id="GestorRecursos" refDescripcion="GestorRecursos" >
 				<icaro:componentesGestionados>
@@ -96,11 +96,11 @@
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
 			</icaro:Instancia>
-			<!--<icaro:Instancia id="AgenteGuia1" refDescripcion="AgenteGuia">
+			<icaro:Instancia id="AgenteAplicacionGuia1" refDescripcion="AgenteAplicacionGuia">
 				<icaro:listaPropiedades>
 					<icaro:propiedad atributo="" valor=""/>
 				</icaro:listaPropiedades>
-			</icaro:Instancia>-->
+			</icaro:Instancia>
 			<!--icaro:Instancia id="AgenteUsuario1" refDescripcion="AgenteUsuario">
 				<icaro:listaPropiedades>
 					<icaro:propiedad atributo="" valor=""/>

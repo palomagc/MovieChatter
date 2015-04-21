@@ -1,4 +1,4 @@
-package icaro.aplicaciones.agentes.AgenteGuia.tareas;
+package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
