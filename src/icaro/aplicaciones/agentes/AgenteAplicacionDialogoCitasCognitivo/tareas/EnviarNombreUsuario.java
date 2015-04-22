@@ -24,7 +24,7 @@ public class EnviarNombreUsuario extends TareaComunicacion {
  		String identInterlocutor = (String) params[0];
  		Notificacion notif = (Notificacion) params[1];
  		try {
-			
+ 			
  			notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionCitasConGuia);
 
 			this.getEnvioHechos().insertarHecho(new NotificacionInterlocutor(notif));

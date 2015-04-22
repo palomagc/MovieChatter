@@ -22,11 +22,18 @@ public class BuscarUsuario extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		/**
-		 * Produce una despedida
+		 * Ya tenemos el nombre del usuario, ahora a buscarlo !
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
 		String identInterlocutor = (String) params[0];
+		
+
+		// identInterlocutor contiene el nombre del usuario, iniciar la base de datos y buscar al usuario
+			// Si no está, lo creas nuevo y se le responderá como nuevo usuario. Se le intentará preguntar por sus datos básicos
+			// Si está, coges todos sus datos y le dices que ya le conoces. Le preguntas por las ultimas pelis que le pusiste y por datos básicos que falten
+		
+		
 		try {
 			// // Se busca la interfaz del recurso en el repositorio de
 			// interfaces
