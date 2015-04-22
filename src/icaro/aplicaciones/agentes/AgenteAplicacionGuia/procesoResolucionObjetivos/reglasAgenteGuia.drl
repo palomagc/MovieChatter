@@ -44,11 +44,11 @@ rule "Comprobar si existe el usuario"
    when
     obj:ReconocerUsuario(state==Objetivo.SOLVING)
     Focus(foco == obj)
-    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionCitasConGuia)
+    //notif:NotificacionInterlocutor(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionCitasConGuia)
    then
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
      TareaSincrona tarea = gestorTareas.crearTareaSincrona(BuscarUsuario.class);
-     tarea.ejecutar(identInterlc);
+     tarea.ejecutar("identInterlc");
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
