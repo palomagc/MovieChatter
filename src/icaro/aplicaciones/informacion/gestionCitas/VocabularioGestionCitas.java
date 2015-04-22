@@ -38,7 +38,13 @@ public class VocabularioGestionCitas {
     public static final String[] preambuloNoEntendido = {"No he entendido lo que me has dicho.", "Perdona, pero no he entendido bien.",
     		"Lo siento, no he comprendido bien.", "Perdona, no comprendo que quieres decir."};
     
-	// Comunicación Citas con Guia
+	// COMUNICACIÓN CITAS CON GUIA
+    public static final String IdentAgenteAplicacionDialogoCitas="AgenteAplicacionDialogoCitas1";
+	public static final String IdentAgenteAplicacionGuia="AgenteAplicacionGuia1";
+	public static final String IdentAgenteAplicacionUsuario="AgenteAplicacionUsuario1";
+	public static final String IdentAgenteAplicacionTMDB="AgenteAplicacionTMDB1";
+	
+	// NOMBRE AGENTES
 	public static final String NombreTipoNotificacionCitasConGuia="CitasConGuia";
     
     public static final String ResultadoAutenticacion_DatosNoValidos= "usuarioNoValido";
@@ -47,7 +53,6 @@ public class VocabularioGestionCitas {
     public static final String ErrorObtencionInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";
     public static final String IdentRecursoExtractorSemantico= "ExtractorSemantico1";
     public static final String IdentRecursoComunicacionChat= "ComunicacionChat1";
-    public static final String IdentAgenteAplicacionDialogoCitas= "AgenteAplicacionDialogoCitas1";
     public static final String IdentConexionAgte= "AgteMovies";
     public static final String IdentRecursoPersistenciaChat= "PersistenciaChat1";
     public static final String InfoUsuarioYaExiste= "infoUsuarioYaExistente";
