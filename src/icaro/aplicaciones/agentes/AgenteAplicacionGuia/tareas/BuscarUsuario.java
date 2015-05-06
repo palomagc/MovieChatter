@@ -27,13 +27,15 @@ public class BuscarUsuario extends TareaSincrona {
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
 		String identInterlocutor = (String) params[0];
-		
 
-		// identInterlocutor contiene el nombre del usuario, iniciar la base de datos y buscar al usuario
-			// Si no está, lo creas nuevo y se le responderá como nuevo usuario. Se le intentará preguntar por sus datos básicos
-			// Si está, coges todos sus datos y le dices que ya le conoces. Le preguntas por las ultimas pelis que le pusiste y por datos básicos que falten
-		
-		
+		// identInterlocutor contiene el nombre del usuario, iniciar la base de
+		// datos y buscar al usuario
+		// Si no está, lo creas nuevo y se le responderá como nuevo usuario. Se
+		// le intentará preguntar por sus datos básicos
+		// Si está, coges todos sus datos y le dices que ya le conoces. Le
+		// preguntas por las ultimas pelis que le pusiste y por datos básicos
+		// que falten
+
 		try {
 			// // Se busca la interfaz del recurso en el repositorio de
 			// interfaces
@@ -41,25 +43,20 @@ public class BuscarUsuario extends TareaSincrona {
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(identAgenteOrdenante);
-				//int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
+				// int numDespedida = (int) ((100 * Math.random()) %
+				// VocabularioGestionCitas.Despedida.length);
 				String mensajeAenviar = "Hola, " + identInterlocutor + " sabia que volverias!";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
-				this.generarInformeConCausaTerminacion(
-						identDeEstaTarea,
-						contextoEjecucionTarea,
-						identAgenteOrdenante,
-						"Error-AlObtener:Interfaz:"
+				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
 								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
-			this.generarInformeConCausaTerminacion(
-					identDeEstaTarea,
-					contextoEjecucionTarea,
-					identAgenteOrdenante,
-					"Error-Acceso:Interfaz:"
+			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+					identAgenteOrdenante, "Error-Acceso:Interfaz:"
 							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();

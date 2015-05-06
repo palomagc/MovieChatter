@@ -39,20 +39,14 @@ public class MensajeHayPeliculas extends TareaSincrona {
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
-				this.generarInformeConCausaTerminacion(
-						identDeEstaTarea,
-						contextoEjecucionTarea,
-						identAgenteOrdenante,
-						"Error-AlObtener:Interfaz:"
+				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
 								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
-			this.generarInformeConCausaTerminacion(
-					identDeEstaTarea,
-					contextoEjecucionTarea,
-					identAgenteOrdenante,
-					"Error-Acceso:Interfaz:"
+			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+					identAgenteOrdenante, "Error-Acceso:Interfaz:"
 							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
