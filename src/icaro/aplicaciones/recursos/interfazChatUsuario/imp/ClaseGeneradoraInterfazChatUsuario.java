@@ -153,7 +153,6 @@ public class ClaseGeneradoraInterfazChatUsuario extends ImplRecursoSimple implem
 			
 		} catch (Exception e) {
 			this.itfAutomata.transita("error");
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

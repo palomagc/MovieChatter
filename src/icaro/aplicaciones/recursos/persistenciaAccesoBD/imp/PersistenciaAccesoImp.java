@@ -141,7 +141,6 @@ public class PersistenciaAccesoImp {
 			Class.forName("com.mysql.jdbc.Driver");
         //            Class.forName("org.apache.derby.jdbc.ClientDriver");
 		} catch (ClassNotFoundException e) {
-			// TODO Bloque catch generado autom�ticamente
 			e.printStackTrace();
 			throw new ErrorEnRecursoException("Ha habido un problema  con la conexion con la base de datos (instanciando el driver connector com.mysql.jdbc.Driver)");
 
@@ -219,7 +218,6 @@ public class PersistenciaAccesoImp {
 //			Class.forName("com.mysql.jdbc.Driver");
 //        //            Class.forName("org.apache.derby.jdbc.ClientDriver");
 //		} catch (ClassNotFoundException e) {
-//			// TODO Bloque catch generado autom�ticamente
 //			e.printStackTrace();
 //			throw new ErrorEnRecursoException("Ha habido un problema con la conexion con la base de datos (instanciando el driver connector)");
 //
@@ -250,7 +248,6 @@ public class PersistenciaAccesoImp {
 
 			throw new ErrorEnRecursoException("Ha habido un problema con la conexion con la base de datos "+URL_CONEXION+"\nusuario "+LOGIN+
 					"\npassword "+PASSWORD);
-			// TODO Bloque catch generado autom�ticamente
 
 		}
 

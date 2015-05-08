@@ -77,7 +77,6 @@ public class HebraMonitorizacion extends Thread {
 		try {
 			this.agente.aceptaEvento(new EventoRecAgte(this.evento,null,null));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
       }

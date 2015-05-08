@@ -148,7 +148,7 @@ public class AgenteReactivoImp extends AgenteReactivoAbstracto {
     }
 
     /**
-     * Constructor sin par�metros: HAY QUE UTILIZAR INMEDIATAMENTE DESPU�S EL M�TODO
+     * Constructor sin parametros: HAY QUE UTILIZAR INMEDIATAMENTE DESPUeS EL MeTODO
      * setParametrosAgReactivo
      * @throws RemoteException
      */

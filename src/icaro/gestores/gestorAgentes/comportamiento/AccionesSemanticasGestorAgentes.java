@@ -1419,7 +1419,6 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 			this.comunicator.enviarInfoAotroAgente("peticion_terminar_todo",
 					NombresPredefinidos.NOMBRE_GESTOR_ORGANIZACION);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

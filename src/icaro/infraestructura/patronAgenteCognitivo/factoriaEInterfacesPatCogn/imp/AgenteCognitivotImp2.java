@@ -116,7 +116,6 @@ public class AgenteCognitivotImp2 extends AgenteCognitivo implements Serializabl
 			try {
 				percepcion.aceptaEvento(event);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
@@ -133,7 +132,6 @@ public class AgenteCognitivotImp2 extends AgenteCognitivo implements Serializabl
 			try {
 				percepcion.aceptaEvento(evento);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
@@ -151,7 +149,6 @@ public class AgenteCognitivotImp2 extends AgenteCognitivo implements Serializabl
 			try {
 				percepcion.aceptaEvento(evento);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {

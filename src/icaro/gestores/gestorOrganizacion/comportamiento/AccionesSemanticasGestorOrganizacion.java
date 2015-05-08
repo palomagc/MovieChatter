@@ -669,7 +669,6 @@ public class AccionesSemanticasGestorOrganizacion extends AccionesSemanticasAgen
 //					NombresPredefinidos.NOMBRE_GESTOR_ORGANIZACION));
                         this.informaraMiAutomata("continuaTerminacion");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

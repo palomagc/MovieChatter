@@ -415,7 +415,6 @@ public void compileRules2(URL fichero)  {
 	//		this.itfUsoRecursoDepuracionCognitivo.mostrarInfoAR(infoAmostrar);
                         trazas.aceptaNuevaTrazaActivReglas(agentId, infoAmostrar);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
             }
@@ -442,7 +441,6 @@ public void compileRules2(URL fichero)  {
 //			this.itfUsoRecursoDepuracionCognitivo.mostrarInfoAR(info);
                         trazas.aceptaNuevaTrazaActivReglas(agentId, info);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	    
 	}
@@ -587,7 +585,6 @@ public void compileRules2(URL fichero)  {
 //				e.printStackTrace();
 //			}
 //		} catch (Exception e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //
