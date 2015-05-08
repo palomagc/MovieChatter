@@ -1375,18 +1375,53 @@ public class InterpreteMsgsIRC {
 		while (annotTypesSal.hasNext()) {
 			Annotation annot = (Annotation) annotTypesSal.next();
 			String anotType = annot.getType();
-			if (anotType.equalsIgnoreCase("saludo")) {
+			if (anotType.equalsIgnoreCase("Saludo")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 				// i++;
-			} else if (anotType.equalsIgnoreCase("despedida")) {
+			} else if (anotType.equalsIgnoreCase("Despedida")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-				// i++;
-			} else {
+			} else if (anotType.equalsIgnoreCase("GeneroAccion")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-				// i++;
+			} else if (anotType.equalsIgnoreCase("GeneroAventura")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroAnimacion")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroComedia")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroCrimen")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroDocumental")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroDrama")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroFamiliar")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroFantasia")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroExtranjero")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroHistorico")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroTerror")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroMusical")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroMisterio")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroRomantico")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroCienciaFiccion")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroTV")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroSuspense")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroGuerra")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("GeneroOeste")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 			// fet = annot.getFeatures();
-
 			// string= (String) annot.getFeatures().get("string");
 		}
 		return anotacionesInterpretadas;
@@ -1407,5 +1442,4 @@ public class InterpreteMsgsIRC {
 		notif.setMensajeNotificacion(msgNotif);
 		return notif;
 	}
-
 }

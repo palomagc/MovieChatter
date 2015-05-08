@@ -8,7 +8,7 @@ import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
-import icaro.aplicaciones.recursos.comunicacionTMDB.orders.MovieOrder;
+import icaro.aplicaciones.recursos.comunicacionTMDB.orders.MovieSort;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
@@ -53,8 +53,8 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 					if (g.getName().equals(genero.getEnglish()))
 						genre = g;
 				if (genre != null) {
-					movies = itfUsoComunicacionTMDB.getMoviesByGenre(genre, MovieOrder.TopRated,
-							"en", 1);
+					movies = itfUsoComunicacionTMDB.getMoviesByGenre(genre, MovieSort.PopularityDesc,
+							"es", 1);
 				}
 			}
 			if (recComunicacionChat != null && movies != null) {
@@ -63,7 +63,7 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				String mensajeAenviar = "Del genero " + genero.getSpanish() + " "
 						+ VocabularioGestionCitas.Recomienda[numRecomienda] + "  ";
 				for (Movie m : movies) {
-					mensajeAenviar += m.getTitle() + ", ";
+					mensajeAenviar += m.getTitle() + ",     ";
 				}
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
