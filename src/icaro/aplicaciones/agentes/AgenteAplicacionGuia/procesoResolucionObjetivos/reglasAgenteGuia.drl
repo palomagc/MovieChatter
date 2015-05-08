@@ -80,3 +80,12 @@ rule "Hacer las preguntas al usuario para recomendar pelicula"
     //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
+rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
+  when
+    //notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ValorarUltimaPelicula)
+    f:Focus()
+  then
+    
+    //  TAREAS PARA PREGUNTAR SI QUIERE VALORAR LA ULTIMA PELICULA !!!!! HAY QUE CAMBIAR EL FOCOY CREAR EL OBJETIVO
+    
+end
