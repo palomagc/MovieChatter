@@ -43,7 +43,7 @@ end
 rule "Comprobar si existe el usuario"
   when
     obj:ReconocerUsuario(state==Objetivo.SOLVING)
-    Focus(foco == obj)
+    f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionCitasConGuia)
   then
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
@@ -51,4 +51,32 @@ rule "Comprobar si existe el usuario"
     tarea.ejecutar(identInterlc);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+rule "Hacer las preguntas iniciales al usuario"
+  when
+    obj:PreguntarDatosInicialesUsuario(state==Objetivo.PENDING)
+    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVING)
+    Focus(foco == objAntiguo)
+  then
+    obj.setSolving();
+    update(obj);
+    
+    //  TAREAS PARA PREGUNTAR AL USUARIO !!!!!
+    
+    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+rule "Hacer las preguntas al usuario para recomendar pelicula"
+  when
+    obj:RecomendarPelicula(state==Objetivo.PENDING)
+    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVING)
+    Focus(foco == objAntiguo)
+  then
+    obj.setSolving();
+    update(obj);
+    
+    //  TAREAS PARA PREGUNTAR AL USUARIO QUE LE APETECE VER!!!!!
+    
+    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
