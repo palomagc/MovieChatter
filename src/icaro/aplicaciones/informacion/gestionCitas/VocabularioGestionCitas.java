@@ -46,6 +46,12 @@ public class VocabularioGestionCitas {
     public static final String NombreTipoNotificacionDespedida="Despedida";
     public static final String[] Despedida = {"Adios", "Hasta la proxima", "Nos vemos", "Que te vaya bien"};
     
+    // AFIRMACION
+    public static final String NombreTipoNotificacionAfirmacion="Afirmacion";
+    
+    // NEGACION
+    public static final String NombreTipoNotificacionNegacion="Negacion";
+    
     // RECOMIENDA
     public static final String NombreTipoNotificacionRecomienda="Recomienda";
     public static final String[] Recomienda={"podrias ver"};

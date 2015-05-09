@@ -97,6 +97,8 @@ public class BatchProcessApp {
         tiposAnotacionesRelevantes.add("Lookup");
         tiposAnotacionesRelevantes.add("Saludo");
         tiposAnotacionesRelevantes.add("Despedida");
+        tiposAnotacionesRelevantes.add("Afirmacion");
+        tiposAnotacionesRelevantes.add("Negacion");
     Corpus corpus = Factory.newCorpus("BatchProcessApp Corpus");
     application.setCorpus(corpus);
 

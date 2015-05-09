@@ -31,7 +31,7 @@ rule "Regla de focalizacion en objetivo ReconocerUsuario"
     update(f);
 end
 //=======================================================================
-///Reglas de Consecucion del Objetivo ObtenerInfoInterlocutor
+//Reglas de Consecucion del Objetivo ObtenerInfoInterlocutor
 rule "Inicio del proceso de consecucion del  objetivo ObtenerInfoInterlocutor"
   when
     obj:ObtenerInfoInterlocutor(state==Objetivo.PENDING)
@@ -50,20 +50,22 @@ rule "Saludo Inicial y peticion de info"
     tarea.ejecutar(VocabularioGestionCitas.IdentRecursoComunicacionChat);
     
     obj.setSolved();
+    update(obj);
     
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
 
 
+
 rule "Regla para focalizar el objetivo en reconocer usuario"
   when
-    objAntiguo:ObtenerInfoInterlocutor(state==Objetivo.SOLVING)
-    obj:ReconocerUsuario()
+    objAntiguo:ObtenerInfoInterlocutor(state==Objetivo.SOLVED)
+    obj:ReconocerUsuario(state==Objetivo.PENDING)
     f:Focus(foco == objAntiguo)
   then
     f.setFoco(obj);
-    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
     update(f);
 end
 rule "Inicio del proceso de consecucion del  objetivo ReconocerUsuario"
@@ -73,16 +75,16 @@ rule "Inicio del proceso de consecucion del  objetivo ReconocerUsuario"
   then
     obj.setSolving();
     update(obj);
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
 rule "Comprobar si existe el usuario"
   when
     obj:ReconocerUsuario(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionCitasConGuia)
   then
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(BuscarUsuario.class);
-    tarea.ejecutar(identInterlc);
+    tarea.ejecutar();
     
     obj.setSolved();
     update(obj);
@@ -90,6 +92,71 @@ rule "Comprobar si existe el usuario"
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
+
+
+
+rule "Hacer las preguntas iniciales al usuario"
+  when
+    obj:PreguntarDatosInicialesUsuario(state==Objetivo.PENDING)
+    f:Focus()
+  then
+    obj.setSolving();
+    update(obj);
+    f.setFoco(obj);
+    update(f);
+    
+    //  TAREAS PARA PREGUNTAR AL USUARIO !!!!!
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(PreguntarCuestionarioInicial.class);
+    tarea.ejecutar();
+    
+    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+rule "Hacer las preguntas al usuario para recomendar una pelicula"
+  when
+    obj:RecomendarPelicula(state==Objetivo.PENDING)
+    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVED)
+    f:Focus(foco == objAntiguo)
+  then
+    obj.setSolving();
+    update(obj);
+    f.setFoco(obj);
+    update(f);
+    
+    //  TAREAS PARA PREGUNTAR AL USUARIO QUE LE APETECE VER!!!!!
+    
+    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+
+
+
+rule "El usuario acepta hacer el cuestionario"
+  when
+    obj:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
+    f:Focus(foco == obj)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaSexo.class);
+    tarea.ejecutar();
+    retract(notif);
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+
+rule "El usuario NO acepta hacer el cuestionario"
+  when
+    obj:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
+    f:Focus(foco == obj)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion)
+  then
+  	
+  	// Focalizar otro objetivo
+  	
+    retract(notif);
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+
+
 
 rule "Saludo Inicial al interlocutor y peticion de datos iniciales"
   when
@@ -117,38 +184,19 @@ rule "No hay extraccion semantica del texto del interlocutor"
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
 
-rule "Hacer las preguntas iniciales al usuario"
+
+
+rule "Hacer la pregunta 1 al usuario"
   when
-    obj:PreguntarDatosInicialesUsuario(state==Objetivo.PENDING)
-    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVED)
-    f:Focus(foco == objAntiguo)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion)
   then
-    obj.setSolving();
-    update(obj);
-    f.setFoco(obj);
-    update(f);
-    
-    //  TAREAS PARA PREGUNTAR AL USUARIO !!!!!
-    
-    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
-    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+
+	TareaSincrona tarea = gestorTareas.crearTareaSincrona(SaludarYPresentarFuncionalidad.class);
+    tarea.ejecutar(identInterlc);
+   
 end
-rule "Hacer las preguntas al usuario para recomendar una pelicula"
-  when
-    obj:RecomendarPelicula(state==Objetivo.PENDING)
-    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVED)
-    f:Focus(foco == objAntiguo)
-  then
-    obj.setSolving();
-    update(obj);
-    f.setFoco(obj);
-    update(f);
-    
-    //  TAREAS PARA PREGUNTAR AL USUARIO QUE LE APETECE VER!!!!!
-    
-    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
-    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
-end
+
+
 
 rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
   when

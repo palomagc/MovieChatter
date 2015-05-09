@@ -1380,7 +1380,16 @@ public class InterpreteMsgsIRC {
 				// i++;
 			} else if (anotType.equalsIgnoreCase("Despedida")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroAccion")) {
+			}
+			
+			else if (anotType.equalsIgnoreCase("Afirmacion")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("Negacion")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			}
+			
+			// Géneros
+			else if (anotType.equalsIgnoreCase("GeneroAccion")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			} else if (anotType.equalsIgnoreCase("GeneroAventura")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
