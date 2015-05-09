@@ -5,7 +5,7 @@
 
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ReconocerUsuario;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerInfoInterlocutor;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Focus;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
@@ -26,7 +26,7 @@ public class InicializarInfoWorkMem extends TareaSincrona {
 			this.getItfConfigMotorDeReglas()
 					.setfactHandlesMonitoring_afterActivationFired_DEBUGGING(true);
 			this.getEnvioHechos().insertarHechoWithoutFireRules(new Focus());
-			this.getEnvioHechos().insertarHecho(new ReconocerUsuario());
+			this.getEnvioHechos().insertarHecho(new ObtenerInfoInterlocutor());
 
 		} catch (Exception e) {
 			e.printStackTrace();

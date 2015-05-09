@@ -1,4 +1,4 @@
-package icaro.aplicaciones.agentes.AgenteAplicacionDialogoCitasCognitivo.tareas;
+package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Tarea;

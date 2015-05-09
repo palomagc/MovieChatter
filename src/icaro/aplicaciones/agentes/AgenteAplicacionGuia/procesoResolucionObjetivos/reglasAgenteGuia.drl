@@ -14,24 +14,58 @@ global String agentId;
 
 rule "Creacion de los objectivos iniciales"
   when 
-  then  
+  then 
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(InicializarInfoWorkMem.class);
     tarea.ejecutar();
-    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName()); 
 end
 // =======================================================================
 //Reglas de focalizacion.
 rule "Regla de focalizacion en objetivo ReconocerUsuario"
   when
     f:Focus(foco == null )
-    obj:ReconocerUsuario()
+    obj:ObtenerInfoInterlocutor()
   then
     f.setFoco(obj);
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
     update(f);
 end
 //=======================================================================
-///Reglas de Consecucion del Objetivo ReconocerUsuario
+///Reglas de Consecucion del Objetivo ObtenerInfoInterlocutor
+rule "Inicio del proceso de consecucion del  objetivo ObtenerInfoInterlocutor"
+  when
+    obj:ObtenerInfoInterlocutor(state==Objetivo.PENDING)
+    Focus(foco ==obj)
+  then
+    obj.setSolving();
+    update(obj);
+end
+rule "Saludo Inicial y peticion de info"
+  when
+    obj:ObtenerInfoInterlocutor(state==Objetivo.SOLVING)
+    Focus(foco == obj)
+  then
+    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : SolicitarDatosAcceso",InfoTraza.NivelTraza.debug));
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoInicial.class);
+    tarea.ejecutar(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+    
+    obj.setSolved();
+    
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+
+
+rule "Regla para focalizar el objetivo en reconocer usuario"
+  when
+    objAntiguo:ObtenerInfoInterlocutor(state==Objetivo.SOLVING)
+    obj:ReconocerUsuario()
+    f:Focus(foco == objAntiguo)
+  then
+    f.setFoco(obj);
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+    update(f);
+end
 rule "Inicio del proceso de consecucion del  objetivo ReconocerUsuario"
   when
     obj:ReconocerUsuario(state==Objetivo.PENDING)
@@ -49,37 +83,73 @@ rule "Comprobar si existe el usuario"
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(BuscarUsuario.class);
     tarea.ejecutar(identInterlc);
+    
+    obj.setSolved();
+    update(obj);
+    
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
+
+rule "Saludo Inicial al interlocutor y peticion de datos iniciales"
+  when
+	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSaludo)
+  then
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(SaludarYPresentarFuncionalidad.class);
+    tarea.ejecutar(identInterlc);
+end
+rule "Despedida"
+  when
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionDespedida)
+  then
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(Despedirse.class);
+    tarea.ejecutar(identInterlc);
+end
+rule "No hay extraccion semantica del texto del interlocutor"
+  when
+    obj:ObtenerInfoInterlocutor(state==Objetivo.SOLVING)
+    Focus(foco == obj)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ExtraccionSemanticaNull)
+  then
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoInicialPeli.class);
+    tarea.ejecutar(identInterlc);
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+
 rule "Hacer las preguntas iniciales al usuario"
   when
     obj:PreguntarDatosInicialesUsuario(state==Objetivo.PENDING)
-    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVING)
-    Focus(foco == objAntiguo)
+    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVED)
+    f:Focus(foco == objAntiguo)
   then
     obj.setSolving();
     update(obj);
+    f.setFoco(obj);
+    update(f);
     
     //  TAREAS PARA PREGUNTAR AL USUARIO !!!!!
     
     //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
-rule "Hacer las preguntas al usuario para recomendar pelicula"
+rule "Hacer las preguntas al usuario para recomendar una pelicula"
   when
     obj:RecomendarPelicula(state==Objetivo.PENDING)
-    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVING)
-    Focus(foco == objAntiguo)
+    objAntiguo:ReconocerUsuario(state==Objetivo.SOLVED)
+    f:Focus(foco == objAntiguo)
   then
     obj.setSolving();
     update(obj);
+    f.setFoco(obj);
+    update(f);
     
     //  TAREAS PARA PREGUNTAR AL USUARIO QUE LE APETECE VER!!!!!
     
     //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
+
 rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
   when
     //notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ValorarUltimaPelicula)
@@ -89,3 +159,4 @@ rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
     //  TAREAS PARA PREGUNTAR SI QUIERE VALORAR LA ULTIMA PELICULA !!!!! HAY QUE CAMBIAR EL FOCOY CREAR EL OBJETIVO
     
 end
+

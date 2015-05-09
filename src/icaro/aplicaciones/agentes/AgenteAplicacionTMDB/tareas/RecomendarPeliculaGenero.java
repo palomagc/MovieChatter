@@ -58,7 +58,7 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				}
 			}
 			if (recComunicacionChat != null && movies != null) {
-				recComunicacionChat.comenzar(identAgenteOrdenante);
+				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				int numRecomienda = (int) ((100 * Math.random()) % VocabularioGestionCitas.Recomienda.length);
 				String mensajeAenviar = "Del genero " + genero.getSpanish() + " "
 						+ VocabularioGestionCitas.Recomienda[numRecomienda] + "  ";

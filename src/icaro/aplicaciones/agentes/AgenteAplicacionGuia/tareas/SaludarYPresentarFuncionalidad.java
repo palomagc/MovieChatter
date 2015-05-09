@@ -1,42 +1,50 @@
-/*
- * SolicitarDatos.java
- *
- * Creado 23 de abril de 2007, 12:52
- *
- * Telefonica I+D Copyright 2006-2007
+package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
+
+/**
+ * <p>Title: Agenda de citas vocal</p>
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Company: Telef�nica  I+D</p>
+ * @author Jorge Gonz�lez
+ * @version 1.0
  */
-package icaro.aplicaciones.agentes.AgenteAplicacionDialogoCitasCognitivo.tareas;
+
 
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
-import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
-import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Tarea;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
-/**
- * 
- * @author F Garijo
- */
-public class SolicitarInfoInicialPeli extends TareaSincrona {
-    private String identAgenteOrdenante;
+
+public class SaludarYPresentarFuncionalidad extends TareaSincrona{
+
+  /**
+   *  Constructor
+   *
+   *@param           Description of the Parameter
+   *@param    Description of the Parameter
+   */
     private Objetivo contextoEjecucionTarea = null;
-	@Override
-	public void ejecutar(Object... params) {		
-      //    String   identRecursoVisualizacionAcceso = "VisualizacionAcceso1";
-          String identDeEstaTarea=this.getIdentTarea();
+  @Override
+	public void ejecutar(Object... params) {
+  /**
+   * Produce un saludo inicial y una presentacion de funcionalidad inicial al entrar en el sistema
+   */
+   String identDeEstaTarea=this.getIdentTarea();
             String identAgenteOrdenante = this.getIdentAgente();
           String identInterlocutor = (String)params[0];
                     try {
 //         // Se busca la interfaz del recurso en el repositorio de interfaces 
 		ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(
-						VocabularioGestionCitas.IdentRecursoComunicacionChat);          
+						VocabularioGestionCitas.IdentRecursoComunicacionChat);
                 if (recComunicacionChat!=null){
-                    recComunicacionChat.comenzar(identAgenteOrdenante);
-                    int numEntender = (int) ((100 * Math.random()) % VocabularioGestionCitas.preambuloNoEntendido.length);
-                    String mensajeAenviar = VocabularioGestionCitas.preambuloNoEntendido[numEntender] + "  " +
-                    		VocabularioGestionCitas.peticionInfoIicialCita1;
+                    recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+                    int numSaludo = (int) ((100 * Math.random()) % VocabularioGestionCitas.SaludoInicial2.length);
+                    int numPeticion = (int) ((100 * Math.random()) % VocabularioGestionCitas.PeticionInformacionGeneral1.length);
+                    String mensajeAenviar = VocabularioGestionCitas.SaludoInicial2[numSaludo]+ "  "+ identInterlocutor + ",  "+
+                            VocabularioGestionCitas.InfoGeneralFuncionalidad.toLowerCase() + ".  "+
+                            VocabularioGestionCitas.PeticionInformacionGeneral1[numPeticion];
                     recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
                 }
                 else {
@@ -50,4 +58,6 @@ public class SolicitarInfoInicialPeli extends TareaSincrona {
 			e.printStackTrace();
 		}
 	}
+  
+
 }

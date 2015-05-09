@@ -33,7 +33,7 @@ public class MensajeHayPeliculas extends TareaSincrona {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat.comenzar(identAgenteOrdenante);
+				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
 				String mensajeAenviar = "Mensaje hay peliculas";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);

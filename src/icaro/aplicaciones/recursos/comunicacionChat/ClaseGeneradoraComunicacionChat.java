@@ -26,7 +26,7 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 	private String url = null;
 	private String nickname = null;
 	private String chanel = "#kiwiirc-movies";
-	private String identInterlocutorPruebas = "movieBot";
+	public String identInterlocutorPruebas = "movieBot";
 	private Boolean conectado = false;
 
 	public ClaseGeneradoraComunicacionChat(String idInstanciaRecurso)
@@ -163,7 +163,7 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 				throw new Exception();
 			else {
 				interpreteMsgIrc
-						.setIdentAgenteGestorDialogo(VocabularioGestionCitas.IdentAgenteAplicacionDialogoCitas);
+						.setIdentAgenteGestorDialogo(VocabularioGestionCitas.IdentAgenteAplicacionGuia); // ANTES PONIA IdentAgenteAplicacionDialogoCitas
 				interpreteMsgIrc
 						.setIdentConexion(VocabularioGestionCitas.IdentConexionAgte);
 				comunicChat.setVerbose(true);

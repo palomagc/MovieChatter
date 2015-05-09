@@ -1,38 +1,26 @@
-package icaro.aplicaciones.agentes.AgenteAplicacionDialogoCitasCognitivo.tareas;
-
-/**
- * <p>Title: Agenda de citas vocal</p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: Telef�nica  I+D</p>
- * @author Jorge Gonz�lez
- * @version 1.0
- */
+package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 
-import icaro.aplicaciones.agentes.AgenteAplicacionDialogoCitasCognitivo.objetivos.ObtenerInfoInterlocutor;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
-import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Focus;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
-import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
 
-public class SaludarYPresentarFuncionalidad extends TareaSincrona{
+public class Despedirse extends TareaSincrona{
 
   /**
    *  Constructor
    *
-   *@param           Description of the Parameter
+   *@param    Description of the Parameter
    *@param    Description of the Parameter
    */
     private Objetivo contextoEjecucionTarea = null;
   @Override
 	public void ejecutar(Object... params) {
   /**
-   * Produce un saludo inicial y una presentacion de funcionalidad inicial al entrar en el sistema
+   * Produce una despedida
    */
    String identDeEstaTarea=this.getIdentTarea();
             String identAgenteOrdenante = this.getIdentAgente();
@@ -42,12 +30,9 @@ public class SaludarYPresentarFuncionalidad extends TareaSincrona{
 		ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(
 						VocabularioGestionCitas.IdentRecursoComunicacionChat);
                 if (recComunicacionChat!=null){
-                    recComunicacionChat.comenzar(identAgenteOrdenante);
-                    int numSaludo = (int) ((100 * Math.random()) % VocabularioGestionCitas.SaludoInicial2.length);
-                    int numPeticion = (int) ((100 * Math.random()) % VocabularioGestionCitas.PeticionInformacionGeneral1.length);
-                    String mensajeAenviar = VocabularioGestionCitas.SaludoInicial2[numSaludo]+ "  "+ identInterlocutor + ",  "+
-                            VocabularioGestionCitas.InfoGeneralFuncionalidad.toLowerCase() + ".  "+
-                            VocabularioGestionCitas.PeticionInformacionGeneral1[numPeticion];
+                    recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+                    int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
+                    String mensajeAenviar = VocabularioGestionCitas.Despedida[numDespedida]+ "  "+ identInterlocutor;
                     recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
                 }
                 else {

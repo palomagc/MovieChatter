@@ -5,7 +5,7 @@
  *
  * Telefonica I+D Copyright 2006-2007
  */
-package icaro.aplicaciones.agentes.AgenteAplicacionDialogoCitasCognitivo.tareas;
+package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
@@ -32,8 +32,9 @@ public class SolicitarInfoInicial extends TareaSincrona {
 		ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfaz(
 						NombresPredefinidos.ITF_USO + identRecursoComunicacionChat);          
                 if (recComunicacionChat!=null){
-                    recComunicacionChat.comenzar(identAgenteOrdenante);
+                    recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
                     recComunicacionChat.enviarMensagePrivado(VocabularioGestionCitas.SaludoInicial1);
+                    
                 }
                 else {
                     identAgenteOrdenante = this.getAgente().getIdentAgente();

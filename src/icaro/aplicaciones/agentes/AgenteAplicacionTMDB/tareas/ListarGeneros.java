@@ -46,7 +46,7 @@ public class ListarGeneros extends TareaSincrona{
 				genres = itfUsoComunicacionTMDB.getMovieGenresList("en");
 			}
 			if (recComunicacionChat!=null && genres!=null){
-				recComunicacionChat.comenzar(identAgenteOrdenante);
+				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				//int numRecomienda = (int) ((100 * Math.random()) % VocabularioGestionCitas.Recomienda.length);
 				String mensajeAenviar = "Disponemos de los siguientes géneros de películas ";
 				for (Genre g : genres) {
