@@ -36,7 +36,7 @@ public class BuscarUsuario extends TareaSincrona {
 		boolean exists = false;
 
 		// Si no está, lo creas nuevo y se le responderá como nuevo usuario. Se
-		// le intentará preguntar por sus datos básicos
+		// le intentará preguntar por sus datos básicos, mediante el cuestionario inicial.
 		if (!exists) {
 			this.getEnvioHechos().insertarHecho(new PreguntarDatosInicialesUsuario());
 		}
