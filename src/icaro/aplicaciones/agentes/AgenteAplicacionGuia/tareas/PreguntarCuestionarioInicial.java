@@ -32,7 +32,7 @@ public class PreguntarCuestionarioInicial extends TareaSincrona{
 						VocabularioGestionCitas.IdentRecursoComunicacionChat);
                 if (recComunicacionChat!=null){
                     recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-                    String mensajeAenviar = "Te gustaria responder a unas preguntas para conocernos mejor?";
+                    String mensajeAenviar = "Te gustaria responder a un par de preguntas para conocernos mejor?";
                     recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
                 }
                 else {

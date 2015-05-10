@@ -98,10 +98,8 @@ end
 rule "Hacer las preguntas iniciales al usuario"
   when
     obj:PreguntarDatosInicialesUsuario(state==Objetivo.PENDING)
-    f:Focus()
+    f:Focus(foco != obj)
   then
-    obj.setSolving();
-    update(obj);
     f.setFoco(obj);
     update(f);
     
@@ -133,23 +131,26 @@ end
 
 rule "El usuario acepta hacer el cuestionario"
   when
-    obj:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
+    obj:PreguntarDatosInicialesUsuario(state==Objetivo.PENDING)
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaSexo.class);
-    tarea.ejecutar();
+    obj.setSolving();
+    update(obj);
+    
     retract(notif);
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
 
 rule "El usuario NO acepta hacer el cuestionario"
   when
-    obj:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
+    obj:PreguntarDatosInicialesUsuario(state==Objetivo.PENDING)
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion)
   then
-  	
+    obj.setSolving();
+    update(obj);
+    
   	// Focalizar otro objetivo
     
     retract(notif);
@@ -183,6 +184,17 @@ rule "No hay extraccion semantica del texto del interlocutor"
 end
 
 
+
+rule "Preguntar sexo usuario"
+  when
+    obj:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
+    f:Focus(foco == obj)
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaSexo.class);
+    tarea.ejecutar();
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
 
 rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
   when
