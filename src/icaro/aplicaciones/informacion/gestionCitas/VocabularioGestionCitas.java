@@ -52,6 +52,15 @@ public class VocabularioGestionCitas {
     // NEGACION
     public static final String NombreTipoNotificacionNegacion="Negacion";
     
+    // SEXOHOMBRE
+    public static final String NombreTipoNotificacionSexoHombre="SexoHombre";
+    
+    // SEXOMUJER
+    public static final String NombreTipoNotificacionSexoMujer="SexoMujer";
+    
+    // NUMERO
+    public static final String NombreTipoNotificacionNumero="Numero";    
+    
     // RECOMIENDA
     public static final String NombreTipoNotificacionRecomienda="Recomienda";
     public static final String[] Recomienda={"podrias ver"};
