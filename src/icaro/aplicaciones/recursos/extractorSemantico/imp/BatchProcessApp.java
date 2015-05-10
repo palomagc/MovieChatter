@@ -24,27 +24,22 @@ package icaro.aplicaciones.recursos.extractorSemantico.imp;
  */
 
 import gate.Annotation;
-import gate.Document;
+import gate.AnnotationSet;
 import gate.Corpus;
 import gate.CorpusController;
-import gate.AnnotationSet;
-import gate.Gate;
+import gate.Document;
 import gate.Factory;
 import gate.FeatureMap;
+import gate.Gate;
 import gate.Node;
-import gate.util.*;
 import gate.util.persistence.PersistenceManager;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.BufferedOutputStream;
-import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This class ilustrates how to do simple batch processing with GATE.  It loads
@@ -75,12 +70,12 @@ public class BatchProcessApp {
     // initialise GATE - this must be done before calling any GATE APIs
 //    File file1 = new File("C:\\GATE_Developer_8.0");
       File file1 = new File("lib\\gate\\gate.jar");
-    File gappFile = new File("E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1");
+    File gappFile = new File("C:\\hlocal\\MovieChatter\\anniePruebaEjemplo1");
     Gate.setGateHome(file1);
     String[] paramsProcessor = new String[3];
     paramsProcessor[0]="-g";
-    paramsProcessor[1]="E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1";
-    paramsProcessor[2]="E:\\FicheroRed\\GatePruebas\\especCitas1";
+    paramsProcessor[1]="C:\\hlocal\\MovieChatter\\anniePruebaEjemplo1";
+    paramsProcessor[2]="C:\\hlocal\\MovieChatter\\especCitas1";
     parseCommandLine(paramsProcessor);
     Gate.init();
 

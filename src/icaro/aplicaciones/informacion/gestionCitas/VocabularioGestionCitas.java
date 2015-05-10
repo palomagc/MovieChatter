@@ -31,7 +31,7 @@ public class VocabularioGestionCitas {
 	}
 	
 	public static final List<String> NombresTipoNotificacion = Arrays.asList("Saludo", 
-			"Despedida", "GeneroAccion", "GeneroAventura", "GeneroAnimacion", "GeneroComedia",
+			"Despedida", "Afirmacion", "Negacion", "GeneroAccion", "GeneroAventura", "GeneroAnimacion", "GeneroComedia",
 			"GeneroCrimen", "GeneroDocumental", "GeneroDrama", "GeneroFamiliar",
 			"GeneroFantasia", "GeneroExtranjero", "GeneroHistorico", "GeneroTerror",
 			"GeneroMusical", "GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion",

@@ -2,6 +2,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
@@ -24,7 +25,7 @@ public class CuestionarioInicialPreguntaSexo extends TareaSincrona{
    */
    String identDeEstaTarea=this.getIdentTarea();
             String identAgenteOrdenante = this.getIdentAgente();
-          String identInterlocutor = (String)params[0];
+          String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
                     try {
 //         // Se busca la interfaz del recurso en el repositorio de interfaces 
 		ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(
@@ -32,7 +33,7 @@ public class CuestionarioInicialPreguntaSexo extends TareaSincrona{
                 if (recComunicacionChat!=null){
                     recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
                     //int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
-                    String mensajeAenviar = "";
+                    String mensajeAenviar = "Eres hombre o mujer?";
                     recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
                 }
                 else {
