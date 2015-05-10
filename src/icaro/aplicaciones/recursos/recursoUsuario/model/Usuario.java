@@ -1,6 +1,15 @@
 package icaro.aplicaciones.recursos.recursoUsuario.model;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import constantes.Constantes;
 
 public class Usuario {
 
@@ -12,23 +21,19 @@ public class Usuario {
 	private ArrayList<String> actoresPreferidos;
 	private ArrayList<String> actoresOdiados;
 	
-	
 	/**
-	 * Nuevo usuario sin sexo (sexo=null) ni edad (edad=-1)
-	 * @param nombre Nombre del usuario
+	 * Nuevo usuario vacío (nombre=null, sexo=null, edad=-1)
 	 */
-	public Usuario(String nombre){
-		this.nombre = nombre;
-		this.sexo=null;
+	public Usuario(){
+		this.nombre = null;
+		this.sexo = null;
 		this.edad = -1;
 		this.valoraciones = new ArrayList<Valoracion>();
 		this.generosPreferidos = new ArrayList<String>();
 		this.actoresPreferidos = new ArrayList<String>();
 		this.actoresOdiados = new ArrayList<String>();
-		// TODO meter el usuario en un fichero
 	}
-
-
+	
 	/**
 	 * Nuevo usuario con nombre, sexo y edad
 	 * @param nombre Nombre del uauario
@@ -43,13 +48,94 @@ public class Usuario {
 		this.generosPreferidos = new ArrayList<String>();
 		this.actoresPreferidos = new ArrayList<String>();
 		this.actoresOdiados = new ArrayList<String>();
-		// TODO meter el usuario en un fichero
-	}	
-	
-	
-	public void nuevaValoracion(Valoracion valoracion){
-		this.valoraciones.add(valoracion);
 	}
+
+
+	/**
+	 * Nuevo usuario con todos los campos
+	 * @param nombre
+	 * @param sexo
+	 * @param edad
+	 * @param valoraciones
+	 * @param generosPreferidos
+	 * @param actoresPreferidos
+	 * @param actoresOdiados
+	 */
+	public Usuario(String nombre, String sexo, int edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados){
+		this.nombre = nombre;
+		this.sexo = sexo;
+		this.edad = edad;
+		this.valoraciones = valoraciones;
+		this.generosPreferidos = generosPreferidos;
+		this.actoresPreferidos = actoresPreferidos;
+		this.actoresOdiados = actoresOdiados;
+		
+	}
+	
+	/**
+	 * Crea un objeto JSON a partir del objeto usuario
+	 * @return objeto JSON con el contenido del usuario
+	 */
+	private JSONObject creaJSONUsuario(){
+		
+		JSONObject obj = new JSONObject();
+		
+		obj.put("nombre", this.nombre);
+		obj.put("sexo", this.sexo);
+		obj.put("edad", this.edad);
+		JSONArray listV = new JSONArray();	
+		Iterator<Valoracion> it1 = this.valoraciones.iterator();
+		while(it1.hasNext()){
+			Valoracion v = it1.next();
+			JSONObject objV = new JSONObject();
+			objV.put("idPelicula", v.getIdPelicula());
+			objV.put("nota", v.getNota());
+			listV.add(objV);
+		} 
+		obj.put("valoraciones", listV);
+		JSONArray listGP = new JSONArray();
+		Iterator<String> it2 = this.generosPreferidos.iterator();
+		while(it2.hasNext()){
+			String gp = it2.next();
+			listGP.add(gp);
+		} 
+		obj.put("generosPreferidos", listGP);
+		JSONArray listAP = new JSONArray();	
+		it2 = this.actoresPreferidos.iterator();
+		while(it2.hasNext()){
+			String ap = it2.next();
+			listAP.add(ap);
+		} 
+		obj.put("actoresPreferidos", listAP);
+		JSONArray listAO = new JSONArray();	
+		it2 = this.actoresOdiados.iterator();
+		while(it2.hasNext()){
+			String ao = it2.next();
+			listAO.add(ao);
+		} 
+		obj.put("actoresOdiados", listAO);
+		
+		return obj;
+		
+	}
+	
+	/**
+	 * Añade el usuario a la base de datos
+	 */
+	public void addUsuarioBD(){
+		JSONObject obj = this.creaJSONUsuario();
+		try {
+			 
+			FileWriter file = new FileWriter(Constantes.DB_PATH + this.nombre + ".json");
+			file.write(obj.toJSONString());
+			file.flush();
+			file.close();
+	 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public String getNombre() {
 		return nombre;
