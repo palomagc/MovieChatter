@@ -1,14 +1,21 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarEdad;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarSexo;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
+import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
+import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
+import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
+
+import java.util.ArrayList;
 
 public class BuscarUsuario extends TareaSincrona {
 
@@ -31,23 +38,58 @@ public class BuscarUsuario extends TareaSincrona {
 		String identAgenteOrdenante = this.getIdentAgente();
 		String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 
-		// TODO identInterlocutor contiene el nombre del usuario, iniciar la base de
+		// identInterlocutor contiene el nombre del usuario, iniciar la base de
 		// datos y buscar al usuario
 		boolean exists = false;
-
-		// TODO Si no está, lo creas nuevo y se le responderá como nuevo usuario. Se
-		// le intentará preguntar por sus datos básicos, mediante el cuestionario inicial.
-		if (!exists) {
-			this.getEnvioHechos().insertarHecho(new PreguntarDatosInicialesUsuario());
+		ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
+		try {
+			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
-		// TODO Si está, coges todos sus datos y le dices que ya le conoces. Le
-		// preguntas por las ultimas pelis que le pusiste y por datos básicos
-		// que falten
+		VocabularioGestionCitas.usuario = itfUsoRecursoUsuario
+				.buscarUsuario(identInterlocutor);
+		if (VocabularioGestionCitas.usuario != null) {
+			exists = true;
+		}
+
+		// Si no estï¿½, lo creas nuevo y se le responderï¿½ como nuevo usuario. Se
+		// le intentarï¿½ preguntar por sus datos bï¿½sicos, mediante el
+		// cuestionario inicial.
+		if (!exists) {
+			this.getEnvioHechos().insertarHecho(
+					new PreguntarDatosInicialesUsuario());
+			// Creamos un nuevo usuario con sexo a null y edad a -1
+			VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.crearUsuario(
+					identInterlocutor, null, -1);
+		}
+
+		// Si estÃ¡, coges todos sus datos. Le preguntas por las ultimas
+		// pelis que le pusiste y por datos bÃ¡sicos que falten
 		else {
-			// TODO AQUI PUEDE QUE TE DES CUENTA DE QUE VIO UNA PELI Y QUERRAS
+			// AQUI PUEDE QUE TE DES CUENTA DE QUE VIO UNA PELI Y QUERRAS
 			// PREGUNTARLE SI QUIERE VALORARLA (HAY QUE LANZAR EL HECHO Y METER
 			// LA REGLA EN EL AGENTE GUIA)
-			this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
+			ArrayList<Valoracion> valoraciones = VocabularioGestionCitas.usuario.getValoraciones();
+			if(VocabularioGestionCitas.usuario.getSexo() == null){
+				this.getEnvioHechos().insertarHecho(
+						new PreguntarSexo());
+			}
+			else if(VocabularioGestionCitas.usuario.getEdad() == -1){
+				this.getEnvioHechos().insertarHecho(
+						new PreguntarEdad());
+			}
+			// TODO esto se podrÃ­a mejorar. Si la Ãºltima pelÃ­cula sÃ­ estÃ¡ valorada, podemos buscar
+			// la anterior pelÃ­cula que estÃ¡ sin valorar. En caso de que no la quiera valorar, le podemos
+			// asignar nota=-2 para saber que no hay que volver a preguntarle por esta peli
+			else if(valoraciones.get(valoraciones.size()-1).getNota() == -1){
+				Notificacion notif = new Notificacion();
+		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionValorarUltimaPelicula);
+			}
+			else{
+				this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
+			}
 		}
 
 		try {

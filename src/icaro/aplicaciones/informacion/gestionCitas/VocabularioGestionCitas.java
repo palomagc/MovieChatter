@@ -4,6 +4,8 @@
  */
 package icaro.aplicaciones.informacion.gestionCitas;
 
+import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +31,8 @@ public class VocabularioGestionCitas {
 		public String getEnglish() { return english; }
 		public String getSpanish() { return spanish; }
 	}
+	
+	public static Usuario usuario = null;
 	
 	public static final List<String> NombresTipoNotificacion = Arrays.asList("Saludo", 
 			"Despedida", "Afirmacion", "Negacion", "GeneroAccion", "GeneroAventura",
@@ -60,7 +64,10 @@ public class VocabularioGestionCitas {
     public static final String NombreTipoNotificacionSexoMujer="SexoMujer";
     
     // NUMERO
-    public static final String NombreTipoNotificacionNumero="Numero";    
+    public static final String NombreTipoNotificacionNumero="Numero";  
+    
+    // NUMERO
+    public static final String NombreTipoNotificacionValorarUltimaPelicula="ValorarUltimaPelicula"; 
     
     // RECOMIENDA
     public static final String NombreTipoNotificacionRecomienda="Recomienda";
@@ -108,22 +115,22 @@ public class VocabularioGestionCitas {
     	"GeneroSuspense", "GeneroGuerra", "GeneroOeste"};
 	public static final Map<String, Genero> Generos = new HashMap<String, Genero>();
 	static {
-		Generos.put("GeneroAccion", new Genero("Action", "acción"));
+		Generos.put("GeneroAccion", new Genero("Action", "acciï¿½n"));
 		Generos.put("GeneroAventura", new Genero("Adventure", "aventura"));
-		Generos.put("GeneroAnimacion", new Genero("Animation", "animación"));
+		Generos.put("GeneroAnimacion", new Genero("Animation", "animaciï¿½n"));
 		Generos.put("GeneroComedia", new Genero("Comedy", "comedia"));
 		Generos.put("GeneroCrimen", new Genero("Crime", "crimen"));
 		Generos.put("GeneroDocumental", new Genero("Documentary", "documental"));
 		Generos.put("GeneroDrama", new Genero("Drama", "drama"));
 		Generos.put("GeneroFamiliar", new Genero("Family", "familiar"));
-		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasía"));
+		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasï¿½a"));
 		Generos.put("GeneroExtranjero", new Genero("Foreign", "extranjero"));
-		Generos.put("GeneroHistorico", new Genero("History", "histórico"));
+		Generos.put("GeneroHistorico", new Genero("History", "histï¿½rico"));
 		Generos.put("GeneroTerror", new Genero("Horror", "terror"));
 		Generos.put("GeneroMusical", new Genero("Music", "musical"));
 		Generos.put("GeneroMisterio", new Genero("Mystery", "misterio"));
-		Generos.put("GeneroRomantico", new Genero("Romance", "romántico"));
-		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficción"));
+		Generos.put("GeneroRomantico", new Genero("Romance", "romï¿½ntico"));
+		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficciï¿½n"));
 		Generos.put("GeneroTV", new Genero("TV Movie", "tv"));
 		Generos.put("GeneroSuspense", new Genero("Thriller", "suspense"));
 		Generos.put("GeneroGuerra", new Genero("War", "guerra"));
@@ -144,6 +151,7 @@ public class VocabularioGestionCitas {
     public static final String IdentRecursoComunicacionChat= "ComunicacionChat1";
     public static final String IdentRecursoComunicacionTMDB= "ComunicacionTMDB1";
     public static final String IdentRecursoPersistenciaChat= "PersistenciaChat1";
+    public static final String IdentRecursoUsuario = "RecursoUsuario1";
     
 	public static final String NombreTipoNotificacionCitasConGuia="CitasConGuia";
     
@@ -159,4 +167,5 @@ public class VocabularioGestionCitas {
     public static final String Despedida1="Bueno tenemos que dejarlo ha sido un placer";
     public static final String ExtraccionSemanticaNull= "SinSemantica";
     public static final String peticionInfoIicialCita1 = " PodrÃƒÂ­a recomendarte alguna pelÃƒÂ­cula?";
+    
 }

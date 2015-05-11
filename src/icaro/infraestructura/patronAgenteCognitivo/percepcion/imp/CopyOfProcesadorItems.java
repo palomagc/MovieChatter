@@ -123,7 +123,7 @@ public class CopyOfProcesadorItems implements ItfProcesadorItems {
 					//			evidencia = new Evidence();
 					//			log.debug("Evento null?: "+ evento==null);
 					//			evidencia.setOrigen(evento.getOrigen());
-					//TODO Cambiar
+					//TODo Cambiar
 					//			evidencia.setContent(evento);
 					//         evidencia.setContent(evento.getMsgElements()[0]);
 					//             evidencia.setContent(evento.getMsgElements());

@@ -6,7 +6,7 @@ import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.patronRecursoSimple.ItfUsoRecursoSimple;
 
-public interface ItfRecursoUsuario extends ItfUsoRecursoSimple{
+public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple{
 
 	/**
 	 * Crea un nuevo usuario solo con nombre, sexo y edad (los demás campos vacíos)

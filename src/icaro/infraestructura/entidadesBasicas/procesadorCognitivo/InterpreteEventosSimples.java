@@ -40,7 +40,7 @@ public Evidencia generarEvidencia(EventoSimple evento) {
                 String creador = propietario;
          //   evidencia.setOrigen(origen);
          //   evidencia.setCreador(propietario);
-			//TODO Cambiar
+			//TODo Cambiar
 //			evidencia.setContent(evento);
  
                  String identEmisor = evento.getOrigen();

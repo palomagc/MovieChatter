@@ -25,7 +25,7 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 	public ClaseGeneradoraComunicacionTMDB(String idRecurso)
 			throws RemoteException {
 		super(idRecurso);
-		// TODO Auto-generated constructor stub
+		// TODo Auto-generated constructor stub
 	}
 
 	@Override

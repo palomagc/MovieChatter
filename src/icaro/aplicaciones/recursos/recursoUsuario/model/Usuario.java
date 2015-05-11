@@ -36,6 +36,7 @@ public class Usuario {
 	
 	/**
 	 * Nuevo usuario con nombre, sexo y edad
+	 * Si se necesita un usuario con solo el nombre, se pone el sexo a null y la edad a -1
 	 * @param nombre Nombre del uauario
 	 * @param sexo Sexo del usuario
 	 * @param edad Edad del usuario

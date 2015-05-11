@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 
 import constantes.Constantes;
 
-public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements ItfRecursoUsuario{
+public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements ItfUsoRecursoUsuario{
 
 	public ClaseGeneradoraRecursoUsuario(String idRecurso) throws RemoteException {
 		super(idRecurso);

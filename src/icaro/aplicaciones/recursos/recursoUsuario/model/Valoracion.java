@@ -12,7 +12,6 @@ public class Valoracion {
 	public Valoracion(String idPelicula){
 		this.idPelicula = idPelicula;
 		this.nota = -1;
-		// TODO meter la valoración en un fichero
 	}
 	
 	/**
@@ -23,7 +22,6 @@ public class Valoracion {
 	public Valoracion(String idPelicula, double nota){
 		this.idPelicula = idPelicula;
 		this.nota = nota;
-		// TODO meter la valoración en un fichero
 	}
 
 	
