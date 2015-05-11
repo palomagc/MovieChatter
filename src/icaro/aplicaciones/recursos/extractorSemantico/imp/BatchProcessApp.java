@@ -33,6 +33,7 @@ import gate.FeatureMap;
 import gate.Gate;
 import gate.Node;
 import gate.util.persistence.PersistenceManager;
+import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -70,12 +71,12 @@ public class BatchProcessApp {
     // initialise GATE - this must be done before calling any GATE APIs
 //    File file1 = new File("C:\\GATE_Developer_8.0");
       File file1 = new File("lib\\gate\\gate.jar");
-    File gappFile = new File("C:\\hlocal\\MovieChatter\\anniePruebaEjemplo1");
+    File gappFile = new File("E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1");
     Gate.setGateHome(file1);
     String[] paramsProcessor = new String[3];
     paramsProcessor[0]="-g";
-    paramsProcessor[1]="C:\\hlocal\\MovieChatter\\anniePruebaEjemplo1";
-    paramsProcessor[2]="C:\\hlocal\\MovieChatter\\especCitas1";
+    paramsProcessor[1]="E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1";
+    paramsProcessor[2]="E:\\FicheroRed\\GatePruebas\\especCitas1";
     parseCommandLine(paramsProcessor);
     Gate.init();
 
@@ -90,10 +91,7 @@ public class BatchProcessApp {
 //    private HashSet tiposAnotacionesRelevantes;
      HashSet tiposAnotacionesRelevantes = new HashSet<String>();
         tiposAnotacionesRelevantes.add("Lookup");
-        tiposAnotacionesRelevantes.add("Saludo");
-        tiposAnotacionesRelevantes.add("Despedida");
-        tiposAnotacionesRelevantes.add("Afirmacion");
-        tiposAnotacionesRelevantes.add("Negacion");
+        tiposAnotacionesRelevantes.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
     Corpus corpus = Factory.newCorpus("BatchProcessApp Corpus");
     application.setCorpus(corpus);
 

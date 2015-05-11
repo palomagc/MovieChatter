@@ -31,11 +31,12 @@ public class VocabularioGestionCitas {
 	}
 	
 	public static final List<String> NombresTipoNotificacion = Arrays.asList("Saludo", 
-			"Despedida", "Afirmacion", "Negacion", "GeneroAccion", "GeneroAventura", "GeneroAnimacion", "GeneroComedia",
-			"GeneroCrimen", "GeneroDocumental", "GeneroDrama", "GeneroFamiliar",
-			"GeneroFantasia", "GeneroExtranjero", "GeneroHistorico", "GeneroTerror",
-			"GeneroMusical", "GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion",
-			"GeneroTV", "GeneroSuspense", "GeneroGuerra", "GeneroOeste");
+			"Despedida", "Afirmacion", "Negacion", "GeneroAccion", "GeneroAventura",
+			"GeneroAnimacion", "GeneroComedia", "GeneroCrimen", "GeneroDocumental",
+			"GeneroDrama", "GeneroFamiliar", "GeneroFantasia", "GeneroExtranjero",
+			"GeneroHistorico", "GeneroTerror", "GeneroMusical", "GeneroMisterio",
+			"GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV", "GeneroSuspense",
+			"GeneroGuerra", "GeneroOeste");
 	
 	// SALUDO
 	public static final String NombreTipoNotificacionSaludo="Saludo";
