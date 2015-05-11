@@ -204,8 +204,8 @@ rule "Recibir respuesta sexo usuario"
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
     tarea.ejecutar(notif);
   
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
-    tarea.ejecutar();
+  	TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
+    tarea1.ejecutar();
     
     obj.setSolved();
     update(obj);
@@ -221,7 +221,7 @@ rule "Preguntar edad usuario"
     obj:PreguntarEdad(state==Objetivo.PENDING)
     f:Focus(foco != obj)
   then
-  	TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaEdad.class);
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaEdad.class);
     tarea.ejecutar();
     
     obj.setSolving();
