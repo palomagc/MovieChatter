@@ -183,7 +183,7 @@ end
 rule "Preguntar sexo usuario"
   when
     obj:PreguntarSexo(state==Objetivo.PENDING)
-    f:Focus()
+    f:Focus(foco != obj)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaSexo.class);
     tarea.ejecutar();
@@ -201,6 +201,9 @@ rule "Recibir respuesta sexo usuario"
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoHombre || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoMujer)
   then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
+    tarea.ejecutar(notif);
+  
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
     tarea.ejecutar();
     
@@ -216,9 +219,9 @@ end
 rule "Preguntar edad usuario"
   when
     obj:PreguntarEdad(state==Objetivo.PENDING)
-    f:Focus()
+    f:Focus(foco != obj)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaEdad.class);
+  	TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaEdad.class);
     tarea.ejecutar();
     
     obj.setSolving();
@@ -235,8 +238,8 @@ rule "Recibir respuesta edad usuario"
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
     objPrincipal:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
-    tarea.ejecutar();
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
+    tarea.ejecutar(notif);
     
     obj.setSolved();
     update(obj);

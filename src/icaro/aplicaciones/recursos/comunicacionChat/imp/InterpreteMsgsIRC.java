@@ -1389,6 +1389,12 @@ public class InterpreteMsgsIRC {
 			} else if (anotType.equalsIgnoreCase("Negacion")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
+		
+			// Numeros
+			 else if (anotType.equalsIgnoreCase("Numero")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			}
+			
 			
 			// Sexo
 			else if (anotType.equalsIgnoreCase("SexoHombre")) {
