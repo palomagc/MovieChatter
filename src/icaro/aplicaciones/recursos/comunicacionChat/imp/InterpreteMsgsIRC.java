@@ -1375,6 +1375,7 @@ public class InterpreteMsgsIRC {
 		while (annotTypesSal.hasNext()) {
 			Annotation annot = (Annotation) annotTypesSal.next();
 			String anotType = annot.getType();
+			// TODO Añadir aquí las anotaciones que quieres que se tengan en cuenta.
 			if (anotType.equalsIgnoreCase("Saludo")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 				// i++;
@@ -1382,9 +1383,17 @@ public class InterpreteMsgsIRC {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 			
+			// Posibles respuestas (Afirmativa / Negativa)
 			else if (anotType.equalsIgnoreCase("Afirmacion")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			} else if (anotType.equalsIgnoreCase("Negacion")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			}
+			
+			// Sexo
+			else if (anotType.equalsIgnoreCase("SexoHombre")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("SexoMujer")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 			

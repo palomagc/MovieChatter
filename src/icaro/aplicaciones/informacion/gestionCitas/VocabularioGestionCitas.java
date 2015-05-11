@@ -34,8 +34,9 @@ public class VocabularioGestionCitas {
 	
 	public static Usuario usuario = null;
 	
+	// TODO Añadir aquí las anotaciones que quieres que se tengan en cuenta.
 	public static final List<String> NombresTipoNotificacion = Arrays.asList("Saludo", 
-			"Despedida", "Afirmacion", "Negacion", "GeneroAccion", "GeneroAventura",
+			"Despedida", "Afirmacion", "Negacion", "SexoHombre", "SexoMujer", "GeneroAccion", "GeneroAventura",
 			"GeneroAnimacion", "GeneroComedia", "GeneroCrimen", "GeneroDocumental",
 			"GeneroDrama", "GeneroFamiliar", "GeneroFantasia", "GeneroExtranjero",
 			"GeneroHistorico", "GeneroTerror", "GeneroMusical", "GeneroMisterio",
