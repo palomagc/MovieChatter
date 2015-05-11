@@ -48,8 +48,14 @@ public class BuscarUsuario extends TareaSincrona {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		VocabularioGestionCitas.usuario = itfUsoRecursoUsuario
-				.buscarUsuario(identInterlocutor);
+
+		try {
+			VocabularioGestionCitas.usuario = itfUsoRecursoUsuario
+					.buscarUsuario(identInterlocutor);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if (VocabularioGestionCitas.usuario != null) {
 			exists = true;
 		}
@@ -61,8 +67,13 @@ public class BuscarUsuario extends TareaSincrona {
 			this.getEnvioHechos().insertarHecho(
 					new PreguntarDatosInicialesUsuario());
 			// Creamos un nuevo usuario con sexo a null y edad a -1
-			VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.crearUsuario(
-					identInterlocutor, null, -1);
+			try {
+				VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.crearUsuario(
+						identInterlocutor, null, -1);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		// Si está, coges todos sus datos. Le preguntas por las ultimas

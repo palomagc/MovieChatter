@@ -32,10 +32,10 @@ public class DeducirGenero extends TareaSincrona {
 		String identAgenteOrdenante = this.getIdentAgente();
 		String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 
-		// TODO Mirar en las últimas peliculas que ha visto y si las N ultimas
-		// son de un mismo género, contando que puede haber entremedias alguna
-		// diferente, suponemos que quiere ver una de ese género. O podríamos
-		// contar el género que más ha visto.
+		// TODO Mirar en las ï¿½ltimas peliculas que ha visto y si las N ultimas
+		// son de un mismo gï¿½nero, contando que puede haber entremedias alguna
+		// diferente, suponemos que quiere ver una de ese gï¿½nero. O podrï¿½amos
+		// contar el gï¿½nero que mï¿½s ha visto.
 		boolean foundPreferredGenre = false;
 		String preferredGenre = "NULL";
 
@@ -53,20 +53,20 @@ public class DeducirGenero extends TareaSincrona {
 				if (foundPreferredGenre) {
 					// TODO Si hemos encontrado un genero preferido, se lo
 					// decimos.
-					// Pasamos a intentar recomendarle una peli de ese género o
+					// Pasamos a intentar recomendarle una peli de ese gï¿½nero o
 					// lanzamos un objetivo que averigue un actor preferido.
-					// También podríamos preguntar si has acertado o le parece
+					// Tambiï¿½n podrï¿½amos preguntar si has acertado o le parece
 					// bien.
 					// ADEMAS, DEBERIAMOS BORRAR LAS ANOTACIONES QUE TENDAMOS DE
 					// SI O NO, YA QUE PODRIAMOS ESTAR GUARDANDO ALGUNA Y NOS
 					// FASTIDIE LA PREGUNTA
-					mensajeAenviar = "Creo que te podría gustar el genero"
+					mensajeAenviar = "Creo que te podrï¿½a gustar el genero"
 							+ preferredGenre + ", si?";
 					// TODO this.getEnvioHechos().insertarHecho(new SujeririPeliculaConLosDatosActuales());
 					
 				} else {
-					// TODO Si no tenemos mucha idea de lo que le podría gustar
-					// le preguntamos cuál le apetece.
+					// TODO Si no tenemos mucha idea de lo que le podrï¿½a gustar
+					// le preguntamos cuï¿½l le apetece.
 					mensajeAenviar = "Dime el genero de pelis que te apetece ver.";
 				}
 
