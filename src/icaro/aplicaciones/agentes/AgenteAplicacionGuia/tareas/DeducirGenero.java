@@ -1,6 +1,7 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarEdad;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
@@ -10,7 +11,7 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminaci
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 
-public class BuscarUsuario extends TareaSincrona {
+public class DeducirGenero extends TareaSincrona {
 
 	/**
 	 * Constructor
@@ -31,24 +32,12 @@ public class BuscarUsuario extends TareaSincrona {
 		String identAgenteOrdenante = this.getIdentAgente();
 		String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 
-		// TODO identInterlocutor contiene el nombre del usuario, iniciar la base de
-		// datos y buscar al usuario
-		boolean exists = false;
-
-		// TODO Si no está, lo creas nuevo y se le responderá como nuevo usuario. Se
-		// le intentará preguntar por sus datos básicos, mediante el cuestionario inicial.
-		if (!exists) {
-			this.getEnvioHechos().insertarHecho(new PreguntarDatosInicialesUsuario());
-		}
-		// TODO Si está, coges todos sus datos y le dices que ya le conoces. Le
-		// preguntas por las ultimas pelis que le pusiste y por datos básicos
-		// que falten
-		else {
-			// TODO AQUI PUEDE QUE TE DES CUENTA DE QUE VIO UNA PELI Y QUERRAS
-			// PREGUNTARLE SI QUIERE VALORARLA (HAY QUE LANZAR EL HECHO Y METER
-			// LA REGLA EN EL AGENTE GUIA)
-			this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
-		}
+		// TODO Mirar en las últimas peliculas que ha visto y si las N ultimas
+		// son de un mismo género, contando que puede haber entremedias alguna
+		// diferente, suponemos que quiere ver una de ese género. O podríamos
+		// contar el género que más ha visto.
+		boolean foundPreferredGenre = false;
+		String preferredGenre = "NULL";
 
 		try {
 			// // Se busca la interfaz del recurso en el repositorio de
@@ -61,12 +50,24 @@ public class BuscarUsuario extends TareaSincrona {
 				// int numDespedida = (int) ((100 * Math.random()) %
 				// VocabularioGestionCitas.Despedida.length);
 				String mensajeAenviar = "NULL";
-				if (!exists) {
-					mensajeAenviar = "Hola " + identInterlocutor
-							+ ", no nos conocemos.";
+				if (foundPreferredGenre) {
+					// TODO Si hemos encontrado un genero preferido, se lo
+					// decimos.
+					// Pasamos a intentar recomendarle una peli de ese género o
+					// lanzamos un objetivo que averigue un actor preferido.
+					// También podríamos preguntar si has acertado o le parece
+					// bien.
+					// ADEMAS, DEBERIAMOS BORRAR LAS ANOTACIONES QUE TENDAMOS DE
+					// SI O NO, YA QUE PODRIAMOS ESTAR GUARDANDO ALGUNA Y NOS
+					// FASTIDIE LA PREGUNTA
+					mensajeAenviar = "Creo que te podría gustar el genero"
+							+ preferredGenre + ", si?";
+					// TODO this.getEnvioHechos().insertarHecho(new SujeririPeliculaConLosDatosActuales());
+					
 				} else {
-					mensajeAenviar = "Hola, " + identInterlocutor
-							+ " sabia que volverias!";
+					// TODO Si no tenemos mucha idea de lo que le podría gustar
+					// le preguntamos cuál le apetece.
+					mensajeAenviar = "Dime el genero de pelis que te apetece ver.";
 				}
 
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
@@ -91,5 +92,4 @@ public class BuscarUsuario extends TareaSincrona {
 			e.printStackTrace();
 		}
 	}
-
 }
