@@ -269,9 +269,9 @@ rule "Poner el foco en recomendar peli y lanzar el objetivo del genero"
   
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
-/*rule "Mirar si puedes deducir un genero, o preguntale"
+rule "Mirar si puedes deducir un genero, o preguntale"
   when
-    obj:DeducirGenero(state==Objetivo.PENDING)
+    obj:ObtenerGenero(state==Objetivo.PENDING)
   then
     
     //  Tareas para preguntar al usuario o deducir que genero le apetece ver
@@ -279,10 +279,10 @@ end
     tarea.ejecutar(obj);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end*/
-/*rule "Mirar si puedes deducir un actor, o preguntale"
+end
+rule "Mirar si puedes deducir un actor, o preguntale"
   when
-    obj:DeducirActor(state==Objetivo.PENDING)
+    obj:ObtenerActor(state==Objetivo.PENDING)
   then
     
     //  Tareas para preguntar al usuario que actor le apetece ver
@@ -290,7 +290,7 @@ end*/
     tarea.ejecutar();
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end*/
+end
 /*rule "Notificacion del agente TMDB que indica que podemos sugerir una peli"
   when
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.PeliEncontrada)
@@ -318,7 +318,7 @@ end*/
     
 end*/
 
-rule "Pedir valoracion pelicula"
+/*rule "Pedir valoracion pelicula"
   when
     obj:PedirValoracionPelicula(state==Objetivo.PENDING)
     f:Focus(foco != obj)
@@ -350,7 +350,7 @@ rule "Recibir valoracion pelicula"
     retract(notif);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end
+end*/
 
 
 
