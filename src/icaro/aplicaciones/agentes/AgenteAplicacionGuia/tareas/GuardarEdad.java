@@ -1,6 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
@@ -25,6 +25,7 @@ public class GuardarEdad extends TareaSincrona {
 	public void ejecutar(Object... params) {
 		try {
 			
+			// TODO La edad se guarda mal!!!!!!!
 			// TODO Aqui hay que guardar la respuesta del usuario a su edad
 			// TODO El par�metro 0 contiene la anotacion
 			
@@ -35,6 +36,10 @@ public class GuardarEdad extends TareaSincrona {
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
 			itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
 
+			Objetivo objetivo = new PreguntarDatosInicialesUsuario();
+			objetivo.setSolved();
+			this.getEnvioHechos().insertarHecho(objetivo);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),

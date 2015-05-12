@@ -29,5 +29,7 @@ public class Constantes {
 	// WINDOWS
 	//public static final String DB_PATH = "dataBase\\";
 	//MAC
-	public static final String DB_PATH = "dataBase/";
+	//public static final String DB_PATH = "dataBase/";
+	//NO RUTAS A CARPETAS
+	public static final String DB_PATH = "";
 }
