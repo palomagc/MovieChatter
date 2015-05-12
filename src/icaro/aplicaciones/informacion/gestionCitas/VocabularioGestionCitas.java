@@ -49,7 +49,7 @@ public class VocabularioGestionCitas {
 			"GeneroDocumental", "GeneroDrama", "GeneroFamiliar", "GeneroFantasia",
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
-			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos");
+			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "Ya_vista");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -60,6 +60,7 @@ public class VocabularioGestionCitas {
 	public static final String NombreTipoNotificacionActor = "Actor";
 	public static final String NombreTipoNotificacionAnos = "Anos";
 	public static final String NombreTipoNotificacionNumero = "Numero";
+	public static final String NombreTipoNotificacionYaVista = "Ya_vista";
 	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
 	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";

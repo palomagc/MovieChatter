@@ -355,6 +355,15 @@ end*/
     // TODO TAREA QUE LE PREGUNTA SI LE HA GUSTADO Y QUE SI LE APETECE LE PONGA NOTA
     
 end*/
+rule "El usuario dice que ha visto la pelicula que le estamos recomendando"
+  when
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionYaVista)
+  then
+    
+    // Lanzar el objetivo para valorar la peli que hemos recomendado
+    new PedirValoracionPelicula(); 
+    
+end
 
 /*rule "Pedir valoracion pelicula"
   when

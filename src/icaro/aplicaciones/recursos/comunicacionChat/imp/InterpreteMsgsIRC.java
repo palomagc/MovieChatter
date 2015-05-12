@@ -1406,6 +1406,10 @@ public class InterpreteMsgsIRC {
 			} else if (anotType.equalsIgnoreCase("Generos")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
+				
+			else if (anotType.equalsIgnoreCase("Ya_vista")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			}
 			
 			// Géneros
 			else if (anotType.equalsIgnoreCase("GeneroAccion")) {
