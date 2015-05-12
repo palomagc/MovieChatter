@@ -25,5 +25,9 @@ public class Constantes {
 	public static final String GENERO_TERROR = "terror";
 	public static final String GENERO_TV = "tv";
 
-	public static final String DB_PATH = "dataBase\\";
+	// TODO aqui cada uno debe comentar o descomentar según su ordenador
+	// WINDOWS
+	//public static final String DB_PATH = "dataBase\\";
+	//MAC
+	public static final String DB_PATH = "dataBase/";
 }

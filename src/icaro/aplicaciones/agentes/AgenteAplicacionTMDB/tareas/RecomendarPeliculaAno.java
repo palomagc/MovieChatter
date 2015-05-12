@@ -49,11 +49,11 @@ public class RecomendarPeliculaAno extends TareaSincrona {
 				for (Movie movie : movies) {
 					moviesAux.add(movie.getTitle());
 				}
-				Busqueda.setYear(ano);
+				/*Busqueda.setYear(ano);
 				Busqueda.setResult(moviesAux);
 				Notificacion notif = new Notificacion();
 		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
-			}
+			*/}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"

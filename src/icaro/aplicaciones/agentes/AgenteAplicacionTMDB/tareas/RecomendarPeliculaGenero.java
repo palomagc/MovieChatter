@@ -30,7 +30,7 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		/**
-		 * Recomienda una película de un género
+		 * Recomienda una pelï¿½cula de un gï¿½nero
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
@@ -60,10 +60,10 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				for (Movie movie : movies) {
 					moviesAux.add(movie.getTitle());
 				}
-				Busqueda.addGenre(genre.getId());
-				Busqueda.setResult(moviesAux);
-				Notificacion notif = new Notificacion();
-		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
+				//Busqueda.addGenre(genre.getId());
+				//Busqueda.setResult(moviesAux);
+				//Notificacion notif = new Notificacion();
+				//notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
 			}
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			/*ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ

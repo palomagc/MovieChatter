@@ -236,7 +236,7 @@ rule "Recibir respuesta edad usuario"
     obj:PreguntarEdad(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
-    objPrincipal:PreguntarDatosInicialesUsuario()
+    //objPrincipal:PreguntarDatosInicialesUsuario()
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
     tarea.ejecutar(notif);
@@ -248,8 +248,8 @@ rule "Recibir respuesta edad usuario"
     
     retract(notif);
     
-    objPrincipal.setSolved();
-    update(objPrincipal);
+    //objPrincipal.setSolved();
+    //update(objPrincipal);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
@@ -277,12 +277,10 @@ end
   when
     obj:DeducirGenero(state==Objetivo.PENDING)
   then
-    obj.setSolving();
-    update(obj);
     
-    //  Tareas para preguntar al usuario que genero le apetece ver
+    //  Tareas para preguntar al usuario o deducir que genero le apetece ver
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirGenero.class);
-    tarea.ejecutar();
+    tarea.ejecutar(obj);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
@@ -293,8 +291,8 @@ rule "Regla que espera la respuesta del genero que quiere"
     obj.setSolved();
     update(obj);
     
-    TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(LanzarObjetivoDeducirActor.class);
-    tarea1.ejecutar();
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
+    tarea.ejecutar();
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end*/

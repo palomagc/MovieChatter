@@ -24,6 +24,8 @@ public class DeducirGenero extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		try {
+			// Objetivo
+			Objetivo obj = (Objetivo) params[0];
 			
 			// TODO Mirar en el objeto estático usuario a ver si
 			// las 3 ultimas pelis son del mismo género
@@ -35,7 +37,6 @@ public class DeducirGenero extends TareaSincrona {
 			if(found){
 				
 			}else{
-				// TODO si no le preguntas
 				String identDeEstaTarea = this.getIdentTarea();
 				String identAgenteOrdenante = this.getIdentAgente();
 				try {
@@ -44,8 +45,12 @@ public class DeducirGenero extends TareaSincrona {
 					ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 					if (recComunicacionChat != null) {
 						recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+						
 						// Preguntar el género que le apetece ver
 						String mensajeAenviar = "De que genero te apetece ver la peli?";
+						obj.setSolving();
+						// TODO NO HACE FALTA HACER EL UPDATE? COMPROBAR QUE SE LANZA LA REGLA QUE ESPERA A LA RESPUESTA
+						
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 					} else {
 						identAgenteOrdenante = this.getAgente().getIdentAgente();

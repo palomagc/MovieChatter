@@ -52,11 +52,11 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 				for (Movie movie : movies) {
 					moviesAux.add(movie.getTitle());
 				}
-				Busqueda.addPerson(personId);
+				/*Busqueda.addPerson(personId);
 				Busqueda.setResult(moviesAux);
 				Notificacion notif = new Notificacion();
 		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
-			}
+			*/}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
