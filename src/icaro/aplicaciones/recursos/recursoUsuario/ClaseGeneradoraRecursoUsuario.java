@@ -139,7 +139,6 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 			try {
 				usuario = buscarUsuario(nombreUsuario);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			usuario.getValoraciones().add(valoracion);
@@ -158,7 +157,6 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 			try {
 				usuario = buscarUsuario(nombreUsuario);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			usuario.getGenerosPreferidos().add(genero);
@@ -177,7 +175,6 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 			try {
 				usuario = buscarUsuario(nombreUsuario);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			usuario.getActoresPreferidos().add(actor);
@@ -196,7 +193,6 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 			try {
 				usuario = buscarUsuario(nombreUsuario);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			usuario.getActoresOdiados().add(actor);

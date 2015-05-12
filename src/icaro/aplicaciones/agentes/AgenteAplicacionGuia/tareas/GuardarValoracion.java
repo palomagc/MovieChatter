@@ -20,13 +20,14 @@ public class GuardarValoracion extends TareaSincrona {
 	 */
 	private Objetivo contextoEjecucionTarea = null;
 
+	// TODO hacerlo entero
+	
 	@Override
 	public void ejecutar(Object... params) {
 		try {
 
-
-			String sexo = ((Notificacion)params[0]).getTipoNotificacion();
-			VocabularioGestionCitas.usuario.setSexo(sexo);
+			String nota = ((Notificacion)params[0]).getTipoNotificacion();
+			VocabularioGestionCitas.usuario.getPeliculaActual().setNota(nota);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
