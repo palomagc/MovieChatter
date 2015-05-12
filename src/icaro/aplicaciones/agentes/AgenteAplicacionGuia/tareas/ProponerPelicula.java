@@ -39,7 +39,7 @@ public class ProponerPelicula extends TareaSincrona {
 					recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 					
 					// TODO Cambiar mensaje
-					String mensajeAenviar = movieTitle;
+					String mensajeAenviar = "Te apetece ver " + movieTitle + "?";
 					
 					recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 				} else {

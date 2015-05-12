@@ -279,40 +279,25 @@ end
     tarea.ejecutar(obj);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end
-rule "Regla que espera la respuesta del genero que quiere"
-  when
-    obj:DeducirGenero(state==Objetivo.SOLVING)
-  then
-    obj.setSolved();
-    update(obj);
-    
-    TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
-    tarea.ejecutar();
-    
-    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end*/
 /*rule "Mirar si puedes deducir un actor, o preguntale"
   when
     obj:DeducirActor(state==Objetivo.PENDING)
   then
-    obj.setSolving();
-    update(obj);
     
     //  Tareas para preguntar al usuario que actor le apetece ver
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirActor.class);
     tarea.ejecutar();
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end
-rule "Regla que espera la respuesta del actor que quiere"
+end*/
+/*rule "Notificacion del agente TMDB que indica que podemos sugerir una peli"
   when
-    obj:DeducirActor(state==Objetivo.SOLVING)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.PeliEncontrada)
   then
-    obj.setSolved();
-    update(obj);
     
-    // TODO Tarea para sujerir una peli.
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
+    tarea.ejecutar();
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end*/
