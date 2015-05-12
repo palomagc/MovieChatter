@@ -1388,6 +1388,14 @@ public class InterpreteMsgsIRC {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 			
+			else if (anotType.equalsIgnoreCase("Anos")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("Actor")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			} else if (anotType.equalsIgnoreCase("Generos")) {
+				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
+			}
+			
 			// Géneros
 			else if (anotType.equalsIgnoreCase("GeneroAccion")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));

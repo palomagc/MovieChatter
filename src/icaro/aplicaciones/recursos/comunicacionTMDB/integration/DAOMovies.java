@@ -16,6 +16,6 @@ public interface DAOMovies {
 	List<Movie> searchMovies(String query, String year, String language, int page);
 	
 	List<Movie> discoverMovies(Date after, Date before, String sort, Float minAverage,
-			Integer minCount, List<Genre> genres, List<Person> people, String year,
+			Integer minCount, List<Integer> genres, List<Integer> people, String year,
 			String language, int page);
 }

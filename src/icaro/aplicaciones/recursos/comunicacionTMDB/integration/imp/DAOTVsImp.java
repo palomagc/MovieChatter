@@ -15,15 +15,14 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import icaro.aplicaciones.recursos.comunicacionTMDB.orders.TVOrder;
 import icaro.aplicaciones.recursos.comunicacionTMDB.orders.TVSort;
 import icaro.aplicaciones.recursos.comunicacionTMDB.integration.DAOTVs;
-import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.TV;
 import icaro.aplicaciones.recursos.comunicacionTMDB.util.TVsParser;
 
 public class DAOTVsImp implements DAOTVs {
 
-	private static SimpleDateFormat dateFormatter = new SimpleDateFormat(
-			"yyyy-MM-dd", Locale.ENGLISH);
-	
+	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd",
+			Locale.ENGLISH);
+
 	private static final String API_KEY = "7d3938edb64159d9e153fe61c4438a70";
 
 	@Override
@@ -32,8 +31,7 @@ public class DAOTVsImp implements DAOTVs {
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/tv/");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/tv/");
 		sb.append(TVId).append("?api_key=").append(API_KEY);
 		if (language != null)
 			sb.append("&language=").append(language);
@@ -60,29 +58,24 @@ public class DAOTVsImp implements DAOTVs {
 
 		// Creating API query
 		StringBuilder sb = new StringBuilder();
-		if(order.equals(TVOrder.Latest)){
+		if (order.equals(TVOrder.Latest)) {
 			sb.append("http://api.themoviedb.org/3/tv/latest");
-		}
-		else if(order.equals(TVOrder.OnTheAir)){
+		} else if (order.equals(TVOrder.OnTheAir)) {
 			sb.append("http://api.themoviedb.org/3/tv/on_the_air");
-		}
-		else if(order.equals(TVOrder.AiringToday)){
+		} else if (order.equals(TVOrder.AiringToday)) {
 			sb.append("http://api.themoviedb.org/3/tv/airing_today");
-		}
-		else if(order.equals(TVOrder.TopRated)){
+		} else if (order.equals(TVOrder.TopRated)) {
 			sb.append("http://api.themoviedb.org/3/tv/top_rated");
-		}
-		else if(order.equals(TVOrder.Popular)){
+		} else if (order.equals(TVOrder.Popular)) {
 			sb.append("http://api.themoviedb.org/3/tv/popular");
-		}
-		else{
+		} else {
 			return null;
 		}
-		
+
 		sb.append("?api_key=").append(API_KEY);
 		if (language != null)
 			sb.append("&language=").append(language);
-		//sb.append("&page=").append(page);
+		// sb.append("&page=").append(page);
 		if (page != 1)
 			sb.append("&page=").append(page);
 
@@ -106,16 +99,15 @@ public class DAOTVsImp implements DAOTVs {
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/search/tv");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/search/tv");
 		sb.append("?api_key=").append(API_KEY);
 		sb.append("&query=").append(query);
-		
+
 		if (language != null)
-			sb.append("&language=").append(language);		
+			sb.append("&language=").append(language);
 		if (year != null)
 			sb.append("&year=").append(year);
-		//sb.append("&page=").append(page);
+		// sb.append("&page=").append(page);
 		if (page != 1)
 			sb.append("&page=").append(page);
 
@@ -135,15 +127,14 @@ public class DAOTVsImp implements DAOTVs {
 
 	@Override
 	public List<TV> discoverTVs(Date after, Date before, String sort, Float minAverage,
-			Integer minCount, List<Genre> genres, String year, String language, int page) {
+			Integer minCount, List<Integer> genres, String year, String language, int page) {
 		List<TV> tvs = null;
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/discover/tv");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/discover/tv");
 		sb.append("?api_key=").append(API_KEY);
-		
+
 		if (language != null)
 			sb.append("&language=").append(language);
 		if (page != 1)
@@ -159,15 +150,15 @@ public class DAOTVsImp implements DAOTVs {
 			sb.append("&vote_average.gte=").append(minAverage);
 		if (minCount != null)
 			sb.append("&vote_count.gte=").append(minCount);
-		
+
 		if (genres != null) {
 			sb.append("&with_genres=");
-			for(int i=0; i<genres.size(); i++) {
-				sb.append(genres.get(i).getId());
-				if (i < genres.size()-1)
-					sb.append(",");	// ","=AND       "|"=OR
+			for (int i = 0; i < genres.size(); i++) {
+				sb.append(genres.get(i));
+				if (i < genres.size() - 1)
+					sb.append(","); // ","=AND "|"=OR
 			}
-		}	
+		}
 		if (year != null)
 			sb.append("&first_air_date_year=").append(year);
 

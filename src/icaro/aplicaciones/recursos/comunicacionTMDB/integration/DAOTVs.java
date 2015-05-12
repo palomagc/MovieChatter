@@ -15,5 +15,5 @@ public interface DAOTVs {
 	List<TV> searchTVs(String query, String year, String language, int page);
 	
 	List<TV> discoverTVs(Date after, Date before, String sort, Float minAverage,
-			Integer minCount, List<Genre> genres, String year, String language, int page);
+			Integer minCount, List<Integer> genres, String year, String language, int page);
 }

@@ -20,40 +20,32 @@ import icaro.aplicaciones.recursos.comunicacionTMDB.model.Person;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.TV;
 import icaro.infraestructura.patronRecursoSimple.imp.ImplRecursoSimple;
 
-public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implements ItfUsoComunicacionTMDB {
-	
-	public ClaseGeneradoraComunicacionTMDB(String idRecurso)
-			throws RemoteException {
+public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implements
+		ItfUsoComunicacionTMDB {
+
+	public ClaseGeneradoraComunicacionTMDB(String idRecurso) throws RemoteException {
 		super(idRecurso);
-		// TODo Auto-generated constructor stub
 	}
 
 	@Override
 	public List<Genre> getMovieGenresList(String language) {
-		if(language == null)
+		if (language == null)
 			language = "es";
 		DAOGenresFactory factoria = DAOGenresFactory.getInstance();
 		DAOGenres dao = factoria.getDaoGenres();
 		return dao.getMovieGenres(language);
 	}
-	
+
 	@Override
 	public List<Genre> getTVGenresList(String language) {
-		if(language == null)
+		if (language == null)
 			language = "es";
 		DAOGenresFactory factoria = DAOGenresFactory.getInstance();
 		DAOGenres dao = factoria.getDaoGenres();
 		return dao.getTVGenres(language);
 	}
 
-
-
-
-
-
-	/*
-	 * Person
-	 */
+	/* Person */
 
 	@Override
 	public Person getPerson(Person person) {
@@ -67,9 +59,15 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 		return dao.getPerson(personId);
 	}
 
-	/*
-	 * Rest Methods
-	 */
+	/* Rest Methods */
+
+	@Override
+	public Integer searchPerson(String query) {
+		DAOPeopleFactory fPeople = DAOPeopleFactory.getInstance();
+		query = query.replace(" ", "+");
+		DAOPeople dao = fPeople.getDaoPeople();
+		return dao.searchPeople(query, 1).get(0).getId();
+	}
 
 	@Override
 	public List<Person> searchPeople(String query, int page) {
@@ -93,14 +91,7 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 		return dao.getLatestPerson();
 	}
 
-
-
-
-
-
-	/*
-	 * Movie
-	 */
+	/* Movie */
 
 	@Override
 	public Movie getMovie(Movie movie, String language) {
@@ -121,38 +112,28 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 		return dao.getMovieList(order, language, page);
 	}
 
-	/*
-	 * Movies By
-	 */
+	/* Movies By */
 
 	@Override
-	public List<Movie> getMoviesByGenre(Genre genre, String sort,
-			String language, int page) {
-		List<Genre> genres = new ArrayList<Genre>();
+	public List<Movie> getMoviesByGenre(Integer genre, String sort, String language, int page) {
+		List<Integer> genres = new ArrayList<Integer>();
 		genres.add(genre);
-		return discoverMovies(null, null, sort, null, null, genres,
-				null, null, language, page);
+		return discoverMovies(null, null, sort, null, null, genres, null, null, language, page);
 	}
 
 	@Override
-	public List<Movie> getMoviesByPerson(Person person, String sort,
-			String language, int page) {
-		List<Person> people = new ArrayList<Person>();
+	public List<Movie> getMoviesByPerson(Integer person, String sort, String language, int page) {
+		List<Integer> people = new ArrayList<Integer>();
 		people.add(person);
-		return discoverMovies(null, null, sort, null, null, null,
-				people, null, language, page);
+		return discoverMovies(null, null, sort, null, null, null, people, null, language, page);
 	}
 
 	@Override
-	public List<Movie> getMoviesByYear(String year, String sort,
-			String language, int page) {
-		return discoverMovies(null, null, sort, null, null, null,
-				null, year, language, page);
+	public List<Movie> getMoviesByYear(String year, String sort, String language, int page) {
+		return discoverMovies(null, null, sort, null, null, null, null, year, language, page);
 	}
 
-	/*
-	 * Rest Methods
-	 */
+	/* Rest Methods */
 
 	@Override
 	public List<Movie> searchMovies(String query, String year, String language, int page) {
@@ -164,23 +145,16 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 
 	@Override
 	public List<Movie> discoverMovies(Date after, Date before, String sort, Float minAverage,
-			Integer minCount, List<Genre> genres, List<Person> people, String year,
+			Integer minCount, List<Integer> genres, List<Integer> people, String year,
 			String language, int page) {
 
 		DAOMoviesFactory fMovies = DAOMoviesFactory.getInstance();
 		DAOMovies dao = fMovies.getDaoMovies();
-		return dao.discoverMovies(after, before, sort, minAverage, minCount,
-				genres, people, year, language, page);
+		return dao.discoverMovies(after, before, sort, minAverage, minCount, genres, people, year,
+				language, page);
 	}
 
-
-
-
-
-
-	/*
-	 * TV
-	 */
+	/* TV */
 
 	@Override
 	public TV getTV(TV tv, String language) {
@@ -201,27 +175,21 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 		return dao.getTVList(order, language, page);
 	}
 
-	/*
-	 * TVs By
-	 */
+	/* TVs By */
 
 	@Override
-	public List<TV> getTVsByGenre(Genre genre, String sort,
-			String language, int page) {
-		List<Genre> genres = new ArrayList<Genre>();
+	public List<TV> getTVsByGenre(Integer genre, String sort, String language, int page) {
+		List<Integer> genres = new ArrayList<Integer>();
 		genres.add(genre);
 		return discoverTVs(null, null, sort, null, null, genres, null, language, page);
 	}
 
 	@Override
-	public List<TV> getTVsByYear(String year, String sort,
-			String language, int page) {
+	public List<TV> getTVsByYear(String year, String sort, String language, int page) {
 		return discoverTVs(null, null, sort, null, null, null, year, language, page);
 	}
 
-	/*
-	 * Rest Methods
-	 */
+	/* Rest Methods */
 
 	@Override
 	public List<TV> searchTVs(String query, String year, String language, int page) {
@@ -233,10 +201,10 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 
 	@Override
 	public List<TV> discoverTVs(Date after, Date before, String sort, Float minAverage,
-			Integer minCount, List<Genre> genres, String year, String language, int page) {
+			Integer minCount, List<Integer> genres, String year, String language, int page) {
 		DAOTVsFactory fTVs = DAOTVsFactory.getInstance();
 		DAOTVs dao = fTVs.getDaoTVs();
-		return dao.discoverTVs(after, before, sort, minAverage, minCount,
-				genres, year, language, page);
+		return dao.discoverTVs(after, before, sort, minAverage, minCount, genres, year, language,
+				page);
 	}
 }

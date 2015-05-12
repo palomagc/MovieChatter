@@ -34,58 +34,32 @@ public class VocabularioGestionCitas {
 	
 	public static Usuario usuario = null;
 	
+	// NOMBRES NOTIFICACIONES
 	public static final List<String> NombresTipoNotificacion = Arrays.asList("Saludo", 
-			"Despedida", "Afirmacion", "Negacion", "GeneroAccion", "GeneroAventura",
-			"GeneroAnimacion", "GeneroComedia", "GeneroCrimen", "GeneroDocumental",
-			"GeneroDrama", "GeneroFamiliar", "GeneroFantasia", "GeneroExtranjero",
-			"GeneroHistorico", "GeneroTerror", "GeneroMusical", "GeneroMisterio",
-			"GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV", "GeneroSuspense",
-			"GeneroGuerra", "GeneroOeste");
+			"Despedida", "Afirmacion", "Negacion", "SexoHombre", "SexoMujer", "Generos",
+			"GeneroAccion", "GeneroAventura", "GeneroAnimacion", "GeneroComedia",
+			"GeneroCrimen", "GeneroDocumental", "GeneroDrama", "GeneroFamiliar",
+			"GeneroFantasia", "GeneroExtranjero", "GeneroHistorico", "GeneroTerror",
+			"GeneroMusical", "GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion",
+			"GeneroTV", "GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Anos");
 	
-	// SALUDO
 	public static final String NombreTipoNotificacionSaludo="Saludo";
-	public static final String SaludoInicial1="Hola, yo soy " + Constantes.SYSTEM_NAME + ", tu recomendador de peliculas";
-    public static final String[] SaludoInicial2={"Hola", "Que tal", "Buenas", "Que hay"};
-
-	// DESPEDIDA
-    public static final String NombreTipoNotificacionDespedida="Despedida";
-    public static final String[] Despedida = {"Adios", "Hasta la proxima", "Nos vemos", "Que te vaya bien"};
-    
-    // AFIRMACION
+	public static final String NombreTipoNotificacionDespedida="Despedida";
     public static final String NombreTipoNotificacionAfirmacion="Afirmacion";
-    
-    // NEGACION
     public static final String NombreTipoNotificacionNegacion="Negacion";
-    
-    // SEXOHOMBRE
     public static final String NombreTipoNotificacionSexoHombre="SexoHombre";
-    
-    // SEXOMUJER
     public static final String NombreTipoNotificacionSexoMujer="SexoMujer";
-    
-    // NUMERO
-    public static final String NombreTipoNotificacionNumero="Numero";  
-    
-    // NUMERO
+    public static final String NombreTipoNotificacionActor="Actor";
+    public static final String NombreTipoNotificacionAnos="Anos";
+    // TODO numero, valorar, recomienda y quien no estan en la lista de arriba RECORDATORIO
+    public static final String NombreTipoNotificacionNumero="Numero";
     public static final String NombreTipoNotificacionValorarUltimaPelicula="ValorarUltimaPelicula"; 
-    
-    // RECOMIENDA
     public static final String NombreTipoNotificacionRecomienda="Recomienda";
-    public static final String[] Recomienda={"podrias ver"};
-	
-    // PRESENTACION
     public static final String NombreTipoNotificacionQuien="Quien";
-    public static final String InfoGeneralFuncionalidad= "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas";
     
-    // PEDIR INFO AL USUARIO
-    public static final String[] PeticionInformacionGeneral1={"Te puedo sugerir alguna hoy?", "Quieres que te recomiende alguna?", "Necesitas ayuda para encontrar alguna?"};
+	public static final String NombreTipoNotificacionCitasConGuia="CitasConGuia";
     
-    // NO ENTENDER
-    public static final String[] preambuloNoEntendido = {"No he entendido lo que me has dicho.", "Perdona, pero no he entendido bien.",
-    		"Lo siento, no he comprendido bien.", "Perdona, no comprendo que quieres decir."};
-    
-    // GENEROS
-    public static final String NombreTipoNotificacionGenero="Genero";
+    public static final String NombreTipoNotificacionGeneros="Generos";
     public static final String NombreTipoNotificacionGeneroAccion="GeneroAccion";
     public static final String NombreTipoNotificacionGeneroAventura="GeneroAventura";
     public static final String NombreTipoNotificacionGeneroAnimacion="GeneroAnimacion";
@@ -115,17 +89,17 @@ public class VocabularioGestionCitas {
     	"GeneroSuspense", "GeneroGuerra", "GeneroOeste"};
 	public static final Map<String, Genero> Generos = new HashMap<String, Genero>();
 	static {
-		Generos.put("GeneroAccion", new Genero("Action", "acciï¿½n"));
+		Generos.put("GeneroAccion", new Genero("Action", "acción"));
 		Generos.put("GeneroAventura", new Genero("Adventure", "aventura"));
-		Generos.put("GeneroAnimacion", new Genero("Animation", "animaciï¿½n"));
+		Generos.put("GeneroAnimacion", new Genero("Animation", "animación"));
 		Generos.put("GeneroComedia", new Genero("Comedy", "comedia"));
 		Generos.put("GeneroCrimen", new Genero("Crime", "crimen"));
 		Generos.put("GeneroDocumental", new Genero("Documentary", "documental"));
 		Generos.put("GeneroDrama", new Genero("Drama", "drama"));
 		Generos.put("GeneroFamiliar", new Genero("Family", "familiar"));
-		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasï¿½a"));
+		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasía"));
 		Generos.put("GeneroExtranjero", new Genero("Foreign", "extranjero"));
-		Generos.put("GeneroHistorico", new Genero("History", "histï¿½rico"));
+		Generos.put("GeneroHistorico", new Genero("History", "histórico"));
 		Generos.put("GeneroTerror", new Genero("Horror", "terror"));
 		Generos.put("GeneroMusical", new Genero("Music", "musical"));
 		Generos.put("GeneroMisterio", new Genero("Mystery", "misterio"));
@@ -153,7 +127,25 @@ public class VocabularioGestionCitas {
     public static final String IdentRecursoPersistenciaChat= "PersistenciaChat1";
     public static final String IdentRecursoUsuario = "RecursoUsuario1";
     
-	public static final String NombreTipoNotificacionCitasConGuia="CitasConGuia";
+	// SALUDO
+	public static final String SaludoInicial1="Hola, yo soy " + Constantes.SYSTEM_NAME + ", tu recomendador de peliculas";
+    public static final String[] SaludoInicial2={"Hola", "Que tal", "Buenas", "Que hay"};
+    
+    // DESPEDIDA
+    public static final String[] Despedida = {"Adios", "Hasta la proxima", "Nos vemos", "Que te vaya bien"};
+    
+    // PRESENTACION
+    public static final String InfoGeneralFuncionalidad= "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas";
+    
+    // RECOMIENDA
+    public static final String[] Recomienda={"podrias ver"};
+	
+    // PEDIR INFO AL USUARIO
+    public static final String[] PeticionInformacionGeneral1={"Te puedo sugerir alguna hoy?", "Quieres que te recomiende alguna?", "Necesitas ayuda para encontrar alguna?"};
+    
+    // NO ENTENDER
+    public static final String[] preambuloNoEntendido = {"No he entendido lo que me has dicho.", "Perdona, pero no he entendido bien.",
+    		"Lo siento, no he comprendido bien.", "Perdona, no comprendo que quieres decir."};
     
     public static final String ResultadoAutenticacion_DatosNoValidos= "usuarioNoValido";
     public static final String ResultadoAutenticacion_DatosValidos= "usuarioValido";
