@@ -28,7 +28,7 @@ public class GuardarEdad extends TareaSincrona {
 			// TODO Aqui hay que guardar la respuesta del usuario a su edad
 			// TODO El par�metro 0 contiene la anotacion
 			
-			int edad = Integer.parseInt(((Notificacion)params[0]).getTipoNotificacion());
+			int edad = Integer.parseInt(((Notificacion)params[0]).getMensajeNotificacion());
 			VocabularioGestionCitas.usuario.setEdad(edad);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ

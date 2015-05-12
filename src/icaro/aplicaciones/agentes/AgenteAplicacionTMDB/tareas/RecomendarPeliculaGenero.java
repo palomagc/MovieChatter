@@ -3,7 +3,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas;
 import java.util.ArrayList;
 import java.util.List;
 
-import constantes.Busqueda;
+//import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
@@ -29,7 +29,7 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		/**
-		 * Recomienda una película de un género
+		 * Recomienda una pelï¿½cula de un gï¿½nero
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
@@ -59,8 +59,8 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				for (Movie movie : movies) {
 					moviesAux.add(movie.getTitle());
 				}
-				Busqueda.addGenre(genre.getId());
-				Busqueda.setResult(moviesAux);
+				//Busqueda.addGenre(genre.getId());
+				//Busqueda.setResult(moviesAux);
 			}
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			/*ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
