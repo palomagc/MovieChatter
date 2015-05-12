@@ -236,7 +236,6 @@ rule "Recibir respuesta edad usuario"
     obj:PreguntarEdad(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
-    //objPrincipal:PreguntarDatosInicialesUsuario()
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
     tarea.ejecutar(notif);
@@ -247,9 +246,6 @@ rule "Recibir respuesta edad usuario"
     update(f);
     
     retract(notif);
-    
-    //objPrincipal.setSolved();
-    //update(objPrincipal);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
@@ -262,7 +258,7 @@ end
 rule "Poner el foco en recomendar peli y lanzar el objetivo del genero"
   when
     obj:RecomendarPelicula(state==Objetivo.PENDING)
-    f:Focus()
+    f:Focus(foco != obj)
   then
   	//  Tareas para preguntar al usuario que le apetece ver
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoDeducirGenero.class);
