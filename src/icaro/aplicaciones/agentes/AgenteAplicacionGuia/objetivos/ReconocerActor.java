@@ -20,7 +20,7 @@ public class ReconocerActor extends Objetivo {
     
     /** Crea una nueva instancia de DarAcceso */
     public ReconocerActor() {
-        super.setgoalId("AutorizarAccesoUsuarios");
+        super.setgoalId("ReconocerActor");
     }
     
 }

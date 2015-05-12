@@ -20,7 +20,7 @@ public class ReconocerPelicula extends Objetivo {
     
     /** Crea una nueva instancia de DarAcceso */
     public ReconocerPelicula() {
-        super.setgoalId("AutorizarAccesoUsuarios");
+        super.setgoalId("ReconocerPelicula");
     }
     
 }
