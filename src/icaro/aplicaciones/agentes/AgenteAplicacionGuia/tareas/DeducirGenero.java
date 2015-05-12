@@ -1,12 +1,13 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
-import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
+import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
 
 public class DeducirGenero extends TareaSincrona {
 
@@ -22,71 +23,45 @@ public class DeducirGenero extends TareaSincrona {
 
 	@Override
 	public void ejecutar(Object... params) {
-		/**
-		 * Ya tenemos el nombre del usuario, ahora a buscarlo !
-		 */
-		String identDeEstaTarea = this.getIdentTarea();
-		String identAgenteOrdenante = this.getIdentAgente();
-		String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
-
-		// TODO Mirar en las ï¿½ltimas peliculas que ha visto y si las N ultimas
-		// son de un mismo gï¿½nero, contando que puede haber entremedias alguna
-		// diferente, suponemos que quiere ver una de ese gï¿½nero. O podrï¿½amos
-		// contar el gï¿½nero que mï¿½s ha visto.
-		boolean foundPreferredGenre = false;
-		String preferredGenre = "NULL";
-
 		try {
-			// // Se busca la interfaz del recurso en el repositorio de
-			// interfaces
-			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
-			if (recComunicacionChat != null) {
-				recComunicacionChat
-						.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				// int numDespedida = (int) ((100 * Math.random()) %
-				// VocabularioGestionCitas.Despedida.length);
-				String mensajeAenviar = "NULL";
-				if (foundPreferredGenre) {
-					// TODO Si hemos encontrado un genero preferido, se lo
-					// decimos.
-					// Pasamos a intentar recomendarle una peli de ese gï¿½nero o
-					// lanzamos un objetivo que averigue un actor preferido.
-					// Tambiï¿½n podrï¿½amos preguntar si has acertado o le parece
-					// bien.
-					// ADEMAS, DEBERIAMOS BORRAR LAS ANOTACIONES QUE TENDAMOS DE
-					// SI O NO, YA QUE PODRIAMOS ESTAR GUARDANDO ALGUNA Y NOS
-					// FASTIDIE LA PREGUNTA
-					mensajeAenviar = "Creo que te podrï¿½a gustar el genero"
-							+ preferredGenre + ", si?";
-					// TODO this.getEnvioHechos().insertarHecho(new SujeririPeliculaConLosDatosActuales());
-					
-				} else {
-					// TODO Si no tenemos mucha idea de lo que le podrï¿½a gustar
-					// le preguntamos cuï¿½l le apetece.
-					mensajeAenviar = "Dime el genero de pelis que te apetece ver.";
+			
+			// TODO Mirar en el objeto estático usuario a ver si
+			// las 3 ultimas pelis son del mismo género
+			// o
+			// las 5 ultimas suman 3 del mismo género
+			// deducimos que quiere ver ese género
+			boolean found = false;
+			
+			if(found){
+				
+			}else{
+				// TODO si no le preguntas
+				String identDeEstaTarea = this.getIdentTarea();
+				String identAgenteOrdenante = this.getIdentAgente();
+				try {
+					// // Se busca la interfaz del recurso en el repositorio de
+					// interfaces
+					ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+					if (recComunicacionChat != null) {
+						recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+						// Preguntar el género que le apetece ver
+						String mensajeAenviar = "De que genero te apetece ver la peli?";
+						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
+					} else {
+						identAgenteOrdenante = this.getAgente().getIdentAgente();
+						this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea, identAgenteOrdenante, "Error-AlObtener:Interfaz:" + VocabularioGestionCitas.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
+					}
+				} catch (Exception e) {
+					this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea, identAgenteOrdenante, "Error-Acceso:Interfaz:" + VocabularioGestionCitas.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
+					e.printStackTrace();
 				}
-
-				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-			} else {
-				identAgenteOrdenante = this.getAgente().getIdentAgente();
-				this.generarInformeConCausaTerminacion(
-						identDeEstaTarea,
-						contextoEjecucionTarea,
-						identAgenteOrdenante,
-						"Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
-						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
-			this.generarInformeConCausaTerminacion(
-					identDeEstaTarea,
-					contextoEjecucionTarea,
-					identAgenteOrdenante,
-					"Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
-					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
+			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
+					"Error al ejecutar la tarea : " + this.getIdentTarea() + e,
+					InfoTraza.NivelTraza.error));
 		}
 	}
+
 }
