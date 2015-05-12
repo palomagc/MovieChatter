@@ -27,7 +27,7 @@ public class GuardarEdad extends TareaSincrona {
 			
 			// TODO revisar esto pero parece que ya funciona automágicamente
 			
-			int edad = Integer.parseInt(((Notificacion)params[0]).getMensajeNotificacion());
+			String edad = ((Notificacion)params[0]).getMensajeNotificacion();
 			VocabularioGestionCitas.usuario.setEdad(edad);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ

@@ -15,7 +15,7 @@ public class Usuario {
 
 	private String nombre;
 	private String sexo;
-	private int edad;
+	private String edad;
 	private ArrayList<Valoracion> valoraciones;
 	private ArrayList<String> generosPreferidos;
 	private ArrayList<String> actoresPreferidos;
@@ -27,7 +27,7 @@ public class Usuario {
 	public Usuario(){
 		this.nombre = null;
 		this.sexo = null;
-		this.edad = -1;
+		this.edad = null;
 		this.valoraciones = new ArrayList<Valoracion>();
 		this.generosPreferidos = new ArrayList<String>();
 		this.actoresPreferidos = new ArrayList<String>();
@@ -41,7 +41,7 @@ public class Usuario {
 	 * @param sexo Sexo del usuario
 	 * @param edad Edad del usuario
 	 */
-	public Usuario(String nombre, String sexo, int edad){
+	public Usuario(String nombre, String sexo, String edad){
 		this.nombre = nombre;
 		this.sexo = sexo;
 		this.edad = edad;
@@ -62,7 +62,7 @@ public class Usuario {
 	 * @param actoresPreferidos
 	 * @param actoresOdiados
 	 */
-	public Usuario(String nombre, String sexo, int edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados){
+	public Usuario(String nombre, String sexo, String edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados){
 		this.nombre = nombre;
 		this.sexo = sexo;
 		this.edad = edad;
@@ -158,12 +158,12 @@ public class Usuario {
 	}
 
 
-	public int getEdad() {
+	public String getEdad() {
 		return edad;
 	}
 
 
-	public void setEdad(int edad) {
+	public void setEdad(String edad) {
 		this.edad = edad;
 	}
 	

@@ -16,7 +16,7 @@ public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple {
 	 * @param edad
 	 * @return usuario creado
 	 */
-	public Usuario crearUsuario(String nombre, String sexo, int edad)
+	public Usuario crearUsuario(String nombre, String sexo, String edad)
 			throws Exception;
 
 	/**
@@ -31,7 +31,7 @@ public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple {
 	 * @param actoresOdiados
 	 * @return usuario creado
 	 */
-	public Usuario crearUsuario(String nombre, String sexo, int edad,
+	public Usuario crearUsuario(String nombre, String sexo, String edad,
 			ArrayList<Valoracion> valoraciones,
 			ArrayList<String> generosPreferidos,
 			ArrayList<String> actoresPreferidos,

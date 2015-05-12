@@ -27,14 +27,14 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 
 
 	@Override
-	public Usuario crearUsuario(String nombre, String sexo, int edad) {
+	public Usuario crearUsuario(String nombre, String sexo, String edad) {
 		Usuario usuario = new Usuario(nombre, sexo, edad);
 		usuario.addUsuarioBD();
 		return usuario;
 	}
 
 	@Override
-	public Usuario crearUsuario(String nombre, String sexo, int edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados) {
+	public Usuario crearUsuario(String nombre, String sexo, String edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados) {
 		Usuario usuario = new Usuario(nombre, sexo, edad, valoraciones, generosPreferidos, actoresPreferidos, actoresOdiados);
 		usuario.addUsuarioBD();
 		return usuario;
@@ -49,7 +49,7 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 	}
 
 	@Override
-	public Usuario buscarUsuario(String nombre) {
+	public Usuario buscarUsuario(String nombre) throws Exception{
 		
 		Usuario usuario = null;
 		JSONParser parser = new JSONParser();
@@ -65,13 +65,13 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 	            
         		usuario.setNombre((String) jsonObject.get("nombre"));
         		usuario.setSexo((String) jsonObject.get("sexo"));
-        		usuario.setEdad(Integer.parseInt((String) jsonObject.get("edad")));
+        		usuario.setEdad((String) jsonObject.get("edad"));
         		
         		JSONArray valoraciones = (JSONArray) jsonObject.get("valoraciones");
         		Iterator<JSONObject> it = valoraciones.iterator();
         		while(it.hasNext()){
         			JSONObject o = it.next();
-        			usuario.getValoraciones().add(new Valoracion((String) o.get("idPelicula"), (Double) o.get("nota")));
+        			usuario.getValoraciones().add(new Valoracion((String) o.get("idPelicula"), (String) o.get("nota")));
         		}
         		JSONArray generosPreferidos = (JSONArray) jsonObject.get("generosPreferidos");
         		Iterator<String> iterator = generosPreferidos.iterator();
@@ -133,7 +133,13 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 	@Override
 	public boolean nuevaValoracion(String nombreUsuario, Valoracion valoracion) {
 		if(existeUsuario(nombreUsuario)){
-			Usuario usuario = buscarUsuario(nombreUsuario);
+			Usuario usuario = null;
+			try {
+				usuario = buscarUsuario(nombreUsuario);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			usuario.getValoraciones().add(valoracion);
 			modificarUsuario(nombreUsuario, usuario);
 			return true;
@@ -146,7 +152,13 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 	@Override
 	public boolean nuevoGeneroPreferido(String nombreUsuario, String genero) {
 		if(existeUsuario(nombreUsuario)){
-			Usuario usuario = buscarUsuario(nombreUsuario);
+			Usuario usuario = null;
+			try {
+				usuario = buscarUsuario(nombreUsuario);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			usuario.getGenerosPreferidos().add(genero);
 			modificarUsuario(nombreUsuario, usuario);
 			return true;
@@ -159,7 +171,13 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 	@Override
 	public boolean nuevoActorPreferido(String nombreUsuario, String actor) {
 		if(existeUsuario(nombreUsuario)){
-			Usuario usuario = buscarUsuario(nombreUsuario);
+			Usuario usuario = null;
+			try {
+				usuario = buscarUsuario(nombreUsuario);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			usuario.getActoresPreferidos().add(actor);
 			modificarUsuario(nombreUsuario, usuario);
 			return true;
@@ -172,7 +190,13 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 	@Override
 	public boolean nuevoActorOdiado(String nombreUsuario, String actor) {
 		if(existeUsuario(nombreUsuario)){
-			Usuario usuario = buscarUsuario(nombreUsuario);
+			Usuario usuario = null;
+			try {
+				usuario = buscarUsuario(nombreUsuario);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			usuario.getActoresOdiados().add(actor);
 			modificarUsuario(nombreUsuario, usuario);
 			return true;

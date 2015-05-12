@@ -69,7 +69,7 @@ public class BuscarUsuario extends TareaSincrona {
 			// Creamos un nuevo usuario con sexo a null y edad a -1
 			try {
 				VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.crearUsuario(
-						identInterlocutor, null, -1);
+						identInterlocutor, null, null);
 			} catch (Exception e) {
 				// TODo Auto-generated catch block
 				e.printStackTrace();
@@ -87,14 +87,14 @@ public class BuscarUsuario extends TareaSincrona {
 				this.getEnvioHechos().insertarHecho(
 						new PreguntarSexo());
 			}
-			else if(VocabularioGestionCitas.usuario.getEdad() == -1){
+			else if(VocabularioGestionCitas.usuario.getEdad() == null){
 				this.getEnvioHechos().insertarHecho(
 						new PreguntarEdad());
 			}
 			// TODO esto se podría mejorar. Si la última película sí está valorada, podemos buscar
 			// la anterior película que está sin valorar. En caso de que no la quiera valorar, le podemos
 			// asignar nota=-2 para saber que no hay que volver a preguntarle por esta peli
-			else if(valoraciones.get(valoraciones.size()-1).getNota() == -1){
+			else if(valoraciones.size() > 0 && valoraciones.get(valoraciones.size()-1).getNota() == null){
 				Notificacion notif = new Notificacion();
 		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionValorarUltimaPelicula);
 			}
