@@ -1,13 +1,21 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
+import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
+import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
+import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
+import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import antlr.collections.List;
 
 public class DeducirGenero extends TareaSincrona {
 
@@ -27,14 +35,61 @@ public class DeducirGenero extends TareaSincrona {
 			// Objetivo
 			Objetivo obj = (Objetivo) params[0];
 			
-			// TODO Mirar en el objeto estático usuario a ver si
-			// las 3 ultimas pelis son del mismo género
+			// TODO Mirar en el objeto estï¿½tico usuario a ver si
+			// las 3 ultimas pelis son del mismo gï¿½nero
 			// o
-			// las 5 ultimas suman 3 del mismo género
-			// deducimos que quiere ver ese género
-			boolean found = false;
+			// las 5 ultimas suman 3 del mismo gï¿½nero
+			// deducimos que quiere ver ese gï¿½nero
+			ArrayList<Valoracion> listaValoraciones = VocabularioGestionCitas.usuario.getValoraciones();
+			Iterator<Valoracion> itValoraciones = listaValoraciones.iterator();
 			
-			if(found){
+			int contadorPelisRestantes = 3;
+			int rachaDeGenero = 0;
+			String generoActual = "";
+			boolean encontrado = false;
+			while((itValoraciones.hasNext() || contadorPelisRestantes <= 0) && !encontrado){
+				Valoracion v = itValoraciones.next();
+				Movie movie = null;
+				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+				if(itfUsoComunicacionTMDB != null){
+					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(v.getIdPelicula()), null);
+				}
+				ArrayList<Genre> generos = (ArrayList<Genre>) movie.getGenres();
+				if(generoActual.equals("")){
+					generoActual = generos.get(0).toString();
+				}
+				if(generos.contains(generoActual)){
+					rachaDeGenero++;
+				}
+				contadorPelisRestantes--;
+			}
+			if(rachaDeGenero >= 3){
+				encontrado = true;
+			}
+			
+			itValoraciones = listaValoraciones.iterator();
+			contadorPelisRestantes = 5;
+			while((itValoraciones.hasNext() || contadorPelisRestantes <= 0) && !encontrado){
+				Valoracion v = itValoraciones.next();
+				Movie movie = null;
+				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+				if(itfUsoComunicacionTMDB != null){
+					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(v.getIdPelicula()), null);
+				}
+				ArrayList<Genre> generos = (ArrayList<Genre>) movie.getGenres();
+				if(generoActual.equals("")){
+					generoActual = generos.get(0).toString();
+				}
+				if(generos.contains(generoActual)){
+					rachaDeGenero++;
+				}
+				contadorPelisRestantes--;
+			}
+			if(rachaDeGenero >= 3){
+				encontrado = true;
+			}
+			
+			if(encontrado){
 				
 			}else{
 				String identDeEstaTarea = this.getIdentTarea();
@@ -46,7 +101,7 @@ public class DeducirGenero extends TareaSincrona {
 					if (recComunicacionChat != null) {
 						recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 						
-						// Preguntar el género que le apetece ver
+						// Preguntar el gï¿½nero que le apetece ver
 						String mensajeAenviar = "De que genero te apetece ver la peli?";
 						obj.setSolving();
 						// TODO NO HACE FALTA HACER EL UPDATE? COMPROBAR QUE SE LANZA LA REGLA QUE ESPERA A LA RESPUESTA

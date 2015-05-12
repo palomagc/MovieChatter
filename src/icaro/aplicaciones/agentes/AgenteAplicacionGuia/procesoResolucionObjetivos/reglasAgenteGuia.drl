@@ -306,6 +306,7 @@ end*/
 
 
 
+
 // REGLAS PARA VALORAR PELI
 /*rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
   when
@@ -316,6 +317,40 @@ end*/
     // TODO TAREA QUE LE PREGUNTA SI LE HA GUSTADO Y QUE SI LE APETECE LE PONGA NOTA
     
 end*/
+
+rule "Pedir valoracion pelicula"
+  when
+    obj:PedirValoracionPelicula(state==Objetivo.PENDING)
+    f:Focus(foco != obj)
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(PedirValoracion.class);
+    tarea.ejecutar();
+    
+    obj.setSolving();
+    update(obj);
+    f.setFoco(obj);
+    update(f);
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+rule "Recibir valoracion pelicula"
+  when
+    obj:PedirValoracionPelicula(state==Objetivo.SOLVING)
+    f:Focus(foco == obj)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarValoracion.class);
+    tarea.ejecutar(notif);
+    
+    obj.setSolved();
+    update(obj);
+    f.setFoco(obj);
+    update(f);
+    
+    retract(notif);
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
 
 
 

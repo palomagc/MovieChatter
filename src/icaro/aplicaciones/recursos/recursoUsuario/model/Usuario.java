@@ -20,6 +20,7 @@ public class Usuario {
 	private ArrayList<String> generosPreferidos;
 	private ArrayList<String> actoresPreferidos;
 	private ArrayList<String> actoresOdiados;
+	private Valoracion peliculaActual;
 	
 	/**
 	 * Nuevo usuario vacío (nombre=null, sexo=null, edad=-1)
@@ -32,6 +33,7 @@ public class Usuario {
 		this.generosPreferidos = new ArrayList<String>();
 		this.actoresPreferidos = new ArrayList<String>();
 		this.actoresOdiados = new ArrayList<String>();
+		this.peliculaActual = new Valoracion(null);
 	}
 	
 	/**
@@ -49,6 +51,7 @@ public class Usuario {
 		this.generosPreferidos = new ArrayList<String>();
 		this.actoresPreferidos = new ArrayList<String>();
 		this.actoresOdiados = new ArrayList<String>();
+		this.peliculaActual = new Valoracion(null);
 	}
 
 
@@ -62,7 +65,7 @@ public class Usuario {
 	 * @param actoresPreferidos
 	 * @param actoresOdiados
 	 */
-	public Usuario(String nombre, String sexo, String edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados){
+	public Usuario(String nombre, String sexo, String edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados, Valoracion peliculaActual){
 		this.nombre = nombre;
 		this.sexo = sexo;
 		this.edad = edad;
@@ -70,9 +73,11 @@ public class Usuario {
 		this.generosPreferidos = generosPreferidos;
 		this.actoresPreferidos = actoresPreferidos;
 		this.actoresOdiados = actoresOdiados;
+		this.peliculaActual = peliculaActual;
 		
 	}
-	
+
+
 	/**
 	 * Crea un objeto JSON a partir del objeto usuario
 	 * @return objeto JSON con el contenido del usuario
@@ -115,6 +120,11 @@ public class Usuario {
 			listAO.add(ao);
 		} 
 		obj.put("actoresOdiados", listAO);
+		
+		/*JSONObject pActual = new JSONObject();
+		pActual.put("idPelicula", this.peliculaActual.getIdPelicula());
+		pActual.put("nota", this.peliculaActual.getNota());
+		obj.put("peliculaActual", pActual);*/
 		
 		return obj;
 		
@@ -197,6 +207,14 @@ public class Usuario {
 
 	public void setActoresOdiados(ArrayList<String> actoresOdiados) {
 		this.actoresOdiados = actoresOdiados;
+	}
+	
+	public Valoracion getPeliculaActual() {
+		return peliculaActual;
+	}
+
+	public void setPeliculaActual(Valoracion peliculaActual) {
+		this.peliculaActual = peliculaActual;
 	}
 	
 }

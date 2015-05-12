@@ -34,8 +34,8 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 	}
 
 	@Override
-	public Usuario crearUsuario(String nombre, String sexo, String edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados) {
-		Usuario usuario = new Usuario(nombre, sexo, edad, valoraciones, generosPreferidos, actoresPreferidos, actoresOdiados);
+	public Usuario crearUsuario(String nombre, String sexo, String edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados, Valoracion peliculaActual) {
+		Usuario usuario = new Usuario(nombre, sexo, edad, valoraciones, generosPreferidos, actoresPreferidos, actoresOdiados, peliculaActual);
 		usuario.addUsuarioBD();
 		return usuario;
 	}
@@ -88,6 +88,8 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
                 while (iterator.hasNext()) {
                     usuario.getActoresOdiados().add(iterator.next());
                 }
+                /*JSONObject pActual = (JSONObject) jsonObject.get("peliculaActual");
+                usuario.setPeliculaActual(new Valoracion((String) pActual.get("idPelicula"), (String) pActual.get("nota"))); */
         		
         	}
 
