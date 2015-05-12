@@ -291,8 +291,8 @@ rule "Regla que espera la respuesta del genero que quiere"
     obj.setSolved();
     update(obj);
     
-    TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
-    tarea1.ejecutar();
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
+    tarea.ejecutar();
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end*/
