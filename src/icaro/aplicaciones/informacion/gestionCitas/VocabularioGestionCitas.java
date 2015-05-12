@@ -58,11 +58,12 @@ public class VocabularioGestionCitas {
 	public static final String NombreTipoNotificacionActor = "Actor";
 	public static final String NombreTipoNotificacionAnos = "Anos";
 	public static final String NombreTipoNotificacionNumero = "Numero";
-	// TODO valorar, recomienda y quien no estan en la lista de arriba RECORDATORIO
-	public static final String NombreTipoNotificacionValorarUltimaPelicula = "ValorarUltimaPelicula";
+	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
 	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";
 	public static final String NombreTipoNotificacionCitasConGuia = "CitasConGuia";
+	public static final String NombreTipoNotificacionComprobarDatosBusqueda = "ComprobarDatosBusqueda";
+	public static final String NombreTipoNotificacionValorarUltimaPelicula = "ValorarUltimaPelicula";
 
 	public static final String NombreTipoNotificacionGeneros = "Generos";
 	public static final String NombreTipoNotificacionGeneroAccion = "GeneroAccion";

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import constantes.Busqueda;
+import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
@@ -61,6 +62,8 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				}
 				Busqueda.addGenre(genre.getId());
 				Busqueda.setResult(moviesAux);
+				Notificacion notif = new Notificacion();
+		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
 			}
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			/*ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import constantes.Busqueda;
+import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
@@ -50,6 +51,8 @@ public class RecomendarPeliculaAno extends TareaSincrona {
 				}
 				Busqueda.setYear(ano);
 				Busqueda.setResult(moviesAux);
+				Notificacion notif = new Notificacion();
+		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
