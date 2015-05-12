@@ -22,20 +22,22 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 
 	public ClaseGeneradoraRecursoUsuario(String idRecurso) throws RemoteException {
 		super(idRecurso);
-		// TODo Auto-generated constructor stub
+		new File(Constantes.DB_PATH).mkdirs(); // Crea las carpetas necesarias del PATH de la Base de Datos.
 	}
 
 
 	@Override
 	public Usuario crearUsuario(String nombre, String sexo, int edad) {
-		return new Usuario(nombre, sexo, edad);
-
+		Usuario usuario = new Usuario(nombre, sexo, edad);
+		usuario.addUsuarioBD();
+		return usuario;
 	}
 
 	@Override
 	public Usuario crearUsuario(String nombre, String sexo, int edad, ArrayList<Valoracion> valoraciones, ArrayList<String> generosPreferidos, ArrayList<String> actoresPreferidos, ArrayList<String> actoresOdiados) {
-		return new Usuario(nombre, sexo, edad, valoraciones, generosPreferidos, actoresPreferidos, actoresOdiados);
-
+		Usuario usuario = new Usuario(nombre, sexo, edad, valoraciones, generosPreferidos, actoresPreferidos, actoresOdiados);
+		usuario.addUsuarioBD();
+		return usuario;
 	}
 
 	@Override

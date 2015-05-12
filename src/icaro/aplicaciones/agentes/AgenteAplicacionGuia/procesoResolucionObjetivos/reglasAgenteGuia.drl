@@ -183,7 +183,7 @@ end
 rule "Preguntar sexo usuario"
   when
     obj:PreguntarSexo(state==Objetivo.PENDING)
-    f:Focus()
+    f:Focus(foco != obj)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaSexo.class);
     tarea.ejecutar();
@@ -201,8 +201,11 @@ rule "Recibir respuesta sexo usuario"
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoHombre || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoMujer)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
-    tarea.ejecutar();
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarSexo.class);
+    tarea.ejecutar(notif);
+  
+  	TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
+    tarea1.ejecutar();
     
     obj.setSolved();
     update(obj);
@@ -216,7 +219,7 @@ end
 rule "Preguntar edad usuario"
   when
     obj:PreguntarEdad(state==Objetivo.PENDING)
-    f:Focus()
+    f:Focus(foco != obj)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaEdad.class);
     tarea.ejecutar();
@@ -233,10 +236,10 @@ rule "Recibir respuesta edad usuario"
     obj:PreguntarEdad(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
-    objPrincipal:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
+    objPrincipal:PreguntarDatosInicialesUsuario()
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
-    tarea.ejecutar();
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
+    tarea.ejecutar(notif);
     
     obj.setSolved();
     update(obj);
@@ -256,28 +259,76 @@ end
 
 
 // REGLAS PARA RECOMENDAR PELI
-rule "Mirar si puedes deducir un genero, o preguntale"
+rule "Poner el foco en recomendar peli y lanzar el objetivo del genero"
   when
     obj:RecomendarPelicula(state==Objetivo.PENDING)
     f:Focus()
   then
-    obj.setSolving();
-    update(obj);
+  	//  Tareas para preguntar al usuario que le apetece ver
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoDeducirGenero.class);
+    tarea.ejecutar();
+    
     f.setFoco(obj);
     update(f);
-    
-    //  Tareas para preguntar al usuario que le apetece ver
-    
-    
-    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
-    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+  
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
+/*rule "Mirar si puedes deducir un genero, o preguntale"
+  when
+    obj:DeducirGenero(state==Objetivo.PENDING)
+  then
+    obj.setSolving();
+    update(obj);
+    
+    //  Tareas para preguntar al usuario que genero le apetece ver
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirGenero.class);
+    tarea.ejecutar();
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+rule "Regla que espera la respuesta del genero que quiere"
+  when
+    obj:DeducirGenero(state==Objetivo.SOLVING)
+  then
+    obj.setSolved();
+    update(obj);
+    
+    TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(LanzarObjetivoDeducirActor.class);
+    tarea1.ejecutar();
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end*/
+/*rule "Mirar si puedes deducir un actor, o preguntale"
+  when
+    obj:DeducirActor(state==Objetivo.PENDING)
+  then
+    obj.setSolving();
+    update(obj);
+    
+    //  Tareas para preguntar al usuario que actor le apetece ver
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirActor.class);
+    tarea.ejecutar();
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+rule "Regla que espera la respuesta del actor que quiere"
+  when
+    obj:DeducirActor(state==Objetivo.SOLVING)
+  then
+    obj.setSolved();
+    update(obj);
+    
+    // TODO Tarea para sujerir una peli.
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end*/
+
 
 
 
 
 // REGLAS PARA VALORAR PELI
-rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
+/*rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
   when
     //notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ValorarUltimaPelicula)
     f:Focus()
@@ -285,7 +336,7 @@ rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
     
     // TODO TAREA QUE LE PREGUNTA SI LE HA GUSTADO Y QUE SI LE APETECE LE PONGA NOTA
     
-end
+end*/
 
 
 
