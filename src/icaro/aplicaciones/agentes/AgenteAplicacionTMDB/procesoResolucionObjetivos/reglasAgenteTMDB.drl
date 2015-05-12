@@ -44,10 +44,10 @@ rule "Listar los generos de peliculas"
   when
     obj:RecomendarPelicula(state==Objetivo.SOLVING)
     Focus(foco == obj)
-   	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneros)
+   	notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneros)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(ListarGeneros.class);
-    tarea.ejecutar(identInterlc);
+    tarea.ejecutar();
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
@@ -55,7 +55,7 @@ rule "Recomendar por genero"
   when
     obj:RecomendarPelicula(state==Objetivo.SOLVING)
     Focus(foco == obj)
-    notif:Notificacion(identInterlc:identNotificador, genero:tipoNotificacion,
+    notif:Notificacion(tipoNotifica:tipoNotificacion,
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion ||
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura ||
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion ||
@@ -78,7 +78,7 @@ rule "Recomendar por genero"
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaGenero.class);
-    tarea.ejecutar(genero, identInterlc);
+    tarea.ejecutar(tipoNotifica);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
@@ -86,11 +86,11 @@ rule "Recomendar por ano"
   when
     obj:RecomendarPelicula(state==Objetivo.SOLVING)
     Focus(foco == obj)
-    notif:Notificacion(identInterlc:identNotificador, ano:tipoNotificacion,
+    notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAnos)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaAno.class);
-    tarea.ejecutar(ano, identInterlc);
+    tarea.ejecutar(tipoNotifica, mensaje);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
@@ -98,11 +98,23 @@ rule "Recomendar por actor"
   when
     obj:RecomendarPelicula(state==Objetivo.SOLVING)
     Focus(foco == obj)
-    notif:Notificacion(identInterlc:identNotificador, person:tipoNotificacion,
+    notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionActor)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaPerson.class);
-    tarea.ejecutar(person, identInterlc);
+    tarea.ejecutar(tipoNotifica, mensaje);
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+end
+rule "Recomendar por varios campos"
+  when
+    obj:RecomendarPelicula(state==Objetivo.SOLVING)
+    Focus(foco == obj)
+    notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionBusquedaVariosCampos)
+  then
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaVarios.class);
+    tarea.ejecutar(tipoNotifica, mensaje);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end

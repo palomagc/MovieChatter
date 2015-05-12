@@ -3,7 +3,6 @@ package icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas;
 import java.util.ArrayList;
 import java.util.List;
 
-import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
@@ -52,11 +51,13 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 				for (Movie movie : movies) {
 					moviesAux.add(movie.getTitle());
 				}
-				/*Busqueda.addPerson(personId);
-				Busqueda.setResult(moviesAux);
+				VocabularioGestionCitas.busqueda.addPerson(personId);
+				VocabularioGestionCitas.busqueda.setResult(moviesAux);
 				Notificacion notif = new Notificacion();
 		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
-			*/}
+		 		getComunicator().enviarInfoAotroAgente(notif,
+						VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"

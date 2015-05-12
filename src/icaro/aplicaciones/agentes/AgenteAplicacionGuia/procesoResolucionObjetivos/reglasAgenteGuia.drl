@@ -94,7 +94,45 @@ rule "Comprobar si existe el usuario"
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
 
-
+// REGLA PARA COMUNICACION CON AGENTE TMDB
+rule "Comprobar datos busqueda"
+  when
+	notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda)
+  then
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(MostrarPeliculas.class);
+    tarea.ejecutar();
+end
+rule "Dirigir agente guia"
+  when
+	notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroCrimen ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroDocumental ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroDrama ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroFamiliar ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroFantasia ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroExtranjero ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroHistorico ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroTerror ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroMusical ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroRomantico ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroTV ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroGuerra ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAnos ||
+        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionActor)
+  then
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(EnviarAgenteTMDB.class);
+    tarea.ejecutar(tipoNotifica, mensaje);
+end
 
 // HACER PREGUNTAS INICIALES PARA CONOCER AL USUARIO Y TERMINACION DE LAS MISMAS
 rule "Hacer las preguntas iniciales al usuario"

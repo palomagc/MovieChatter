@@ -3,7 +3,6 @@ package icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas;
 import java.util.ArrayList;
 import java.util.List;
 
-import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
@@ -60,10 +59,12 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				for (Movie movie : movies) {
 					moviesAux.add(movie.getTitle());
 				}
-				//Busqueda.addGenre(genre.getId());
-				//Busqueda.setResult(moviesAux);
-				//Notificacion notif = new Notificacion();
-				//notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
+				VocabularioGestionCitas.busqueda.addGenre(genre.getId());
+				VocabularioGestionCitas.busqueda.setResult(moviesAux);
+				Notificacion notif = new Notificacion();
+				notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
+		 		getComunicator().enviarInfoAotroAgente(notif,
+						VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 			}
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			/*ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ

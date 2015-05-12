@@ -1,6 +1,5 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -27,18 +26,24 @@ public class MostrarPeliculas extends TareaSincrona {
 
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		String identInterlocutor = (String) params[0];
+		//String identInterlocutor = (String) params[0];
 		try {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
-			if (recComunicacionChat != null && Busqueda.getResult().size() > 0) {
+			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				int numRecomienda = (int) ((100 * Math.random()) % VocabularioGestionCitas.Recomienda.length);
-				String mensajeAenviar = VocabularioGestionCitas.Recomienda[numRecomienda] + "  ";
-				for (String s : Busqueda.getResult()) {
-					mensajeAenviar += s + ",     ";
+				String mensajeAenviar = "";
+				if (VocabularioGestionCitas.busqueda.getResult().size() > 0) {
+					int numRecomienda = (int) ((100 * Math.random()) % VocabularioGestionCitas.Recomienda.length);
+					mensajeAenviar = VocabularioGestionCitas.Recomienda[numRecomienda] + "  ";
+					for (String s : VocabularioGestionCitas.busqueda.getResult()) {
+						mensajeAenviar += s + ",     ";
+				}
+				} else {
+					mensajeAenviar = "La consulta realizada no ha obtenido ningún resultado";
 				}
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
+				
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,

@@ -464,10 +464,6 @@ public class InterpreteMsgsIRC {
 					Object infoAenviar = infoExtraida.get(0);
 					mensajeAenviar = new MensajeSimple(infoAenviar, sender,
 							identAgenteGestorDialogo);
-					//TODO
-					comunicator = new ComunicacionAgentes(identAgenteGestorDialogo);
-					//if (comunicator.buscarInterfazEnRegistroRMI(VocabularioGestionCitas.IdentAgenteAplicacionTMDB))
-						comunicator.enviarInfoAotroAgente(infoAenviar, VocabularioGestionCitas.IdentAgenteAplicacionTMDB);
 				} else {
 					mensajeAenviar = new MensajeSimple(infoExtraida, sender,
 							identAgenteGestorDialogo);

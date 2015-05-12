@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import constantes.Busqueda;
 import constantes.Constantes;
 
 /**
@@ -36,8 +37,9 @@ public class VocabularioGestionCitas {
 			return spanish;
 		}
 	}
-
+	// OBJETOS ESTATICOS
 	public static Usuario usuario = null;
+	public static Busqueda busqueda = new Busqueda();
 
 	// TODO Añadir aquí las anotaciones que quieres que se tengan en cuenta.
 	// NOMBRES NOTIFICACIONES
@@ -64,6 +66,7 @@ public class VocabularioGestionCitas {
 	public static final String NombreTipoNotificacionCitasConGuia = "CitasConGuia";
 	public static final String NombreTipoNotificacionComprobarDatosBusqueda = "ComprobarDatosBusqueda";
 	public static final String NombreTipoNotificacionValorarUltimaPelicula = "ValorarUltimaPelicula";
+	public static final String NombreTipoNotificacionBusquedaVariosCampos = "BusquedaVariosCampos";
 
 	public static final String NombreTipoNotificacionGeneros = "Generos";
 	public static final String NombreTipoNotificacionGeneroAccion = "GeneroAccion";
