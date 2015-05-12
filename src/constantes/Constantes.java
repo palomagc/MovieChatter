@@ -25,6 +25,5 @@ public class Constantes {
 	public static final String GENERO_TERROR = "terror";
 	public static final String GENERO_TV = "tv";
 
-	// TODO cada uno tendrá que adaptar la ruta a su ordenador
-	public static final String DB_PATH = "/Users/Teresa/EclipseWorkspace/MovieChatter/dataBase/";
+	public static final String DB_PATH = "dataBase\\";
 }

@@ -22,7 +22,7 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements 
 
 	public ClaseGeneradoraRecursoUsuario(String idRecurso) throws RemoteException {
 		super(idRecurso);
-		// TODo Auto-generated constructor stub
+		new File(Constantes.DB_PATH).mkdirs(); // Crea las carpetas necesarias del PATH de la Base de Datos.
 	}
 
 
