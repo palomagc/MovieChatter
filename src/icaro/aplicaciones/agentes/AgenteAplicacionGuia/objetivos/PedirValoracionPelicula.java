@@ -1,5 +1,12 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos;
 
-public class PedirValoracionPelicula {
+import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 
+public class PedirValoracionPelicula extends Objetivo {
+
+	/** Crea una nueva instancia de DarAcceso */
+    public PedirValoracionPelicula() {
+        super.setgoalId("PedirValoracionPelicula");
+    }
+	
 }
