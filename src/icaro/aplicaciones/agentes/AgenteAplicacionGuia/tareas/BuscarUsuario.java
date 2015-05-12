@@ -53,7 +53,7 @@ public class BuscarUsuario extends TareaSincrona {
 			VocabularioGestionCitas.usuario = itfUsoRecursoUsuario
 					.buscarUsuario(identInterlocutor);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			// TODo Auto-generated catch block
 			e1.printStackTrace();
 		}
 		if (VocabularioGestionCitas.usuario != null) {
@@ -71,7 +71,7 @@ public class BuscarUsuario extends TareaSincrona {
 				VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.crearUsuario(
 						identInterlocutor, null, -1);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				// TODo Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

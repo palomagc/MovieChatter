@@ -24,8 +24,6 @@ public class GuardarSexo extends TareaSincrona {
 	public void ejecutar(Object... params) {
 		try {
 			
-			// TODO Aqui hay que guardar la respuesta del usuario a su sexo
-			// TODO El parametro 0 contiene la anotacion
 			
 			String sexo = ((Notificacion)params[0]).getTipoNotificacion();
 			VocabularioGestionCitas.usuario.setSexo(sexo);

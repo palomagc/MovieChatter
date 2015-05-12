@@ -25,9 +25,7 @@ public class GuardarEdad extends TareaSincrona {
 	public void ejecutar(Object... params) {
 		try {
 			
-			// TODO La edad se guarda mal!!!!!!!
-			// TODO Aqui hay que guardar la respuesta del usuario a su edad
-			// TODO El par�metro 0 contiene la anotacion
+			// TODO revisar esto pero parece que ya funciona automágicamente
 			
 			int edad = Integer.parseInt(((Notificacion)params[0]).getMensajeNotificacion());
 			VocabularioGestionCitas.usuario.setEdad(edad);
