@@ -277,12 +277,10 @@ end
   when
     obj:DeducirGenero(state==Objetivo.PENDING)
   then
-    obj.setSolving();
-    update(obj);
     
-    //  Tareas para preguntar al usuario que genero le apetece ver
+    //  Tareas para preguntar al usuario o deducir que genero le apetece ver
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirGenero.class);
-    tarea.ejecutar();
+    tarea.ejecutar(obj);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
@@ -293,7 +291,7 @@ rule "Regla que espera la respuesta del genero que quiere"
     obj.setSolved();
     update(obj);
     
-    TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(LanzarObjetivoDeducirActor.class);
+    TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
     tarea1.ejecutar();
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
