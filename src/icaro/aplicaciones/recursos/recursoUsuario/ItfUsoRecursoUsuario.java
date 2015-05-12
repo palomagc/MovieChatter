@@ -9,8 +9,7 @@ import icaro.infraestructura.patronRecursoSimple.ItfUsoRecursoSimple;
 public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple {
 
 	/**
-	 * Crea un nuevo usuario solo con nombre, sexo y edad (los demás campos
-	 * vacíos)
+	 * Crea un nuevo usuario solo con nombre, sexo y edad (los demás campos vacios) y lo guarda en la base de datos
 	 * 
 	 * @param nombre
 	 * @param sexo
@@ -21,7 +20,7 @@ public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple {
 			throws Exception;
 
 	/**
-	 * Crea un usuario con todos sus campos
+	 * Crea un usuario con todos sus campos y lo guarda en la base de datos
 	 * 
 	 * @param nombre
 	 * @param sexo
