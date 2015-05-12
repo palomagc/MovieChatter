@@ -1,8 +1,5 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarEdad;
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;

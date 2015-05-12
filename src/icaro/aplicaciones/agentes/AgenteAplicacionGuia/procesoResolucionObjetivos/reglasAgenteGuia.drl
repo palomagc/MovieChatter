@@ -236,7 +236,7 @@ rule "Recibir respuesta edad usuario"
     obj:PreguntarEdad(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
-    objPrincipal:PreguntarDatosInicialesUsuario(state==Objetivo.SOLVING)
+    objPrincipal:PreguntarDatosInicialesUsuario()
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
     tarea.ejecutar(notif);
