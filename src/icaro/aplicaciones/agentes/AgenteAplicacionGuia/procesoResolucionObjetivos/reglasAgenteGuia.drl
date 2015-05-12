@@ -201,7 +201,7 @@ rule "Recibir respuesta sexo usuario"
     f:Focus(foco == obj)
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoHombre || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoMujer)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarSexo.class);
     tarea.ejecutar(notif);
   
   	TareaSincrona tarea1 = gestorTareas.crearTareaSincrona(LanzarObjetivoPreguntaEdad.class);
@@ -279,8 +279,9 @@ end
 
 
 
+
 // REGLAS PARA VALORAR PELI
-rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
+/*rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
   when
     //notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ValorarUltimaPelicula)
     f:Focus()
@@ -288,7 +289,7 @@ rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
     
     // TODO TAREA QUE LE PREGUNTA SI LE HA GUSTADO Y QUE SI LE APETECE LE PONGA NOTA
     
-end
+end*/
 
 
 
