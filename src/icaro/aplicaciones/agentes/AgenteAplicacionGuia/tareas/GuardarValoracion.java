@@ -2,6 +2,8 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
+import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -31,9 +33,18 @@ public class GuardarValoracion extends TareaSincrona {
 			if(notif.getTipoNotificacion().equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)){
 				// TODO no quiere ponerle nota a la peli
 			}else{
-				String nota = ((Notificacion)params[0]).getTipoNotificacion();
+				String nota = ((Notificacion)params[0]).getMensajeNotificacion();
 				String idPelicula = VocabularioGestionCitas.usuario.getPeliculaActual().getIdPelicula();
-				Valoracion aux = new Valoracion(idPelicula, nota);
+				String tituloPelicula = "";
+				
+				Movie movie = null;
+				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+				if(itfUsoComunicacionTMDB != null){
+					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPelicula), null);
+				}
+				tituloPelicula = movie.getOriginalTitle();
+				
+				Valoracion aux = new Valoracion(tituloPelicula, nota);
 				VocabularioGestionCitas.usuario.getValoraciones().add(aux);
 				
 				ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
