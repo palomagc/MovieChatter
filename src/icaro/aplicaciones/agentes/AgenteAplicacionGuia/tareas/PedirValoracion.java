@@ -44,7 +44,7 @@ public class PedirValoracion extends TareaSincrona{
 				if(itfUsoComunicacionTMDB != null){
 					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPeliculaActual), null);
 				}
-				String mensajeAenviar = "Que nota quieres ponerle a " + movie.getOriginalTitle() + "?";
+				String mensajeAenviar = "Que nota quieres ponerle a " + movie.getTitle() + "?";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			}
 			else {

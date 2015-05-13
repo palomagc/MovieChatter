@@ -42,7 +42,7 @@ public class GuardarValoracion extends TareaSincrona {
 				if(itfUsoComunicacionTMDB != null){
 					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPelicula), null);
 				}
-				tituloPelicula = movie.getOriginalTitle();
+				tituloPelicula = movie.getTitle();
 				
 				Valoracion aux = new Valoracion(tituloPelicula, nota);
 				VocabularioGestionCitas.usuario.getValoraciones().add(aux);

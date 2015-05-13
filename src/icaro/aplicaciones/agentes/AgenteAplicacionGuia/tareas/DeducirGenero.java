@@ -42,6 +42,8 @@ public class DeducirGenero extends TareaSincrona {
 			ArrayList<Valoracion> listaValoraciones = VocabularioGestionCitas.usuario.getValoraciones();
 			Iterator<Valoracion> itValoraciones = listaValoraciones.iterator();
 			
+			// TODO Cuando te recomienda una peli y le dices que no, añadirla a odiadas. Esto no sé si va en esta clase pero bueno (linea agenteGuia 334)
+			
 			int contadorPelisRestantes = 3;
 			int rachaDeGenero = 0;
 			String generoActual = "";
