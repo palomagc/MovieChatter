@@ -20,7 +20,7 @@ public class ObtenerInfoInterlocutor extends Objetivo {
     
     /** Crea una nueva instancia de DarAcceso */
     public ObtenerInfoInterlocutor() {
-        super.setgoalId("AutorizarAccesoUsuarios");
+        super.setgoalId("ObtenerInfoInterlocutor");
     }
     
 }

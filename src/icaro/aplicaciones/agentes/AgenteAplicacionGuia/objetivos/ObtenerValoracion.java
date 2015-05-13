@@ -20,7 +20,7 @@ public class ObtenerValoracion extends Objetivo {
     
     /** Crea una nueva instancia de DarAcceso */
     public ObtenerValoracion() {
-        super.setgoalId("AutorizarAccesoUsuarios");
+        super.setgoalId("ObtenerValoracion");
     }
     
 }

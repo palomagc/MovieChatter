@@ -20,7 +20,7 @@ public class RecomendarPelicula extends Objetivo {
     
     /** Crea una nueva instancia de DarAcceso */
     public RecomendarPelicula() {
-        super.setgoalId("AutorizarAccesoUsuarios");
+        super.setgoalId("RecomendarPelicula");
     }
     
 }
