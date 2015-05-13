@@ -100,7 +100,7 @@ rule "Comprobar datos busqueda"
 	notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda)
   then
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
-    TareaSincrona tarea = gestorTareas.crearTareaSincrona(MostrarPeliculas.class);
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(MostrarPelicula.class);
     tarea.ejecutar();
 end
 rule "Dirigir agente guia"
