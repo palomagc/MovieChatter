@@ -32,7 +32,7 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		String notifica = (String) params[0];
+		//String notifica = (String) params[0];
 		String person = (String) params[1];
 
 		try {
@@ -40,7 +40,6 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
 
 			List<Movie> movies = new ArrayList<Movie>();
-			List<String> moviesAux = new ArrayList<String>();
 			Integer personId = null;
 			if (itfUsoComunicacionTMDB != null)
 				personId = itfUsoComunicacionTMDB.searchPerson(person);
@@ -48,11 +47,8 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 					movies = itfUsoComunicacionTMDB.getMoviesByPerson(personId, MovieSort.PopularityDesc,
 							"es", 1);
 			if (movies != null) {
-				for (Movie movie : movies) {
-					moviesAux.add(movie.getTitle());
-				}
 				VocabularioGestionCitas.busqueda.addPerson(personId);
-				VocabularioGestionCitas.busqueda.setResult(moviesAux);
+				VocabularioGestionCitas.busqueda.setResult(movies);
 				Notificacion notif = new Notificacion();
 		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
 		 		getComunicator().enviarInfoAotroAgente(notif,

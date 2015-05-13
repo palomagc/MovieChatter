@@ -177,6 +177,13 @@ public class Usuario {
 		this.edad = edad;
 	}
 	
+	public ArrayList<String> getIdValoraciones() {
+		ArrayList<String> result = new ArrayList<>();
+		for (Valoracion v : valoraciones)
+			result.add(v.getIdPelicula());
+		return result;
+	}
+	
 	public ArrayList<Valoracion> getValoraciones() {
 		return valoraciones;
 	}

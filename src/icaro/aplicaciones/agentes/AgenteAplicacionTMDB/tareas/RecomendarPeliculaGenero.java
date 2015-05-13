@@ -43,7 +43,6 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
 
 			List<Movie> movies = new ArrayList<Movie>();
-			List<String> moviesAux = new ArrayList<String>();
 			Genre genre = null;
 			if (itfUsoComunicacionTMDB != null && genero != null) {
 				List<Genre> genres = itfUsoComunicacionTMDB.getMovieGenresList("en");
@@ -56,11 +55,8 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				}
 			}
 			if (movies != null) {
-				for (Movie movie : movies) {
-					moviesAux.add(movie.getTitle());
-				}
 				VocabularioGestionCitas.busqueda.addGenre(genre.getId());
-				VocabularioGestionCitas.busqueda.setResult(moviesAux);
+				VocabularioGestionCitas.busqueda.setResult(movies);
 				Notificacion notif = new Notificacion();
 				notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
 		 		getComunicator().enviarInfoAotroAgente(notif,

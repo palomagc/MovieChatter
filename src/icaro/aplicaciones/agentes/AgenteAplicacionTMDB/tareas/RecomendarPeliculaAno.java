@@ -32,7 +32,7 @@ public class RecomendarPeliculaAno extends TareaSincrona {
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		String notifica = (String) params[0];
+		//String notifica = (String) params[0];
 		String ano = (String) params[1];
 
 		try {
@@ -40,16 +40,12 @@ public class RecomendarPeliculaAno extends TareaSincrona {
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
 
 			List<Movie> movies = new ArrayList<Movie>();
-			List<String> moviesAux = new ArrayList<String>();
 			if (itfUsoComunicacionTMDB != null)
 				movies = itfUsoComunicacionTMDB.getMoviesByYear(ano, MovieSort.PopularityDesc,
 							"es", 1);
 			if (movies != null) {
-				for (Movie movie : movies) {
-					moviesAux.add(movie.getTitle());
-				}
 				VocabularioGestionCitas.busqueda.setYear(ano);
-				VocabularioGestionCitas.busqueda.setResult(moviesAux);
+				VocabularioGestionCitas.busqueda.setResult(movies);
 				Notificacion notif = new Notificacion();
 		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
 		 		getComunicator().enviarInfoAotroAgente(notif,

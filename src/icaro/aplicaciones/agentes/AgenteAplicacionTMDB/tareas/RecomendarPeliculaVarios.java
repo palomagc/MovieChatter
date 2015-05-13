@@ -1,14 +1,12 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
-import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
 import icaro.aplicaciones.recursos.comunicacionTMDB.orders.MovieSort;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -47,7 +45,6 @@ public class RecomendarPeliculaVarios extends TareaSincrona {
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
 
 			List<Movie> movies = new ArrayList<Movie>();
-			List<String> moviesAux = new ArrayList<String>();
 			if (itfUsoComunicacionTMDB != null) {
 				if (busquedaAux.getYear() != null) {
 					year = busquedaAux.getYear();
@@ -70,14 +67,13 @@ public class RecomendarPeliculaVarios extends TareaSincrona {
 					String language, int page*/
 				movies = itfUsoComunicacionTMDB.discoverMovies(null, null, MovieSort.PopularityDesc,
 						null, null, genres, people, year, "es", 1);
-				if (movies != null)
-					for (Movie movie : movies)
-						moviesAux.add(movie.getTitle());
-				busquedaAux.setResult(moviesAux);
-				Notificacion notif = new Notificacion();
-		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
-		 		getComunicator().enviarInfoAotroAgente(notif,
-						VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				if (movies != null) {
+					busquedaAux.setResult(movies);
+					Notificacion notif = new Notificacion();
+			 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
+			 		getComunicator().enviarInfoAotroAgente(notif,
+							VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				}
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
