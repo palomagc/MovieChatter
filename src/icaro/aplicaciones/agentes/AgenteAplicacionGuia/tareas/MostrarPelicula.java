@@ -4,6 +4,7 @@ import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
+import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
@@ -46,8 +47,9 @@ public class MostrarPelicula extends TareaSincrona {
 								movie = m;
 					}
 					mensajeAenviar += movie.getTitle() + ".";
+					VocabularioGestionCitas.usuario.setPeliculaActual(new Valoracion(Integer.toString(movie.getId()), null));
 				} else {
-					mensajeAenviar = "La consulta con los parámetros dados no ha obtenido ningún resultado.";
+					mensajeAenviar = "La consulta con los parï¿½metros dados no ha obtenido ningï¿½n resultado.";
 				}
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 				

@@ -68,7 +68,7 @@ public class Movie {
 		this.collectionName = collectionName;
 		this.completed = completed;
 	}
-// TODO !!!!!!!!!!!!1
+
 	public boolean isCompleted() {
 		return completed;
 	}

@@ -4,6 +4,8 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
+import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
+import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
@@ -36,7 +38,13 @@ public class PedirValoracion extends TareaSincrona{
 				
 				// TODO COMPROBAR QUE NO ES NULL
 				Valoracion valoracion = VocabularioGestionCitas.usuario.getPeliculaActual();
-				String mensajeAenviar = "Que nota quieres ponerle a " + valoracion.getIdPelicula() + "?";
+				String idPeliculaActual = valoracion.getIdPelicula();
+				Movie movie = null;
+				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+				if(itfUsoComunicacionTMDB != null){
+					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPeliculaActual), null);
+				}
+				String mensajeAenviar = "Que nota quieres ponerle a " + movie.getOriginalTitle() + "?";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			}
 			else {
