@@ -49,6 +49,7 @@ public class ProponerOtraPelicula extends TareaSincrona {
 					usuario.addValoracion(new Valoracion(usuario.getPeliculaActual()
 							.getIdPelicula(), null));
 					usuario.setPeliculaActual(null);
+					VocabularioGestionCitas.busqueda.reset();
 					int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
 					int numDisfruta = (int) ((100 * Math.random()) % VocabularioGestionCitas.Disfruta.length);
 					String mensajeAenviar = VocabularioGestionCitas.Disfruta[numDisfruta] + "  "
