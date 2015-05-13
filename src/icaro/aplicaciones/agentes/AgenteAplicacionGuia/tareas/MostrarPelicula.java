@@ -25,7 +25,7 @@ public class MostrarPelicula extends TareaSincrona {
 
 	@Override
 	public void ejecutar(Object... params) {
-
+		
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
 		//String identInterlocutor = (String) params[0];

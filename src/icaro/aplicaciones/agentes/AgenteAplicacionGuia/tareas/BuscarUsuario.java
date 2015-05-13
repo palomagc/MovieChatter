@@ -95,8 +95,10 @@ public class BuscarUsuario extends TareaSincrona {
 			// la anterior película que está sin valorar. En caso de que no la quiera valorar, le podemos
 			// asignar nota=-2 para saber que no hay que volver a preguntarle por esta peli
 			else if(valoraciones.size() > 0 && valoraciones.get(valoraciones.size()-1).getNota() == null){
+				// TODO enviar notificacion
 				Notificacion notif = new Notificacion();
 		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionValorarUltimaPelicula);
+		 		getComunicator().enviarInfoAotroAgente(notif, VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 			}
 			else{
 				this.getEnvioHechos().insertarHecho(new RecomendarPelicula());

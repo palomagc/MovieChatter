@@ -331,6 +331,23 @@ rule "Mirar si puedes deducir un actor, o preguntale"
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
+rule "No te apetece ver la peli recomendada"
+  when
+    obj:RecomendarPelicula(state==Objetivo.SOLVING)
+    f:Focus()
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion)
+  then
+  	//  Tarea que hay que ejecutar si no quiere ver la peli que le ofreces
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirGenero.class);
+    tarea.ejecutar(obj);
+    
+    f.setFoco(obj);
+    update(f);
+    
+    retract(notif);
+  
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
 /*rule "Notificacion del agente TMDB que indica que podemos sugerir una peli"
   when
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.PeliEncontrada)
