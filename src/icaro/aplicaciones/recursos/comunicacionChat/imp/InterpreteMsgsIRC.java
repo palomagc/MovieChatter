@@ -1407,7 +1407,7 @@ public class InterpreteMsgsIRC {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 				
-			else if (anotType.equalsIgnoreCase("Ya_vista")) {
+			else if (anotType.equalsIgnoreCase("YaVista")) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 			

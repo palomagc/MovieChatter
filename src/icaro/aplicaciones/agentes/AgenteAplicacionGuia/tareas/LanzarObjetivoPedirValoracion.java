@@ -15,8 +15,6 @@ public class LanzarObjetivoPedirValoracion extends TareaSincrona {
 	 * @param Description
 	 *            of the Parameter
 	 */
-	private Objetivo contextoEjecucionTarea = null;
-
 	@Override
 	public void ejecutar(Object... params) {
 		try {

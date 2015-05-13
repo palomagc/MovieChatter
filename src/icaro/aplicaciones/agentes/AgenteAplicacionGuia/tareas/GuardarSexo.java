@@ -1,6 +1,5 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -18,14 +17,10 @@ public class GuardarSexo extends TareaSincrona {
 	 * @param Description
 	 *            of the Parameter
 	 */
-	private Objetivo contextoEjecucionTarea = null;
-
 	@Override
 	public void ejecutar(Object... params) {
 		try {
-			
-			
-			String sexo = ((Notificacion)params[0]).getTipoNotificacion();
+			String sexo = (String)params[0];
 			VocabularioGestionCitas.usuario.setSexo(sexo);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 				itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ

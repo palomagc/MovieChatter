@@ -1,17 +1,13 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
-import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
-import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
-import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 
-public class ProponerPelicula extends TareaSincrona {
+public class SolicitarCuestionarioInicial extends TareaSincrona {
 
 	/**
 	 * Constructor
@@ -25,56 +21,34 @@ public class ProponerPelicula extends TareaSincrona {
 
 	@Override
 	public void ejecutar(Object... params) {
-
+		/**
+		 * Produce una despedida
+		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		Busqueda busqueda = VocabularioGestionCitas.busqueda;
-		Usuario usuario = VocabularioGestionCitas.usuario;
+		//String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 		try {
+			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
-			//Objetivo objAntiguo = (Objetivo) params[0];
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				String mensajeAenviar = "";
-				Movie movie = null;
-				if (busqueda.getResult().size() > 0) {
-					int numRecomienda = (int) ((100 * Math.random()) % VocabularioGestionCitas.Recomienda.length);
-					mensajeAenviar = VocabularioGestionCitas.Recomienda[numRecomienda] + "  ";
-					for (Movie m : busqueda.getResult()) {
-						if (movie == null
-								&& !usuario.getIdValoraciones().contains(
-										Integer.toString(m.getId()))
-								&& !usuario.getPeliculasOdiadas().contains(
-										Integer.toString(m.getId())))
-							movie = m;
-					}
-					int numParams = (int) ((100 * Math.random()) % VocabularioGestionCitas.Params.length);
-					mensajeAenviar += (movie.getTitle() + ". " + VocabularioGestionCitas.Params[numParams]);
-					usuario.setPeliculaActual(new Valoracion(Integer.toString(movie.getId()), null));
-				} else {
-					// TODO mejorar la frase
-					mensajeAenviar = "La consulta con los par�metros dados no ha obtenido ning�n resultado."
-							+ " Se limpian los parametros de busqueda.";
-					busqueda.reset();
-					//objAntiguo.setPending();
-					//this.getEnvioHechos().actualizarHecho(objAntiguo);
-				}
+				String mensajeAenviar = "Te gustaria responder a un par de preguntas para conocernos mejor?";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}
+
 }

@@ -26,7 +26,9 @@ public final class Busqueda {
 	public List<Integer> getPeople() { return people; }
 	public List<Movie> getResult() { return result; }
 	public String getYear() { return year; }
-	public void resetParams() {
+
+	public void reset() {
+		result.clear();
 		genres.clear();
 		people.clear();
 		year = null;

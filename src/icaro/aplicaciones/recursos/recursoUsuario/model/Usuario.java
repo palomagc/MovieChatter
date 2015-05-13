@@ -199,12 +199,12 @@ public class Usuario {
 		return valoraciones;
 	}
 
-	public void addValoracion(Valoracion valoracion) {
-		valoraciones.add(valoracion);
-	}
-
 	public void setValoraciones(ArrayList<Valoracion> valoraciones) {
 		this.valoraciones = valoraciones;
+	}
+
+	public void addValoracion(Valoracion valoracion) {
+		valoraciones.add(valoracion);
 	}
 
 	public ArrayList<String> getGenerosPreferidos() {

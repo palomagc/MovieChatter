@@ -3,9 +3,6 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
-import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
-import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
-import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
@@ -42,13 +39,14 @@ public class DeducirGenero extends TareaSincrona {
 			ArrayList<Valoracion> listaValoraciones = VocabularioGestionCitas.usuario.getValoraciones();
 			Iterator<Valoracion> itValoraciones = listaValoraciones.iterator();
 			
-			// TODO Cuando te recomienda una peli y le dices que no, añadirla a odiadas. Esto no sé si va en esta clase pero bueno (linea agenteGuia 334)
+			// TODO Cuando te recomienda una peli y le dices que no, añadirla a odiadas.
+			// Esto no sé si va en esta clase pero bueno (linea agenteGuia 334)
 			
 			int contadorPelisRestantes = 3;
 			int rachaDeGenero = 0;
 			String generoActual = "";
 			boolean encontrado = false;
-			while((itValoraciones.hasNext() || contadorPelisRestantes <= 0) && !encontrado){
+			/*while((itValoraciones.hasNext() || contadorPelisRestantes <= 0) && !encontrado){
 				Valoracion v = itValoraciones.next();
 				Movie movie = null;
 				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
@@ -67,9 +65,9 @@ public class DeducirGenero extends TareaSincrona {
 			}
 			if(rachaDeGenero >= 3){
 				encontrado = true;
-			}
+			}*/
 			
-			itValoraciones = listaValoraciones.iterator();
+			/*itValoraciones = listaValoraciones.iterator();
 			contadorPelisRestantes = 5;
 			while((itValoraciones.hasNext() || contadorPelisRestantes <= 0) && !encontrado){
 				Valoracion v = itValoraciones.next();
@@ -90,7 +88,7 @@ public class DeducirGenero extends TareaSincrona {
 			if(rachaDeGenero >= 3){
 				encontrado = true;
 			}
-			
+			*/
 			if(encontrado){
 				// TODO HAS DEDUCIDO UN GENERO
 			}else{

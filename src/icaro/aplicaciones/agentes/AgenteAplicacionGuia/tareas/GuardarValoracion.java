@@ -2,9 +2,8 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
-import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
-import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
+import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
@@ -21,38 +20,34 @@ public class GuardarValoracion extends TareaSincrona {
 	 * @param Description
 	 *            of the Parameter
 	 */
-	private Objetivo contextoEjecucionTarea = null;
+	// private Objetivo contextoEjecucionTarea = null;
 
 	// TODO hacerlo entero
-	
+
 	@Override
 	public void ejecutar(Object... params) {
+		Usuario usuario = VocabularioGestionCitas.usuario;
 		try {
-			Notificacion notif = (Notificacion) params[0];
+			String notifica = ((Notificacion) params[0]).getTipoNotificacion();
 			Objetivo objAntiguo = (Objetivo) params[1];
-			if(notif.getTipoNotificacion().equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)){
-				// TODO no quiere ponerle nota a la peli
-			}else{
-				String nota = ((Notificacion)params[0]).getMensajeNotificacion();
-				String idPelicula = VocabularioGestionCitas.usuario.getPeliculaActual().getIdPelicula();
-				String tituloPelicula = "";
-				
-				Movie movie = null;
-				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
-				if(itfUsoComunicacionTMDB != null){
-					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPelicula), null);
+			ItfUsoRecursoUsuario itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+			if (itfUsoRecursoUsuario != null && usuario.getPeliculaActual() != null) {
+				String idPelicula = usuario.getPeliculaActual().getIdPelicula();
+				if (usuario.getIdValoraciones().contains(idPelicula)
+						&& !notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)) {
+					// TODO cuando no es NOTA refocaliza
+					int index = usuario.getIdValoraciones().indexOf(idPelicula);
+					Valoracion aux = usuario.getValoraciones().get(index);
+					String nota = ((Notificacion) params[0]).getMensajeNotificacion();
+					aux = new Valoracion(idPelicula, nota);
+					// TODO deberia reemplazar la valoracion, por ahora solo la añade
+					// itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
+					usuario.addValoracion(aux);
 				}
-				tituloPelicula = movie.getTitle();
-				
-				Valoracion aux = new Valoracion(tituloPelicula, nota);
-				VocabularioGestionCitas.usuario.getValoraciones().add(aux);
-				
-				ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
-				itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-						.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
-				itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
 			}
-			// Reestablece el objetivo para que le recomiende otra peli con las mismas caracterï¿½sticas
+			// Reestablece el objetivo para que le recomiende otra peli con las mismas
+			// caracteristicas
 			objAntiguo.setPending();
 			this.getEnvioHechos().actualizarHecho(objAntiguo);
 

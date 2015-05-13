@@ -79,7 +79,7 @@ public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple {
 	 * @param valorcion
 	 * @return true si la ha añadido, false en caso contrario
 	 */
-	public boolean nuevaValoracion(String nombreUsuario, Valoracion valorcion)
+	public boolean nuevaValoracion(String nombreUsuario, Valoracion valoracion)
 			throws Exception;
 
 	/**
@@ -110,6 +110,16 @@ public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple {
 	 * @return true si lo ha añadido, false en caso contrario
 	 */
 	public boolean nuevoActorOdiado(String nombreUsuario, String actor)
+			throws Exception;
+
+	/**
+	 * Añade una nueva pelicula odiada a un usuario dado
+	 * 
+	 * @param nombreUsuario
+	 * @param idPelicula
+	 * @return true si lo ha añadido, false en caso contrario
+	 */
+	public boolean nuevaPeliculaOdiada(String nombreUsuario, String pelicula)
 			throws Exception;
 
 }

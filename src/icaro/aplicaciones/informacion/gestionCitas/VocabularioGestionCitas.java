@@ -50,8 +50,7 @@ public class VocabularioGestionCitas {
 			"GeneroDocumental", "GeneroDrama", "GeneroFamiliar", "GeneroFantasia",
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
-			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos",
-			"YaVista");
+			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -146,12 +145,17 @@ public class VocabularioGestionCitas {
 	public static final String[] SaludoInicial2 = { "Hola", "Que tal", "Buenas", "Que hay" };
 
 	// FRASES DE NUESTRO SISTEMA
-	public static final String[] Despedida = { "Adios", "Hasta la proxima", "Nos vemos",
-			"Que te vaya bien", "Ha sido un placer", "Cuando quieras repetimos" };
-	public static final String InfoFuncionalidad = "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas";
+	public static final String[] Despedida = { "Adios.", "Hasta la proxima.", "Nos vemos.",
+			"Que te vaya bien.", "Ha sido un placer.", "Cuando quieras repetimos." };
+	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras qué tal.",
+			"Que te guste.", "Ojala te guste.", "A por las palomitas." };
+	public static final String InfoFuncionalidad = "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas.";
 	public static final String[] NoEntendido = { "No he entendido lo que me has dicho.",
 			"Perdona, pero no he entendido bien.", "Lo siento, no he comprendido bien.",
 			"Perdona, no comprendo que quieres decir." };
+	public static final String[] Params = { "Podrías introducir un año.",
+			"Puedes añadir un actor a tu filtrado.", "Podrías añadir otro genero a la búsqueda.",
+			"Puedes introducir otro genero, actor o año como filtro" };
 	public static final String[] PeticionInfoGeneral = { "Te puedo sugerir alguna hoy?",
 			"Quieres que te recomiende alguna?", "Necesitas ayuda para encontrar alguna?" };
 	public static final String PeticionInfoPeli = " PodrÃƒÂ­a recomendarte alguna pelÃƒÂ­cula?";

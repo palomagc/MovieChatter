@@ -1,7 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -19,15 +18,13 @@ public class GuardarEdad extends TareaSincrona {
 	 * @param Description
 	 *            of the Parameter
 	 */
-	private Objetivo contextoEjecucionTarea = null;
-
 	@Override
 	public void ejecutar(Object... params) {
 		try {
 			
 			// TODO revisar esto pero parece que ya funciona automágicamente
 			
-			String edad = ((Notificacion)params[0]).getMensajeNotificacion();
+			String edad = (String) params[0];
 			VocabularioGestionCitas.usuario.setEdad(edad);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ

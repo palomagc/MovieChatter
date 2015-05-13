@@ -205,4 +205,20 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements
 		return false;
 	}
 
+	@Override
+	public boolean nuevaPeliculaOdiada(String nombreUsuario, String pelicula) {
+		if (existeUsuario(nombreUsuario)) {
+			Usuario usuario = null;
+			try {
+				usuario = buscarUsuario(nombreUsuario);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			usuario.getPeliculasOdiadas().add(pelicula);
+			modificarUsuario(nombreUsuario, usuario);
+			return true;
+		}
+		return false;
+	}
+
 }
