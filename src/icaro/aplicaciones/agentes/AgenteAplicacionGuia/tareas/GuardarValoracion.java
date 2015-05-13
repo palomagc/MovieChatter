@@ -40,6 +40,7 @@ public class GuardarValoracion extends TareaSincrona {
 			}
 			// Reestablece el objetivo para que le recomiende otra peli con las mismas características
 			objAntiguo.setPending();
+			this.getEnvioHechos().actualizarHecho(objAntiguo);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -296,7 +296,7 @@ end
 rule "Poner el foco en recomendar peli y lanzar el objetivo del genero"
   when
     obj:RecomendarPelicula(state==Objetivo.PENDING)
-    f:Focus(foco != obj)
+    f:Focus()
   then
   	//  Tareas para preguntar al usuario que le apetece ver
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoDeducirGenero.class);

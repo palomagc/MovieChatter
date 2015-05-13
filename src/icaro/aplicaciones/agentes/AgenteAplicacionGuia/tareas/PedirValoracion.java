@@ -33,6 +33,8 @@ public class PedirValoracion extends TareaSincrona{
 					VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat!=null){
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				
+				// TODO COMPROBAR QUE NO ES NULL
 				Valoracion valoracion = VocabularioGestionCitas.usuario.getPeliculaActual();
 				String mensajeAenviar = "Que nota quieres ponerle a " + valoracion.getIdPelicula() + "?";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
