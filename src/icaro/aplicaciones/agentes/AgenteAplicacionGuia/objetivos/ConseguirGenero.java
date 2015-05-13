@@ -17,7 +17,7 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
  * @author 
  */
 public class ConseguirGenero extends Objetivo {
-    
+    // TODO Este objetivo creemos que no sirve, comprobarlo y borrarlo.
     /** Crea una nueva instancia de DarAcceso */
     public ConseguirGenero() {
         super.setgoalId("ConseguirGenero");
