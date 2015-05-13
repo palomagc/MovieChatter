@@ -1,9 +1,9 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
+import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
@@ -32,13 +32,16 @@ public class GuardarValoracion extends TareaSincrona {
 				// TODO no quiere ponerle nota a la peli
 			}else{
 				String nota = ((Notificacion)params[0]).getTipoNotificacion();
-				VocabularioGestionCitas.usuario.getPeliculaActual().setNota(nota);
+				String idPelicula = VocabularioGestionCitas.usuario.getPeliculaActual().getIdPelicula();
+				Valoracion aux = new Valoracion(idPelicula, nota);
+				VocabularioGestionCitas.usuario.getValoraciones().add(aux);
+				
 				ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 				itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 						.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
 				itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
 			}
-			// Reestablece el objetivo para que le recomiende otra peli con las mismas características
+			// Reestablece el objetivo para que le recomiende otra peli con las mismas caracterï¿½sticas
 			objAntiguo.setPending();
 			this.getEnvioHechos().actualizarHecho(objAntiguo);
 
