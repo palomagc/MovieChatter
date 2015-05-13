@@ -16,7 +16,6 @@ public class InfoTraza {
 	}
 	
 	public InfoTraza() {
-		// TODo Auto-generated constructor stub
 	}
 
 	public void setNombre(String n){this.entidadEmisora = n;}
