@@ -361,14 +361,15 @@ rule "El usuario dice que ha visto la pelicula que le estamos recomendando"
   then
     
     // Lanzar el objetivo para valorar la peli que hemos recomendado
-    new PedirValoracionPelicula(); 
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoPedirValoracion.class);
+    tarea.ejecutar(); 
     
 end
 
-/*rule "Pedir valoracion pelicula"
+rule "Pedir valoracion pelicula"
   when
     obj:PedirValoracionPelicula(state==Objetivo.PENDING)
-    f:Focus(foco != obj)
+    f:Focus()
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(PedirValoracion.class);
     tarea.ejecutar();
@@ -380,7 +381,7 @@ end
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
-rule "Recibir valoracion pelicula"
+/*rule "Recibir valoracion pelicula"
   when
     obj:PedirValoracionPelicula(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
