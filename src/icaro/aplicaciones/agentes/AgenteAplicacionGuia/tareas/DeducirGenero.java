@@ -53,6 +53,7 @@ public class DeducirGenero extends TareaSincrona {
 				Movie movie = null;
 				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
 				if(itfUsoComunicacionTMDB != null){
+					// TODO aqui salta excepcion
 					movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(v.getIdPelicula()), null);
 				}
 				ArrayList<Genre> generos = (ArrayList<Genre>) movie.getGenres();
