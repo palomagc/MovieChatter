@@ -13,7 +13,6 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 import constantes.Busqueda;
 
 public class EnviarAgenteTMDB extends TareaSincrona {
-	// TODO regla que acepte notificaciones de TMDB y envie al agente guia
 
 	/**
 	 * Constructor
@@ -42,7 +41,7 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 			getComunicator().enviarInfoAotroAgente(infoAenviar,
 					VocabularioGestionCitas.IdentAgenteAplicacionTMDB);
 		} else {
-			// Mirar los parametro que hay en Busqueda
+			// Mirar los parametros que hay en Busqueda
 			if (notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionAnos)) {
 				busquedaAux.setYear(param);
 			} else {

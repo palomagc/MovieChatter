@@ -22,8 +22,6 @@ public class GuardarValoracion extends TareaSincrona {
 	 */
 	// private Objetivo contextoEjecucionTarea = null;
 
-	// TODO hacerlo entero
-
 	@Override
 	public void ejecutar(Object... params) {
 		Usuario usuario = VocabularioGestionCitas.usuario;
