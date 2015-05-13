@@ -1,5 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
@@ -25,13 +26,20 @@ public class GuardarValoracion extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		try {
-
-			String nota = ((Notificacion)params[0]).getTipoNotificacion();
-			VocabularioGestionCitas.usuario.getPeliculaActual().setNota(nota);
-			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
-			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
-			itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
+			Notificacion notif = (Notificacion) params[0];
+			Objetivo objAntiguo = (Objetivo) params[1];
+			if(notif.getTipoNotificacion().equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)){
+				// TODO no quiere ponerle nota a la peli
+			}else{
+				String nota = ((Notificacion)params[0]).getTipoNotificacion();
+				VocabularioGestionCitas.usuario.getPeliculaActual().setNota(nota);
+				ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
+				itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+						.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+				itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
+			}
+			// Reestablece el objetivo para que le recomiende otra peli con las mismas características
+			objAntiguo.setPending();
 
 		} catch (Exception e) {
 			e.printStackTrace();

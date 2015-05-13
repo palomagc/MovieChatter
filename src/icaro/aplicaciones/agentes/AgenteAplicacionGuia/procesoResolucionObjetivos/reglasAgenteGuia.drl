@@ -302,6 +302,8 @@ rule "Poner el foco en recomendar peli y lanzar el objetivo del genero"
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoDeducirGenero.class);
     tarea.ejecutar();
     
+    obj.setSolving();
+    update(obj);
     f.setFoco(obj);
     update(f);
   
@@ -346,15 +348,6 @@ end*/
 
 
 // REGLAS PARA VALORAR PELI
-/*rule "Preguntar si quiere valorar la ultima pelicula que ha visto"
-  when
-    //notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ValorarUltimaPelicula)
-    f:Focus()
-  then
-    
-    // TODO TAREA QUE LE PREGUNTA SI LE HA GUSTADO Y QUE SI LE APETECE LE PONGA NOTA
-    
-end*/
 rule "El usuario dice que ha visto la pelicula que le estamos recomendando"
   when
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionYaVista)
@@ -381,14 +374,15 @@ rule "Pedir valoracion pelicula"
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
-/*rule "Recibir valoracion pelicula"
+rule "Recibir valoracion pelicula"
   when
     obj:PedirValoracionPelicula(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
+    objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarValoracion.class);
-    tarea.ejecutar(notif);
+    tarea.ejecutar(notif, objAntiguo);
     
     obj.setSolved();
     update(obj);
@@ -398,7 +392,7 @@ end
     retract(notif);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end*/
+end
 
 
 
