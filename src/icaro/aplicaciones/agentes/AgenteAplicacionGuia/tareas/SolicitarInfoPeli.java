@@ -7,7 +7,6 @@
  */
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ReconocerUsuario;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -19,34 +18,37 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
  * 
  * @author F Garijo
  */
-public class SolicitarInfoInicial extends TareaSincrona {
-	// private String identAgenteOrdenante ;
+public class SolicitarInfoPeli extends TareaSincrona {
+	// private String identAgenteOrdenante;
 	private Objetivo contextoEjecucionTarea = null;
 
 	@Override
 	public void ejecutar(Object... params) {
+		// String identRecursoVisualizacionAcceso = "VisualizacionAcceso1";
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		String identRecursoComunicacionChat = (String) params[0];
+		// String identInterlocutor = (String) params[0];
 		try {
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfaz(NombresPredefinidos.ITF_USO + identRecursoComunicacionChat);
+					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				recComunicacionChat.enviarMensagePrivado(VocabularioGestionCitas.SaludoInicial1);
-
-				this.getEnvioHechos().insertarHecho(new ReconocerUsuario());
-
+				int numEntender = (int) ((100 * Math.random()) % VocabularioGestionCitas.NoEntendido.length);
+				String mensajeAenviar = VocabularioGestionCitas.NoEntendido[numEntender]
+						+ "  " + VocabularioGestionCitas.PeticionInfoPeli;
+				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ identRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
+								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:" + identRecursoComunicacionChat,
+					identAgenteOrdenante, "Error-Acceso:Interfaz:"
+							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

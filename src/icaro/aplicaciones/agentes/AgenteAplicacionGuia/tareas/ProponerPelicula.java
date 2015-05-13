@@ -10,7 +10,7 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminaci
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 
-public class MostrarPelicula extends TareaSincrona {
+public class ProponerPelicula extends TareaSincrona {
 
 	// TODO regla que acepte notificacion ComprobarDatosBusqueda y lance esta tarea
 

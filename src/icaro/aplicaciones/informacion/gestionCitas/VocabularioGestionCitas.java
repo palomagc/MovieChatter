@@ -37,6 +37,7 @@ public class VocabularioGestionCitas {
 			return spanish;
 		}
 	}
+
 	// OBJETOS ESTATICOS
 	public static Usuario usuario = null;
 	public static Busqueda busqueda = new Busqueda();
@@ -49,7 +50,8 @@ public class VocabularioGestionCitas {
 			"GeneroDocumental", "GeneroDrama", "GeneroFamiliar", "GeneroFantasia",
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
-			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "Ya_vista");
+			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos",
+			"YaVista");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -60,7 +62,7 @@ public class VocabularioGestionCitas {
 	public static final String NombreTipoNotificacionActor = "Actor";
 	public static final String NombreTipoNotificacionAnos = "Anos";
 	public static final String NombreTipoNotificacionNumero = "Numero";
-	public static final String NombreTipoNotificacionYaVista = "Ya_vista";
+	public static final String NombreTipoNotificacionYaVista = "YaVista";
 	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
 	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";
@@ -143,36 +145,25 @@ public class VocabularioGestionCitas {
 			+ ", tu recomendador de peliculas";
 	public static final String[] SaludoInicial2 = { "Hola", "Que tal", "Buenas", "Que hay" };
 
-	// DESPEDIDA
+	// FRASES DE NUESTRO SISTEMA
 	public static final String[] Despedida = { "Adios", "Hasta la proxima", "Nos vemos",
-			"Que te vaya bien" };
-
-	// PRESENTACION
-	public static final String InfoGeneralFuncionalidad = "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas";
-
-	// RECOMIENDA
-	public static final String[] Recomienda = { "podrias ver" };
-
-	// PEDIR INFO AL USUARIO
-	public static final String[] PeticionInformacionGeneral1 = { "Te puedo sugerir alguna hoy?",
-			"Quieres que te recomiende alguna?", "Necesitas ayuda para encontrar alguna?" };
-
-	// NO ENTENDER
-	public static final String[] preambuloNoEntendido = { "No he entendido lo que me has dicho.",
+			"Que te vaya bien", "Ha sido un placer", "Cuando quieras repetimos" };
+	public static final String InfoFuncionalidad = "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas";
+	public static final String[] NoEntendido = { "No he entendido lo que me has dicho.",
 			"Perdona, pero no he entendido bien.", "Lo siento, no he comprendido bien.",
 			"Perdona, no comprendo que quieres decir." };
+	public static final String[] PeticionInfoGeneral = { "Te puedo sugerir alguna hoy?",
+			"Quieres que te recomiende alguna?", "Necesitas ayuda para encontrar alguna?" };
+	public static final String PeticionInfoPeli = " PodrÃ­a recomendarte alguna pelÃ­cula?";
+	public static final String[] Recomienda = { "podrias ver", "te sugiero", "te propongo" };
 
-	public static final String ResultadoAutenticacion_DatosNoValidos = "usuarioNoValido";
-	public static final String ResultadoAutenticacion_DatosValidos = "usuarioValido";
-	public static final String NotificacionAccesoAutorizado = "Autorizacion_Acceso_Notificado_Al_Usuario";
+	// FRASES ANTERIORES
 	public static final String ErrorObtencionInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";
+	public static final String ExtraccionSemanticaNull = "SinSemantica";
 	public static final String InfoUsuarioYaExiste = "infoUsuarioYaExistente";
 	public static final String InfoUsuarioAltaGuardada = "InfoAltaUsuarioGuardada";
-	public static final String RespuestaNoEniendo1 = "Lo siento pero no entiendo nada de lo que dice";
-	public static final String RespuestaNoEniendo2 = "Lo siento pero sigo sin entender nada";
-	public static final String RespuestaNoEniendo3 = "definitivamente no me entero de lo que dice , creo que vamos a terminar la conversaciÃ³n";
-	public static final String Despedida1 = "Bueno tenemos que dejarlo ha sido un placer";
-	public static final String ExtraccionSemanticaNull = "SinSemantica";
-	public static final String peticionInfoIicialCita1 = " PodrÃ­a recomendarte alguna pelÃ­cula?";
+	public static final String NotificacionAccesoAutorizado = "Autorizacion_Acceso_Notificado_Al_Usuario";
+	public static final String ResultadoAutenticacion_DatosNoValidos = "usuarioNoValido";
+	public static final String ResultadoAutenticacion_DatosValidos = "usuarioValido";
 
 }

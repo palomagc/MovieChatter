@@ -2,7 +2,6 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
-import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
@@ -12,7 +11,7 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminaci
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 
-public class PedirValoracion extends TareaSincrona{
+public class SolicitarValoracion extends TareaSincrona{
 
 	/**
 	 *  Constructor
@@ -28,7 +27,7 @@ public class PedirValoracion extends TareaSincrona{
 		 */
 		String identDeEstaTarea=this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
+		//String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 		try {
 			// Se busca la interfaz del recurso en el repositorio de interfaces 
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(

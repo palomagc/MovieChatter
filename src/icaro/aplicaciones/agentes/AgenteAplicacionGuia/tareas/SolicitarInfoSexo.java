@@ -7,7 +7,7 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminaci
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 
-public class MensajeHayPeliculas extends TareaSincrona {
+public class SolicitarInfoSexo extends TareaSincrona {
 
 	/**
 	 * Constructor
@@ -26,16 +26,16 @@ public class MensajeHayPeliculas extends TareaSincrona {
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		String identInterlocutor = (String) params[0];
+		//String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 		try {
-			// // Se busca la interfaz del recurso en el repositorio de
-			// interfaces
+			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
-				String mensajeAenviar = "Mensaje hay peliculas";
+				// int numDespedida = (int) ((100 * Math.random()) %
+				// VocabularioGestionCitas.Despedida.length);
+				String mensajeAenviar = "Eres hombre o mujer?";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();

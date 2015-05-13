@@ -1,13 +1,5 @@
-/*
- * SolicitarDatos.java
- *
- * Creado 23 de abril de 2007, 12:52
- *
- * Telefonica I+D Copyright 2006-2007
- */
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ReconocerUsuario;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -15,40 +7,50 @@ import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminaci
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 
-/**
- * 
- * @author F Garijo
- */
-public class SolicitarInfoInicial extends TareaSincrona {
-	// private String identAgenteOrdenante ;
+public class SolicitarInfoEdad extends TareaSincrona {
+
+	/**
+	 * Constructor
+	 *
+	 * @param Description
+	 *            of the Parameter
+	 * @param Description
+	 *            of the Parameter
+	 */
 	private Objetivo contextoEjecucionTarea = null;
 
 	@Override
 	public void ejecutar(Object... params) {
+		/**
+		 * Produce una despedida
+		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		String identRecursoComunicacionChat = (String) params[0];
+		//String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 		try {
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfaz(NombresPredefinidos.ITF_USO + identRecursoComunicacionChat);
+					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				recComunicacionChat.enviarMensagePrivado(VocabularioGestionCitas.SaludoInicial1);
-
-				this.getEnvioHechos().insertarHecho(new ReconocerUsuario());
-
+				// int numDespedida = (int) ((100 * Math.random()) %
+				// VocabularioGestionCitas.Despedida.length);
+				String mensajeAenviar = "Cuantos años tienes?";
+				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ identRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
+								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:" + identRecursoComunicacionChat,
+					identAgenteOrdenante, "Error-Acceso:Interfaz:"
+							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}
+
 }

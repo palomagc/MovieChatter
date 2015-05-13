@@ -36,6 +36,7 @@ public interface ItfUsoRecursoUsuario extends ItfUsoRecursoSimple {
 			ArrayList<String> generosPreferidos,
 			ArrayList<String> actoresPreferidos,
 			ArrayList<String> actoresOdiados, 
+			ArrayList<String> peliculasOdiadas, 
 			Valoracion peliculaActual) throws Exception;
 
 	/**

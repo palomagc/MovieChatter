@@ -41,10 +41,10 @@ public class SaludarYPresentarFuncionalidad extends TareaSincrona{
                 if (recComunicacionChat!=null){
                     recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
                     int numSaludo = (int) ((100 * Math.random()) % VocabularioGestionCitas.SaludoInicial2.length);
-                    int numPeticion = (int) ((100 * Math.random()) % VocabularioGestionCitas.PeticionInformacionGeneral1.length);
+                    int numPeticion = (int) ((100 * Math.random()) % VocabularioGestionCitas.PeticionInfoGeneral.length);
                     String mensajeAenviar = VocabularioGestionCitas.SaludoInicial2[numSaludo]+ "  "+ identInterlocutor + ",  "+
-                            VocabularioGestionCitas.InfoGeneralFuncionalidad.toLowerCase() + ".  "+
-                            VocabularioGestionCitas.PeticionInformacionGeneral1[numPeticion];
+                            VocabularioGestionCitas.InfoFuncionalidad.toLowerCase() + ".  "+
+                            VocabularioGestionCitas.PeticionInfoGeneral[numPeticion];
                     recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
                 }
                 else {

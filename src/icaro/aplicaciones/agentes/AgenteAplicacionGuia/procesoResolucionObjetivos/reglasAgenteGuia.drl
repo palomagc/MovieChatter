@@ -100,7 +100,7 @@ rule "Comprobar datos busqueda"
 	notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda)
   then
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : comprobar usuario",InfoTraza.NivelTraza.debug));
-    TareaSincrona tarea = gestorTareas.crearTareaSincrona(MostrarPelicula.class);
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
     tarea.ejecutar();
 end
 rule "Dirigir agente guia"
@@ -210,7 +210,7 @@ rule "No hay extraccion semantica del texto del interlocutor"
   when
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ExtraccionSemanticaNull)
   then
-    TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoInicialPeli.class);
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoPeli.class);
     tarea.ejecutar(identInterlc);
     //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
@@ -223,7 +223,7 @@ rule "Preguntar sexo usuario"
     obj:PreguntarSexo(state==Objetivo.PENDING)
     f:Focus(foco != obj)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaSexo.class);
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoSexo.class);
     tarea.ejecutar();
     
     obj.setSolving();
@@ -259,7 +259,7 @@ rule "Preguntar edad usuario"
     obj:PreguntarEdad(state==Objetivo.PENDING)
     f:Focus(foco != obj)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(CuestionarioInicialPreguntaEdad.class);
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoEdad.class);
     tarea.ejecutar();
     
     obj.setSolving();
@@ -381,7 +381,7 @@ rule "Pedir valoracion pelicula"
     obj:PedirValoracionPelicula(state==Objetivo.PENDING)
     f:Focus()
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(PedirValoracion.class);
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarValoracion.class);
     tarea.ejecutar();
     
     obj.setSolving();
