@@ -50,6 +50,7 @@ public class ProponerPelicula extends TareaSincrona {
 							movie = m;
 					}
 					int numParams = (int) ((100 * Math.random()) % VocabularioGestionCitas.Params.length);
+					// TODO parece que cuando le dices muchhas veces que no quieres ver la peli salta null pointer exception en la linea de aquí abajo.
 					mensajeAenviar += (movie.getTitle() + ". " + VocabularioGestionCitas.Params[numParams]);
 					usuario.setPeliculaActual(new Valoracion(Integer.toString(movie.getId()), null));
 				} else {
