@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"actoresOdiados":[],"generosPreferidos":[],"actoresPreferidos":[],"sexo":"SexoMujer","nombre":"movieBot","edad":null,"valoraciones":[],"peliculasOdiadas":[]}
+=======
+{"actoresOdiados":[],"generosPreferidos":[],"actoresPreferidos":[],"sexo":"SexoMujer","nombre":"movieBot","edad":"Numero","valoraciones":[{"idPelicula":"76757","nota":"6"},{"idPelicula":"99861","nota":"8"},{"idPelicula":"168259","nota":"4"},{"idPelicula":"256591","nota":"7"},{"idPelicula":"194662","nota":"5"},{"idPelicula":"262500","nota":"8"},{"idPelicula":"171274","nota":"7"},{"idPelicula":"210860","nota":"7"},{"idPelicula":"181533","nota":"5"},{"idPelicula":"98566","nota":"5"},{"idPelicula":"76341","nota":"7"},{"idPelicula":"205596","nota":"9"},{"idPelicula":"177572","nota":"7"}],"peliculasOdiadas":["207703"]}
+>>>>>>> origin/master

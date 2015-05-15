@@ -29,7 +29,6 @@ import gate.Corpus;
 import gate.CorpusController;
 import gate.Document;
 import gate.Factory;
-import gate.FeatureMap;
 import gate.Gate;
 import gate.Node;
 import gate.util.persistence.PersistenceManager;
@@ -43,248 +42,241 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * This class ilustrates how to do simple batch processing with GATE.  It loads
- * an application from a .gapp file (created using "Save application state" in
- * the GATE GUI), and runs the contained application over one or more files.
- * The results are written out to XML files, either in GateXML format (all
- * annotation sets preserved, as in "save as XML" in the GUI), or with inline
- * XML tags taken from the default annotation set (as in "save preserving
- * format").  In this example, the output file names are simply the input file
- * names with ".out.xml" appended.
+ * This class ilustrates how to do simple batch processing with GATE. It loads an application from a
+ * .gapp file (created using "Save application state" in the GATE GUI), and runs the contained
+ * application over one or more files. The results are written out to XML files, either in GateXML
+ * format (all annotation sets preserved, as in "save as XML" in the GUI), or with inline XML tags
+ * taken from the default annotation set (as in "save preserving format"). In this example, the
+ * output file names are simply the input file names with ".out.xml" appended.
  *
- * To keep the example simple, we do not do any exception handling - any error
- * will cause the process to abort.
+ * To keep the example simple, we do not do any exception handling - any error will cause the
+ * process to abort.
  */
 public class BatchProcessApp {
 
-  /**
-   * The main entry point.  First we parse the command line options (see
-   * usage() method for details), then we take all remaining command line
-   * parameters to be file names to process.  Each file is loaded, processed
-   * using the application and the results written to the output file
-   * (inputFile.out.xml).
-   */
-    
-  public static void main(String[] args) throws Exception {
-//    parseCommandLine(args);
+	/**
+	 * The main entry point. First we parse the command line options (see usage() method for
+	 * details), then we take all remaining command line parameters to be file names to process.
+	 * Each file is loaded, processed using the application and the results written to the output
+	 * file (inputFile.out.xml).
+	 */
 
-    // initialise GATE - this must be done before calling any GATE APIs
-//    File file1 = new File("C:\\GATE_Developer_8.0");
-      File file1 = new File("lib\\gate\\gate.jar");
-    File gappFile = new File("E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1");
-    Gate.setGateHome(file1);
-    String[] paramsProcessor = new String[3];
-    paramsProcessor[0]="-g";
-    paramsProcessor[1]="E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1";
-    paramsProcessor[2]="E:\\FicheroRed\\GatePruebas\\especCitas1";
-    parseCommandLine(paramsProcessor);
-    Gate.init();
+	public static void main(String[] args) throws Exception {
+		// parseCommandLine(args);
 
-    // load the saved application
-    CorpusController application =
-      (CorpusController)PersistenceManager.loadObjectFromFile(gappFile);
+		// initialise GATE - this must be done before calling any GATE APIs
+		// File file1 = new File("C:\\GATE_Developer_8.0");
+		File file1 = new File("lib\\gate\\gate.jar");
+		File gappFile = new File("E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1");
+		Gate.setGateHome(file1);
+		String[] paramsProcessor = new String[3];
+		paramsProcessor[0] = "-g";
+		paramsProcessor[1] = "E:\\FicheroRed\\GatePruebas\\anniePruebaEjemplo1";
+		paramsProcessor[2] = "E:\\FicheroRed\\GatePruebas\\especCitas1";
+		parseCommandLine(paramsProcessor);
+		Gate.init();
 
-    // Create a Corpus to use.  We recycle the same Corpus object for each
-    // iteration.  The string parameter to newCorpus() is simply the
-    // GATE-internal name to use for the corpus.  It has no particular
-    // significance.
-//    private HashSet tiposAnotacionesRelevantes;
-     HashSet tiposAnotacionesRelevantes = new HashSet<String>();
-        tiposAnotacionesRelevantes.add("Lookup");
-        tiposAnotacionesRelevantes.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
-    Corpus corpus = Factory.newCorpus("BatchProcessApp Corpus");
-    application.setCorpus(corpus);
+		// load the saved application
+		CorpusController application = (CorpusController) PersistenceManager
+				.loadObjectFromFile(gappFile);
 
-    // process the files one by one
-//    for(int i = firstFile; i < args.length; i++) {
-      // load the document (using the specified encoding if one was given)
-//      File docFile = new File(args[i]);
-//      System.out.print("Processing document " + docFile + "...");
-//      Document doc = Factory.newDocument(docFile.toURL(), encoding);
-//      String textoPrueba = "dame una cita para el martes alas 15,30";
-        String textoPrueba = "Hola hola soy Pablo";
-      Document doc = Factory.newDocument(textoPrueba);
-      // put the document in the corpus
-      corpus.add(doc);
-      
-      // run the application
-      application.execute();
+		// Create a Corpus to use. We recycle the same Corpus object for each
+		// iteration. The string parameter to newCorpus() is simply the
+		// GATE-internal name to use for the corpus. It has no particular
+		// significance.
+		// private HashSet tiposAnotacionesRelevantes;
+		HashSet<String> tiposAnotacionesRelevantes = new HashSet<String>();
+		tiposAnotacionesRelevantes.add("Lookup");
+		tiposAnotacionesRelevantes.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
+		Corpus corpus = Factory.newCorpus("BatchProcessApp Corpus");
+		application.setCorpus(corpus);
 
-      // remove the document from the corpus again
-      corpus.clear();
+		// process the files one by one
+		// for(int i = firstFile; i < args.length; i++) {
+		// load the document (using the specified encoding if one was given)
+		// File docFile = new File(args[i]);
+		// System.out.print("Processing document " + docFile + "...");
+		// Document doc = Factory.newDocument(docFile.toURL(), encoding);
+		// String textoPrueba = "dame una cita para el martes alas 15,30";
+		String textoPrueba = "Hola hola soy Pablo";
+		Document doc = Factory.newDocument(textoPrueba);
+		// put the document in the corpus
+		corpus.add(doc);
 
-      String docXMLString = null;
-      // if we want to just write out specific annotation types, we must
-      // extract the annotations into a Set
-     
-//      if(annotTypesToWrite != null) {
-        // Create a temporary Set to hold the annotations we wish to write out
-        Set annotationsToWrite = new HashSet();
-        
-        // we only extract annotations from the default (unnamed) AnnotationSet
-        // in this example
-        AnnotationSet defaultAnnots = doc.getAnnotations();
-        String string;
-        Annotation annot;
-        FeatureMap fet;
-        Node startn,endnode;
-        HashSet<Annotation> conjAnotSalida;
-            conjAnotSalida = new HashSet<>(defaultAnnots.get(tiposAnotacionesRelevantes));
-            String anotSalida = conjAnotSalida.toString();
-            System.out.println("Resultado1 :"+docXMLString );
-            Iterator annotTypesSal = conjAnotSalida.iterator();
-            while(annotTypesSal.hasNext()) {
-                 annot = (Annotation) annotTypesSal.next();
-                 startn =annot.getStartNode();
-                 endnode =annot.getEndNode();
-                 startn.getOffset();
-                 endnode.getOffset();
-                 string=textoPrueba.substring(startn.getOffset().intValue(), endnode.getOffset().intValue());
-                 fet = annot.getFeatures();
-                
-//                string= (String) annot.getFeatures().get("string");
-            }
-            
-        Iterator annotTypesIt = tiposAnotacionesRelevantes.iterator();
-        Integer i=0;
-        while(annotTypesIt.hasNext()) {
-          // extract all the annotations of each requested type and add them to
-          // the temporary set
-          AnnotationSet annotsOfThisType =
-              defaultAnnots.get((String)annotTypesIt.next());
-          Iterator annotSetIt = annotsOfThisType.iterator();
-          if(annotsOfThisType != null) {
-            Annotation anot = (Annotation) annotSetIt.next();
-             fet = anot.getFeatures();
-            i++;
-            annotationsToWrite.addAll(annotsOfThisType);
-          }
-          
-        }
-//        ArrayList anots=  annotationsToWrite.toArray();
+		// run the application
+		application.execute();
 
-        // create the XML string using these annotations
-        docXMLString = doc.toXml(annotationsToWrite);
-        System.out.println("Resultado2 :"+docXMLString );
-//      }
-      // otherwise, just write out the whole document as GateXML
-//      else {
-//        docXMLString = doc.toXml();
-//      }
+		// remove the document from the corpus again
+		corpus.clear();
 
-      // Release the document, as it is no longer needed
-      Factory.deleteResource(doc);
+		String docXMLString = null;
+		// if we want to just write out specific annotation types, we must
+		// extract the annotations into a Set
 
-      // output the XML to <inputFile>.out.xml
-//      String outputFileName = docFile.getName() + ".out.xml";
-//      File outputFile = new File(docFile.getParentFile(), outputFileName);
-//
-//      // Write output files using the same encoding as the original
-//      FileOutputStream fos = new FileOutputStream(outputFile);
-//      BufferedOutputStream bos = new BufferedOutputStream(fos);
-//      OutputStreamWriter out;
-//      if(encoding == null) {
-//        out = new OutputStreamWriter(bos);
-//      }
-//      else {
-//        out = new OutputStreamWriter(bos, encoding);
-//      }
-//
-//      out.write(docXMLString);
-//      
-//      out.close();
-      System.out.println("done");
-//    } // for each file
+		// if(annotTypesToWrite != null) {
+		// Create a temporary Set to hold the annotations we wish to write out
+		Set<Annotation> annotationsToWrite = new HashSet<Annotation>();
 
-    System.out.println("All done");
-  } // void main(String[] args)
+		// we only extract annotations from the default (unnamed) AnnotationSet
+		// in this example
+		AnnotationSet defaultAnnots = doc.getAnnotations();
+		// String string;
+		Annotation annot;
+		// FeatureMap fet;
+		Node startn, endnode;
+		HashSet<Annotation> conjAnotSalida;
+		conjAnotSalida = new HashSet<>(defaultAnnots.get(tiposAnotacionesRelevantes));
+		// String anotSalida = conjAnotSalida.toString();
+		System.out.println("Resultado1 :" + docXMLString);
+		Iterator<Annotation> annotTypesSal = conjAnotSalida.iterator();
+		while (annotTypesSal.hasNext()) {
+			annot = (Annotation) annotTypesSal.next();
+			startn = annot.getStartNode();
+			endnode = annot.getEndNode();
+			startn.getOffset();
+			endnode.getOffset();
+			// string = textoPrueba.substring(startn.getOffset().intValue(), endnode.getOffset()
+			// .intValue());
+			// fet = annot.getFeatures();
 
+			// string= (String) annot.getFeatures().get("string");
+		}
 
-  /**
-   * Parse command line options.
-   */
-  private static void parseCommandLine(String[] args) throws Exception {
-    int i;
-    // iterate over all options (arguments starting with '-')
-    for(i = 0; i < args.length && args[i].charAt(0) == '-'; i++) {
-      switch(args[i].charAt(1)) {
-        // -a type = write out annotations of type a.
-        case 'a':
-          if(annotTypesToWrite == null) annotTypesToWrite = new ArrayList();
-          annotTypesToWrite.add(args[++i]);
-          break;
+		Iterator<String> annotTypesIt = tiposAnotacionesRelevantes.iterator();
+		Integer i = 0;
+		while (annotTypesIt.hasNext()) {
+			// extract all the annotations of each requested type and add them to
+			// the temporary set
+			AnnotationSet annotsOfThisType = defaultAnnots.get((String) annotTypesIt.next());
+			// Iterator annotSetIt = annotsOfThisType.iterator();
+			if (annotsOfThisType != null) {
+				// Annotation anot = (Annotation) annotSetIt.next();
+				// fet = anot.getFeatures();
+				i++;
+				annotationsToWrite.addAll(annotsOfThisType);
+			}
 
-        // -g gappFile = path to the saved application
-        case 'g':
-          gappFile = new File(args[++i]);
-          break;
+		}
+		// ArrayList anots= annotationsToWrite.toArray();
 
-        // -e encoding = character encoding for documents
-        case 'e':
-          encoding = args[++i];
-          break;
+		// create the XML string using these annotations
+		docXMLString = doc.toXml(annotationsToWrite);
+		System.out.println("Resultado2 :" + docXMLString);
+		// }
+		// otherwise, just write out the whole document as GateXML
+		// else {
+		// docXMLString = doc.toXml();
+		// }
 
-        default:
-          System.err.println("Unrecognised option " + args[i]);
-          usage();
-      }
-    }
+		// Release the document, as it is no longer needed
+		Factory.deleteResource(doc);
 
-    // set index of the first non-option argument, which we take as the first
-    // file to process
-    firstFile = i;
+		// output the XML to <inputFile>.out.xml
+		// String outputFileName = docFile.getName() + ".out.xml";
+		// File outputFile = new File(docFile.getParentFile(), outputFileName);
+		//
+		// // Write output files using the same encoding as the original
+		// FileOutputStream fos = new FileOutputStream(outputFile);
+		// BufferedOutputStream bos = new BufferedOutputStream(fos);
+		// OutputStreamWriter out;
+		// if(encoding == null) {
+		// out = new OutputStreamWriter(bos);
+		// }
+		// else {
+		// out = new OutputStreamWriter(bos, encoding);
+		// }
+		//
+		// out.write(docXMLString);
+		//
+		// out.close();
+		System.out.println("done");
+		// } // for each file
 
-    // sanity check other arguments
-    if(gappFile == null) {
-      System.err.println("No .gapp file specified");
-      usage();
-    }
-  }
+		System.out.println("All done");
+	} // void main(String[] args)
 
-  /**
-   * Print a usage message and exit.
-   */
-  private static final void usage() {
-    System.err.println(
-   "Usage:\n" +
-   "   java sheffield.examples.BatchProcessApp -g <gappFile> [-e encoding]\n" +
-   "            [-a annotType] [-a annotType] file1 file2 ... fileN\n" +
-   "\n" +
-   "-g gappFile : (required) the path to the saved application state we are\n" +
-   "              to run over the given documents.  This application must be\n" +
-   "              a \"corpus pipeline\" or a \"conditional corpus pipeline\".\n" +
-   "\n" + 
-   "-e encoding : (optional) the character encoding of the source documents.\n" +
-   "              If not specified, the platform default encoding (currently\n" +
-   "              \"" + System.getProperty("file.encoding") + "\") is assumed.\n" +
-   "\n" + 
-   "-a type     : (optional) write out just the annotations of this type as\n" +
-   "              inline XML tags.  Multiple -a options are allowed, and\n" +
-   "              annotations of all the specified types will be output.\n" +
-   "              This is the equivalent of \"save preserving format\" in the\n" +
-   "              GATE GUI.  If no -a option is given the whole of each\n" +
-   "              processed document will be output as GateXML (the equivalent\n" +
-   "              of \"save as XML\")."
-   );
+	/**
+	 * Parse command line options.
+	 */
+	private static void parseCommandLine(String[] args) throws Exception {
+		int i;
+		// iterate over all options (arguments starting with '-')
+		for (i = 0; i < args.length && args[i].charAt(0) == '-'; i++) {
+			switch (args[i].charAt(1)) {
+			// -a type = write out annotations of type a.
+			case 'a':
+				if (annotTypesToWrite == null)
+					annotTypesToWrite = new ArrayList<String>();
+				annotTypesToWrite.add(args[++i]);
+				break;
 
-    System.exit(1);
-  }
+			// -g gappFile = path to the saved application
+			case 'g':
+				gappFile = new File(args[++i]);
+				break;
 
-  /** Index of the first non-option argument on the command line. */
-  private static int firstFile = 0;
+			// -e encoding = character encoding for documents
+			case 'e':
+				// encoding = args[++i];
+				break;
 
-  /** Path to the saved application file. */
-  private static File gappFile = null;
+			default:
+				System.err.println("Unrecognised option " + args[i]);
+				usage();
+			}
+		}
 
-  /** 
-   * List of annotation types to write out.  If null, write everything as
-   * GateXML.
-   */
-  private static List annotTypesToWrite = null;
+		// set index of the first non-option argument, which we take as the first
+		// file to process
+		// firstFile = i;
 
-  /**
-   * The character encoding to use when loading the docments.  If null, the
-   * platform default encoding is used.
-   */
-  private static String encoding = null;
+		// sanity check other arguments
+		if (gappFile == null) {
+			System.err.println("No .gapp file specified");
+			usage();
+		}
+	}
+
+	/**
+	 * Print a usage message and exit.
+	 */
+	private static final void usage() {
+		System.err.println("Usage:\n"
+				+ "   java sheffield.examples.BatchProcessApp -g <gappFile> [-e encoding]\n"
+				+ "            [-a annotType] [-a annotType] file1 file2 ... fileN\n" + "\n"
+				+ "-g gappFile : (required) the path to the saved application state we are\n"
+				+ "              to run over the given documents.  This application must be\n"
+				+ "              a \"corpus pipeline\" or a \"conditional corpus pipeline\".\n"
+				+ "\n"
+				+ "-e encoding : (optional) the character encoding of the source documents.\n"
+				+ "              If not specified, the platform default encoding (currently\n"
+				+ "              \"" + System.getProperty("file.encoding") + "\") is assumed.\n"
+				+ "\n"
+				+ "-a type     : (optional) write out just the annotations of this type as\n"
+				+ "              inline XML tags.  Multiple -a options are allowed, and\n"
+				+ "              annotations of all the specified types will be output.\n"
+				+ "              This is the equivalent of \"save preserving format\" in the\n"
+				+ "              GATE GUI.  If no -a option is given the whole of each\n"
+				+ "              processed document will be output as GateXML (the equivalent\n"
+				+ "              of \"save as XML\").");
+
+		System.exit(1);
+	}
+
+	/** Index of the first non-option argument on the command line. */
+	// private static int firstFile = 0;
+
+	/** Path to the saved application file. */
+	private static File gappFile = null;
+
+	/**
+	 * List of annotation types to write out. If null, write everything as GateXML.
+	 */
+	private static List<String> annotTypesToWrite = null;
+
+	/**
+	 * The character encoding to use when loading the docments. If null, the platform default
+	 * encoding is used.
+	 */
+	// private static String encoding = null;
 }

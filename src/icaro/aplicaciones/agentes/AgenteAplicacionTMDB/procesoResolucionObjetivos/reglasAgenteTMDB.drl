@@ -21,20 +21,20 @@ rule "Creacion de los objectivos iniciales"
 end
 // =======================================================================
 //Reglas de focalizacion.
-rule "Regla de focalizacion en objetivo RecomendarPelicula"
+rule "Regla de focalizacion en objetivo ListarPeliculas"
   when
     f:Focus(foco == null )
-    obj:RecomendarPelicula()
+    obj:ListarPeliculas()
   then
     f.setFoco(obj);
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
     update(f);
 end
 //=======================================================================
-///Reglas de Consecucion del Objetivo RecomendarPelicula
-rule "Inicio del proceso de consecucion del objetivo RecomendarPelicula"
+///Reglas de Consecucion del Objetivo ListarPeliculas
+rule "Inicio del proceso de consecucion del objetivo ListarPeliculas"
   when
-    obj:RecomendarPelicula(state==Objetivo.PENDING)
+    obj:ListarPeliculas(state==Objetivo.PENDING)
     Focus(foco == obj)
   then
     obj.setSolving();
@@ -42,7 +42,7 @@ rule "Inicio del proceso de consecucion del objetivo RecomendarPelicula"
 end
 rule "Listar los generos de peliculas"
   when
-    obj:RecomendarPelicula(state==Objetivo.SOLVING)
+    obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
    	notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneros)
   then
@@ -53,7 +53,7 @@ rule "Listar los generos de peliculas"
 end
 rule "Recomendar por genero"
   when
-    obj:RecomendarPelicula(state==Objetivo.SOLVING)
+    obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion,
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion ||
@@ -84,7 +84,7 @@ rule "Recomendar por genero"
 end
 rule "Recomendar por ano"
   when
-    obj:RecomendarPelicula(state==Objetivo.SOLVING)
+    obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAnos)
@@ -96,7 +96,7 @@ rule "Recomendar por ano"
 end
 rule "Recomendar por actor"
   when
-    obj:RecomendarPelicula(state==Objetivo.SOLVING)
+    obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionActor)
@@ -108,7 +108,7 @@ rule "Recomendar por actor"
 end
 rule "Recomendar por varios campos"
   when
-    obj:RecomendarPelicula(state==Objetivo.SOLVING)
+    obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
         tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionBusquedaVariosCampos)

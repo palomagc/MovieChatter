@@ -10,17 +10,14 @@ package icaro.aplicaciones.agentes.AgenteAplicacionAccesoCognitivo.objetivos;
 
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 
-
-
 /**
  *
  * @author Carlos Rodr&iacute;guez Fern&aacute;ndez
  */
 public class AutorizarAccesoUsuarios extends Objetivo {
-    
-    /** Crea una nueva instancia de DarAcceso */
-    public AutorizarAccesoUsuarios() {
-        super.setgoalId("AutorizarAccesoUsuarios");
-    }
-    
+
+	/** Crea una nueva instancia de DarAcceso */
+	public AutorizarAccesoUsuarios() {
+		super.setgoalId("AutorizarAccesoUsuarios");
+	}
 }

@@ -1,8 +1,12 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
+=======
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerDatosIniciales;
+>>>>>>> origin/master
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -23,19 +27,21 @@ public class GuardarEdad extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		try {
-			
+
 			// TODO revisar esto pero parece que ya funciona autom√°gicamente
-			
+
 			String edad = (String) params[0];
 			VocabularioGestionCitas.usuario.setEdad(edad);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
-			itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
+			itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(),
+					VocabularioGestionCitas.usuario);
 
-			Objetivo objetivo = new PreguntarDatosInicialesUsuario();
+			Objetivo objetivo = new ObtenerDatosIniciales();
 			objetivo.setSolved();
 			this.getEnvioHechos().insertarHecho(objetivo);
+<<<<<<< HEAD
 			
 			
 			// Podriamos deducir informaciÛn seg˙n la edad, basandonos en estereotipos.
@@ -97,6 +103,9 @@ public class GuardarEdad extends TareaSincrona {
 			// TODO hay que guardar lo que le podrÌa gustar por su edad.
 			
 			
+=======
+
+>>>>>>> origin/master
 		} catch (Exception e) {
 			e.printStackTrace();
 			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
@@ -104,5 +113,4 @@ public class GuardarEdad extends TareaSincrona {
 					InfoTraza.NivelTraza.error));
 		}
 	}
-
 }

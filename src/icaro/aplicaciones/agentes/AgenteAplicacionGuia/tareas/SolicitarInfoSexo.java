@@ -26,7 +26,7 @@ public class SolicitarInfoSexo extends TareaSincrona {
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		//String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
+		// String identInterlocutor = ConfigInfoComunicacionChat.identInterlocutorPruebas;
 		try {
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
@@ -52,5 +52,4 @@ public class SolicitarInfoSexo extends TareaSincrona {
 			e.printStackTrace();
 		}
 	}
-
 }

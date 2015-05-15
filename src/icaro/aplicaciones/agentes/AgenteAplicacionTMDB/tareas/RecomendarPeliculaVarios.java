@@ -8,7 +8,6 @@ import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
-import icaro.aplicaciones.recursos.comunicacionTMDB.orders.MovieSort;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
@@ -33,12 +32,12 @@ public class RecomendarPeliculaVarios extends TareaSincrona {
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		//String notifica = (String) params[0];
-		//String param = (String) params[1];
+		// String notifica = (String) params[0];
+		// String param = (String) params[1];
 		String year = null;
 		List<Integer> genres = new ArrayList<>();
 		List<Integer> people = new ArrayList<>();
-		Busqueda busquedaAux = VocabularioGestionCitas.busqueda;
+		Busqueda busqueda = VocabularioGestionCitas.busqueda;
 
 		try {
 			ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
@@ -46,32 +45,31 @@ public class RecomendarPeliculaVarios extends TareaSincrona {
 
 			List<Movie> movies = new ArrayList<Movie>();
 			if (itfUsoComunicacionTMDB != null) {
-				if (busquedaAux.getYear() != null) {
-					year = busquedaAux.getYear();
-					//Busqueda.setYear(param);
-					//movies = itfUsoComunicacionTMDB.getMoviesByYear(param,
-					//MovieSort.PopularityDesc, "es", 1);
+				if (busqueda.getYear() != null) {
+					year = busqueda.getYear();
 				}
-				if (busquedaAux.getPeople() != null && busquedaAux.getPeople().size() > 0) {
-					people = busquedaAux.getPeople();
-					//movies = itfUsoComunicacionTMDB.getMoviesByPerson(personId,
-					//MovieSort.PopularityDesc, "es", 1);
+				if (busqueda.getPeople() != null && busqueda.getPeople().size() > 0) {
+					people = busqueda.getPeople();
 				}
-				if (busquedaAux.getGenres() != null && busquedaAux.getGenres().size() > 0) {
-					genres = busquedaAux.getGenres();
-					//movies = itfUsoComunicacionTMDB.getMoviesByGenre(genre.getId(),
-					//MovieSort.PopularityDesc, "es", 1);
+				if (busqueda.getGenres() != null && busqueda.getGenres().size() > 0) {
+					genres = busqueda.getGenres();
 				}
-				/* Date after, Date before, String sort, Float minAverage,
-					Integer minCount, List<Integer> genres, List<Integer> people, String year,
-					String language, int page*/
-				movies = itfUsoComunicacionTMDB.discoverMovies(null, null, MovieSort.PopularityDesc,
-						null, null, genres, people, year, "es", 1);
+				/*
+				 * Date after, Date before, String sort, Float minAverage, Integer minCount,
+				 * List<Integer> genres, List<Integer> people, String year, String language, int
+				 * page
+				 */
+				movies = itfUsoComunicacionTMDB.discoverMovies(null, null, busqueda.getSort(),
+						null, null, genres, people, year, busqueda.getLanguage(),
+						busqueda.getPage());
 				if (movies != null) {
-					busquedaAux.setResult(movies);
-					Notificacion notif = new Notificacion();
-			 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
-			 		getComunicator().enviarInfoAotroAgente(notif,
+					busqueda.setResult(movies);
+					// this.getEnvioHechos().insertarHecho(new ObtenerPelicula());
+					// TODO poner notificacion porque es para otro agente
+					Notificacion infoAenviar = new Notificacion();
+					infoAenviar
+							.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
+					getComunicator().enviarInfoAotroAgente(infoAenviar,
 							VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				}
 			}
@@ -83,5 +81,4 @@ public class RecomendarPeliculaVarios extends TareaSincrona {
 			e.printStackTrace();
 		}
 	}
-
 }

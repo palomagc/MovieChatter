@@ -6,12 +6,13 @@ import icaro.aplicaciones.recursos.comunicacionTMDB.integration.factories.imp.DA
 public abstract class DAOGenresFactory {
 
 	private static DAOGenresFactory instance;
-	public static DAOGenresFactory getInstance(){
-		if(instance == null)
+
+	public static DAOGenresFactory getInstance() {
+		if (instance == null)
 			instance = new DAOGenresFactoryImp();
 		return instance;
 	}
-	
+
 	public abstract DAOGenres getDaoGenres();
-	
+
 }

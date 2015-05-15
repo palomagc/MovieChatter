@@ -10,17 +10,14 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos;
 
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 
-
-
 /**
  *
- * @author 
+ * @author
  */
 public class ObtenerValoracion extends Objetivo {
-    
-    /** Crea una nueva instancia de DarAcceso */
-    public ObtenerValoracion() {
-        super.setgoalId("ObtenerValoracion");
-    }
-    
+
+	/** Crea una nueva instancia de DarAcceso */
+	public ObtenerValoracion() {
+		super.setgoalId("ObtenerValoracion");
+	}
 }

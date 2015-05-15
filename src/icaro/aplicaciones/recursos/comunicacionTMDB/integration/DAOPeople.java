@@ -11,6 +11,6 @@ public interface DAOPeople {
 	List<Person> searchPeople(String consulta, int page);
 
 	Person getPerson(int PersonId);
-	
+
 	Person getLatestPerson();
 }

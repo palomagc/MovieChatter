@@ -1,7 +1,5 @@
 package icaro.aplicaciones.recursos.comunicacionTMDB.model;
 
-import java.util.List;
-
 /*
  * Campos de Collection: id, name, overview, poster_path, backdrop_path,
  * parts: [(title, id, release_date, poster_path, backdrop_path),..]
@@ -12,15 +10,16 @@ import java.util.List;
 public class Collection {
 	private int id;
 	private String name;
-	private String overview;
-	private List<Movie> parts;
-	
+
+	// private String overview;
+	// private List<Movie> parts;
+
 	public Collection(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	public Collection() {
 		super();
 		this.id = -1;

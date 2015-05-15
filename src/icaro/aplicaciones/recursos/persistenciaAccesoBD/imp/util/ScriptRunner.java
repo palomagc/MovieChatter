@@ -53,8 +53,7 @@ public class ScriptRunner {
 	/**
 	 * Default constructor
 	 */
-	public ScriptRunner(Connection connection, boolean autoCommit,
-			boolean stopOnError) {
+	public ScriptRunner(Connection connection, boolean autoCommit, boolean stopOnError) {
 		this.connection = connection;
 		this.autoCommit = autoCommit;
 		this.stopOnError = stopOnError;
@@ -112,8 +111,7 @@ public class ScriptRunner {
 	}
 
 	/**
-	 * Runs an SQL script (read in using the Reader parameter) using the
-	 * connection passed in
+	 * Runs an SQL script (read in using the Reader parameter) using the connection passed in
 	 *
 	 * @param conn
 	 *            - the connection to use for the script
@@ -124,8 +122,7 @@ public class ScriptRunner {
 	 * @throws IOException
 	 *             if there is an error reading from the Reader
 	 */
-	private void runScript(Connection conn, Reader reader) throws IOException,
-			SQLException {
+	private void runScript(Connection conn, Reader reader) throws IOException, SQLException {
 		StringBuffer command = null;
 		try {
 			LineNumberReader lineReader = new LineNumberReader(reader);
@@ -137,18 +134,13 @@ public class ScriptRunner {
 				String trimmedLine = line.trim();
 				if (trimmedLine.startsWith("--")) {
 					println(trimmedLine);
-				} else if (trimmedLine.length() < 1
-						|| trimmedLine.startsWith("//")) {
+				} else if (trimmedLine.length() < 1 || trimmedLine.startsWith("//")) {
 					// Do nothing
-				} else if (trimmedLine.length() < 1
-						|| trimmedLine.startsWith("--")) {
+				} else if (trimmedLine.length() < 1 || trimmedLine.startsWith("--")) {
 					// Do nothing
-				} else if (!fullLineDelimiter
-						&& trimmedLine.endsWith(getDelimiter())
-						|| fullLineDelimiter
-						&& trimmedLine.equals(getDelimiter())) {
-					command.append(line.substring(0, line
-							.lastIndexOf(getDelimiter())));
+				} else if (!fullLineDelimiter && trimmedLine.endsWith(getDelimiter())
+						|| fullLineDelimiter && trimmedLine.equals(getDelimiter())) {
+					command.append(line.substring(0, line.lastIndexOf(getDelimiter())));
 					command.append(" ");
 					Statement statement = conn.createStatement();
 

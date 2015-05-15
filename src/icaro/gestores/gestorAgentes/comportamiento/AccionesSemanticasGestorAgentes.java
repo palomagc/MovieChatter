@@ -16,22 +16,18 @@ import icaro.infraestructura.entidadesBasicas.interfaces.InterfazGestion;
 import icaro.infraestructura.entidadesBasicas.interfaces.InterfazUsoAgente;
 import icaro.infraestructura.patronAgenteCognitivo.factoriaEInterfacesPatCogn.FactoriaAgenteCognitivo;
 import icaro.infraestructura.patronAgenteReactivo.control.acciones.AccionesSemanticasAgenteReactivo;
-import icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.FactoriaAgenteReactivo;
 import icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.ItfGestionAgenteReactivo;
 import icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.ItfUsoAgenteReactivo;
 import icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.imp.HebraMonitorizacion;
 import icaro.infraestructura.recursosOrganizacion.configuracion.ItfUsoConfiguracion;
-import icaro.infraestructura.recursosOrganizacion.recursoTrazas.ItfUsoRecursoTrazas;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
-import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza.NivelTraza;
 import icaro.infraestructura.recursosOrganizacion.repositorioInterfaces.imp.ClaseGeneradoraRepositorioInterfaces;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -83,8 +79,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 		 * ItfUsoConfiguracion config =
 		 * (ItfUsoConfiguracion)RepositorioInterfaces.instance().obtenerInterfaz
 		 * (NombresPredefinidos.ITF_USO+NombresPredefinidos.CONFIGURACION);
-		 * tiempoParaNuevaMonitorizacion =
-		 * config.getEntornoEjecucionGestor(NombresPredefinidos
+		 * tiempoParaNuevaMonitorizacion = config.getEntornoEjecucionGestor(NombresPredefinidos
 		 * .NOMBRE_GESTOR_AGENTES). getIntervaloMonitorizacion().intValue();
 		 */
 
@@ -124,8 +119,8 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * Crea los agentes que se especifiquen en la configuracion o los localiza
-	 * si se encuentran remotos
+	 * Crea los agentes que se especifiquen en la configuracion o los localiza si se encuentran
+	 * remotos
 	 * 
 	 */
 	public void crearAgentes() {
@@ -164,8 +159,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 			} else if (indiceAgteACrear == listaDescripcionesAgtesACrear.size()) {
 				// Se han creado todos los agentes
 				this.informaraMiAutomata("agentes_creados", sinParametros);
-			} else
-			if (crearAgente(indiceAgteACrear)) {
+			} else if (crearAgente(indiceAgteACrear)) {
 				indiceAgteACrear++;
 				this.informaraMiAutomata("agente_creado", sinParametros);
 			}
@@ -261,8 +255,8 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * Localiza un agente cognitivo que está creado remotamente vía RMI y lo
-	 * registra en el repositorio de interfaces.
+	 * Localiza un agente cognitivo que está creado remotamente vía RMI y lo registra en el
+	 * repositorio de interfaces.
 	 * 
 	 * @param agente
 	 */
@@ -270,23 +264,19 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	// throws Exception
 	// {
 	/*
-	 * try { // intento recuperar los objetos que se han registrado en RMI para
-	 * colocarlos en el repositorio InterfazGestion gestionAgCognitivo =
-	 * (InterfazGestion
-	 * )this.obtenerItfRemoto(agente.getDireccionAccesoRMIGestion());
-	 * ItfPercepcionAgenteCognitivo usoAgCognitivo =
-	 * (ItfPercepcionAgenteCognitivo
+	 * try { // intento recuperar los objetos que se han registrado en RMI para colocarlos en el
+	 * repositorio InterfazGestion gestionAgCognitivo = (InterfazGestion
+	 * )this.obtenerItfRemoto(agente.getDireccionAccesoRMIGestion()); ItfPercepcionAgenteCognitivo
+	 * usoAgCognitivo = (ItfPercepcionAgenteCognitivo
 	 * )this.obtenerItfRemoto(agente.getDireccionAccesoRMIUso());
 	 * 
-	 * if(DEBUG) System.out.println("GestorAgentes: Registrando agente
-	 * "+agente.getNombre()+" en el repositorio."); // una vez recuperados, los
-	 * almaceno en el repositorio
+	 * if(DEBUG) System.out.println("GestorAgentes: Registrando agente "+agente.getNombre()+" en el
+	 * repositorio."); // una vez recuperados, los almaceno en el repositorio
 	 * this.itfUsoRepositorio.registrarInterfaz(agente
-	 * .getNombre()+this.SUFIJO_GESTION,gestionAgCognitivo);
-	 * this.itfUsoRepositorio
-	 * .registrarInterfaz(agente.getNombre()+this.SUFIJO_USO,usoAgCognitivo); }
-	 * catch (Exception ex) { System.err.println("GestorAgentes: Fue imposible
-	 * localizar el agente "+agente.getNombre()); throw ex; }
+	 * .getNombre()+this.SUFIJO_GESTION,gestionAgCognitivo); this.itfUsoRepositorio
+	 * .registrarInterfaz(agente.getNombre()+this.SUFIJO_USO,usoAgCognitivo); } catch (Exception ex)
+	 * { System.err.println("GestorAgentes: Fue imposible localizar el agente "+agente.getNombre());
+	 * throw ex; }
 	 */
 	// }
 	/**
@@ -396,8 +386,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 			// }
 
 			/*
-			 * logger.debug("GestorAgentes: Agente reactivo " + agente + "
-			 * creado.");
+			 * logger.debug("GestorAgentes: Agente reactivo " + agente + " creado.");
 			 */
 
 			trazas.aceptaNuevaTraza(new InfoTraza("GestorAgentes", "Agente reactivo "
@@ -420,42 +409,31 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 		}
 
 		/*
-		 * try { if(DEBUG) System.out.println("GestorAgentes: Construyendo
-		 * agente cognitivo "+agente.getNombre()+"."); // obtengo la clase que
-		 * implementa este agente cognitivo Class claseGeneradoraAgente=
-		 * Class.forName(agente.getClaseGeneradora()); // recupero el
-		 * constructor adecuado, el que tiene la signatura con 2 strings Class[]
-		 * signatura = new
-		 * Class[]{Class.forName("java.lang.String"),Class.forName
-		 * ("java.lang.String"
-		 * ),Class.forName("java.lang.String"),Class.forName("java.lang.String"
-		 * )}; Constructor constructorGestorAgCognitivoLocal =
-		 * claseGeneradoraAgente.getConstructor(signatura); // defino los
-		 * par�metros para el constructor String dirRMIGes =
+		 * try { if(DEBUG) System.out.println("GestorAgentes: Construyendo agente cognitivo
+		 * "+agente.getNombre()+"."); // obtengo la clase que implementa este agente cognitivo Class
+		 * claseGeneradoraAgente= Class.forName(agente.getClaseGeneradora()); // recupero el
+		 * constructor adecuado, el que tiene la signatura con 2 strings Class[] signatura = new
+		 * Class[]{Class.forName("java.lang.String"),Class.forName ("java.lang.String"
+		 * ),Class.forName("java.lang.String"),Class.forName("java.lang.String" )}; Constructor
+		 * constructorGestorAgCognitivoLocal = claseGeneradoraAgente.getConstructor(signatura); //
+		 * defino los par�metros para el constructor String dirRMIGes =
 		 * agente.getDireccionAccesoRMIGestion(); String dirRMIUso =
-		 * agente.getDireccionAccesoRMIUso(); String ficheroReglas =
-		 * agente.getRutaFicheroReglas(); String nombreAgente =
-		 * agente.getNombre(); // creamos el agente cognitivo Object
-		 * gestionAgenteCognitivo =
-		 * constructorGestorAgCognitivoLocal.newInstance(new Object[]
+		 * agente.getDireccionAccesoRMIUso(); String ficheroReglas = agente.getRutaFicheroReglas();
+		 * String nombreAgente = agente.getNombre(); // creamos el agente cognitivo Object
+		 * gestionAgenteCognitivo = constructorGestorAgCognitivoLocal.newInstance(new Object[]
 		 * {dirRMIGes, dirRMIUso, ficheroReglas, nombreAgente});
 		 * 
-		 * if(DEBUG) System.out.println("GestorAgentes: Terminada construcci�n
-		 * del agente cognitivo "+agente.getNombre()+"."); // obtenemos itf
-		 * gestion remoto InterfazGestion itfGes =
-		 * (InterfazGestion)this.obtenerItfRemoto(dirRMIGes); // obtenemos itf
-		 * gestion remoto ItfPercepcionAgenteCognitivo itfUso =
-		 * (ItfPercepcionAgenteCognitivo)this.obtenerItfRemoto(dirRMIUso); //
-		 * registramos ambos objetos en el repositorio if(DEBUG)
-		 * System.out.println("GestorAgentes: Registrando el agente
-		 * "+agente.getNombre()+" en el repositorio de interfaces.");
-		 * this.itfUsoRepositorio
-		 * .registrarInterfaz(nombreAgente+SUFIJO_GESTION,itfGes);
-		 * this.itfUsoRepositorio
-		 * .registrarInterfaz(nombreAgente+SUFIJO_USO,itfUso); } catch
-		 * (Exception ex){ System.err.println("GestorAgentes: No se pudo
-		 * terminar la creaci�n o el registro del agente cognitivo
-		 * "+agente.getNombre()+"."); throw ex; }
+		 * if(DEBUG) System.out.println("GestorAgentes: Terminada construcci�n del agente
+		 * cognitivo "+agente.getNombre()+"."); // obtenemos itf gestion remoto InterfazGestion
+		 * itfGes = (InterfazGestion)this.obtenerItfRemoto(dirRMIGes); // obtenemos itf gestion
+		 * remoto ItfPercepcionAgenteCognitivo itfUso =
+		 * (ItfPercepcionAgenteCognitivo)this.obtenerItfRemoto(dirRMIUso); // registramos ambos
+		 * objetos en el repositorio if(DEBUG) System.out.println("GestorAgentes: Registrando el
+		 * agente "+agente.getNombre()+" en el repositorio de interfaces."); this.itfUsoRepositorio
+		 * .registrarInterfaz(nombreAgente+SUFIJO_GESTION,itfGes); this.itfUsoRepositorio
+		 * .registrarInterfaz(nombreAgente+SUFIJO_USO,itfUso); } catch (Exception ex){
+		 * System.err.println("GestorAgentes: No se pudo terminar la creaci�n o el registro del
+		 * agente cognitivo "+agente.getNombre()+"."); throw ex; }
 		 */
 	}
 
@@ -508,8 +486,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 			}
 
 			/*
-			 * logger.debug("GestorAgentes: Agente reactivo " + agente + "
-			 * creado.");
+			 * logger.debug("GestorAgentes: Agente reactivo " + agente + " creado.");
 			 */
 			trazas.aceptaNuevaTraza(new InfoTraza("GestorAgentes", "Agente Cognitivo "
 					+ nombreAgente + " creado.", InfoTraza.NivelTraza.debug));
@@ -537,7 +514,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 		// Obtener el RMI regitry del nodo y la interfaz del Gestor de nodo
 		String identNodoAgente = descAgenteAcrear.getNodo().getNombreUso();
 		String identAgenteAcrear = descAgenteAcrear.getId();
-		if (!misInterfacesEstanEnElRegistroRMILocal) { 
+		if (!misInterfacesEstanEnElRegistroRMILocal) {
 			// Las añado -por ahora solo la interafz de uso
 			if (!AdaptadorRegRMI.registroRMILocalCreado)
 				AdaptadorRegRMI.inicializar();
@@ -674,8 +651,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * intenta crear de nuevo los agentes que especifique la config y hayan dado
-	 * problemas.
+	 * intenta crear de nuevo los agentes que especifique la config y hayan dado problemas.
 	 */
 	public void recuperarErrorCreacionAgentes() {
 		// por defecto no se implementan pol�ticas de recuperacion
@@ -710,7 +686,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 		boolean esAgenteRemoto = false;
 
 		// recorremos todos los agentes que se han creado
-		Enumeration enumAgentes = this.nombresAgentesGestionados.elements();
+		Enumeration<String> enumAgentes = this.nombresAgentesGestionados.elements();
 		while (enumAgentes.hasMoreElements()) {
 			try {
 				String nombre = (String) enumAgentes.nextElement();
@@ -838,13 +814,12 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	 * @return
 	 */
 	/*
-	 * private boolean esNecesarioArrancar(String nombreAgente) { Enumeration
-	 * enume = configEspecifica.getListaAgentes().enumerateAgente(); while
-	 * (enume.hasMoreElements()) { Agente item = (Agente)enume.nextElement(); if
-	 * (nombreAgente.equals(item.getNombre())) return
-	 * item.getHayQueArrancarlo(); } logger.error("GestorAgentes: No se
-	 * encontr� ning�n agente con nombre "+nombreAgente+" dentro de la lista
-	 * de objetos gestionados."); throw new NullPointerException(); }
+	 * private boolean esNecesarioArrancar(String nombreAgente) { Enumeration enume =
+	 * configEspecifica.getListaAgentes().enumerateAgente(); while (enume.hasMoreElements()) {
+	 * Agente item = (Agente)enume.nextElement(); if (nombreAgente.equals(item.getNombre())) return
+	 * item.getHayQueArrancarlo(); } logger.error("GestorAgentes: No se encontr� ning�n agente
+	 * con nombre "+nombreAgente+" dentro de la lista de objetos gestionados."); throw new
+	 * NullPointerException(); }
 	 */
 	/**
 	 * Decide qu� hacer en caso de fallos en los agentes.
@@ -872,8 +847,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * intenta arrancar los agentes que especifique la config y hayan dado
-	 * problemas.
+	 * intenta arrancar los agentes que especifique la config y hayan dado problemas.
 	 */
 	public void recuperarErrorArranqueAgentes() {
 		// por defecto no se implementan pol�ticas de recuperaci�n
@@ -895,8 +869,8 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * Elabora un informe del estado en el que se encuentran los agentes y lo
-	 * env�a al sistema de trazas.
+	 * Elabora un informe del estado en el que se encuentran los agentes y lo env�a al sistema de
+	 * trazas.
 	 */
 	public void generarInformeErrorIrrecuperable() {
 		// Producimos traza de un error
@@ -937,18 +911,18 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * Crea y arranca un agente. Es necesario pasar las características del
-	 * agente a crear por parámetro.
+	 * Crea y arranca un agente. Es necesario pasar las características del agente a crear por
+	 * parámetro.
 	 */
 	public boolean crearAgente(Integer indice) throws Exception {
-		Iterator<DescInstancia> iterador = listaDescripcionesAgtesACrear.iterator();
+		// Iterator<DescInstancia> iterador = listaDescripcionesAgtesACrear.iterator();
 		logger.debug("GestorAgentes: Creando agente.");
 		trazas.aceptaNuevaTraza(new InfoTraza(nombreAgente, "Creando agente.",
 				InfoTraza.NivelTraza.debug));
-		int j = 0;
+		// int j = 0;
 		// String nombre;
 		boolean error = false;
-		boolean encontrado = false;
+		// boolean encontrado = false;
 		DescInstancia agente = null;
 		boolean esAgtRemoto = false;
 
@@ -1140,8 +1114,8 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * Monitoriza secuencialmente todos los agentes activos que est�n
-	 * definidos como necesarios en la configuraci�n.
+	 * Monitoriza secuencialmente todos los agentes activos que est�n definidos como necesarios en
+	 * la configuraci�n.
 	 */
 	public void monitorizarAgentes() {
 		// if(DEBUG) System.out.println("GestorAgentes:Comienza ciclo
@@ -1150,7 +1124,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 		boolean errorEncontrado = false;
 		// recuperar todos los interfaces de gestion del repositorio que estamos
 		// gestionando
-		Enumeration enume = nombresAgentesGestionados.elements();
+		Enumeration<String> enume = nombresAgentesGestionados.elements();
 		while (enume.hasMoreElements() && !errorEncontrado) {
 			String nombre = (String) enume.nextElement();
 			// if(DEBUG) System.out.println("GestorAgentes:Monitorizando agente
@@ -1174,8 +1148,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 
 				}
 				/*
-				 * else if(DEBUG) System.out.println("GestorAgentes:Agente
-				 * "+nombre+" est� ok.");
+				 * else if(DEBUG) System.out.println("GestorAgentes:Agente "+nombre+" est� ok.");
 				 */
 			} catch (Exception ex) {
 				errorEncontrado = true;
@@ -1208,8 +1181,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * Da orden de terminacion a todos los agentes que se encuentran
-	 * activos/arrancando
+	 * Da orden de terminacion a todos los agentes que se encuentran activos/arrancando
 	 */
 	public void terminarAgentesActivos() {
 		logger.debug("GestorAgentes: Terminando los agentes que estan activos.");
@@ -1218,7 +1190,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 				"Terminando los agentes que estan activos.", InfoTraza.NivelTraza.debug));
 
 		// recorremos todos los agentes gestionados
-		Enumeration enumAgentes = this.nombresAgentesGestionados.elements();
+		Enumeration<String> enumAgentes = this.nombresAgentesGestionados.elements();
 		String nombre = "";
 		while (enumAgentes.hasMoreElements()) {
 			try {
@@ -1346,8 +1318,8 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * Intenta recuperar los errores detectados en la monitorizaci�n siguiendo
-	 * la pol�tica definida para cada agente.
+	 * Intenta recuperar los errores detectados en la monitorizaci�n siguiendo la pol�tica
+	 * definida para cada agente.
 	 */
 	public void recuperarErrorAlMonitorizarAgentes() {
 		// por defecto no se implementan pol�ticas de recuperaci�n
@@ -1368,8 +1340,7 @@ public class AccionesSemanticasGestorAgentes extends AccionesSemanticasAgenteRea
 	}
 
 	/**
-	 * destruye los recursos que se crearon a lo largo del ciclo de vida de este
-	 * agente.
+	 * destruye los recursos que se crearon a lo largo del ciclo de vida de este agente.
 	 */
 	public void terminarGestorAgentes() {
 		// termina el gestor.

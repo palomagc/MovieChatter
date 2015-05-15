@@ -33,12 +33,12 @@ public class TVsParser {
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObj = (JSONObject) parser.parse(new InputStreamReader(in));
 			JSONArray array = GetJSON.getArray(jsonObj, "results");
-			
-			if (array!=null && !array.isEmpty()) {
+
+			if (array != null && !array.isEmpty()) {
 				for (int i = 0; i < array.size(); i++) {
 					JSONObject obj = (JSONObject) array.get(i);
 					TV tv = new TV();
-	
+
 					tv.setId(GetJSON.getInteger(obj, "id"));
 					tv.setName(GetJSON.getString(obj, "name"));
 					tv.setOriginalName(GetJSON.getString(obj, "original_name"));
@@ -70,12 +70,12 @@ public class TVsParser {
 			tv.setVoteCount(GetJSON.getInteger(obj, "vote_count"));
 			tv.setPopularity(GetJSON.getFloat(obj, "popularity"));
 			tv.setOverview(GetJSON.getString(obj, "overview"));
-			
-			//genres
+
+			// genres
 			List<Genre> genreList = new ArrayList<Genre>();
 			JSONArray array = GetJSON.getArray(obj, "genres");
 
-			if (array!=null && !array.isEmpty()) {
+			if (array != null && !array.isEmpty()) {
 				for (Object o : array) {
 					Genre genre = new Genre();
 					genre.setId(GetJSON.getInteger((JSONObject) o, "id"));
@@ -84,13 +84,13 @@ public class TVsParser {
 				}
 			}
 			tv.setGenres(genreList);
-			
-			//countries
-			List <String> countries = new ArrayList<String>();
+
+			// countries
+			List<String> countries = new ArrayList<String>();
 			array = GetJSON.getArray(obj, "origin_country");
 
-			if (array!=null && !array.isEmpty()) {
-				for(Object o : array)
+			if (array != null && !array.isEmpty()) {
+				for (Object o : array)
 					countries.add(GetJSON.getString((JSONObject) o, "name"));
 			}
 			tv.setCountries(countries);

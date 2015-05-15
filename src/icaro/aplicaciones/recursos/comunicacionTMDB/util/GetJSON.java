@@ -10,8 +10,8 @@ import org.json.simple.JSONObject;
 
 public class GetJSON {
 
-	private static SimpleDateFormat dateFormatter = new SimpleDateFormat(
-			"yyyy-MM-dd", Locale.ENGLISH);
+	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd",
+			Locale.ENGLISH);
 
 	public static String getString(JSONObject obj, String string) {
 		String result = null;
@@ -19,21 +19,21 @@ public class GetJSON {
 			result = (String) obj.get(string);
 		return result;
 	}
-	
+
 	public static Integer getInteger(JSONObject obj, String string) {
 		Integer result = null;
 		if (obj.get(string) != null)
 			result = Integer.parseInt(obj.get(string).toString());
 		return result;
 	}
-	
+
 	public static Float getFloat(JSONObject obj, String string) {
 		Float result = null;
 		if (obj.get(string) != null)
 			result = ((Double) obj.get(string)).floatValue();
 		return result;
 	}
-	
+
 	public static Date getDate(JSONObject obj, String string) {
 		Date result = null;
 		if (obj.get(string) != null)
@@ -44,7 +44,7 @@ public class GetJSON {
 			}
 		return result;
 	}
-	
+
 	public static JSONArray getArray(JSONObject obj, String string) {
 		JSONArray result = null;
 		if (obj.get(string) != null)

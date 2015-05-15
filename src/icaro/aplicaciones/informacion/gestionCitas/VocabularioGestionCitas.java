@@ -50,7 +50,8 @@ public class VocabularioGestionCitas {
 			"GeneroDocumental", "GeneroDrama", "GeneroFamiliar", "GeneroFantasia",
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
-			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista");
+			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista",
+			"Orden", "Dinamico");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -62,9 +63,12 @@ public class VocabularioGestionCitas {
 	public static final String NombreTipoNotificacionAnos = "Anos";
 	public static final String NombreTipoNotificacionNumero = "Numero";
 	public static final String NombreTipoNotificacionYaVista = "YaVista";
+	public static final String NombreTipoNotificacionOrden = "Orden";
+	public static final String NombreTipoNotificacionDinamico = "Dinamico";
 	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
 	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";
+	// TODO objetivos, no notificaciones
 	public static final String NombreTipoNotificacionCitasConGuia = "CitasConGuia";
 	public static final String NombreTipoNotificacionComprobarDatosBusqueda = "ComprobarDatosBusqueda";
 	public static final String NombreTipoNotificacionValorarUltimaPelicula = "ValorarUltimaPelicula";

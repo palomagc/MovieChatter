@@ -21,9 +21,10 @@ public class GuardarSexo extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		try {
-			String sexo = (String)params[0];
+			String sexo = (String) params[0];
 			VocabularioGestionCitas.usuario.setSexo(sexo);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
+<<<<<<< HEAD
 				itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 						.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
 				itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
@@ -50,6 +51,12 @@ public class GuardarSexo extends TareaSincrona {
 				
 				// TODO hay que guardar lo que le podría gustar por su sexo.
 				
+=======
+			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+			itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(),
+					VocabularioGestionCitas.usuario);
+>>>>>>> origin/master
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,5 +65,4 @@ public class GuardarSexo extends TareaSincrona {
 					InfoTraza.NivelTraza.error));
 		}
 	}
-
 }

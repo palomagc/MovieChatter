@@ -72,5 +72,4 @@ public class Notificacion {
 			return "Agente Emisor :" + identNotificador + " MensajePropuesta :+"
 					+ mensajeNotificacion + "  Justificacion: " + contexto.toString() + "\n ";
 	}
-
 }

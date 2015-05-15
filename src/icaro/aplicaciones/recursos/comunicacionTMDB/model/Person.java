@@ -13,7 +13,10 @@ import java.util.List;
 
 public class Person {
 
-	public enum PersonType {CREW, CAST, PEOPLE}
+	public enum PersonType {
+		CREW, CAST, PEOPLE
+	}
+
 	private int id;
 	private String name;
 	private String biography;
@@ -39,9 +42,9 @@ public class Person {
 		this.completed = false;
 	}
 
-	public Person(int id, String name, String biography, Date birthday,
-			Date deathday, String birthPlace, float popularity,
-			List<String> alsoKnown, PersonType personType, boolean completed) {
+	public Person(int id, String name, String biography, Date birthday, Date deathday,
+			String birthPlace, float popularity, List<String> alsoKnown, PersonType personType,
+			boolean completed) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -126,11 +129,11 @@ public class Person {
 	public void setAlsoKnown(List<String> alsoKnown) {
 		this.alsoKnown = alsoKnown;
 	}
-	
+
 	public PersonType getPersonType() {
 		return this.personType;
 	}
-	
+
 	public void setPersonType(PersonType personType) {
 		this.personType = personType;
 	}

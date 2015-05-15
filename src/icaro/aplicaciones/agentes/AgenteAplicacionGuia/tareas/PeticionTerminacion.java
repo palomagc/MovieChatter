@@ -66,7 +66,5 @@ public class PeticionTerminacion extends Tarea {
 							+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
-
 	}
-
 }

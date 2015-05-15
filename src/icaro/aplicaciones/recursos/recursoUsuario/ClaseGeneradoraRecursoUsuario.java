@@ -6,8 +6,6 @@ import icaro.infraestructura.patronRecursoSimple.imp.ImplRecursoSimple;
 
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,6 +18,11 @@ import constantes.Constantes;
 
 public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements
 		ItfUsoRecursoUsuario {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public ClaseGeneradoraRecursoUsuario(String idRecurso) throws RemoteException {
 		super(idRecurso);

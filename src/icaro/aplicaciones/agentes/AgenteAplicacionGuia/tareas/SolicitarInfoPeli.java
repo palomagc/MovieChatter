@@ -35,8 +35,8 @@ public class SolicitarInfoPeli extends TareaSincrona {
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				int numEntender = (int) ((100 * Math.random()) % VocabularioGestionCitas.NoEntendido.length);
-				String mensajeAenviar = VocabularioGestionCitas.NoEntendido[numEntender]
-						+ "  " + VocabularioGestionCitas.PeticionInfoPeli;
+				String mensajeAenviar = VocabularioGestionCitas.NoEntendido[numEntender] + "  "
+						+ VocabularioGestionCitas.PeticionInfoPeli;
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();

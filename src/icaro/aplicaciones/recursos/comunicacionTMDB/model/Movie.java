@@ -48,10 +48,10 @@ public class Movie {
 		this.completed = false;
 	}
 
-	public Movie(int id, String title, String originalTitle, Date date,
-			int duration, List<String> producerCountries, List<Genre> genres,
-			String overview, float voteAverage, int voteCount, float popularity,
-			int collectionId, String collectionName, boolean completed) {
+	public Movie(int id, String title, String originalTitle, Date date, int duration,
+			List<String> producerCountries, List<Genre> genres, String overview, float voteAverage,
+			int voteCount, float popularity, int collectionId, String collectionName,
+			boolean completed) {
 		super();
 		this.id = id;
 		this.title = title;

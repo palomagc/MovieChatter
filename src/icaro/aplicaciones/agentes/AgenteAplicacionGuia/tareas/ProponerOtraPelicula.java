@@ -2,6 +2,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
+import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -33,15 +34,21 @@ public class ProponerOtraPelicula extends TareaSincrona {
 		try {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+			ItfUsoRecursoUsuario itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
 			Objetivo objAntiguo = (Objetivo) params[1];
-			if (recComunicacionChat != null && usuario.getPeliculaActual() != null) {
+			if (recComunicacionChat != null && itfUsoRecursoUsuario != null
+					&& usuario.getPeliculaActual() != null) {
 				if (notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)) {
 					// TODO hay que quitar el objeto usuario estatico y utilizar solo el recurso
 					// para evitar fallos
 					// itfUsoRecursoUsuario.nuevaPeliculaOdiada(usuario.getNombre(),
 					// usuario.getPeliculaActual().getIdPelicula());
+					itfUsoRecursoUsuario.nuevaPeliculaOdiada(usuario.getNombre(), usuario
+							.getPeliculaActual().getIdPelicula());
 					usuario.addPeliculaOdiada(usuario.getPeliculaActual().getIdPelicula());
 					usuario.setPeliculaActual(null);
+
 					objAntiguo.setPending();
 					this.getEnvioHechos().actualizarHecho(objAntiguo);
 				} else if (notifica
@@ -55,14 +62,15 @@ public class ProponerOtraPelicula extends TareaSincrona {
 					String mensajeAenviar = VocabularioGestionCitas.Disfruta[numDisfruta] + "  "
 							+ VocabularioGestionCitas.Despedida[numDespedida];
 					recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-				} else {
-					identAgenteOrdenante = this.getAgente().getIdentAgente();
-					this.generarInformeConCausaTerminacion(identDeEstaTarea,
-							contextoEjecucionTarea, identAgenteOrdenante,
-							"Error-AlObtener:Interfaz:"
-									+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
-							CausaTerminacionTarea.ERROR);
+					// objAntiguo.setSolved();
+					// this.getEnvioHechos().actualizarHecho(objAntiguo);
 				}
+			} else {
+				identAgenteOrdenante = this.getAgente().getIdentAgente();
+				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+								+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
@@ -72,5 +80,4 @@ public class ProponerOtraPelicula extends TareaSincrona {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -7,17 +7,12 @@ import java.io.Serializable;
  *
  */
 public class ValoresAcceso implements Serializable {
-	
-	
-	
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public ValoresAcceso() {
-	
 	}
-	
-	}
+}

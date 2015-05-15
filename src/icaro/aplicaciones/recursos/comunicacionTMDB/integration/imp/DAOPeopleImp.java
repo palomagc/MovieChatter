@@ -17,11 +17,10 @@ import icaro.aplicaciones.recursos.comunicacionTMDB.util.PeopleParser;
 
 public class DAOPeopleImp implements DAOPeople {
 
-	private static SimpleDateFormat dateFormatter = new SimpleDateFormat(
-			"yyyy-MM-dd", Locale.ENGLISH);
-	
+	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd",
+			Locale.ENGLISH);
+
 	private static final String API_KEY = "7d3938edb64159d9e153fe61c4438a70";
-	
 
 	@Override
 	public List<Person> getPopularPeople(int page) {
@@ -56,8 +55,7 @@ public class DAOPeopleImp implements DAOPeople {
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/search/person");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/search/person");
 		sb.append("?api_key=").append(API_KEY);
 		sb.append("&query=").append(consulta);
 		sb.append("&page=").append(page);
@@ -84,8 +82,7 @@ public class DAOPeopleImp implements DAOPeople {
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/person/");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/person/");
 		sb.append(personId).append("?api_key=").append(API_KEY);
 
 		// Connecting through httpget
@@ -102,12 +99,12 @@ public class DAOPeopleImp implements DAOPeople {
 		}
 		return person;
 	}
-	
+
 	@Override
 	public Person getLatestPerson() {
 		Person person = null;
 		HttpClient hc = new DefaultHttpClient();
-		
+
 		// Creating API query
 		StringBuilder sb = new StringBuilder();
 		sb.append("http://api.themoviedb.org/3/person/latest");
