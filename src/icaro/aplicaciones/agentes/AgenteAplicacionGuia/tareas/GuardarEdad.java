@@ -1,5 +1,7 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
+import java.util.ArrayList;
+
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
@@ -34,6 +36,66 @@ public class GuardarEdad extends TareaSincrona {
 			Objetivo objetivo = new PreguntarDatosInicialesUsuario();
 			objetivo.setSolved();
 			this.getEnvioHechos().insertarHecho(objetivo);
+			
+			
+			// Podriamos deducir información según la edad, basandonos en estereotipos.
+			ArrayList<String> generosQueleGustan = new ArrayList<String>();
+			int anos = 0;
+			if(anos < 8){ 
+//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
+				
+			}else if(anos < 13){
+//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroFantasia);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste);
+				
+			}else if(anos < 13){
+//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroFantasia);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste);
+				
+			}else if(anos < 23){
+//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCrimen);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroTerror);
+				
+			}else if(anos < 40){
+//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCrimen);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense);
+				
+			}else{
+//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroDocumental);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroFamiliar);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroHistorico);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste);
+				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense);
+				
+			}
+			
+			// TODO hay que guardar lo que le podría gustar por su edad.
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
