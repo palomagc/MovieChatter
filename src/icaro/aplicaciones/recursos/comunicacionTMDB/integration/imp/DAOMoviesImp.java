@@ -20,9 +20,9 @@ import icaro.aplicaciones.recursos.comunicacionTMDB.util.MoviesParser;
 
 public class DAOMoviesImp implements DAOMovies {
 
-	private static SimpleDateFormat dateFormatter = new SimpleDateFormat(
-			"yyyy-MM-dd", Locale.ENGLISH);
-	
+	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd",
+			Locale.ENGLISH);
+
 	private static final String API_KEY = "7d3938edb64159d9e153fe61c4438a70";
 
 	@Override
@@ -31,8 +31,7 @@ public class DAOMoviesImp implements DAOMovies {
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/movie/");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/movie/");
 		sb.append(movieId).append("?api_key=").append(API_KEY);
 		if (language != null)
 			sb.append("&language=").append(language);
@@ -51,7 +50,7 @@ public class DAOMoviesImp implements DAOMovies {
 		}
 		return movie;
 	}
-	
+
 	@Override
 	public List<Movie> getMovieList(String order, String language, int page) {
 		List<Movie> movies = null;
@@ -60,28 +59,23 @@ public class DAOMoviesImp implements DAOMovies {
 
 		// Creating API query
 		StringBuilder sb = new StringBuilder();
-		if(order.equals(MovieOrder.Latest)){
+		if (order.equals(MovieOrder.Latest)) {
 			sb.append("http://api.themoviedb.org/3/movie/latest");
-		}
-		else if(order.equals(MovieOrder.Upcoming)){
+		} else if (order.equals(MovieOrder.Upcoming)) {
 			sb.append("http://api.themoviedb.org/3/movie/upcoming");
-		}
-		else if(order.equals(MovieOrder.NowPlaying)){
+		} else if (order.equals(MovieOrder.NowPlaying)) {
 			sb.append("http://api.themoviedb.org/3/movie/now_playing");
-		}
-		else if(order.equals(MovieOrder.Popular)){
+		} else if (order.equals(MovieOrder.Popular)) {
 			sb.append("http://api.themoviedb.org/3/movie/popular");
-		}
-		else if(order.equals(MovieOrder.TopRated)){
+		} else if (order.equals(MovieOrder.TopRated)) {
 			sb.append("http://api.themoviedb.org/3/movie/top_rated");
-		}
-		else{
+		} else {
 			return null;
 		}
 		sb.append("?api_key=").append(API_KEY);
 		if (language != null)
 			sb.append("&language=").append(language);
-		//sb.append("&page=").append(page);
+		// sb.append("&page=").append(page);
 		if (page != 1)
 			sb.append("&page=").append(page);
 
@@ -105,12 +99,11 @@ public class DAOMoviesImp implements DAOMovies {
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/search/movie");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/search/movie");
 		sb.append("?api_key=").append(API_KEY);
 		sb.append("&query=").append(query);
 		if (language != null)
-			sb.append("&language=").append(language);		
+			sb.append("&language=").append(language);
 		if (year != null)
 			sb.append("&year=").append(year);
 		if (page != 1)
@@ -131,17 +124,16 @@ public class DAOMoviesImp implements DAOMovies {
 	}
 
 	@Override
-	public List<Movie> discoverMovies(Date after, Date before, String sort,
-			Float minAverage, Integer minCount, List<Integer> genres,
-			List<Integer> people, String year, String language, int page) {
+	public List<Movie> discoverMovies(Date after, Date before, String sort, Float minAverage,
+			Integer minCount, List<Integer> genres, List<Integer> people, String year,
+			String language, int page) {
 		List<Movie> movies = null;
 		HttpClient hc = new DefaultHttpClient();
 
 		// Creating API query
-		StringBuilder sb = new StringBuilder(
-				"http://api.themoviedb.org/3/discover/movie");
+		StringBuilder sb = new StringBuilder("http://api.themoviedb.org/3/discover/movie");
 		sb.append("?api_key=").append(API_KEY);
-		
+
 		if (language != null)
 			sb.append("&language=").append(language);
 		if (page != 1)
@@ -157,23 +149,23 @@ public class DAOMoviesImp implements DAOMovies {
 			sb.append("&vote_average.gte=").append(minAverage);
 		if (minCount != null)
 			sb.append("&vote_count.gte=").append(minCount);
-		
+
 		if (genres != null) {
 			sb.append("&with_genres=");
-			for(int i=0; i<genres.size(); i++) {
+			for (int i = 0; i < genres.size(); i++) {
 				sb.append(genres.get(i));
-				if (i < genres.size()-1)
-					sb.append(",");	// ","=AND       "|"=OR
+				if (i < genres.size() - 1)
+					sb.append(","); // ","=AND "|"=OR
 			}
 		}
 		if (people != null) {
 			sb.append("&with_people=");
-			for(int i=0; i<people.size(); i++) {
+			for (int i = 0; i < people.size(); i++) {
 				sb.append(people.get(i));
-				if (i < people.size()-1)
-					sb.append(",");	// ","=AND       "|"=OR
+				if (i < people.size() - 1)
+					sb.append(","); // ","=AND "|"=OR
 			}
-		}		
+		}
 		if (year != null)
 			sb.append("&year=").append(year);
 

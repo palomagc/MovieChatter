@@ -1,6 +1,7 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import constantes.Busqueda;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
@@ -33,7 +34,6 @@ public class ProponerPelicula extends TareaSincrona {
 		try {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
-			//Objetivo objAntiguo = (Objetivo) params[0];
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				String mensajeAenviar = "";
@@ -49,17 +49,24 @@ public class ProponerPelicula extends TareaSincrona {
 										Integer.toString(m.getId())))
 							movie = m;
 					}
-					int numParams = (int) ((100 * Math.random()) % VocabularioGestionCitas.Params.length);
-					// TODO parece que cuando le dices muchhas veces que no quieres ver la peli salta null pointer exception en la linea de aquí abajo.
-					mensajeAenviar += (movie.getTitle() + ". " + VocabularioGestionCitas.Params[numParams]);
-					usuario.setPeliculaActual(new Valoracion(Integer.toString(movie.getId()), null));
+					if (movie != null) {
+						int numParams = (int) ((100 * Math.random()) % VocabularioGestionCitas.Params.length);
+						// TODO parece que cuando le dices muchhas veces que no quieres ver la peli
+						// salta null pointer exception en la linea de aquí abajo.
+						mensajeAenviar += (movie.getTitle() + ". " + VocabularioGestionCitas.Params[numParams]);
+						usuario.setPeliculaActual(new Valoracion(Integer.toString(movie.getId()),
+								null));
+						// this.getEnvioHechos().insertarHecho(new ObtenerPelicula());
+					} else {
+						busqueda.setPage(busqueda.getPage()+1);
+						this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
+					}
 				} else {
 					// TODO mejorar la frase
 					mensajeAenviar = "La consulta con los parï¿½metros dados no ha obtenido ningï¿½n resultado."
 							+ " Se limpian los parametros de busqueda.";
 					busqueda.reset();
-					//objAntiguo.setPending();
-					//this.getEnvioHechos().actualizarHecho(objAntiguo);
+					this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
 				}
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 

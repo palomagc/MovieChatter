@@ -9,8 +9,10 @@ import icaro.infraestructura.patronAgenteReactivo.factoriaEInterfaces.ItfUsoAgen
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.ItfUsoRecursoTrazas;
 import icaro.infraestructura.recursosOrganizacion.repositorioInterfaces.ItfUsoRepositorioInterfaces;
+
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
+
 import org.apache.log4j.Logger;
 
 public class ComunicacionAgentes {
@@ -19,14 +21,15 @@ public class ComunicacionAgentes {
 	private String agentePropietario = null;
 	private ItfUsoRecursoTrazas trazas;
 	private ItfUsoRepositorioInterfaces repoInterfaces;
-	private IdentityHashMap itfsAgtesConLosQComunico;
+	private IdentityHashMap<String, InterfazUsoAgente> itfsAgtesConLosQComunico;
 	private Integer initialmMxSizeOfAgtesConLosQComunico = 8; // Esto es
 																// arbitrario
 	protected Logger logger;
 
 	public ComunicacionAgentes(String propietario) {
 		agentePropietario = propietario;
-		itfsAgtesConLosQComunico = new IdentityHashMap(initialmMxSizeOfAgtesConLosQComunico);
+		itfsAgtesConLosQComunico = new IdentityHashMap<String, InterfazUsoAgente>(
+				initialmMxSizeOfAgtesConLosQComunico);
 		trazas = NombresPredefinidos.RECURSO_TRAZAS_OBJ;
 		repoInterfaces = NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ;
 	}
@@ -193,7 +196,7 @@ public class ComunicacionAgentes {
 		// Este método crea un evento con la información de entrada y se le
 		// envía al agente REACTIVO que se indique por medio de
 		// la interfaz de uso
-		EventoRecAgte eventoaEnviar = null;
+		// EventoRecAgte eventoaEnviar = null;
 
 		// Se busca la interfaz del agente al que se pretende enviar la
 		// informacion
@@ -240,26 +243,22 @@ public class ComunicacionAgentes {
 	}
 
 	/*
-	 * public void informaraGrupoAgentes(Object infoAEnviar,ArrayList<String>
-	 * identsAgteReceptores){ String agenteReceptor = null; try { //mandamos el
-	 * mensaje a todos los agentes del sistema, menos a los gestores // String
-	 * aux; // ArrayList paquete = new ArrayList(); // trazas =
+	 * public void informaraGrupoAgentes(Object infoAEnviar,ArrayList<String> identsAgteReceptores){
+	 * String agenteReceptor = null; try { //mandamos el mensaje a todos los agentes del sistema,
+	 * menos a los gestores // String aux; // ArrayList paquete = new ArrayList(); // trazas =
 	 * NombresPredefinidos.RECURSO_TRAZAS_OBJ; int numeroAgentesEquipo =
-	 * identsAgteReceptores.size(); if(numeroAgentesEquipo > 0){ for(int i = 0;
-	 * i< numeroAgentesEquipo; i++){ agenteReceptor =
-	 * (String)identsAgteReceptores.get(i);
-	 * this.enviarInfoAotroAgente(infoAEnviar, agenteReceptor ); } }else
-	 * trazas.aceptaNuevaTraza(new InfoTraza(agentePropietario,
-	 * "No se pudo enviar la informacion : " +infoAEnviar +
-	 * " porque el grupo de agentes a los que hay que enviar la informacion esta vacio "
-	 * , InfoTraza.NivelTraza.error));
+	 * identsAgteReceptores.size(); if(numeroAgentesEquipo > 0){ for(int i = 0; i<
+	 * numeroAgentesEquipo; i++){ agenteReceptor = (String)identsAgteReceptores.get(i);
+	 * this.enviarInfoAotroAgente(infoAEnviar, agenteReceptor ); } }else trazas.aceptaNuevaTraza(new
+	 * InfoTraza(agentePropietario, "No se pudo enviar la informacion : " +infoAEnviar +
+	 * " porque el grupo de agentes a los que hay que enviar la informacion esta vacio " ,
+	 * InfoTraza.NivelTraza.error));
 	 * 
 	 * } catch (Exception ex) { logger.error("El agente: "+ agentePropietario +
-	 * "-- no pudo   enviar la informacion : " +infoAEnviar +" Al agente: " +
-	 * agenteReceptor + ".No se encontro la interfaz del agente Receptor");
-	 * trazas.aceptaNuevaTraza(new InfoTraza(agentePropietario,
-	 * "No se pudo enviar la informacion : " +infoAEnviar +" Al agente: " +
-	 * agenteReceptor + ". No se encontro la interfaz del agente Receptor",
+	 * "-- no pudo   enviar la informacion : " +infoAEnviar +" Al agente: " + agenteReceptor +
+	 * ".No se encontro la interfaz del agente Receptor"); trazas.aceptaNuevaTraza(new
+	 * InfoTraza(agentePropietario, "No se pudo enviar la informacion : " +infoAEnviar
+	 * +" Al agente: " + agenteReceptor + ". No se encontro la interfaz del agente Receptor",
 	 * InfoTraza.NivelTraza.error)); } }
 	 */
 	public synchronized void enviarMsgaGrupoAgentes(MensajeSimple msgAEnviar,

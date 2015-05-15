@@ -10,17 +10,14 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos;
 
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 
-
-
 /**
  *
- * @author 
+ * @author
  */
 public class ReconocerDirector extends Objetivo {
-    
-    /** Crea una nueva instancia de DarAcceso */
-    public ReconocerDirector() {
-        super.setgoalId("ReconocerDirector");
-    }
-    
+
+	/** Crea una nueva instancia de DarAcceso */
+	public ReconocerDirector() {
+		super.setgoalId("ReconocerDirector");
+	}
 }

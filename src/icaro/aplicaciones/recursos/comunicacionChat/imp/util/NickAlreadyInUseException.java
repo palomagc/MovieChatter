@@ -10,13 +10,19 @@ package icaro.aplicaciones.recursos.comunicacionChat.imp.util;
  * @author FGarijo
  */
 public class NickAlreadyInUseException extends Exception {
-     
-    /**
-     * Constructs a new IrcException.
-     *
-     * @param e The error message to report.
-     */
-    public NickAlreadyInUseException(String e) {
-        super(e);
-    }
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Constructs a new IrcException.
+	 *
+	 * @param e
+	 *            The error message to report.
+	 */
+	public NickAlreadyInUseException(String e) {
+		super(e);
+	}
 }

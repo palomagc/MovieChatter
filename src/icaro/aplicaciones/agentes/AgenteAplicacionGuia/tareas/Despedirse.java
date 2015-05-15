@@ -33,32 +33,24 @@ public class Despedirse extends TareaSincrona {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat
-						.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
-				String mensajeAenviar = VocabularioGestionCitas.Despedida[numDespedida]
-						+ "  " + identInterlocutor;
+				String mensajeAenviar = VocabularioGestionCitas.Despedida[numDespedida] + "  "
+						+ identInterlocutor;
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
-				this.generarInformeConCausaTerminacion(
-						identDeEstaTarea,
-						contextoEjecucionTarea,
-						identAgenteOrdenante,
-						"Error-AlObtener:Interfaz:"
+				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
 								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
-			this.generarInformeConCausaTerminacion(
-					identDeEstaTarea,
-					contextoEjecucionTarea,
-					identAgenteOrdenante,
-					"Error-Acceso:Interfaz:"
+			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+					identAgenteOrdenante, "Error-Acceso:Interfaz:"
 							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}
-
 }

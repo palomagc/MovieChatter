@@ -10,17 +10,14 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos;
 
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 
-
-
 /**
  *
- * @author 
+ * @author
  */
 public class ObtenerActor extends Objetivo {
-    
-    /** Crea una nueva instancia de DarAcceso */
-    public ObtenerActor() {
-        super.setgoalId("ObtenerActor");
-    }
-    
+
+	/** Crea una nueva instancia de DarAcceso */
+	public ObtenerActor() {
+		super.setgoalId("ObtenerActor");
+	}
 }

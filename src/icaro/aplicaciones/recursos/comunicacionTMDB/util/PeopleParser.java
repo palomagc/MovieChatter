@@ -26,12 +26,12 @@ public class PeopleParser {
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObj = (JSONObject) parser.parse(new InputStreamReader(in));
 			JSONArray array = GetJSON.getArray(jsonObj, "results");
-			
-			if (array!=null && !array.isEmpty()) {
+
+			if (array != null && !array.isEmpty()) {
 				for (int i = 0; i < array.size(); i++) {
 					JSONObject obj = (JSONObject) array.get(i);
 					Person person = new Person();
-	
+
 					person.setId(GetJSON.getInteger(obj, "id"));
 					person.setName(GetJSON.getString(obj, "name"));
 					person.setPopularity(GetJSON.getFloat(obj, "popularity"));
@@ -62,7 +62,7 @@ public class PeopleParser {
 			// also_known
 			List<String> alsoList = new ArrayList<String>();
 			JSONArray array = GetJSON.getArray(obj, "also_known");
-			if (array!=null && !array.isEmpty()) {
+			if (array != null && !array.isEmpty()) {
 				for (int i = 0; i < array.size(); i++) {
 					JSONObject jsonObj = (JSONObject) array.get(i);
 					alsoList.add(GetJSON.getString(jsonObj, "name"));

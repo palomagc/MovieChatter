@@ -23,6 +23,11 @@ import icaro.infraestructura.patronRecursoSimple.imp.ImplRecursoSimple;
 public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implements
 		ItfUsoComunicacionTMDB {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ClaseGeneradoraComunicacionTMDB(String idRecurso) throws RemoteException {
 		super(idRecurso);
 	}

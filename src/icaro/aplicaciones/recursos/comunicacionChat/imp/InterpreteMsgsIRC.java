@@ -12,9 +12,7 @@ import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionChat.imp.util.ConexionIrc;
 import static icaro.aplicaciones.recursos.comunicacionChat.imp.util.ConexionIrc.VERSION;
 import icaro.aplicaciones.recursos.extractorSemantico.ItfUsoExtractorSemantico;
-import icaro.infraestructura.entidadesBasicas.comunicacion.ComunicacionAgentes;
 import icaro.infraestructura.entidadesBasicas.comunicacion.MensajeSimple;
-import icaro.infraestructura.entidadesBasicas.excepciones.ExcepcionEnComponente;
 import icaro.infraestructura.entidadesBasicas.interfaces.InterfazUsoAgente;
 
 import java.rmi.RemoteException;
@@ -34,18 +32,18 @@ public class InterpreteMsgsIRC {
 
 	private boolean _verbose = true;
 	private String _userNameAgente = VocabularioGestionCitas.IdentConexionAgte;
-	private String _login = "ConexionIrc";
+	// private String _login = "ConexionIrc";
 	private String _version = "ConexionIrc " + VERSION + " Java IRC Bot - www.jibble.org";
 	private String _finger = "You ought to be arrested for fingering a bot!";
 	private int _maxLineLength = 512;
 	private ConexionIrc conectorIrc;
 	private String identAgenteGestorDialogo;
-	private String identRecExtractSemantico;
-	private ComunicacionAgentes comunicator;
+	// private String identRecExtractSemantico;
+	// private ComunicacionAgentes comunicator;
 	private MensajeSimple mensajeAenviar;
 	private InterfazUsoAgente itfAgenteDialogo;
 	private ItfUsoExtractorSemantico itfUsoExtractorSem;
-	private HashSet anotacionesRelevantes;
+	private HashSet<Annotation> anotacionesRelevantes;
 	private InfoConexionUsuario infoConecxInterlocutor;
 
 	public InterpreteMsgsIRC() {
@@ -421,9 +419,9 @@ public class InterpreteMsgsIRC {
 		// anotaciones y se envia el contenido al agente de dialogo
 		// de esta forma el agente recibe mensajes con entidades del modelo de
 		// informaci√≥n
-		HashSet anotacionesBusquedaPrueba = new HashSet();
-		anotacionesBusquedaPrueba.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
+		HashSet<String> anotacionesBusquedaPrueba = new HashSet<String>();
 		anotacionesBusquedaPrueba.add("Lookup");
+		anotacionesBusquedaPrueba.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
 		// esto habria que pasarlo como parametro
 		if (infoConecxInterlocutor == null)
 			infoConecxInterlocutor = new InfoConexionUsuario();
@@ -436,7 +434,7 @@ public class InterpreteMsgsIRC {
 						anotacionesBusquedaPrueba, textoUsuario);
 				String anot = anotacionesRelevantes.toString();
 				System.out.println(System.currentTimeMillis() + " " + anot);
-				ArrayList infoAenviar = interpretarAnotaciones(sender, textoUsuario,
+				ArrayList<Notificacion> infoAenviar = interpretarAnotaciones(sender, textoUsuario,
 						anotacionesRelevantes);
 				enviarInfoExtraida(infoAenviar, sender);
 				// if ( itfAgenteDialogo!=null){
@@ -451,7 +449,7 @@ public class InterpreteMsgsIRC {
 		}
 	}
 
-	private void enviarInfoExtraida(ArrayList infoExtraida, String sender) {
+	private void enviarInfoExtraida(ArrayList<Notificacion> infoExtraida, String sender) {
 		if (itfAgenteDialogo != null) {
 			try {
 				if (infoExtraida.size() == 0) {
@@ -1361,96 +1359,17 @@ public class InterpreteMsgsIRC {
 			conectorIrc.disconnect();
 	}
 
-	private ArrayList interpretarAnotaciones(String interlocutor, String contextoInterpretacion,
-			HashSet anotacionesRelevantes) {
+	private ArrayList<Notificacion> interpretarAnotaciones(String interlocutor,
+			String contextoInterpretacion, HashSet<Annotation> anotacionesRelevantes2) {
 		// recorremos las anotaciones obtenidas y las traducimos a objetos del
 		// modelo de informaci√≥n
-		ArrayList anotacionesInterpretadas = new ArrayList();
+		ArrayList<Notificacion> anotacionesInterpretadas = new ArrayList<Notificacion>();
 		// int i=0;
-		Iterator annotTypesSal = anotacionesRelevantes.iterator();
+		Iterator<Annotation> annotTypesSal = anotacionesRelevantes2.iterator();
 		while (annotTypesSal.hasNext()) {
 			Annotation annot = (Annotation) annotTypesSal.next();
 			String anotType = annot.getType();
-			// TODO AÒadir aquÌ las anotaciones que quieres que se tengan en cuenta.
-			if (anotType.equalsIgnoreCase("Saludo")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-				// i++;
-			} else if (anotType.equalsIgnoreCase("Despedida")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			}
-			
-			// Posibles respuestas (Afirmativa / Negativa)
-			else if (anotType.equalsIgnoreCase("Afirmacion")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("Negacion")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			}
-		
-			// Numeros
-			 else if (anotType.equalsIgnoreCase("Numero")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			}
-			
-			
-			// Sexo
-			else if (anotType.equalsIgnoreCase("SexoHombre")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("SexoMujer")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			}
-			
-			else if (anotType.equalsIgnoreCase("Anos")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("Actor")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("Generos")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			}
-				
-			else if (anotType.equalsIgnoreCase("YaVista")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			}
-			
-			// GÈneros
-			else if (anotType.equalsIgnoreCase("GeneroAccion")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroAventura")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroAnimacion")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroComedia")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroCrimen")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroDocumental")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroDrama")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroFamiliar")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroFantasia")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroExtranjero")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroHistorico")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroTerror")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroMusical")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroMisterio")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroRomantico")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroCienciaFiccion")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroTV")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroSuspense")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroGuerra")) {
-				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
-			} else if (anotType.equalsIgnoreCase("GeneroOeste")) {
+			if (VocabularioGestionCitas.NombresTipoNotificacion.contains(anotType)) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 			// fet = annot.getFeatures();

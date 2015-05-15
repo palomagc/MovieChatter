@@ -31,9 +31,10 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 		String identAgenteOrdenante = this.getIdentAgente();
 		String notifica = (String) params[0];
 		String param = (String) params[1];
-		Busqueda busquedaAux = VocabularioGestionCitas.busqueda;
-		if (busquedaAux.getYear() == null && busquedaAux.getGenres().size() == 0
-				&& busquedaAux.getPeople().size() == 0) {
+		Busqueda busqueda = VocabularioGestionCitas.busqueda;
+		busqueda.setPage(1);
+		if (busqueda.getYear() == null && busqueda.getGenres().size() == 0
+				&& busqueda.getPeople().size() == 0) {
 			// Enviar a agenteTMDB
 			Notificacion infoAenviar = new Notificacion();
 			infoAenviar.setTipoNotificacion(notifica);
@@ -43,7 +44,7 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 		} else {
 			// Mirar los parametros que hay en Busqueda
 			if (notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionAnos)) {
-				busquedaAux.setYear(param);
+				busqueda.setYear(param);
 			} else {
 				try {
 					ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
@@ -51,8 +52,8 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 					if (itfUsoComunicacionTMDB != null) {
 						if (notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionActor)) {
 							Integer personId = itfUsoComunicacionTMDB.searchPerson(param);
-							if (personId != null)
-								busquedaAux.addPerson(personId);
+							if (personId != null && !busqueda.getPeople().contains(personId))
+								busqueda.addPerson(personId);
 						} else {
 							VocabularioGestionCitas.Genero genero = null;
 							if (VocabularioGestionCitas.Generos.containsKey(notifica))
@@ -64,8 +65,8 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 								for (Genre g : genresAux)
 									if (g.getName().equals(genero.getEnglish()))
 										genre = g;
-								if (genre != null)
-									busquedaAux.addGenre(genre.getId());
+								if (genre != null && !busqueda.getGenres().contains(genre.getId()))
+									busqueda.addGenre(genre.getId());
 							}
 						}
 					}

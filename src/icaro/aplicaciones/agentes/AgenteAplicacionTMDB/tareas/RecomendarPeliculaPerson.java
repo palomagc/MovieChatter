@@ -3,11 +3,11 @@ package icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas;
 import java.util.ArrayList;
 import java.util.List;
 
+import constantes.Busqueda;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
-import icaro.aplicaciones.recursos.comunicacionTMDB.orders.MovieSort;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
@@ -32,8 +32,9 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 		 */
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		//String notifica = (String) params[0];
+		// String notifica = (String) params[0];
 		String person = (String) params[1];
+		Busqueda busqueda = VocabularioGestionCitas.busqueda;
 
 		try {
 			ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
@@ -43,15 +44,18 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 			Integer personId = null;
 			if (itfUsoComunicacionTMDB != null)
 				personId = itfUsoComunicacionTMDB.searchPerson(person);
-				if (personId != null)
-					movies = itfUsoComunicacionTMDB.getMoviesByPerson(personId, MovieSort.PopularityDesc,
-							"es", 1);
+			if (personId != null)
+				movies = itfUsoComunicacionTMDB.getMoviesByPerson(personId, busqueda.getSort(),
+						busqueda.getLanguage(), busqueda.getPage());
 			if (movies != null) {
 				VocabularioGestionCitas.busqueda.addPerson(personId);
 				VocabularioGestionCitas.busqueda.setResult(movies);
-				Notificacion notif = new Notificacion();
-		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
-		 		getComunicator().enviarInfoAotroAgente(notif,
+				// this.getEnvioHechos().insertarHecho(new ObtenerPelicula());
+				// TODO poner notificacion porque es para otro agente
+				Notificacion infoAenviar = new Notificacion();
+				infoAenviar
+						.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
+				getComunicator().enviarInfoAotroAgente(infoAenviar,
 						VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 			}
 		} catch (Exception e) {
@@ -62,5 +66,4 @@ public class RecomendarPeliculaPerson extends TareaSincrona {
 			e.printStackTrace();
 		}
 	}
-
 }

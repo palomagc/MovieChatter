@@ -10,14 +10,20 @@ package icaro.aplicaciones.recursos.comunicacionChat.imp.util;
  * @author FGarijo
  */
 public class IrcException extends Exception {
-      
-    /**
-     * Constructs a new IrcException.
-     *
-     * @param e The error message to report.
-     */
-    public IrcException(String e) {
-        super(e);
-    }
-    
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Constructs a new IrcException.
+	 *
+	 * @param e
+	 *            The error message to report.
+	 */
+	public IrcException(String e) {
+		super(e);
+	}
+
 }

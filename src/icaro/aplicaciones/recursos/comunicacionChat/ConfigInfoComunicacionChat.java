@@ -10,8 +10,8 @@ package icaro.aplicaciones.recursos.comunicacionChat;
  * @author FGarijo
  */
 public class ConfigInfoComunicacionChat {
-     public static final String urlFeeNode= "irc.freenode.net";
-     public static final String nicknameConexionAgte= "AgteMovies";
-     public static final String chanelConexionAgte= "#kiwiirc-movies";
-     public static final String identInterlocutorPruebas = "movieBot";
+	public static final String urlFeeNode = "irc.freenode.net";
+	public static final String nicknameConexionAgte = "AgteMovies";
+	public static final String chanelConexionAgte = "#kiwiirc-movies";
+	public static final String identInterlocutorPruebas = "movieBot";
 }

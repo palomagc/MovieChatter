@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
-		implements ItfUsoComunicacionChat {
+public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple implements
+		ItfUsoComunicacionChat {
 
 	private static final long serialVersionUID = 1L;
 	// private ItfUsoRecursoTrazas trazas;
@@ -29,8 +29,7 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 	public String identInterlocutorPruebas = "movieBot";
 	private Boolean conectado = false;
 
-	public ClaseGeneradoraComunicacionChat(String idInstanciaRecurso)
-			throws Exception {
+	public ClaseGeneradoraComunicacionChat(String idInstanciaRecurso) throws Exception {
 
 		super(idInstanciaRecurso);
 		// obtenemos las propiedades del recurso que deben estar definidas en
@@ -53,9 +52,8 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 			comunicChat = new ConexionIrc();
 			interpreteMsgIrc = new InterpreteMsgsIRC(comunicChat);
 			comunicChat.setInterpreteMsgs(interpreteMsgIrc);
-			trazas.aceptaNuevaTraza(new InfoTraza(this.getId(),
-					"Creando el recurso " + idInstanciaRecurso,
-					InfoTraza.NivelTraza.debug));
+			trazas.aceptaNuevaTraza(new InfoTraza(this.getId(), "Creando el recurso "
+					+ idInstanciaRecurso, InfoTraza.NivelTraza.debug));
 
 			// InterfazUsoAgente itfAgteControlador=(InterfazUsoAgente)
 			// this.repoIntfaces.obtenerInterfazUso(identAgenteAReportar);
@@ -101,10 +99,9 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.trazas.aceptaNuevaTraza(new InfoTraza(id,
-					"Se ha producido un error al crear el extractor semantico  "
-							+ e.getMessage()
-							+ ": Verificar los parametros de creacion "
-							+ "rutas y otros", InfoTraza.NivelTraza.error));
+					"Se ha producido un error al crear el extractor semantico  " + e.getMessage()
+							+ ": Verificar los parametros de creacion " + "rutas y otros",
+					InfoTraza.NivelTraza.error));
 			this.itfAutomata.transita("error");
 			throw e;
 		}
@@ -112,10 +109,8 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 
 	private void generarErrorCreacionComponente(String textoMensaje) {
 		this.trazas.aceptaNuevaTraza(new InfoTraza(id,
-				"Se ha producido un error al crear el extractor semantico  "
-						+ textoMensaje
-						+ ": Verificar los parametros de creacion ",
-				InfoTraza.NivelTraza.error));
+				"Se ha producido un error al crear el extractor semantico  " + textoMensaje
+						+ ": Verificar los parametros de creacion ", InfoTraza.NivelTraza.error));
 		this.itfAutomata.transita("error");
 
 	}
@@ -149,29 +144,28 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 			if (itfAgteControlador == null) {
 				this.generarErrorCreacionComponente("itfAgteControlador es null");
 			} else
-				interpreteMsgIrc
-						.setItfusoAgenteGestorDialogo(itfAgteControlador);
+				interpreteMsgIrc.setItfusoAgenteGestorDialogo(itfAgteControlador);
 			ItfUsoExtractorSemantico itfExtractorSem = (ItfUsoExtractorSemantico) this.repoIntfaces
 					.obtenerInterfazUso(identExtractorSem);
 			if (itfExtractorSem == null) {
 				this.generarErrorCreacionComponente("itfExtractorSemantico es null");
 			} else
-				interpreteMsgIrc
-						.setItfusoRecExtractorSemantico(itfExtractorSem);
+				interpreteMsgIrc.setItfusoRecExtractorSemantico(itfExtractorSem);
 
 			if (itfExtractorSem == null || itfAgteControlador == null)
 				throw new Exception();
 			else {
 				interpreteMsgIrc
-						.setIdentAgenteGestorDialogo(VocabularioGestionCitas.IdentAgenteAplicacionGuia); // ANTES PONIA IdentAgenteAplicacionDialogoCitas
-				interpreteMsgIrc
-						.setIdentConexion(VocabularioGestionCitas.IdentConexionAgte);
+						.setIdentAgenteGestorDialogo(VocabularioGestionCitas.IdentAgenteAplicacionGuia); // ANTES
+																											// PONIA
+																											// IdentAgenteAplicacionDialogoCitas
+				interpreteMsgIrc.setIdentConexion(VocabularioGestionCitas.IdentConexionAgte);
 				comunicChat.setVerbose(true);
 				conectar(url, chanel, nickname);
 			}
 		} catch (Exception ex) {
-			Logger.getLogger(ClaseGeneradoraComunicacionChat.class.getName())
-					.log(Level.SEVERE, null, ex);
+			Logger.getLogger(ClaseGeneradoraComunicacionChat.class.getName()).log(Level.SEVERE,
+					null, ex);
 		}
 
 		// comunicChat.conectar();
@@ -180,8 +174,7 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 	}
 
 	@Override
-	public Boolean conectar(String urlaConectar, String canal, String nick)
-			throws Exception {
+	public Boolean conectar(String urlaConectar, String canal, String nick) throws Exception {
 		// conectado=comunicChat.isConnected();
 		if (conectado) {
 			if (this.url.equals(urlaConectar))
@@ -199,14 +192,11 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 				conectado = true;
 				// this.sendMessage("movieBot", "hola hola");
 			} catch (IOException ex) {
-				Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,
-						null, ex);
+				Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
 			} catch (IrcException ex) {
-				Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,
-						null, ex);
+				Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
 			} catch (NickAlreadyInUseException ex) {
-				Logger.getLogger(ConexionIrc.class.getName()).log(Level.SEVERE,
-						null, ex);
+				Logger.getLogger(ConexionIrc.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 		return conectado;
@@ -235,8 +225,8 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple
 			itfAgteControlador = (InterfazUsoAgente) this.repoIntfaces
 					.obtenerInterfazUso(identAgenteAReportar);
 		} catch (Exception ex) {
-			Logger.getLogger(ClaseGeneradoraComunicacionChat.class.getName())
-					.log(Level.SEVERE, null, ex);
+			Logger.getLogger(ClaseGeneradoraComunicacionChat.class.getName()).log(Level.SEVERE,
+					null, ex);
 		}
 		if (itfAgteControlador == null)
 			this.generarErrorCreacionComponente("itfAgteAreportar es null");

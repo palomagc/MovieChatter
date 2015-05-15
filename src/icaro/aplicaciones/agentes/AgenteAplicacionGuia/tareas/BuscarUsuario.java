@@ -1,8 +1,8 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarDatosInicialesUsuario;
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarEdad;
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.PreguntarSexo;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerDatosIniciales;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerEdad;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerSexo;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
 import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
@@ -50,8 +50,7 @@ public class BuscarUsuario extends TareaSincrona {
 		}
 
 		try {
-			VocabularioGestionCitas.usuario = itfUsoRecursoUsuario
-					.buscarUsuario(identInterlocutor);
+			VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.buscarUsuario(identInterlocutor);
 		} catch (Exception e1) {
 			// TODo Auto-generated catch block
 			e1.printStackTrace();
@@ -64,8 +63,7 @@ public class BuscarUsuario extends TareaSincrona {
 		// le intentar� preguntar por sus datos b�sicos, mediante el
 		// cuestionario inicial.
 		if (!exists) {
-			this.getEnvioHechos().insertarHecho(
-					new PreguntarDatosInicialesUsuario());
+			this.getEnvioHechos().insertarHecho(new ObtenerDatosIniciales());
 			// Creamos un nuevo usuario con sexo a null y edad a -1
 			try {
 				VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.crearUsuario(
@@ -83,67 +81,56 @@ public class BuscarUsuario extends TareaSincrona {
 			// PREGUNTARLE SI QUIERE VALORARLA (HAY QUE LANZAR EL HECHO Y METER
 			// LA REGLA EN EL AGENTE GUIA)
 			ArrayList<Valoracion> valoraciones = VocabularioGestionCitas.usuario.getValoraciones();
-			if(VocabularioGestionCitas.usuario.getSexo() == null){
-				this.getEnvioHechos().insertarHecho(
-						new PreguntarSexo());
+			if (VocabularioGestionCitas.usuario.getSexo() == null) {
+				this.getEnvioHechos().insertarHecho(new ObtenerSexo());
+			} else if (VocabularioGestionCitas.usuario.getEdad() == null) {
+				this.getEnvioHechos().insertarHecho(new ObtenerEdad());
 			}
-			else if(VocabularioGestionCitas.usuario.getEdad() == null){
-				this.getEnvioHechos().insertarHecho(
-						new PreguntarEdad());
-			}
-			// TODO esto se podría mejorar. Si la última película sí está valorada, podemos buscar
-			// la anterior película que está sin valorar. En caso de que no la quiera valorar, le podemos
+			// TODO esto se podría mejorar. Si la última película sí está valorada, podemos
+			// buscar
+			// la anterior película que está sin valorar. En caso de que no la quiera valorar, le
+			// podemos
 			// asignar nota=-2 para saber que no hay que volver a preguntarle por esta peli
-			else if(valoraciones.size() > 0 && valoraciones.get(valoraciones.size()-1).getNota() == null){
+			else if (valoraciones.size() > 0
+					&& valoraciones.get(valoraciones.size() - 1).getNota() == null) {
 				Notificacion notif = new Notificacion();
-		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionValorarUltimaPelicula);
-		 		getComunicator().enviarInfoAotroAgente(notif, VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-			}
-			else{
+				notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionValorarUltimaPelicula);
+				getComunicator().enviarInfoAotroAgente(notif,
+						VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+			} else {
 				this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
 			}
 		}
 
 		try {
-			// // Se busca la interfaz del recurso en el repositorio de
-			// interfaces
+			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat
-						.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
 				// int numDespedida = (int) ((100 * Math.random()) %
 				// VocabularioGestionCitas.Despedida.length);
 				String mensajeAenviar = "NULL";
 				if (!exists) {
-					mensajeAenviar = "Hola " + identInterlocutor
-							+ ", no nos conocemos.";
+					mensajeAenviar = "Hola " + identInterlocutor + ", no nos conocemos.";
 				} else {
-					mensajeAenviar = "Hola, " + identInterlocutor
-							+ " sabia que volverias!";
+					mensajeAenviar = "Hola, " + identInterlocutor + " sabia que volverias!";
 				}
 
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
-				this.generarInformeConCausaTerminacion(
-						identDeEstaTarea,
-						contextoEjecucionTarea,
-						identAgenteOrdenante,
-						"Error-AlObtener:Interfaz:"
+				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
 								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
-			this.generarInformeConCausaTerminacion(
-					identDeEstaTarea,
-					contextoEjecucionTarea,
-					identAgenteOrdenante,
-					"Error-Acceso:Interfaz:"
+			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
+					identAgenteOrdenante, "Error-Acceso:Interfaz:"
 							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}
-
 }

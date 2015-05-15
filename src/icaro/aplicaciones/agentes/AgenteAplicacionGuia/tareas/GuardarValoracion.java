@@ -33,15 +33,17 @@ public class GuardarValoracion extends TareaSincrona {
 			if (itfUsoRecursoUsuario != null && usuario.getPeliculaActual() != null) {
 				String idPelicula = usuario.getPeliculaActual().getIdPelicula();
 				if (usuario.getIdValoraciones().contains(idPelicula)
-						&& !notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)) {
+						&& !notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)
+						&& !notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)) {
 					// TODO cuando no es NOTA refocaliza
 					int index = usuario.getIdValoraciones().indexOf(idPelicula);
 					Valoracion aux = usuario.getValoraciones().get(index);
 					String nota = ((Notificacion) params[0]).getMensajeNotificacion();
 					aux = new Valoracion(idPelicula, nota);
 					// TODO deberia reemplazar la valoracion, por ahora solo la añade
-					// itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
-					usuario.addValoracion(aux);
+					// en realidad la añadio con nota null al objeto usuario y ahora se guarda
+					itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
+					
 				}
 			}
 			// Reestablece el objetivo para que le recomiende otra peli con las mismas
@@ -56,5 +58,4 @@ public class GuardarValoracion extends TareaSincrona {
 					InfoTraza.NivelTraza.error));
 		}
 	}
-
 }

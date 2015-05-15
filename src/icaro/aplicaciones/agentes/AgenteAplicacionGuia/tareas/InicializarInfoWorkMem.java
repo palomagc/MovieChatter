@@ -20,8 +20,8 @@ public class InicializarInfoWorkMem extends TareaSincrona {
 	public void ejecutar(Object... params) {
 		try {
 			// Objetivo objetivoEjecutantedeTarea = (Objetivo)params[0];
-			String identTarea = this.getIdentTarea();
-			String nombreAgenteEmisor = this.getIdentAgente();
+			// String identTarea = this.getIdentTarea();
+			// String nombreAgenteEmisor = this.getIdentAgente();
 			this.getItfConfigMotorDeReglas().setDepuracionActivationRulesDebugging(true);
 			this.getItfConfigMotorDeReglas()
 					.setfactHandlesMonitoring_afterActivationFired_DEBUGGING(true);
@@ -35,5 +35,4 @@ public class InicializarInfoWorkMem extends TareaSincrona {
 					InfoTraza.NivelTraza.error));
 		}
 	}
-
 }

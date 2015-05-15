@@ -20,5 +20,4 @@ public class AutorizarAccesoUsuarios extends Objetivo {
 	public AutorizarAccesoUsuarios() {
 		super.setgoalId("AutorizarAccesoUsuarios");
 	}
-
 }

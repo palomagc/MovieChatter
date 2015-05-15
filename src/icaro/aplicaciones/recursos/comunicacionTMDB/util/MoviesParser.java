@@ -30,12 +30,12 @@ public class MoviesParser {
 			JSONParser parser = new JSONParser();
 			JSONObject jsonObj = (JSONObject) parser.parse(new InputStreamReader(in));
 			JSONArray array = GetJSON.getArray(jsonObj, "results");
-			
-			if (array!=null && !array.isEmpty()) {
+
+			if (array != null && !array.isEmpty()) {
 				for (int i = 0; i < array.size(); i++) {
 					JSONObject obj = (JSONObject) array.get(i);
 					Movie movie = new Movie();
-	
+
 					movie.setId(GetJSON.getInteger(obj, "id"));
 					movie.setTitle(GetJSON.getString(obj, "title"));
 					movie.setOriginalTitle(GetJSON.getString(obj, "original_title"));
@@ -43,7 +43,7 @@ public class MoviesParser {
 					movie.setVoteAverage(GetJSON.getFloat(obj, "vote_average"));
 					movie.setVoteCount(GetJSON.getInteger(obj, "vote_count"));
 					movie.setPopularity(GetJSON.getFloat(obj, "popularity"));
-					//movie.setCompleted(true);
+					// movie.setCompleted(true);
 					MovieList.add(movie);
 				}
 			}
@@ -67,21 +67,21 @@ public class MoviesParser {
 			movie.setVoteAverage(GetJSON.getFloat(obj, "vote_average"));
 			movie.setVoteCount(GetJSON.getInteger(obj, "vote_count"));
 			movie.setPopularity(GetJSON.getFloat(obj, "popularity"));
-			
-			if(obj.get("belongs_to_collection")!=null) {
-				movie.setCollectionId(
-					GetJSON.getInteger(((JSONObject) obj.get("belongs_to_collection")), "id"));
-				movie.setCollectionName(
-					GetJSON.getString(((JSONObject) obj.get("belongs_to_collection")), "name"));
+
+			if (obj.get("belongs_to_collection") != null) {
+				movie.setCollectionId(GetJSON.getInteger(
+						((JSONObject) obj.get("belongs_to_collection")), "id"));
+				movie.setCollectionName(GetJSON.getString(
+						((JSONObject) obj.get("belongs_to_collection")), "name"));
 			}
 			movie.setDuration(GetJSON.getInteger(obj, "runtime"));
 			movie.setOverview(GetJSON.getString(obj, "overview"));
-			
-			//genres
+
+			// genres
 			List<Genre> genreList = new ArrayList<Genre>();
 			JSONArray array = GetJSON.getArray(obj, "genres");
 
-			if (array!=null && !array.isEmpty()) {
+			if (array != null && !array.isEmpty()) {
 				for (Object o : array) {
 					Genre genre = new Genre();
 					genre.setId(GetJSON.getInteger((JSONObject) o, "id"));
@@ -90,13 +90,13 @@ public class MoviesParser {
 				}
 			}
 			movie.setGenres(genreList);
-			
-			//production_countries
-			List <String> producerCountries = new ArrayList<String>();
+
+			// production_countries
+			List<String> producerCountries = new ArrayList<String>();
 			array = GetJSON.getArray(obj, "production_countries");
 
-			if (array!=null && !array.isEmpty()) {
-				for(Object o : array)
+			if (array != null && !array.isEmpty()) {
+				for (Object o : array)
 					producerCountries.add(GetJSON.getString((JSONObject) o, "name"));
 			}
 			movie.setProducerCountries(producerCountries);

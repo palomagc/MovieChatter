@@ -24,11 +24,11 @@ public class GenresParser {
 			JSONObject jsonObj = (JSONObject) parser.parse(new InputStreamReader(in));
 			JSONArray array = GetJSON.getArray(jsonObj, "genres");
 
-			if (array!=null && !array.isEmpty()) {
+			if (array != null && !array.isEmpty()) {
 				for (int i = 0; i < array.size(); i++) {
 					JSONObject obj = (JSONObject) array.get(i);
 					Genre genre = new Genre();
-	
+
 					genre.setId(GetJSON.getInteger(obj, "id"));
 					genre.setName(GetJSON.getString(obj, "name"));
 					genreList.add(genre);

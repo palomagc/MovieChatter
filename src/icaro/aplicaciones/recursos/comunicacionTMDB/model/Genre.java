@@ -8,13 +8,13 @@ public class Genre {
 
 	private int id;
 	private String name;
-	
+
 	public Genre(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	public Genre() {
 		super();
 		this.id = -1;
@@ -39,8 +39,8 @@ public class Genre {
 
 	@Override
 	public boolean equals(Object another) {
-		if(!(another instanceof Genre))
+		if (!(another instanceof Genre))
 			return false;
-		return this.id == ((Genre)another).id;
+		return this.id == ((Genre) another).id;
 	}
 }
