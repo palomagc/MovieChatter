@@ -52,7 +52,7 @@ public class ExtractorSemanticoImp {
 		tiposAnotacionesRelevantes.add("InicioPeticion");
 	}
 
-	public void incializar() {
+	public void inicializar() {
 		try {
 			// initialise GATE - this must be done before calling any GATE APIs
 			Gate.init();

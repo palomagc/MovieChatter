@@ -119,8 +119,8 @@ public class VocabularioGestionCitas {
 		Generos.put("GeneroTerror", new Genero("Horror", "terror"));
 		Generos.put("GeneroMusical", new Genero("Music", "musical"));
 		Generos.put("GeneroMisterio", new Genero("Mystery", "misterio"));
-		Generos.put("GeneroRomantico", new Genero("Romance", "romï¿½ntico"));
-		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficciï¿½n"));
+		Generos.put("GeneroRomantico", new Genero("Romance", "romántico"));
+		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficción"));
 		Generos.put("GeneroTV", new Genero("TV Movie", "tv"));
 		Generos.put("GeneroSuspense", new Genero("Thriller", "suspense"));
 		Generos.put("GeneroGuerra", new Genero("War", "guerra"));
@@ -145,25 +145,25 @@ public class VocabularioGestionCitas {
 
 	// SALUDO
 	public static final String SaludoInicial1 = "Hola, yo soy " + Constantes.SYSTEM_NAME
-			+ ", tu recomendador de peliculas";
-	public static final String[] SaludoInicial2 = { "Hola", "Que tal", "Buenas", "Que hay" };
+			+ ", tu recomendador de películas";
+	public static final String[] SaludoInicial2 = { "Hola", "Qué tal", "Buenas", "Que hay" };
 
 	// FRASES DE NUESTRO SISTEMA
-	public static final String[] Despedida = { "Adios.", "Hasta la proxima.", "Nos vemos.",
+	public static final String[] Despedida = { "Adiós.", "Hasta la próxima.", "Nos vemos.",
 			"Que te vaya bien.", "Ha sido un placer.", "Cuando quieras repetimos." };
 	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras qué tal.",
-			"Que te guste.", "Ojala te guste.", "A por las palomitas." };
-	public static final String InfoFuncionalidad = "Soy un cinefilo, y me encantaria ayudarte a encontrar peliculas.";
+			"Que te guste.", "Ojalá te guste.", "A por las palomitas." };
+	public static final String InfoFuncionalidad = "Soy un cinéfilo, y me encantaría ayudarte a encontrar películas.";
 	public static final String[] NoEntendido = { "No he entendido lo que me has dicho.",
 			"Perdona, pero no he entendido bien.", "Lo siento, no he comprendido bien.",
-			"Perdona, no comprendo que quieres decir." };
+			"Perdona, no comprendo qué quieres decir." };
 	public static final String[] Params = { "Podrías introducir un año.",
-			"Puedes añadir un actor a tu filtrado.", "Podrías añadir otro genero a la búsqueda.",
-			"Puedes introducir otro genero, actor o año como filtro" };
-	public static final String[] PeticionInfoGeneral = { "Te puedo sugerir alguna hoy?",
-			"Quieres que te recomiende alguna?", "Necesitas ayuda para encontrar alguna?" };
-	public static final String PeticionInfoPeli = " PodrÃƒÂ­a recomendarte alguna pelÃƒÂ­cula?";
-	public static final String[] Recomienda = { "podrias ver", "te sugiero", "te propongo" };
+			"Puedes añadir un actor a tu filtrado.", "Podrías añadir otro género a la búsqueda.",
+			"Puedes introducir otro género, actor o año como filtro" };
+	public static final String[] PeticionInfoGeneral = { "¿Te puedo sugerir alguna hoy?",
+			"¿Quieres que te recomiende alguna?", "¿Necesitas ayuda para encontrar alguna?" };
+	public static final String PeticionInfoPeli = "¿Podría recomendarte alguna película?";
+	public static final String[] Recomienda = { "podrías ver", "te sugiero", "te propongo" };
 
 	// FRASES ANTERIORES
 	public static final String ErrorObtencionInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";

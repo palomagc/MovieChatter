@@ -80,6 +80,28 @@ public class InterpreteMsgsIRC {
 		}
 	}
 
+	private String formatter(String input, boolean inputMode) {
+		// Cadena de caracteres original a sustituir. "Ãƒ" este no
+		String[] pantalla = { "Ã¡", "Ã ", "Ã¤", "Ã¢", "Ã£", "Ã©", "Ã¨", "Ã«", "Ãª", "Ã­", "Ã¬",
+				"Ã¯", "Ã®", "Ã³", "Ã²", "Ã¶", "Ã´", "Ãµ", "Ãº", "Ã¹", "Ã»", "Ã§", "Ã�", "Ã€", "Ã„",
+				"Ã‚", "Ã‰", "Ãˆ", "Ã‹", "ÃŠ", "Ã�", "ÃŒ", "Ã�", "ÃŽ", "Ã“", "Ã’", "Ã–", "Ã”", "Ã•",
+				"Ãš", "Ã™", "Ãœ", "Ã›", "Ã‡", "Â¿", "Â¡" };
+		// Cadena de caracteres ASCII que reemplazarán los originales. "Ã" este no
+		String[] original = { "á", "à", "ä", "â", "ã", "é", "è", "ë", "ê", "í", "ì", "ï", "î", "ó",
+				"ò", "ö", "ô", "õ", "ú", "ù", "û", "ç", "Á", "À", "Ä", "Â", "É", "È", "Ë", "Ê",
+				"Í", "Ì", "Ï", "Î", "Ó", "Ò", "Ö", "Ô", "Õ", "Ú", "Ù", "Ü", "Û", "Ç", "¿", "¡" };
+		String output = input;
+		for (int i = 0; i < pantalla.length; i++) {
+			if (inputMode)
+				output = output.replace(pantalla[i], original[i]);
+			else
+				output = output.replace(original[i], pantalla[i]);
+		}
+		if (inputMode)
+			output.toLowerCase();
+		return output;
+	}
+
 	public final void handleLine(String line) {
 		this.log(line);
 
@@ -222,14 +244,14 @@ public class InterpreteMsgsIRC {
 		// Check for normal messages to the channel.
 		if (command.equals("PRIVMSG") && (target.startsWith("#") || target.startsWith("&"))) {
 			this.onMessage(target, sourceNick, sourceLogin, sourceHostname,
-					(line.substring(line.indexOf(" :") + 2)).toLowerCase());
+					formatter(line.substring(line.indexOf(" :") + 2), true));
 			return;
 		}
 
 		// Check for private messages to us.
 		if (command.equals("PRIVMSG") && target.equalsIgnoreCase(_userNameAgente)) {
 			this.onPrivateMessage(sourceNick, sourceLogin, sourceHostname,
-					(line.substring(line.indexOf(" :") + 2)).toLowerCase());
+					formatter(line.substring(line.indexOf(" :") + 2), true));
 			return;
 		}
 
@@ -415,10 +437,10 @@ public class InterpreteMsgsIRC {
 		 * @param action
 		 *            The action carried out by the user.
 		 */
-		// Se envia la información al extrator semantico se traducen las
+		// Se envia la informaciÃ³n al extrator semantico se traducen las
 		// anotaciones y se envia el contenido al agente de dialogo
 		// de esta forma el agente recibe mensajes con entidades del modelo de
-		// información
+		// informaciÃ³n
 		HashSet<String> anotacionesBusquedaPrueba = new HashSet<String>();
 		anotacionesBusquedaPrueba.add("Lookup");
 		anotacionesBusquedaPrueba.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
@@ -466,7 +488,7 @@ public class InterpreteMsgsIRC {
 					mensajeAenviar = new MensajeSimple(infoExtraida, sender,
 							identAgenteGestorDialogo);
 					// mensajeAenviar.setColeccionContenido(infoExtraida); //
-					// los elementos de la colección se meterán en el motor
+					// los elementos de la colecciÃ³n se meterÃ¡n en el motor
 				}
 				itfAgenteDialogo.aceptaMensaje(mensajeAenviar);
 			} catch (RemoteException ex) {
@@ -1362,7 +1384,7 @@ public class InterpreteMsgsIRC {
 	private ArrayList<Notificacion> interpretarAnotaciones(String interlocutor,
 			String contextoInterpretacion, HashSet<Annotation> anotacionesRelevantes2) {
 		// recorremos las anotaciones obtenidas y las traducimos a objetos del
-		// modelo de información
+		// modelo de informaciÃ³n
 		ArrayList<Notificacion> anotacionesInterpretadas = new ArrayList<Notificacion>();
 		// int i=0;
 		Iterator<Annotation> annotTypesSal = anotacionesRelevantes2.iterator();

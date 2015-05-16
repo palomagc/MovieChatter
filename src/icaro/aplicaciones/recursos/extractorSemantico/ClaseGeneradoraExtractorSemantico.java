@@ -41,7 +41,7 @@ public class ClaseGeneradoraExtractorSemantico extends ImplRecursoSimple impleme
 			throw e;
 		}
 
-		extractorSem.incializar();
+		extractorSem.inicializar();
 	}
 
 	@Override

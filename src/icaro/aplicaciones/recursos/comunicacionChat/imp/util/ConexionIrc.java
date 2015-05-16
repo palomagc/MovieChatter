@@ -6,6 +6,7 @@
 package icaro.aplicaciones.recursos.comunicacionChat.imp.util;
 
 import icaro.aplicaciones.recursos.comunicacionChat.imp.InterpreteMsgsIRC;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -348,7 +349,7 @@ public class ConexionIrc {
 	 *            The message to send.
 	 */
 	public final void sendMessage(String target, String message) {
-		_outQueue.add("PRIVMSG " + target + " :" + message);
+		_outQueue.add("PRIVMSG " + target + " :" + formatter(message, false));
 	}
 
 	/**
@@ -790,6 +791,28 @@ public class ConexionIrc {
 		}
 	}
 
+	private String formatter(String input, boolean inputMode) {
+		// Cadena de caracteres original a sustituir. "Ãƒ" este no
+		String[] pantalla = { "Ã¡", "Ã ", "Ã¤", "Ã¢", "Ã£", "Ã©", "Ã¨", "Ã«", "Ãª", "Ã­", "Ã¬",
+				"Ã¯", "Ã®", "Ã³", "Ã²", "Ã¶", "Ã´", "Ãµ", "Ãº", "Ã¹", "Ã»", "Ã§", "Ã�", "Ã€", "Ã„",
+				"Ã‚", "Ã‰", "Ãˆ", "Ã‹", "ÃŠ", "Ã�", "ÃŒ", "Ã�", "ÃŽ", "Ã“", "Ã’", "Ã–", "Ã”", "Ã•",
+				"Ãš", "Ã™", "Ãœ", "Ã›", "Ã‡", "Â¿", "Â¡" };
+		// Cadena de caracteres ASCII que reemplazarán los originales. "Ã" este no
+		String[] original = { "á", "à", "ä", "â", "ã", "é", "è", "ë", "ê", "í", "ì", "ï", "î", "ó",
+				"ò", "ö", "ô", "õ", "ú", "ù", "û", "ç", "Á", "À", "Ä", "Â", "É", "È", "Ë", "Ê",
+				"Í", "Ì", "Ï", "Î", "Ó", "Ò", "Ö", "Ô", "Õ", "Ú", "Ù", "Ü", "Û", "Ç", "¿", "¡" };
+		String output = input;
+		for (int i = 0; i < pantalla.length; i++) {
+			if (inputMode)
+				output = output.replace(pantalla[i], original[i]);
+			else
+				output = output.replace(original[i], pantalla[i]);
+		}
+		if (inputMode)
+			output.toLowerCase();
+		return output;
+	}
+
 	/**
 	 * This method handles events when any line of text arrives from the server, then calling the
 	 * appropriate method in the ConexionIrc. This method is protected and only called by the
@@ -938,7 +961,7 @@ public class ConexionIrc {
 		// Check for normal messages to the channel.
 		if (command.equals("PRIVMSG") && (target.startsWith("#") || target.startsWith("&"))) {
 			this.onMessage(target, sourceNick, sourceLogin, sourceHostname,
-					(line.substring(line.indexOf(" :") + 2)).toLowerCase());
+					formatter(line.substring(line.indexOf(" :") + 2), true));
 
 			return;
 		}
@@ -946,7 +969,7 @@ public class ConexionIrc {
 		// Check for private messages to us.
 		if (command.equals("PRIVMSG") && target.equalsIgnoreCase(_name)) {
 			this.onPrivateMessage(sourceNick, sourceLogin, sourceHostname,
-					(line.substring(line.indexOf(" :") + 2)).toLowerCase());
+					formatter(line.substring(line.indexOf(" :") + 2), true));
 			return;
 		}
 
