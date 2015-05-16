@@ -1,4 +1,4 @@
-package icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso;
+package icaro.aplicaciones.informacion;
 
 import java.io.Serializable;
 

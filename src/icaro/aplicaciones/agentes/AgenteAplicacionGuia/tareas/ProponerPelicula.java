@@ -1,8 +1,8 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import constantes.Busqueda;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Busqueda;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
@@ -29,18 +29,18 @@ public class ProponerPelicula extends TareaSincrona {
 
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
-		Busqueda busqueda = VocabularioGestionCitas.busqueda;
-		Usuario usuario = VocabularioGestionCitas.usuario;
+		Busqueda busqueda = Vocabulario.busqueda;
+		Usuario usuario = Vocabulario.usuario;
 		try {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				String mensajeAenviar = "";
 				Movie movie = null;
 				if (busqueda.getResult().size() > 0) {
-					int numRecomienda = (int) ((100 * Math.random()) % VocabularioGestionCitas.Recomienda.length);
-					mensajeAenviar = VocabularioGestionCitas.Recomienda[numRecomienda] + "  ";
+					int numRecomienda = (int) ((100 * Math.random()) % Vocabulario.Recomienda.length);
+					mensajeAenviar = Vocabulario.Recomienda[numRecomienda] + "  ";
 					for (Movie m : busqueda.getResult()) {
 						if (movie == null
 								&& !usuario.getIdValoraciones().contains(
@@ -50,10 +50,10 @@ public class ProponerPelicula extends TareaSincrona {
 							movie = m;
 					}
 					if (movie != null) {
-						int numParams = (int) ((100 * Math.random()) % VocabularioGestionCitas.Params.length);
+						int numParams = (int) ((100 * Math.random()) % Vocabulario.Params.length);
 						// TODO parece que cuando le dices muchhas veces que no quieres ver la peli
 						// salta null pointer exception en la linea de aquí abajo.
-						mensajeAenviar += (movie.getTitle() + ". " + VocabularioGestionCitas.Params[numParams]);
+						mensajeAenviar += (movie.getTitle() + ". " + Vocabulario.Params[numParams]);
 						usuario.setPeliculaActual(new Valoracion(Integer.toString(movie.getId()),
 								null));
 						// this.getEnvioHechos().insertarHecho(new ObtenerPelicula());
@@ -74,13 +74,13 @@ public class ProponerPelicula extends TareaSincrona {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+								+ Vocabulario.IdentRecursoComunicacionTMDB,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+							+ Vocabulario.IdentRecursoComunicacionTMDB,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

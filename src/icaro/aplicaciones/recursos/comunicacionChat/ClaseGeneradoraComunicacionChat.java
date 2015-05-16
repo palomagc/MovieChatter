@@ -1,6 +1,6 @@
 package icaro.aplicaciones.recursos.comunicacionChat;
 
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.imp.InterpreteMsgsIRC;
 import icaro.aplicaciones.recursos.comunicacionChat.imp.util.ConexionIrc;
 import icaro.aplicaciones.recursos.comunicacionChat.imp.util.IrcException;
@@ -9,6 +9,7 @@ import icaro.aplicaciones.recursos.extractorSemantico.ItfUsoExtractorSemantico;
 import icaro.infraestructura.entidadesBasicas.interfaces.InterfazUsoAgente;
 import icaro.infraestructura.patronRecursoSimple.imp.ImplRecursoSimple;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +45,7 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple implement
 		nickname = ConfigInfoComunicacionChat.nicknameConexionAgte;
 		// identAgenteAReportar =
 		// VocabularioGestionCitas.IdentAgenteAplicacionDialogoCitas;
-		identExtractorSem = VocabularioGestionCitas.IdentRecursoExtractorSemantico;
+		identExtractorSem = Vocabulario.IdentRecursoExtractorSemantico;
 		try {
 			// comunicChat = new
 			// ComunicacionChatImp(idInstanciaRecurso,url,nickname);
@@ -156,10 +157,10 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple implement
 				throw new Exception();
 			else {
 				interpreteMsgIrc
-						.setIdentAgenteGestorDialogo(VocabularioGestionCitas.IdentAgenteAplicacionGuia); // ANTES
+						.setIdentAgenteGestorDialogo(Vocabulario.IdentAgenteAplicacionGuia); // ANTES
 																											// PONIA
 																											// IdentAgenteAplicacionDialogoCitas
-				interpreteMsgIrc.setIdentConexion(VocabularioGestionCitas.IdentConexionAgte);
+				interpreteMsgIrc.setIdentConexion(Vocabulario.IdentConexionAgte);
 				comunicChat.setVerbose(true);
 				conectar(url, chanel, nickname);
 			}

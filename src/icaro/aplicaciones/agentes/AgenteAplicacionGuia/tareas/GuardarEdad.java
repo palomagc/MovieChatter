@@ -2,8 +2,8 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerDatosIniciales;
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Notificacion;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
@@ -29,12 +29,12 @@ public class GuardarEdad extends TareaSincrona {
 			// TODO Revisar esto pero parece que ya funciona automagicamente
 			Notificacion notifEdad = (Notificacion) params[0]; 
 			String edad = notifEdad.tipoNotificacion;
-			VocabularioGestionCitas.usuario.setEdad(edad);
+			Vocabulario.usuario.setEdad(edad);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
-			itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(),
-					VocabularioGestionCitas.usuario);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoUsuario);
+			itfUsoRecursoUsuario.modificarUsuario(Vocabulario.usuario.getNombre(),
+					Vocabulario.usuario);
 
 			Objetivo objetivo = new ObtenerDatosIniciales();
 			objetivo.setSolved();
@@ -47,54 +47,54 @@ public class GuardarEdad extends TareaSincrona {
 			int anos = 0;
 			if(anos < 8){ 
 //				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
 				
 			}else if(anos < 13){
 //				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroFantasia);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroFantasia);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroOeste);
 				
 			}else if(anos < 13){
 //				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroFantasia);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroFantasia);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroOeste);
 				
 			}else if(anos < 23){
 //				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCrimen);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroTerror);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroCienciaFiccion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroComedia);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroCrimen);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroMisterio);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroSuspense);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroTerror);
 				
 			}else if(anos < 40){
 //				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCrimen);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroCienciaFiccion);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroComedia);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroCrimen);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroMisterio);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroSuspense);
 				
 			}else{
 //				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroDocumental);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroFamiliar);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroHistorico);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste);
-				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroDocumental);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroComedia);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroFamiliar);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroHistorico);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroOeste);
+				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroSuspense);
 				
 			}
 			

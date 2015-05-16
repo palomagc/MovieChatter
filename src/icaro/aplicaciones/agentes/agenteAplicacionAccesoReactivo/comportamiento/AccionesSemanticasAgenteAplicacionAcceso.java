@@ -1,7 +1,7 @@
 package icaro.aplicaciones.agentes.agenteAplicacionAccesoReactivo.comportamiento;
 
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.InfoAccesoSinValidar;
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.InfoAccesoValidada;
+import icaro.aplicaciones.informacion.InfoAccesoSinValidar;
+import icaro.aplicaciones.informacion.InfoAccesoValidada;
 import icaro.aplicaciones.recursos.persistenciaAccesoSimple.ItfUsoPersistenciaAccesoSimple;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;

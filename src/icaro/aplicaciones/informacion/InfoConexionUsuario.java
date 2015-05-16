@@ -1,4 +1,4 @@
-package icaro.aplicaciones.informacion.gestionCitas;
+package icaro.aplicaciones.informacion;
 
 /**
  * 

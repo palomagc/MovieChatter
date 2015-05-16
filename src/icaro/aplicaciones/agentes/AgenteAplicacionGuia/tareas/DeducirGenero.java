@@ -1,7 +1,7 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Notificacion;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
@@ -39,10 +39,10 @@ public class DeducirGenero extends TareaSincrona {
 			
 			
 			// Si hay un filtro con generos
-			if(VocabularioGestionCitas.busqueda.getGenres().size() > 0){
+			if(Vocabulario.busqueda.getGenres().size() > 0){
 				Notificacion notif = new Notificacion();
-		 		notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
-		 		getComunicator().enviarInfoAotroAgente(notif, VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+		 		notif.setTipoNotificacion(Vocabulario.NombreTipoNotificacionComprobarDatosBusqueda);
+		 		getComunicator().enviarInfoAotroAgente(notif, Vocabulario.IdentAgenteAplicacionGuia);
 			}
 			// Si no hay generos en la busqueda actual intentamos deducir alguno, si no le preguntamos al usuario
 			else{
@@ -62,11 +62,11 @@ public class DeducirGenero extends TareaSincrona {
 					String identAgenteOrdenante = this.getIdentAgente();
 					try {
 						// Se busca la interfaz del recurso en el repositorio de interfaces.
-						ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+						ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 						
 						if (recComunicacionChat != null) {
 							recComunicacionChat
-									.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+									.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 
 							// Preguntar el gï¿½nero que le apetece ver
 							String mensajeAenviar = "De que genero te apetece ver la peli?";
@@ -96,11 +96,11 @@ public class DeducirGenero extends TareaSincrona {
 
 
 	private HashMap<Integer, Integer> historialGenerosVistos(int maximoNumeroPeliculasProcesar) throws Exception{
-		ArrayList<Valoracion> listaValoraciones = VocabularioGestionCitas.usuario.getValoraciones();
+		ArrayList<Valoracion> listaValoraciones = Vocabulario.usuario.getValoraciones();
 		Iterator<Valoracion> itValoraciones = listaValoraciones.iterator();
 		
 		// Vamos a utilizar el recurso TMDB para buscar las películas y acceder a su informacion.
-		ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+		ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
 		// Guardaremos para cada genero un contador de apariciones.
 		HashMap<Integer, Integer> historial = new HashMap<Integer, Integer>();
 		// TODO Las valoraciones de películas (caso: ya la he visto y le pongo X nota), deberían introducirse al final de la lista.

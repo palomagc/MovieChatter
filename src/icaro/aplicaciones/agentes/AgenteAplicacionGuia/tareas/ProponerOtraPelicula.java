@@ -1,6 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
@@ -30,16 +30,16 @@ public class ProponerOtraPelicula extends TareaSincrona {
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
 		String notifica = (String) params[0];
-		Usuario usuario = VocabularioGestionCitas.usuario;
+		Usuario usuario = Vocabulario.usuario;
 		try {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoUsuario);
 			Objetivo objAntiguo = (Objetivo) params[1];
 			if (recComunicacionChat != null && itfUsoRecursoUsuario != null
 					&& usuario.getPeliculaActual() != null) {
-				if (notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)) {
+				if (notifica.equals(Vocabulario.NombreTipoNotificacionNegacion)) {
 					// TODO hay que quitar el objeto usuario estatico y utilizar solo el recurso
 					// para evitar fallos
 					// itfUsoRecursoUsuario.nuevaPeliculaOdiada(usuario.getNombre(),
@@ -52,15 +52,15 @@ public class ProponerOtraPelicula extends TareaSincrona {
 					objAntiguo.setPending();
 					this.getEnvioHechos().actualizarHecho(objAntiguo);
 				} else if (notifica
-						.equals(VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)) {
+						.equals(Vocabulario.NombreTipoNotificacionAfirmacion)) {
 					usuario.addValoracion(new Valoracion(usuario.getPeliculaActual()
 							.getIdPelicula(), null));
 					usuario.setPeliculaActual(null);
-					VocabularioGestionCitas.busqueda.reset();
-					int numDespedida = (int) ((100 * Math.random()) % VocabularioGestionCitas.Despedida.length);
-					int numDisfruta = (int) ((100 * Math.random()) % VocabularioGestionCitas.Disfruta.length);
-					String mensajeAenviar = VocabularioGestionCitas.Disfruta[numDisfruta] + "  "
-							+ VocabularioGestionCitas.Despedida[numDespedida];
+					Vocabulario.busqueda.reset();
+					int numDespedida = (int) ((100 * Math.random()) % Vocabulario.Despedida.length);
+					int numDisfruta = (int) ((100 * Math.random()) % Vocabulario.Disfruta.length);
+					String mensajeAenviar = Vocabulario.Disfruta[numDisfruta] + "  "
+							+ Vocabulario.Despedida[numDespedida];
 					recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 					// objAntiguo.setSolved();
 					// this.getEnvioHechos().actualizarHecho(objAntiguo);
@@ -69,13 +69,13 @@ public class ProponerOtraPelicula extends TareaSincrona {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+								+ Vocabulario.IdentRecursoComunicacionTMDB,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+							+ Vocabulario.IdentRecursoComunicacionTMDB,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

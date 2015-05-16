@@ -1,6 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
@@ -32,15 +32,15 @@ public class SolicitarValoracion extends TareaSincrona {
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
 		try {
-			Usuario usuario = VocabularioGestionCitas.usuario;
+			Usuario usuario = Vocabulario.usuario;
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				String mensajeAenviar;
 				ItfUsoRecursoUsuario itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-						.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+						.obtenerInterfazUso(Vocabulario.IdentRecursoUsuario);
 
 				if (usuario.getPeliculaActual() != null && itfUsoRecursoUsuario != null) {
 					String idPelicula = usuario.getPeliculaActual().getIdPelicula();
@@ -49,11 +49,11 @@ public class SolicitarValoracion extends TareaSincrona {
 					// itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
 					usuario.addValoracion(aux);
 
-					Valoracion valoracion = VocabularioGestionCitas.usuario.getPeliculaActual();
+					Valoracion valoracion = Vocabulario.usuario.getPeliculaActual();
 					String idPeliculaActual = valoracion.getIdPelicula();
 					Movie movie = null;
 					ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-							.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+							.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
 					if (itfUsoComunicacionTMDB != null) {
 						movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPeliculaActual),
 								null);
@@ -66,13 +66,13 @@ public class SolicitarValoracion extends TareaSincrona {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+							+ Vocabulario.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

@@ -9,7 +9,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
  * @version 1.0
  */
 
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
@@ -40,27 +40,27 @@ public class SaludarYPresentarFuncionalidad extends TareaSincrona {
 		try {
 			// // Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				int numSaludo = (int) ((100 * Math.random()) % VocabularioGestionCitas.SaludoInicial2.length);
-				int numPeticion = (int) ((100 * Math.random()) % VocabularioGestionCitas.PeticionInfoGeneral.length);
-				String mensajeAenviar = VocabularioGestionCitas.SaludoInicial2[numSaludo] + "  "
+				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
+				int numSaludo = (int) ((100 * Math.random()) % Vocabulario.SaludoInicial2.length);
+				int numPeticion = (int) ((100 * Math.random()) % Vocabulario.PeticionInfoGeneral.length);
+				String mensajeAenviar = Vocabulario.SaludoInicial2[numSaludo] + "  "
 						+ identInterlocutor + ",  "
-						+ VocabularioGestionCitas.InfoFuncionalidad.toLowerCase() + ".  "
-						+ VocabularioGestionCitas.PeticionInfoGeneral[numPeticion];
+						+ Vocabulario.InfoFuncionalidad.toLowerCase() + ".  "
+						+ Vocabulario.PeticionInfoGeneral[numPeticion];
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+							+ Vocabulario.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

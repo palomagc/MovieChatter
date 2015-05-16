@@ -4,8 +4,8 @@ import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerDatosIni
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerEdad;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerSexo;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Notificacion;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
@@ -44,18 +44,18 @@ public class BuscarUsuario extends TareaSincrona {
 		ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 		try {
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoUsuario);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 
 		try {
-			VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.buscarUsuario(identInterlocutor);
+			Vocabulario.usuario = itfUsoRecursoUsuario.buscarUsuario(identInterlocutor);
 		} catch (Exception e1) {
 			// TODo Auto-generated catch block
 			e1.printStackTrace();
 		}
-		if (VocabularioGestionCitas.usuario != null) {
+		if (Vocabulario.usuario != null) {
 			exists = true;
 		}
 
@@ -66,7 +66,7 @@ public class BuscarUsuario extends TareaSincrona {
 			this.getEnvioHechos().insertarHecho(new ObtenerDatosIniciales());
 			// Creamos un nuevo usuario con sexo a null y edad a -1
 			try {
-				VocabularioGestionCitas.usuario = itfUsoRecursoUsuario.crearUsuario(
+				Vocabulario.usuario = itfUsoRecursoUsuario.crearUsuario(
 						identInterlocutor, null, null);
 			} catch (Exception e) {
 				// TODo Auto-generated catch block
@@ -80,10 +80,10 @@ public class BuscarUsuario extends TareaSincrona {
 			// AQUI PUEDE QUE TE DES CUENTA DE QUE VIO UNA PELI Y QUERRAS
 			// PREGUNTARLE SI QUIERE VALORARLA (HAY QUE LANZAR EL HECHO Y METER
 			// LA REGLA EN EL AGENTE GUIA)
-			ArrayList<Valoracion> valoraciones = VocabularioGestionCitas.usuario.getValoraciones();
-			if (VocabularioGestionCitas.usuario.getSexo() == null) {
+			ArrayList<Valoracion> valoraciones = Vocabulario.usuario.getValoraciones();
+			if (Vocabulario.usuario.getSexo() == null) {
 				this.getEnvioHechos().insertarHecho(new ObtenerSexo());
-			} else if (VocabularioGestionCitas.usuario.getEdad() == null) {
+			} else if (Vocabulario.usuario.getEdad() == null) {
 				this.getEnvioHechos().insertarHecho(new ObtenerEdad());
 			}
 			// TODO esto se podría mejorar. Si la última película sí está valorada, podemos
@@ -94,9 +94,9 @@ public class BuscarUsuario extends TareaSincrona {
 			else if (valoraciones.size() > 0
 					&& valoraciones.get(valoraciones.size() - 1).getNota() == null) {
 				Notificacion notif = new Notificacion();
-				notif.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionValorarUltimaPelicula);
+				notif.setTipoNotificacion(Vocabulario.NombreTipoNotificacionValorarUltimaPelicula);
 				getComunicator().enviarInfoAotroAgente(notif,
-						VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+						Vocabulario.IdentAgenteAplicacionGuia);
 			} else {
 				this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
 			}
@@ -105,9 +105,9 @@ public class BuscarUsuario extends TareaSincrona {
 		try {
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				// int numDespedida = (int) ((100 * Math.random()) %
 				// VocabularioGestionCitas.Despedida.length);
 				String mensajeAenviar = "NULL";
@@ -122,13 +122,13 @@ public class BuscarUsuario extends TareaSincrona {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+							+ Vocabulario.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

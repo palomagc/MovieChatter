@@ -3,7 +3,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas;
 import java.util.ArrayList;
 import java.util.List;
 
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
@@ -35,10 +35,10 @@ public class ListarGeneros extends TareaSincrona {
 		try {
 			// Se busca la interfaz del recurso en el repositorio de interfaces
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 
 			ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
 			/*
 			 * ItfUsoComunicacionTMDB itfUsoComTMDB=(ItfUsoComunicacionTMDB)
 			 * this.repoIntfaces.obtenerInterfazUso(identComunicacionTMDB); if (itfUsoComTMDB ==
@@ -50,7 +50,7 @@ public class ListarGeneros extends TareaSincrona {
 				genres = itfUsoComunicacionTMDB.getMovieGenresList("en");
 			}
 			if (recComunicacionChat != null && genres != null) {
-				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				// int numRecomienda = (int) ((100 * Math.random()) %
 				// VocabularioGestionCitas.Recomienda.length);
 				String mensajeAenviar = "Disponemos de los siguientes géneros de películas ";
@@ -62,13 +62,13 @@ public class ListarGeneros extends TareaSincrona {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
-								+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionChat,
+							+ Vocabulario.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

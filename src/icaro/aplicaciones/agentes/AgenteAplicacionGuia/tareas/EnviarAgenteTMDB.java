@@ -2,8 +2,9 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import java.util.List;
 
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Busqueda;
+import icaro.aplicaciones.informacion.Notificacion;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
 import icaro.aplicaciones.recursos.extractorSemantico.ItfUsoExtractorSemantico;
@@ -11,7 +12,6 @@ import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
-import constantes.Busqueda;
 
 public class EnviarAgenteTMDB extends TareaSincrona {
 
@@ -32,7 +32,7 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 		String identAgenteOrdenante = this.getIdentAgente();
 		String notifica = (String) params[0];
 		String param = (String) params[1];
-		Busqueda busqueda = VocabularioGestionCitas.busqueda;
+		Busqueda busqueda = Vocabulario.busqueda;
 		busqueda.setPage(1);
 		if (busqueda.getYear() == null && busqueda.getGenres().size() == 0
 				&& busqueda.getPeople().size() == 0) {
@@ -41,24 +41,24 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 			infoAenviar.setTipoNotificacion(notifica);
 			infoAenviar.setMensajeNotificacion(param);
 			getComunicator().enviarInfoAotroAgente(infoAenviar,
-					VocabularioGestionCitas.IdentAgenteAplicacionTMDB);
+					Vocabulario.IdentAgenteAplicacionTMDB);
 		} else {
 			// Mirar los parametros que hay en Busqueda
-			if (notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionAnos)) {
+			if (notifica.equals(Vocabulario.NombreTipoNotificacionAnos)) {
 				busqueda.setYear(param);
 			} else {
 				try {
 					ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-							.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+							.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
 					if (itfUsoComunicacionTMDB != null) {
-						if (notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionActor)) {
+						if (notifica.equals(Vocabulario.NombreTipoNotificacionActor)) {
 							Integer personId = itfUsoComunicacionTMDB.searchPerson(param);
 							if (personId != null && !busqueda.getPeople().contains(personId))
 								busqueda.addPerson(personId);
 						} else {
-							VocabularioGestionCitas.Genero genero = null;
-							if (VocabularioGestionCitas.Generos.containsKey(notifica))
-								genero = VocabularioGestionCitas.Generos.get(notifica);
+							Vocabulario.Genero genero = null;
+							if (Vocabulario.Generos.containsKey(notifica))
+								genero = Vocabulario.Generos.get(notifica);
 							Genre genre = null;
 							if (genero != null) {
 								List<Genre> genresAux = itfUsoComunicacionTMDB
@@ -74,17 +74,17 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 				} catch (Exception e) {
 					this.generarInformeConCausaTerminacion(identDeEstaTarea,
 							contextoEjecucionTarea, identAgenteOrdenante, "Error-Acceso:Interfaz:"
-									+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+									+ Vocabulario.IdentRecursoComunicacionTMDB,
 							CausaTerminacionTarea.ERROR);
 					e.printStackTrace();
 				}
 			}
 			Notificacion infoAenviar = new Notificacion();
 			infoAenviar
-					.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionBusquedaVariosCampos);
+					.setTipoNotificacion(Vocabulario.NombreTipoNotificacionBusquedaVariosCampos);
 			infoAenviar.setMensajeNotificacion(param);
 			getComunicator().enviarInfoAotroAgente(infoAenviar,
-					VocabularioGestionCitas.IdentAgenteAplicacionTMDB);
+					Vocabulario.IdentAgenteAplicacionTMDB);
 		}
 	}
 }

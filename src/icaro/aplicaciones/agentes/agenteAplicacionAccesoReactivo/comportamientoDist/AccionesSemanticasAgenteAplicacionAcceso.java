@@ -1,7 +1,7 @@
 package icaro.aplicaciones.agentes.agenteAplicacionAccesoReactivo.comportamientoDist;
 
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.InfoAccesoSinValidar;
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.InfoAccesoValidada;
+import icaro.aplicaciones.informacion.InfoAccesoSinValidar;
+import icaro.aplicaciones.informacion.InfoAccesoValidada;
 import icaro.aplicaciones.recursos.persistenciaAccesoSimple.ItfUsoPersistenciaAccesoSimple;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte;
@@ -15,6 +15,7 @@ import icaro.infraestructura.recursosOrganizacion.configuracion.ItfUsoConfigurac
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.ItfUsoRecursoTrazas;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
 import icaro.infraestructura.recursosOrganizacion.repositorioInterfaces.imp.ClaseGeneradoraRepositorioInterfaces;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

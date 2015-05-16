@@ -7,7 +7,7 @@
  */
 package icaro.aplicaciones.agentes.AgenteAplicacionAccesoADO.tareas;
 
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.VocabularioSistemaAcceso;
+import icaro.aplicaciones.informacion.VocabularioSistemaAcceso;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Tarea;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;

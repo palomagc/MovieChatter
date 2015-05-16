@@ -1,6 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
@@ -22,30 +22,30 @@ public class GuardarSexo extends TareaSincrona {
 	public void ejecutar(Object... params) {
 		try {
 			String sexo = (String) params[0];
-			VocabularioGestionCitas.usuario.setSexo(sexo);
+			Vocabulario.usuario.setSexo(sexo);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 
 				itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-						.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
-				itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(), VocabularioGestionCitas.usuario);
+						.obtenerInterfazUso(Vocabulario.IdentRecursoUsuario);
+				itfUsoRecursoUsuario.modificarUsuario(Vocabulario.usuario.getNombre(), Vocabulario.usuario);
 				
 				
 				// Podriamos deducir información según el sexo, basandonos en estereotipos.
 				ArrayList<String> generosQueleGustan = new ArrayList<String>();
 				if(sexo.equalsIgnoreCase("SexoHombre")){ // SexoHombre
 //					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroGuerra);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroTerror);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroCienciaFiccion);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroGuerra);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroMisterio);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroSuspense);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroTerror);
 					
 				}else{ // SexoMujer
 //					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroDrama);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroFamiliar);
-					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGeneroRomantico);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroDrama);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroFamiliar);
+					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroRomantico);
 					
 				}
 				
@@ -53,9 +53,9 @@ public class GuardarSexo extends TareaSincrona {
 				
 
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
-			itfUsoRecursoUsuario.modificarUsuario(VocabularioGestionCitas.usuario.getNombre(),
-					VocabularioGestionCitas.usuario);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoUsuario);
+			itfUsoRecursoUsuario.modificarUsuario(Vocabulario.usuario.getNombre(),
+					Vocabulario.usuario);
 
 
 		} catch (Exception e) {

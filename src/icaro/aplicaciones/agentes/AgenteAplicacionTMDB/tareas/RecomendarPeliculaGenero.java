@@ -3,9 +3,9 @@ package icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas;
 import java.util.ArrayList;
 import java.util.List;
 
-import constantes.Busqueda;
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Busqueda;
+import icaro.aplicaciones.informacion.Notificacion;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Genre;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
@@ -34,14 +34,14 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
 		String notifica = (String) params[0];
-		Busqueda busqueda = VocabularioGestionCitas.busqueda;
-		VocabularioGestionCitas.Genero genero = null;
-		if (VocabularioGestionCitas.Generos.containsKey(notifica))
-			genero = VocabularioGestionCitas.Generos.get(notifica);
+		Busqueda busqueda = Vocabulario.busqueda;
+		Vocabulario.Genero genero = null;
+		if (Vocabulario.Generos.containsKey(notifica))
+			genero = Vocabulario.Generos.get(notifica);
 
 		try {
 			ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoComunicacionTMDB);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
 
 			List<Movie> movies = new ArrayList<Movie>();
 			Genre genre = null;
@@ -56,20 +56,20 @@ public class RecomendarPeliculaGenero extends TareaSincrona {
 				}
 			}
 			if (movies != null) {
-				VocabularioGestionCitas.busqueda.addGenre(genre.getId());
-				VocabularioGestionCitas.busqueda.setResult(movies);
+				Vocabulario.busqueda.addGenre(genre.getId());
+				Vocabulario.busqueda.setResult(movies);
 				// this.getEnvioHechos().insertarHecho(new ObtenerPelicula());
 				// TODO poner notificacion porque es para otro agente
 				Notificacion infoAenviar = new Notificacion();
 				infoAenviar
-						.setTipoNotificacion(VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda);
+						.setTipoNotificacion(Vocabulario.NombreTipoNotificacionComprobarDatosBusqueda);
 				getComunicator().enviarInfoAotroAgente(infoAenviar,
-						VocabularioGestionCitas.IdentAgenteAplicacionGuia);
+						Vocabulario.IdentAgenteAplicacionGuia);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
 					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ VocabularioGestionCitas.IdentRecursoComunicacionTMDB,
+							+ Vocabulario.IdentRecursoComunicacionTMDB,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

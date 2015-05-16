@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package icaro.aplicaciones.informacion.gestionCitas;
+package icaro.aplicaciones.informacion;
 
 import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
 
@@ -11,14 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import constantes.Busqueda;
 import constantes.Constantes;
 
 /**
  *
  * @author FGarijo
  */
-public class VocabularioGestionCitas {
+public class Vocabulario {
 
 	public static class Genero {
 		String english;

@@ -6,9 +6,9 @@
 package icaro.aplicaciones.recursos.comunicacionChat.imp;
 
 import gate.Annotation;
-import icaro.aplicaciones.informacion.gestionCitas.InfoConexionUsuario;
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.InfoConexionUsuario;
+import icaro.aplicaciones.informacion.Notificacion;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.imp.util.ConexionIrc;
 import static icaro.aplicaciones.recursos.comunicacionChat.imp.util.ConexionIrc.VERSION;
 import icaro.aplicaciones.recursos.extractorSemantico.ItfUsoExtractorSemantico;
@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 public class InterpreteMsgsIRC {
 
 	private boolean _verbose = true;
-	private String _userNameAgente = VocabularioGestionCitas.IdentConexionAgte;
+	private String _userNameAgente = Vocabulario.IdentConexionAgte;
 	// private String _login = "ConexionIrc";
 	private String _version = "ConexionIrc " + VERSION + " Java IRC Bot - www.jibble.org";
 	private String _finger = "You ought to be arrested for fingering a bot!";
@@ -443,7 +443,7 @@ public class InterpreteMsgsIRC {
 		// informaciÃ³n
 		HashSet<String> anotacionesBusquedaPrueba = new HashSet<String>();
 		anotacionesBusquedaPrueba.add("Lookup");
-		anotacionesBusquedaPrueba.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
+		anotacionesBusquedaPrueba.addAll(Vocabulario.NombresTipoNotificacion);
 		// esto habria que pasarlo como parametro
 		if (infoConecxInterlocutor == null)
 			infoConecxInterlocutor = new InfoConexionUsuario();
@@ -477,7 +477,7 @@ public class InterpreteMsgsIRC {
 				if (infoExtraida.size() == 0) {
 					Notificacion infoAenviar = new Notificacion(sender);
 					infoAenviar
-							.setTipoNotificacion(VocabularioGestionCitas.ExtraccionSemanticaNull);
+							.setTipoNotificacion(Vocabulario.ExtraccionSemanticaNull);
 					mensajeAenviar = new MensajeSimple((Object) infoAenviar, sender,
 							identAgenteGestorDialogo);
 				} else if (infoExtraida.size() == 1) {
@@ -1391,7 +1391,7 @@ public class InterpreteMsgsIRC {
 		while (annotTypesSal.hasNext()) {
 			Annotation annot = (Annotation) annotTypesSal.next();
 			String anotType = annot.getType();
-			if (VocabularioGestionCitas.NombresTipoNotificacion.contains(anotType)) {
+			if (Vocabulario.NombresTipoNotificacion.contains(anotType)) {
 				anotacionesInterpretadas.add(interpretarAnotacion(contextoInterpretacion, annot));
 			}
 			// fet = annot.getFeatures();

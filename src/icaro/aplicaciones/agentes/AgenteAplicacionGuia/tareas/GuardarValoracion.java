@@ -1,7 +1,7 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import icaro.aplicaciones.informacion.gestionCitas.Notificacion;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Notificacion;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
@@ -24,17 +24,17 @@ public class GuardarValoracion extends TareaSincrona {
 
 	@Override
 	public void ejecutar(Object... params) {
-		Usuario usuario = VocabularioGestionCitas.usuario;
+		Usuario usuario = Vocabulario.usuario;
 		try {
 			String notifica = ((Notificacion) params[0]).getTipoNotificacion();
 			Objetivo objAntiguo = (Objetivo) params[1];
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
-					.obtenerInterfazUso(VocabularioGestionCitas.IdentRecursoUsuario);
+					.obtenerInterfazUso(Vocabulario.IdentRecursoUsuario);
 			if (itfUsoRecursoUsuario != null && usuario.getPeliculaActual() != null) {
 				String idPelicula = usuario.getPeliculaActual().getIdPelicula();
 				if (usuario.getIdValoraciones().contains(idPelicula)
-						&& !notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionNegacion)
-						&& !notifica.equals(VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)) {
+						&& !notifica.equals(Vocabulario.NombreTipoNotificacionNegacion)
+						&& !notifica.equals(Vocabulario.NombreTipoNotificacionAfirmacion)) {
 					// TODO cuando no es NOTA refocaliza
 					int index = usuario.getIdValoraciones().indexOf(idPelicula);
 					Valoracion aux = usuario.getValoraciones().get(index);

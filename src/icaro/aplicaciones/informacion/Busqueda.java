@@ -1,4 +1,4 @@
-package constantes;
+package icaro.aplicaciones.informacion;
 
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
 import icaro.aplicaciones.recursos.comunicacionTMDB.orders.MovieOrder;

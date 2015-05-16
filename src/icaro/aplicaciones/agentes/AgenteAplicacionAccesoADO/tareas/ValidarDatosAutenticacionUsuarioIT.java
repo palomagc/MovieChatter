@@ -8,8 +8,8 @@ package icaro.aplicaciones.agentes.AgenteAplicacionAccesoADO.tareas;
  *
  * @author FGarijo
  */
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.InfoAccesoSinValidar;
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.VocabularioSistemaAcceso;
+import icaro.aplicaciones.informacion.InfoAccesoSinValidar;
+import icaro.aplicaciones.informacion.VocabularioSistemaAcceso;
 import icaro.aplicaciones.recursos.persistenciaAccesoSimple.ItfUsoPersistenciaAccesoSimple;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;

@@ -1,6 +1,6 @@
 package icaro.aplicaciones.recursos.visualizacionAcceso.imp;
 
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.InfoAccesoSinValidar;
+import icaro.aplicaciones.informacion.InfoAccesoSinValidar;
 import icaro.aplicaciones.recursos.visualizacionAcceso.imp.ClaseGeneradoraVisualizacionAcceso;
 import icaro.infraestructura.entidadesBasicas.comunicacion.EventoRecAgte;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;

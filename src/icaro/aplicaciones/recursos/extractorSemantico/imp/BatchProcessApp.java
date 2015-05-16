@@ -32,7 +32,7 @@ import gate.Factory;
 import gate.Gate;
 import gate.Node;
 import gate.util.persistence.PersistenceManager;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class BatchProcessApp {
 		// private HashSet tiposAnotacionesRelevantes;
 		HashSet<String> tiposAnotacionesRelevantes = new HashSet<String>();
 		tiposAnotacionesRelevantes.add("Lookup");
-		tiposAnotacionesRelevantes.addAll(VocabularioGestionCitas.NombresTipoNotificacion);
+		tiposAnotacionesRelevantes.addAll(Vocabulario.NombresTipoNotificacion);
 		Corpus corpus = Factory.newCorpus("BatchProcessApp Corpus");
 		application.setCorpus(corpus);
 

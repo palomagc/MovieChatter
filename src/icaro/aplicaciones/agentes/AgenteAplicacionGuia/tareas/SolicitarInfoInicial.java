@@ -8,7 +8,7 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ReconocerUsuario;
-import icaro.aplicaciones.informacion.gestionCitas.VocabularioGestionCitas;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
@@ -33,8 +33,8 @@ public class SolicitarInfoInicial extends TareaSincrona {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfaz(NombresPredefinidos.ITF_USO + identRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
-				recComunicacionChat.comenzar(VocabularioGestionCitas.IdentAgenteAplicacionGuia);
-				recComunicacionChat.enviarMensagePrivado(VocabularioGestionCitas.SaludoInicial1);
+				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
+				recComunicacionChat.enviarMensagePrivado(Vocabulario.SaludoInicial1);
 
 				this.getEnvioHechos().insertarHecho(new ReconocerUsuario());
 
