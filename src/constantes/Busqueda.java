@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Busqueda {
+	
+	// MovieOrder: Latest, Upcoming, NowPlaying, Popular, TopRated
+	// MovieSort: PopularityDesc, PopularityAsc, DateDesc, DateAsc,
+	//			RevenueDesc, RevenueAsc, PrimaryDateDesc, PrimaryDateAsc,
+	//			TitleDesc, TitleAsc, ValorationDesc, ValorationAsc,
+	//			CountDesc, CountAsc
 
 	private static List<Integer> genres;
 	private static List<Integer> people;
