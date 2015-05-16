@@ -109,7 +109,7 @@ public class BuscarUsuario extends TareaSincrona {
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				// int numDespedida = (int) ((100 * Math.random()) %
-				// VocabularioGestionCitas.Despedida.length);
+				// Vocabulario.Despedida.length);
 				String mensajeAenviar = "NULL";
 				if (!exists) {
 					mensajeAenviar = "Hola " + identInterlocutor + ", no nos conocemos.";

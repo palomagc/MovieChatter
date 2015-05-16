@@ -5,8 +5,8 @@ import icaro.infraestructura.patronAgenteCognitivo.procesadorObjetivos.gestorTar
 import icaro.infraestructura.entidadesBasicas.PerformativaUsuario;
 import icaro.infraestructura.entidadesBasicas.comunicacion.*;
 import icaro.aplicaciones.agentes.AgenteAplicacionTMDB.objetivos.*;
-import icaro.aplicaciones.informacion.gestionCitas.*;
 import icaro.aplicaciones.agentes.AgenteAplicacionTMDB.tareas.*;
+import icaro.aplicaciones.informacion.*;
 
 global ItfGestorTareas gestorTareas;
 global ItfUsoRecursoTrazas recursoTrazas;
@@ -44,7 +44,7 @@ rule "Listar los generos de peliculas"
   when
     obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
-   	notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneros)
+   	notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneros)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(ListarGeneros.class);
     tarea.ejecutar();
@@ -56,26 +56,26 @@ rule "Recomendar por genero"
     obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion,
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroCrimen ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroDocumental ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroDrama ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroFamiliar ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroFantasia ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroExtranjero ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroHistorico ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroTerror ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroMusical ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroRomantico ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroTV ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroGuerra ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste)
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroAccion ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroAventura ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroAnimacion ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroComedia ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroCrimen ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroDocumental ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroDrama ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroFamiliar ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroFantasia ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroExtranjero ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroHistorico ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroTerror ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroMusical ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroMisterio ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroRomantico ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroCienciaFiccion ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroTV ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroSuspense ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroGuerra ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroOeste)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaGenero.class);
     tarea.ejecutar(tipoNotifica);
@@ -87,7 +87,7 @@ rule "Recomendar por ano"
     obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAnos)
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionAnos)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaAno.class);
     tarea.ejecutar(tipoNotifica, mensaje);
@@ -99,7 +99,7 @@ rule "Recomendar por actor"
     obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionActor)
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionActor)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaPerson.class);
     tarea.ejecutar(tipoNotifica, mensaje);
@@ -111,7 +111,7 @@ rule "Recomendar por varios campos"
     obj:ListarPeliculas(state==Objetivo.SOLVING)
     Focus(foco == obj)
     notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionBusquedaVariosCampos)
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionBusquedaVariosCampos)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(RecomendarPeliculaVarios.class);
     tarea.ejecutar(tipoNotifica, mensaje);

@@ -49,7 +49,7 @@ public class DeducirActor extends TareaSincrona {
 
 						// Preguntar el género que le apetece ver
 						String mensajeAenviar = "De que actor te apetece ver la peli?";
-						obj.setSolving();
+						obj.setSolving();	// ObtenerActor
 						// TODO NO HACE FALTA HACER EL UPDATE? COMPROBAR QUE SE LANZA LA REGLA QUE
 						// ESPERA A LA RESPUESTA
 

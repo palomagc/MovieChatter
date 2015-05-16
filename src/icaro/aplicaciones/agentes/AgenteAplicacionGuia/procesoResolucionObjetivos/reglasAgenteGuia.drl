@@ -5,8 +5,8 @@ import icaro.infraestructura.patronAgenteCognitivo.procesadorObjetivos.gestorTar
 import icaro.infraestructura.entidadesBasicas.PerformativaUsuario;
 import icaro.infraestructura.entidadesBasicas.comunicacion.*
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.*;
-import icaro.aplicaciones.informacion.gestionCitas.*;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas.*;
+import icaro.aplicaciones.informacion.*;
 
 global ItfGestorTareas gestorTareas;
 global ItfUsoRecursoTrazas recursoTrazas;
@@ -23,8 +23,8 @@ end
 // REGLAS DE FOCALIZACION INICIALES (OBTENER NOMBRE DEL CHAT Y RECONOCER AL USUARIO)
 rule "Regla de focalizacion en objetivo ReconocerUsuario"
   when
-    f:Focus(foco == null )
     obj:ObtenerInfoInterlocutor()
+    f:Focus(foco == null )
   then
     f.setFoco(obj);
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
@@ -47,7 +47,7 @@ rule "Saludo Inicial y peticion de info"
   then
     //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : SolicitarDatosAcceso",InfoTraza.NivelTraza.debug));
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoInicial.class);
-    tarea.ejecutar(VocabularioGestionCitas.IdentRecursoComunicacionChat);
+    tarea.ejecutar(Vocabulario.IdentRecursoComunicacionChat);
     
     obj.setSolved();
     update(obj);
@@ -116,7 +116,7 @@ rule "El usuario acepta hacer el cuestionario"
   when
     obj:ObtenerDatosIniciales(state==Objetivo.PENDING)
     f:Focus(foco == obj)
-    notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoObtenerSexo.class);
     tarea.ejecutar();
@@ -131,7 +131,7 @@ rule "El usuario NO acepta hacer el cuestionario"
   when
     obj:ObtenerDatosIniciales(state==Objetivo.PENDING)
     f:Focus(foco == obj)
-    notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion)
   then
     obj.setFailed();
     update(obj);
@@ -144,7 +144,7 @@ rule "El usuario ha terminado el cuestionario o no lo quiere hacer"
     obj:ObtenerDatosIniciales(state==Objetivo.SOLVED || state==Objetivo.FAILED)
   then
     // Focalizar la tarea de recomendar una peli
-    TareaSincrona tarea = gestorTareas.crearTareaSincrona(FocalizarObjetivoRecomendarPeli.class);
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoRecomendarPelicula.class);
     tarea.ejecutar();
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
@@ -172,7 +172,7 @@ rule "Recibir respuesta sexo usuario"
   when
     obj:ObtenerSexo(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoHombre || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSexoMujer)
+    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==Vocabulario.NombreTipoNotificacionSexoHombre || tipoNotificacion==Vocabulario.NombreTipoNotificacionSexoMujer)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarSexo.class);
     tarea.ejecutar(tipoNotifica);
@@ -207,7 +207,7 @@ rule "Recibir respuesta edad usuario"
   when
     obj:ObtenerEdad(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNumero)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
     tarea.ejecutar(notif);
@@ -253,46 +253,41 @@ rule "Mirar si puedes deducir un genero, o preguntale"
 end
 rule "Dirigir agente guia"
   when
-    objA:RecomendarPelicula()
-    objB:ObtenerPelicula()
-    //objC:ObtenerGenero()
+    objAntiguo:RecomendarPelicula()
+    obj:ObtenerGenero()
     f:Focus()
 	notif:Notificacion(tipoNotifica:tipoNotificacion, mensaje:mensajeNotificacion,
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAccion ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAventura ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroAnimacion ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroComedia ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroCrimen ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroDocumental ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroDrama ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroFamiliar ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroFantasia ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroExtranjero ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroHistorico ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroTerror ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroMusical ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroMisterio ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroRomantico ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroCienciaFiccion ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroTV ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroSuspense ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroGuerra ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionGeneroOeste ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAnos ||
-        tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionActor)
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroAccion ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroAventura ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroAnimacion ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroComedia ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroCrimen ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroDocumental ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroDrama ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroFamiliar ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroFantasia ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroExtranjero ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroHistorico ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroTerror ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroMusical ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroMisterio ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroRomantico ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroCienciaFiccion ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroTV ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroSuspense ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroGuerra ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionGeneroOeste ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionAnos ||
+        tipoNotificacion==Vocabulario.NombreTipoNotificacionActor)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(EnviarAgenteTMDB.class);
     tarea.ejecutar(tipoNotifica, mensaje);
-    objA.setSolving();
-    update(objA);
-    objB.setPending();
-    update(objB);
-    //objC.setSolved();
-    //update(objC);
-    f.setFoco(objB);
-    update(f);
+    obj.setSolved();
+    update(obj);
+    objAntiguo.setSolving();
+    update(objAntiguo);
     retract(notif);
-    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+objB.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
 rule "Mirar si puedes deducir un actor, o preguntale"
@@ -306,61 +301,60 @@ rule "Mirar si puedes deducir un actor, o preguntale"
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
-rule "Proponer una pelicula"
+rule "Recibir agente TMDB"
+  when
+    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==Vocabulario.NombreTipoNotificacionComprobarDatosBusqueda)
+  then
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoObtenerPelicula.class);
+    tarea.ejecutar();
+    
+    // recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+rule "Proponer una pelicula por objetivo"
   when
     objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
     obj:ObtenerPelicula(state==Objetivo.PENDING)
-    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionComprobarDatosBusqueda)
-    f:Focus(foco == obj)
+    f:Focus()
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
-    tarea.ejecutar();
+    tarea.ejecutar(obj, objAntiguo);
     
-    obj.setSolving();
-    update(obj);
     f.setFoco(obj);
     update(f);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
-rule "Obtener datos de una peli si o no deseada"
+rule "Obtener datos de una peli, si o no deseada"
   when
     objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
     obj:ObtenerPelicula(state==Objetivo.SOLVING)
     // TODO este foco no se si es asi
-    f:Focus()
-    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion
-        || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)
+    f:Focus(foco == obj)
+    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerOtraPelicula.class);
     tarea.ejecutar(tipoNotifica, objAntiguo);
     
     obj.setSolved();
     update(obj);
-    f.setFoco(obj);
-    update(f);
     retract(notif);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
 rule "El usuario dice que ha visto la pelicula que le estamos recomendando"
   when
-    objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
     obj:ObtenerPelicula(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionYaVista)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionYaVista)
   then
-    
     // Lanzar el objetivo para valorar la peli que hemos recomendado
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(LanzarObjetivoObtenerValoracion.class);
     tarea.ejecutar();
     
-    objAntiguo.setSolved();
-    update(objAntiguo);
     obj.setSolved();
     update(obj);
-    f.setFoco(obj);
-    update(f);
     retract(notif);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
@@ -386,8 +380,7 @@ rule "Descartar si en valoracion"
   when
     obj:ObtenerValoracion(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    objAntiguo:RecomendarPelicula(state==Objetivo.SOLVED)
-    notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
   then
   	retract(notif);
     // recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
@@ -395,12 +388,12 @@ rule "Descartar si en valoracion"
 end
 rule "Recibir valoracion pelicula"
   when
+    objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
     obj:ObtenerValoracion(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    objAntiguo:RecomendarPelicula(state==Objetivo.SOLVED)
-    notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero
-        || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNegacion
-        || tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionAfirmacion)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNumero
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarValoracion.class);
     tarea.ejecutar(notif, objAntiguo);
@@ -419,21 +412,21 @@ end
 // REGLAS DE BIENVENIDA, DESPEDIDA Y NO ENTIENDO
 rule "Saludo Inicial al interlocutor y peticion de datos iniciales"
   when
-	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionSaludo)
+	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionSaludo)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(SaludarYPresentarFuncionalidad.class);
     tarea.ejecutar(identInterlc);
 end
 rule "Despedida"
   when
-    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionDespedida)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionDespedida)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(Despedirse.class);
     tarea.ejecutar(identInterlc);
 end
 rule "No hay extraccion semantica del texto del interlocutor"
   when
-    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.ExtraccionSemanticaNull)
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.ExtraccionSemanticaNull)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoPeli.class);
     tarea.ejecutar(identInterlc);

@@ -28,7 +28,7 @@ public class DeducirGenero extends TareaSincrona {
 	 * @param Description
 	 *            of the Parameter
 	 */
-	private Objetivo contextoEjecucionTarea = null;
+	// private Objetivo contextoEjecucionTarea = null;
 
 	@Override
 	public void ejecutar(Object... params) {
@@ -36,48 +36,49 @@ public class DeducirGenero extends TareaSincrona {
 			// Objetivo
 			Objetivo obj = (Objetivo) params[0];
 
-			
-			
 			// Si hay un filtro con generos
-			if(Vocabulario.busqueda.getGenres().size() > 0){
+			if (Vocabulario.busqueda.getGenres().size() > 0) {
 				Notificacion notif = new Notificacion();
-		 		notif.setTipoNotificacion(Vocabulario.NombreTipoNotificacionComprobarDatosBusqueda);
-		 		getComunicator().enviarInfoAotroAgente(notif, Vocabulario.IdentAgenteAplicacionGuia);
+				notif.setTipoNotificacion(Vocabulario.NombreTipoNotificacionComprobarDatosBusqueda);
+				getComunicator()
+						.enviarInfoAotroAgente(notif, Vocabulario.IdentAgenteAplicacionGuia);
 			}
-			// Si no hay generos en la busqueda actual intentamos deducir alguno, si no le preguntamos al usuario
-			else{
+			// Si no hay generos en la busqueda actual intentamos deducir alguno, si no le
+			// preguntamos al usuario
+			else {
 
 				// Intentar deducir generos.
 				HashMap<Integer, Integer> historial = historialGenerosVistos(5);
 				boolean encontrado = false;
 				ArrayList<Integer> listaGenerosMasVistos = dameGenerosMasVistos(historial, 3);
 				encontrado = listaGenerosMasVistos.size() > 0;
-				
-				if(encontrado){
-					// TODO HAS DEDUCIDO UN GENERO: GUARDAR listaGenerosMasVistos EN LA LISTA PARA BUSCAR PELIS. (ADICIONALMENTE PODRIAMOS MOSTRAR UN MENSAJE AL USUARIO PARA QUE SEPA QUE LO HEMOS DEDUCIDO)
-					// TODO LANZAR UN OBJETIVO POR EJEMPLO EL DE PREGUNTAR SI QUIERE FILTRAR POR ALGUN ACTOR.
-				}else{
+
+				if (encontrado) {
+					// TODO HAS DEDUCIDO UN GENERO: GUARDAR listaGenerosMasVistos EN LA LISTA PARA
+					// BUSCAR PELIS. (ADICIONALMENTE PODRIAMOS MOSTRAR UN MENSAJE AL USUARIO PARA
+					// QUE SEPA QUE LO HEMOS DEDUCIDO)
+					// TODO LANZAR UN OBJETIVO POR EJEMPLO EL DE PREGUNTAR SI QUIERE FILTRAR POR
+					// ALGUN ACTOR.
+				} else {
 					// Si no se ha podido deducir un genero. Preguntamos al usuario.
-					String identDeEstaTarea = this.getIdentTarea();
-					String identAgenteOrdenante = this.getIdentAgente();
+					// String identDeEstaTarea = this.getIdentTarea();
+					// String identAgenteOrdenante = this.getIdentAgente();
 					try {
 						// Se busca la interfaz del recurso en el repositorio de interfaces.
-						ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
-						
+						ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+								.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
+
 						if (recComunicacionChat != null) {
-							recComunicacionChat
-									.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
+							recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 
-							// Preguntar el gï¿½nero que le apetece ver
-							String mensajeAenviar = "De que genero te apetece ver la peli?";
-							obj.setSolving();
-
-							this.getEnvioHechos().actualizarHecho(obj); // TODO OJO AQUI ACTUALIZAMOS OBJ A SOLVING!!!
-							
+							// Preguntar el genero que le apetece ver
+							String mensajeAenviar = Vocabulario.EligeGenero;
 							recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
+							obj.setSolving(); // ObtenerGenero
+							this.getEnvioHechos().actualizarHecho(obj); // TODO OJO AQUI
+																		// ACTUALIZAMOS OBJ A
+																		// SOLVING!!!
 						}
-			
-			
 					} catch (Exception e) {
 						e.printStackTrace();
 						trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
@@ -86,7 +87,7 @@ public class DeducirGenero extends TareaSincrona {
 					}
 				}
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
 					"Error al ejecutar la tarea : " + this.getIdentTarea() + e,
@@ -94,57 +95,72 @@ public class DeducirGenero extends TareaSincrona {
 		}
 	}
 
-
-	private HashMap<Integer, Integer> historialGenerosVistos(int maximoNumeroPeliculasProcesar) throws Exception{
+	private HashMap<Integer, Integer> historialGenerosVistos(int maximoNumeroPeliculasProcesar)
+			throws Exception {
 		ArrayList<Valoracion> listaValoraciones = Vocabulario.usuario.getValoraciones();
 		Iterator<Valoracion> itValoraciones = listaValoraciones.iterator();
-		
+
 		// Vamos a utilizar el recurso TMDB para buscar las películas y acceder a su informacion.
-		ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
+		ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+				.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
 		// Guardaremos para cada genero un contador de apariciones.
 		HashMap<Integer, Integer> historial = new HashMap<Integer, Integer>();
-		// TODO Las valoraciones de películas (caso: ya la he visto y le pongo X nota), deberían introducirse al final de la lista.
-		while(itValoraciones.hasNext() && maximoNumeroPeliculasProcesar > 0){ // Recorremos las valoraciones para saber las películas que ha visto, y por tanto sus generos asociados. 
+		// TODO Las valoraciones de películas (caso: ya la he visto y le pongo X nota), deberían
+		// introducirse al final de la lista.
+		while (itValoraciones.hasNext() && maximoNumeroPeliculasProcesar > 0) { // Recorremos las
+																				// valoraciones para
+																				// saber las
+																				// películas que ha
+																				// visto, y por
+																				// tanto sus generos
+																				// asociados.
 			int idPelicula = Integer.parseInt(itValoraciones.next().getIdPelicula());
-			Movie movie = itfUsoComunicacionTMDB.getMovie(idPelicula, null); // language = NULL !!! ??? !!!
-			
+			Movie movie = itfUsoComunicacionTMDB.getMovie(idPelicula, null); // language = NULL !!!
+																				// ??? !!!
+
 			List<Genre> genres = movie.getGenres();
 			Iterator<Genre> itGenre = genres.iterator();
-			while(itGenre.hasNext()){
+			while (itGenre.hasNext()) {
 				int genreId = itGenre.next().getId();
-				if(historial.containsKey(genreId)){ // Si ya hay una peli que tenía un género lo aumentamos.
+				if (historial.containsKey(genreId)) { // Si ya hay una peli que tenía un género lo
+														// aumentamos.
 					int count = historial.get(genreId);
 					count++;
 					historial.put(genreId, count);
-				}else{
+				} else {
 					historial.put(genreId, 1);
 				}
 			}
-			
+
 			maximoNumeroPeliculasProcesar--;
 		}
-		
+
 		return historial;
 	}
-	
-	private ArrayList<Integer> dameGenerosMasVistos(HashMap<Integer, Integer> historialGeneros, int vecesMinimas){
+
+	private ArrayList<Integer> dameGenerosMasVistos(HashMap<Integer, Integer> historialGeneros,
+			int vecesMinimas) {
 		ArrayList<Integer> masVistos = new ArrayList<Integer>();
 		int loMasVisto = 0;
-		
+
 		Iterator<Map.Entry<Integer, Integer>> itHistorial = historialGeneros.entrySet().iterator();
-		while(itHistorial.hasNext()){ // Recorremos el historial de generos.
+		while (itHistorial.hasNext()) { // Recorremos el historial de generos.
 			Map.Entry<Integer, Integer> movie = itHistorial.next();
-			if(movie.getValue() >= vecesMinimas && movie.getValue() >= loMasVisto){ // Si el numero de apariciones es >= que vecesMinimas.
-				if(movie.getValue() > loMasVisto){ // Si es > que el mas visto lo añadimos y  borramos todo lo anterior.
-					masVistos = new ArrayList<Integer>(); // Creamos un array nuevo para borrar lo anterior.
+			if (movie.getValue() >= vecesMinimas && movie.getValue() >= loMasVisto) { // Si el
+																						// numero de
+																						// apariciones
+																						// es >= que
+																						// vecesMinimas.
+				if (movie.getValue() > loMasVisto) { // Si es > que el mas visto lo añadimos y
+														// borramos todo lo anterior.
+					masVistos = new ArrayList<Integer>(); // Creamos un array nuevo para borrar lo
+															// anterior.
 				}
 				masVistos.add(movie.getKey()); // Añadimos el id del género.
 			}
 		}
-		
+
 		return masVistos;
 	}
-	
-
 
 }

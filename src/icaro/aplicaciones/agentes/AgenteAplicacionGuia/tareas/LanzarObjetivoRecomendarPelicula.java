@@ -4,7 +4,7 @@ import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelic
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
 
-public class FocalizarObjetivoRecomendarPeli extends TareaSincrona {
+public class LanzarObjetivoRecomendarPelicula extends TareaSincrona {
 
 	/**
 	 * Constructor
@@ -17,9 +17,7 @@ public class FocalizarObjetivoRecomendarPeli extends TareaSincrona {
 	@Override
 	public void ejecutar(Object... params) {
 		try {
-
 			this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
@@ -27,5 +25,4 @@ public class FocalizarObjetivoRecomendarPeli extends TareaSincrona {
 					InfoTraza.NivelTraza.error));
 		}
 	}
-
 }

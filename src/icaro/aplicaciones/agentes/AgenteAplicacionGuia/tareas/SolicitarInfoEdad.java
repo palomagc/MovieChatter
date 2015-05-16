@@ -34,7 +34,7 @@ public class SolicitarInfoEdad extends TareaSincrona {
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				// int numDespedida = (int) ((100 * Math.random()) %
-				// VocabularioGestionCitas.Despedida.length);
+				// Vocabulario.Despedida.length);
 				String mensajeAenviar = "Cuantos años tienes?";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {

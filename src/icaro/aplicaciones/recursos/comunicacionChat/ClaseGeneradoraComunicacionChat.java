@@ -44,7 +44,7 @@ public class ClaseGeneradoraComunicacionChat extends ImplRecursoSimple implement
 		url = ConfigInfoComunicacionChat.urlFeeNode;
 		nickname = ConfigInfoComunicacionChat.nicknameConexionAgte;
 		// identAgenteAReportar =
-		// VocabularioGestionCitas.IdentAgenteAplicacionDialogoCitas;
+		// Vocabulario.IdentAgenteAplicacionDialogoCitas;
 		identExtractorSem = Vocabulario.IdentRecursoExtractorSemantico;
 		try {
 			// comunicChat = new

@@ -33,7 +33,7 @@ public class GuardarSexo extends TareaSincrona {
 				// Podriamos deducir información según el sexo, basandonos en estereotipos.
 				ArrayList<String> generosQueleGustan = new ArrayList<String>();
 				if(sexo.equalsIgnoreCase("SexoHombre")){ // SexoHombre
-//					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
 					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroCienciaFiccion);
 					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroGuerra);
@@ -42,7 +42,7 @@ public class GuardarSexo extends TareaSincrona {
 					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroTerror);
 					
 				}else{ // SexoMujer
-//					generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroDrama);
 					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroFamiliar);
 					generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroRomantico);

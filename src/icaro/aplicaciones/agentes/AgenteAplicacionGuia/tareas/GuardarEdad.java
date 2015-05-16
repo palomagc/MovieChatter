@@ -46,11 +46,11 @@ public class GuardarEdad extends TareaSincrona {
 			ArrayList<String> generosQueleGustan = new ArrayList<String>();
 			int anos = 0;
 			if(anos < 8){ 
-//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
 				
 			}else if(anos < 13){
-//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
@@ -58,7 +58,7 @@ public class GuardarEdad extends TareaSincrona {
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroOeste);
 				
 			}else if(anos < 13){
-//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
@@ -66,7 +66,7 @@ public class GuardarEdad extends TareaSincrona {
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroOeste);
 				
 			}else if(anos < 23){
-//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAnimacion);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
@@ -78,7 +78,7 @@ public class GuardarEdad extends TareaSincrona {
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroTerror);
 				
 			}else if(anos < 40){
-//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAccion);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroAventura);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroCienciaFiccion);
@@ -88,7 +88,7 @@ public class GuardarEdad extends TareaSincrona {
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroSuspense);
 				
 			}else{
-//				generosQueleGustan.add(VocabularioGestionCitas.NombreTipoNotificacionGenero);
+//				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGenero);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroDocumental);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroComedia);
 				generosQueleGustan.add(Vocabulario.NombreTipoNotificacionGeneroFamiliar);

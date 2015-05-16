@@ -163,6 +163,10 @@ public class Vocabulario {
 			"¿Quieres que te recomiende alguna?", "¿Necesitas ayuda para encontrar alguna?" };
 	public static final String PeticionInfoPeli = "¿Podría recomendarte alguna película?";
 	public static final String[] Recomienda = { "podrías ver", "te sugiero", "te propongo" };
+	public static final String EligeGenero = "¿De que género te apetece ver la película?";
+	// TODO mejorar la frase
+	public static final String LimpiarBusqueda = "La consulta con los parámetros dados no ha obtenido ningún resultado."
+			+ " Se limpian los parámetros de búsqueda.";
 
 	// FRASES ANTERIORES
 	public static final String ErrorObtencionInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";

@@ -52,7 +52,7 @@ public class ListarGeneros extends TareaSincrona {
 			if (recComunicacionChat != null && genres != null) {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				// int numRecomienda = (int) ((100 * Math.random()) %
-				// VocabularioGestionCitas.Recomienda.length);
+				// Vocabulario.Recomienda.length);
 				String mensajeAenviar = "Disponemos de los siguientes géneros de películas ";
 				for (Genre g : genres) {
 					mensajeAenviar += g.getName() + ", ";

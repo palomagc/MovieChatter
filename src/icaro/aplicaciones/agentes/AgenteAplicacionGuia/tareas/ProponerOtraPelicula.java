@@ -49,7 +49,7 @@ public class ProponerOtraPelicula extends TareaSincrona {
 					usuario.addPeliculaOdiada(usuario.getPeliculaActual().getIdPelicula());
 					usuario.setPeliculaActual(null);
 
-					objAntiguo.setPending();
+					objAntiguo.setPending();	// RecomendarPelicula
 					this.getEnvioHechos().actualizarHecho(objAntiguo);
 				} else if (notifica
 						.equals(Vocabulario.NombreTipoNotificacionAfirmacion)) {
@@ -62,8 +62,8 @@ public class ProponerOtraPelicula extends TareaSincrona {
 					String mensajeAenviar = Vocabulario.Disfruta[numDisfruta] + "  "
 							+ Vocabulario.Despedida[numDespedida];
 					recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-					// objAntiguo.setSolved();
-					// this.getEnvioHechos().actualizarHecho(objAntiguo);
+					objAntiguo.setSolved();	// RecomendarPelicula
+					this.getEnvioHechos().actualizarHecho(objAntiguo);
 				}
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
