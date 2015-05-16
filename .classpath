@@ -20,21 +20,20 @@
 	<classpathentry kind="lib" path="lib/Drools/knowledge-internal-api-5.5.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/Drools/mvel2-2.1.3.Final.jar"/>
 	<classpathentry kind="lib" path="lib/Drools/slf4j-api-1.6.4.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/commons-codec-1.5.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/commons-compress-1.5.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/gate-asm-3.1.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/gate-compiler-jdt-4.3.2-P20140317-1600.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/gate.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/gateLauncher.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/ivy-2.3.0.jar"/>
-	<classpathentry kind="lib" path="lib/Gate/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="lib/antlr.jar"/>
 	<classpathentry kind="lib" path="lib/core-renderer-R8pre2.jar"/>
 	<classpathentry kind="lib" path="lib/megamap-0.9.jar"/>
 	<classpathentry kind="lib" path="lib/swing-layout-1.0.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/gate/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/gate/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/gate/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/gate/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/gate/gate-asm-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/gate/gate-compiler-jdt-4.3.2-P20140317-1600.jar"/>
+	<classpathentry kind="lib" path="lib/gate/gate.jar"/>
+	<classpathentry kind="lib" path="lib/gate/gateLauncher.jar"/>
+	<classpathentry kind="lib" path="lib/gate/ivy-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/gate/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

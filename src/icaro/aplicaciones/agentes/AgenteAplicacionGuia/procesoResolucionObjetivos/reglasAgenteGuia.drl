@@ -207,10 +207,10 @@ rule "Recibir respuesta edad usuario"
   when
     obj:ObtenerEdad(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
+    notif:Notificacion(tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionNumero)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarEdad.class);
-    tarea.ejecutar(tipoNotifica);
+    tarea.ejecutar(notif);
     
     obj.setSolved();
     update(obj);
