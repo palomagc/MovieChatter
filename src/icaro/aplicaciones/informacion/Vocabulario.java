@@ -50,7 +50,7 @@ public class Vocabulario {
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
 			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista",
-			"Orden", "Dinamico", "Nota");
+			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -65,6 +65,8 @@ public class Vocabulario {
 	public static final String NombreTipoNotificacionOrden = "Orden";
 	public static final String NombreTipoNotificacionDinamico = "Dinamico";
 	public static final String NombreTipoNotificacionNota = "Nota";
+	public static final String NombreTipoNotificacionTonterias = "Tonterias";
+	public static final String NombreTipoNotificacionArgumento = "Argumento";
 	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
 	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";

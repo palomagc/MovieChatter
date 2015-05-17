@@ -438,6 +438,46 @@ end
 
 
 
+// TODO de que va/resumen hacer reglas que digan el argumento de la peli
+rule "El usuario quiere saber de que va la peli"
+  when
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionArgumento)
+  then
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(DecirArgumentoPeli.class);
+    tarea.ejecutar();
+    
+    retract(notif);
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+
+
+
+
+
+// TODO Preguntar que si quiere ver 10 de golpe
+
+
+
+
+
+// Añadir anotaciones de insultos para redirigir la conversacion
+rule "El usuario ha dicho alguna tonteria"
+  when
+    notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionTonterias)
+  then
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(Tonteria.class);
+    tarea.ejecutar();
+    
+    retract(notif);
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+
+
+
+
+
 // TODO RECONOCER UN ERROR DEL USUARIO, POR AHORA TAREA IMPOSIBLE, DEJAR PARA OTRO MOMENTO. POSIBLE SOLUCIï¿½N ES PASARLE LA FRASE A GOOGLE Y QUE TE LA CORRIJA, UNA VEZ HECHO ESO SE LA PASAS AL EXTRACTOR SEMï¿½NTICO.
 
 
