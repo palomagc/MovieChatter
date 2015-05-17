@@ -2,6 +2,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.informacion.Notificacion;
 import icaro.aplicaciones.informacion.Vocabulario;
+import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
 import icaro.aplicaciones.recursos.recursoUsuario.ItfUsoRecursoUsuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Usuario;
 import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
@@ -44,6 +45,30 @@ public class GuardarValoracion extends TareaSincrona {
 					// en realidad la añadio con nota null al objeto usuario y ahora se guarda
 					itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
 					
+					// Enviamos un mensaje amigable.
+					// Se busca la interfaz del recurso en el repositorio de interfaces
+					ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+							.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
+					if (recComunicacionChat != null) {
+						recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
+				
+						String mensajeAenviar = "No se que decir...";
+						if(Integer.parseInt(nota) == 0){
+							mensajeAenviar = "Asi que no te ha gustado nada... Lo siento";
+						}else if(Integer.parseInt(nota) == 1){
+							mensajeAenviar = "Yo creo que no estaba tan mal";
+						}else if(Integer.parseInt(nota) == 2){
+							mensajeAenviar = "Hay pelis mejores, claro";
+						}else if(Integer.parseInt(nota) == 3){
+							mensajeAenviar = "Es... para pasar el rato...";
+						}else if(Integer.parseInt(nota) == 4){
+							mensajeAenviar = "Esta guay, si";
+						}else if(Integer.parseInt(nota) == 5){
+							mensajeAenviar = "Si, es estupenda!";
+						}
+						
+						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
+					}
 				}
 			}
 			// Reestablece el objetivo para que le recomiende otra peli con las mismas

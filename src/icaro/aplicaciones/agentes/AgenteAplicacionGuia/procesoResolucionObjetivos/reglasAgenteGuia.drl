@@ -359,15 +359,6 @@ rule "El usuario dice que ha visto la pelicula que le estamos recomendando"
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
-/*rule "Desechar si(NO FUNCIONA AUN)"
-	when
-	objAntiguo:RecomendarPelicula(state!=Objetivo.SOLVING)
-    obj:ObtenerPelicula(state!=Objetivo.SOLVING)
-    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
-	then
-	retract(notif);
-	recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end*/
 
 rule "Pedir valoracion pelicula"
   when
@@ -384,35 +375,35 @@ rule "Pedir valoracion pelicula"
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
-rule "Descartar si en valoracion"
-	// TODO cuando diga solo si deberia descartarlo, no funciona
-  when
-    obj:ObtenerValoracion(state==Objetivo.SOLVING)
-    f:Focus(foco == obj)
-    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
-  then
-  	retract(notif);
-    // recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
-    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end
-rule "Recibir valoracion pelicula"
+rule "Recibir valoracion pelicula(Negacion/Nota)"
   when
     objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
     obj:ObtenerValoracion(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
-    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNumero
-        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion
-        || tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNota
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarValoracion.class);
     tarea.ejecutar(notif, objAntiguo);
     
-    obj.setSolved();
-    update(obj);
-    f.setFoco(obj);
-    update(f);
+	obj.setSolved();
+	update(obj);
+	f.setFoco(obj);
+	update(f);
     retract(notif);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+rule "Recibir valoracion pelicula(Afirmacion)"
+  when
+    objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
+    obj:ObtenerValoracion(state==Objetivo.SOLVING)
+    f:Focus(foco == obj)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
+  then
+  	
+    retract(notif);
+    
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
 
@@ -442,30 +433,6 @@ rule "No hay extraccion semantica del texto del interlocutor"
     //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
-
-
-
-
-
-// TODO RESPONDER AMIGABLEMENTE CONFORME A LA NOTA QUE LE PUSO
-
-
-
-
-
-// TODO PONER UNAS REGLAS CON SUJERIRPELI A SOLVED Y LAS ANOTACIONES SI, NO, YA LA HE VISTO (Y OTRAS COSAS QUE PUEDA DECIR EL USUARIO)
-
-
-
-
-
-// TODO ANOTACION "YA LA HE VISTO" QUE LANZA UNA REGLA QUE RECUPERA LA ULTIMA PELI SUJERIDA Y LE PIDE QUE SI QUIERE VALORARLA. A CONTINUACI�N PROPONER OTRA.
-
-
-
-
-
-// TODO ANOTACION CON ACTOR, DECIR ALGUNA PELI DE ESE ACTOR (DE ESE ACTOR CONOZCO ESTA PELI, PODR�A GUSTARTE...)
 
 
 
