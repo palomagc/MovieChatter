@@ -315,7 +315,7 @@ rule "Proponer una pelicula por objetivo"
   when
     objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
     obj:ObtenerPelicula(state==Objetivo.PENDING)
-    f:Focus()
+    f:Focus(foco == objAntiguo)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
     tarea.ejecutar(obj, objAntiguo);
@@ -359,6 +359,15 @@ rule "El usuario dice que ha visto la pelicula que le estamos recomendando"
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
+/*rule "Desechar si(NO FUNCIONA AUN)"
+	when
+	objAntiguo:RecomendarPelicula(state!=Objetivo.SOLVING)
+    obj:ObtenerPelicula(state!=Objetivo.SOLVING)
+    notif:Notificacion(tipoNotifica:tipoNotificacion, tipoNotificacion==Vocabulario.NombreTipoNotificacionAfirmacion)
+	then
+	retract(notif);
+	recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end*/
 
 rule "Pedir valoracion pelicula"
   when
