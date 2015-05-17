@@ -28,7 +28,7 @@ public class GuardarEdad extends TareaSincrona {
 
 			// TODO Revisar esto pero parece que ya funciona automagicamente
 			Notificacion notifEdad = (Notificacion) params[0]; 
-			String edad = notifEdad.tipoNotificacion;
+			String edad = notifEdad.getMensajeNotificacion();
 			Vocabulario.usuario.setEdad(edad);
 			ItfUsoRecursoUsuario itfUsoRecursoUsuario = null;
 			itfUsoRecursoUsuario = (ItfUsoRecursoUsuario) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
@@ -42,7 +42,7 @@ public class GuardarEdad extends TareaSincrona {
 
 			
 			
-			// Podriamos deducir información según la edad, basandonos en estereotipos.
+			// Podriamos deducir informaciï¿½n segï¿½n la edad, basandonos en estereotipos.
 			ArrayList<String> generosQueleGustan = new ArrayList<String>();
 			int anos = 0;
 			if(anos < 8){ 
@@ -98,7 +98,7 @@ public class GuardarEdad extends TareaSincrona {
 				
 			}
 			
-			// TODO hay que guardar lo que le podría gustar por su edad.
+			// TODO hay que guardar lo que le podrï¿½a gustar por su edad.
 			
 			
 
