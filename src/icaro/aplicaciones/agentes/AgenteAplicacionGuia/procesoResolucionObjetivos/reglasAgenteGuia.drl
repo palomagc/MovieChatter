@@ -394,6 +394,51 @@ rule "Recibir valoracion pelicula(Negacion/Nota)"
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
+
+
+
+
+
+
+rule "Pedir valoracion ultima pelicula"
+  when
+    obj:ObtenerUltimaValoracion(state==Objetivo.PENDING)
+    f:Focus()
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarUltimaValoracion.class);
+    tarea.ejecutar();
+    
+    obj.setSolving();
+    update(obj);
+    f.setFoco(obj);
+    update(f);
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+rule "Recibir valoracion ultima pelicula(Negacion/Nota)"
+  when
+    obj:ObtenerUltimaValoracion(state==Objetivo.SOLVING)
+    f:Focus(foco == obj)
+    notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNota
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion)
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarValoracion.class);
+    tarea.ejecutar(notif, null);
+    
+	obj.setSolved();
+	update(obj);
+	f.setFoco(obj);
+	update(f);
+    retract(notif);
+    recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end
+
+
+
+
+
+
 rule "Recibir valoracion pelicula(Afirmacion)"
   when
     objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
@@ -461,7 +506,7 @@ end
 
 
 
-// Añadir anotaciones de insultos para redirigir la conversacion
+// Aï¿½adir anotaciones de insultos para redirigir la conversacion
 rule "El usuario ha dicho alguna tonteria"
   when
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionTonterias)

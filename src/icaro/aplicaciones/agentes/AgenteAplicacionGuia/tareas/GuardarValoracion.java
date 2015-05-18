@@ -1,5 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.Notificacion;
 import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
@@ -74,8 +75,12 @@ public class GuardarValoracion extends TareaSincrona {
 			}
 			// Reestablece el objetivo para que le recomiende otra peli con las mismas
 			// caracteristicas
-			objAntiguo.setPending();	// RecomendarPelicula
-			this.getEnvioHechos().actualizarHecho(objAntiguo);
+			if(objAntiguo == null)
+				this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
+			else{
+				objAntiguo.setPending();	// RecomendarPelicula
+				this.getEnvioHechos().actualizarHecho(objAntiguo);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

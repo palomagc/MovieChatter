@@ -3,6 +3,8 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerDatosIniciales;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerEdad;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerSexo;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerUltimaValoracion;
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerValoracion;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
 import icaro.aplicaciones.informacion.Notificacion;
 import icaro.aplicaciones.informacion.Vocabulario;
@@ -91,12 +93,18 @@ public class BuscarUsuario extends TareaSincrona {
 			// la anterior película que está sin valorar. En caso de que no la quiera valorar, le
 			// podemos
 			// asignar nota=-2 para saber que no hay que volver a preguntarle por esta peli
+			
+			// El usuario tiene la última pelicula sin votar
 			else if (valoraciones.size() > 0
 					&& valoraciones.get(valoraciones.size() - 1).getNota() == null) {
-				Notificacion notif = new Notificacion();
+				Valoracion sinValorar = valoraciones.get(valoraciones.size() - 1);
+				/*Notificacion notif = new Notificacion();
 				notif.setTipoNotificacion(Vocabulario.NombreTipoNotificacionValorarUltimaPelicula);
 				getComunicator().enviarInfoAotroAgente(notif,
-						Vocabulario.IdentAgenteAplicacionGuia);
+						Vocabulario.IdentAgenteAplicacionGuia);*/
+				
+				Vocabulario.usuario.setPeliculaActual(sinValorar);
+				this.getEnvioHechos().insertarHecho(new ObtenerUltimaValoracion());
 			} else {
 				this.getEnvioHechos().insertarHecho(new RecomendarPelicula());
 			}
