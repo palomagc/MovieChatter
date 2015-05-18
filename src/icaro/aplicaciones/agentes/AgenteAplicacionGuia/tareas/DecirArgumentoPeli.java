@@ -1,10 +1,10 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
-import java.util.List;
-
 import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
+import icaro.aplicaciones.recursos.comunicacionTMDB.ItfUsoComunicacionTMDB;
 import icaro.aplicaciones.recursos.comunicacionTMDB.model.Movie;
+import icaro.aplicaciones.recursos.recursoUsuario.model.Valoracion;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.CausaTerminacionTarea;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Objetivo;
@@ -39,13 +39,13 @@ public class DecirArgumentoPeli extends TareaSincrona {
 				
 				String mensajeAenviar = "Pero... si no hemos dicho ninguna peli...! ";
 				
-				List<Movie> movies = Vocabulario.busqueda.getResult();
-				if(movies.size() > 0){
-					Movie movie = movies.get(0);
-					mensajeAenviar = movie.getOverview();
-					if(mensajeAenviar.equals("")){
-						mensajeAenviar = "No sabría decirte";
-					}
+				Valoracion valoracion = Vocabulario.usuario.getPeliculaActual();
+				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
+				Movie movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(valoracion.getIdPelicula()), null);
+				
+				mensajeAenviar = movie.getOverview();
+				if(mensajeAenviar.equals("")){
+					mensajeAenviar = "No sabría decirte";
 				}
 				
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
