@@ -37,12 +37,13 @@ public class GuardarValoracion extends TareaSincrona {
 						&& !notifica.equals(Vocabulario.NombreTipoNotificacionNegacion)
 						&& !notifica.equals(Vocabulario.NombreTipoNotificacionAfirmacion)) {
 					// TODO cuando no es NOTA refocaliza
-					int index = usuario.getIdValoraciones().indexOf(idPelicula);
-					Valoracion aux = usuario.getValoraciones().get(index);
+					//int index = usuario.getIdValoraciones().indexOf(idPelicula);
+					//Valoracion aux = usuario.getValoraciones().get(index);
 					String nota = ((Notificacion) params[0]).getMensajeNotificacion();
-					aux = new Valoracion(idPelicula, nota);
-					// TODO deberia reemplazar la valoracion, por ahora solo la añade
-					// en realidad la añadio con nota null al objeto usuario y ahora se guarda
+					Valoracion aux = new Valoracion(idPelicula, nota);
+					//usuario.getValoraciones().get(index).setNota(nota);
+					// TODO deberia reemplazar la valoracion, por ahora solo la aï¿½ade
+					// en realidad la aï¿½adio con nota null al objeto usuario y ahora se guarda
 					itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
 					
 					// Enviamos un mensaje amigable.

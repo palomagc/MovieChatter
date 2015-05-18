@@ -153,7 +153,15 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			usuario.getValoraciones().add(valoracion);
+			String idPelicula = valoracion.getIdPelicula();
+			String nota = valoracion.getNota();
+			if(usuario.getIdValoraciones().contains(idPelicula)){
+				int index = usuario.getIdValoraciones().indexOf(idPelicula);
+				usuario.getValoraciones().get(index).setNota(nota);
+			}
+			else
+				usuario.getValoraciones().add(valoracion);
+			
 			modificarUsuario(nombreUsuario, usuario);
 			return true;
 		}

@@ -1,1 +1,1 @@
-{"actoresOdiados":[],"generosPreferidos":[],"actoresPreferidos":[],"sexo":"SexoHombre","nombre":"movieBot","edad":"Numero","valoraciones":[{"idPelicula":"177572","nota":"4"},{"idPelicula":"168259","nota":"3"},{"idPelicula":"293310","nota":"1"}],"peliculasOdiadas":["159004"]}
+{"nombre":"movieBot","edad":"Numero","actoresOdiados":[],"generosPreferidos":[],"sexo":"SexoHombre","actoresPreferidos":[],"peliculasOdiadas":[],"valoraciones":[{"nota":"0","idPelicula":"177572"},{"nota":null,"idPelicula":"98566"}]}

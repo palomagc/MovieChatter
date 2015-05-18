@@ -46,8 +46,8 @@ public class SolicitarValoracion extends TareaSincrona {
 					String idPelicula = usuario.getPeliculaActual().getIdPelicula();
 					Valoracion aux;
 					aux = new Valoracion(idPelicula, null);
-					// itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
-					usuario.addValoracion(aux);
+					itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
+					//usuario.addValoracion(aux);
 
 					Valoracion valoracion = Vocabulario.usuario.getPeliculaActual();
 					String idPeliculaActual = valoracion.getIdPelicula();
@@ -58,9 +58,9 @@ public class SolicitarValoracion extends TareaSincrona {
 						movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPeliculaActual),
 								null);
 					}
-					mensajeAenviar = "Que nota quieres ponerle a " + movie.getTitle() + "(del 0 al 5)?";
+					mensajeAenviar = "Que nota quieres ponerle a " + movie.getTitle() + " (del 0 al 5)?";
 				} else
-					mensajeAenviar = "Ha ocurrido un error";
+					mensajeAenviar = "Ha ocurrido un error al solicitar la valoración";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
