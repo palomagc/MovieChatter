@@ -47,7 +47,7 @@ public class SolicitarValoracion extends TareaSincrona {
 					Valoracion aux;
 					aux = new Valoracion(idPelicula, null);
 					itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
-					//usuario.addValoracion(aux);
+					usuario.addValoracion(aux);
 
 					Valoracion valoracion = Vocabulario.usuario.getPeliculaActual();
 					String idPeliculaActual = valoracion.getIdPelicula();
