@@ -40,7 +40,13 @@ public class GuardarValoracion extends TareaSincrona {
 					// TODO cuando no es NOTA refocaliza
 					//int index = usuario.getIdValoraciones().indexOf(idPelicula);
 					//Valoracion aux = usuario.getValoraciones().get(index);
-					String nota = ((Notificacion) params[0]).getMensajeNotificacion();
+					String nota = "";
+					if(notifica.equals(Vocabulario.NombreTipoNotificacionValoracionPositiva))
+						nota = "5";
+					else if(notifica.equals(Vocabulario.NombreTipoNotificacionValoracionNegativa))
+						nota = "0";
+					else
+						nota = ((Notificacion) params[0]).getMensajeNotificacion();
 					Valoracion aux = new Valoracion(idPelicula, nota);
 					//usuario.getValoraciones().get(index).setNota(nota);
 					// TODO deberia reemplazar la valoracion, por ahora solo la a�ade

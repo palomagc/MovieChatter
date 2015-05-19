@@ -381,7 +381,9 @@ rule "Recibir valoracion pelicula(Negacion/Nota)"
     obj:ObtenerValoracion(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
     notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNota
-        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion)
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionValoracionPositiva
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionValoracionNegativa)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarValoracion.class);
     tarea.ejecutar(notif, objAntiguo);
@@ -420,7 +422,9 @@ rule "Recibir valoracion ultima pelicula(Negacion/Nota)"
     obj:ObtenerUltimaValoracion(state==Objetivo.SOLVING)
     f:Focus(foco == obj)
     notif:Notificacion(tipoNotificacion==Vocabulario.NombreTipoNotificacionNota
-        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion)
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionNegacion
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionValoracionPositiva
+        || tipoNotificacion==Vocabulario.NombreTipoNotificacionValoracionNegativa)
   then
   	TareaSincrona tarea = gestorTareas.crearTareaSincrona(GuardarValoracion.class);
     tarea.ejecutar(notif, null);

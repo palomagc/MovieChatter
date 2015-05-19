@@ -58,7 +58,7 @@ public class SolicitarUltimaValoracion extends TareaSincrona {
 						movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPeliculaActual),
 								null);
 					}
-					mensajeAenviar = "Anda, parece que te has dejado una película sin valorar. Que nota quieres ponerle a " + movie.getTitle() + " (del 0 al 5)?";
+					mensajeAenviar = "Anda, parece que te has dejado una película sin valorar. Que opinas de " + movie.getTitle() + "? Puedes ponerle una nota (del 0 al 5)";
 				} else
 					mensajeAenviar = "Ha ocurrido un error al solicitar la ultima valoración";
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
