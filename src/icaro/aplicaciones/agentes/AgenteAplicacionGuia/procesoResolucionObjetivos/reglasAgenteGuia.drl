@@ -250,6 +250,8 @@ rule "Mirar si puedes deducir un genero, o preguntale"
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirGenero.class);
     tarea.ejecutar(obj);
     
+    obj.setSolving();
+    update(obj);
     f.setFoco(obj);
     update(f);
     
@@ -298,6 +300,7 @@ end
 rule "Mirar si puedes deducir un actor, o preguntale"
   when
     obj:ObtenerActor(state==Objetivo.PENDING)
+    f:Focus(foco != obj)
   then
     
     //  Tareas para preguntar al usuario que actor le apetece ver
@@ -306,6 +309,8 @@ rule "Mirar si puedes deducir un actor, o preguntale"
     
     obj.setSolving();
     update(obj);
+    f.setFoco(obj);
+    update(f);
     
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
