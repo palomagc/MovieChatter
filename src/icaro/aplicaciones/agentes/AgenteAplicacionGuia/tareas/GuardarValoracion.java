@@ -49,8 +49,6 @@ public class GuardarValoracion extends TareaSincrona {
 						nota = ((Notificacion) params[0]).getMensajeNotificacion();
 					Valoracion aux = new Valoracion(idPelicula, nota);
 					//usuario.getValoraciones().get(index).setNota(nota);
-					// TODO deberia reemplazar la valoracion, por ahora solo la a�ade
-					// en realidad la a�adio con nota null al objeto usuario y ahora se guarda
 					itfUsoRecursoUsuario.nuevaValoracion(usuario.getNombre(), aux);
 					
 					// Enviamos un mensaje amigable.

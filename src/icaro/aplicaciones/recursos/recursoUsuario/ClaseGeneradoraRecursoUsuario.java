@@ -144,7 +144,6 @@ public class ClaseGeneradoraRecursoUsuario extends ImplRecursoSimple implements
 		return true;
 	}
 
-	// TODO hay que guardar la valoración no solo en en json, tambien en vocabulario.usuario
 	@Override
 	public boolean nuevaValoracion(String nombreUsuario, Valoracion valoracion) {
 		if (existeUsuario(nombreUsuario)) {
