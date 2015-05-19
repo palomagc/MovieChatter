@@ -41,7 +41,7 @@ public class Vocabulario {
 	public static Usuario usuario = null;
 	public static Busqueda busqueda = new Busqueda();
 
-	// TODO Añadir aquí las anotaciones que quieres que se tengan en cuenta.
+	// TODO Aï¿½adir aquï¿½ las anotaciones que quieres que se tengan en cuenta.
 	// NOMBRES NOTIFICACIONES
 	public static final List<String> NombresTipoNotificacion = Arrays.asList("Saludo", "Despedida",
 			"Afirmacion", "Negacion", "SexoHombre", "SexoMujer", "Generos", "GeneroAccion",
@@ -50,7 +50,7 @@ public class Vocabulario {
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
 			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista",
-			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento");
+			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento", "ValoracionPositiva", "ValoracionNegativa");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -67,6 +67,8 @@ public class Vocabulario {
 	public static final String NombreTipoNotificacionNota = "Nota";
 	public static final String NombreTipoNotificacionTonterias = "Tonterias";
 	public static final String NombreTipoNotificacionArgumento = "Argumento";
+	public static final String NombreTipoNotificacionValoracionPositiva = "ValoracionPositiva";
+	public static final String NombreTipoNotificacionValoracionNegativa = "ValoracionNegativa";
 	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
 	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";
@@ -107,22 +109,22 @@ public class Vocabulario {
 
 	public static final Map<String, Genero> Generos = new HashMap<String, Genero>();
 	static {
-		Generos.put("GeneroAccion", new Genero("Action", "acción"));
+		Generos.put("GeneroAccion", new Genero("Action", "acciï¿½n"));
 		Generos.put("GeneroAventura", new Genero("Adventure", "aventura"));
-		Generos.put("GeneroAnimacion", new Genero("Animation", "animación"));
+		Generos.put("GeneroAnimacion", new Genero("Animation", "animaciï¿½n"));
 		Generos.put("GeneroComedia", new Genero("Comedy", "comedia"));
 		Generos.put("GeneroCrimen", new Genero("Crime", "crimen"));
 		Generos.put("GeneroDocumental", new Genero("Documentary", "documental"));
 		Generos.put("GeneroDrama", new Genero("Drama", "drama"));
 		Generos.put("GeneroFamiliar", new Genero("Family", "familiar"));
-		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasía"));
+		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasï¿½a"));
 		Generos.put("GeneroExtranjero", new Genero("Foreign", "extranjero"));
-		Generos.put("GeneroHistorico", new Genero("History", "histórico"));
+		Generos.put("GeneroHistorico", new Genero("History", "histï¿½rico"));
 		Generos.put("GeneroTerror", new Genero("Horror", "terror"));
 		Generos.put("GeneroMusical", new Genero("Music", "musical"));
 		Generos.put("GeneroMisterio", new Genero("Mystery", "misterio"));
-		Generos.put("GeneroRomantico", new Genero("Romance", "romántico"));
-		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficción"));
+		Generos.put("GeneroRomantico", new Genero("Romance", "romï¿½ntico"));
+		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficciï¿½n"));
 		Generos.put("GeneroTV", new Genero("TV Movie", "tv"));
 		Generos.put("GeneroSuspense", new Genero("Thriller", "suspense"));
 		Generos.put("GeneroGuerra", new Genero("War", "guerra"));
@@ -147,12 +149,13 @@ public class Vocabulario {
 
 	// SALUDO
 	public static final String SaludoInicial1 = "Hola, yo soy " + Constantes.SYSTEM_NAME
-			+ ", tu recomendador de películas";
-	public static final String[] SaludoInicial2 = { "Hola", "Qué tal", "Buenas", "Que hay" };
+			+ ", tu recomendador de pelï¿½culas";
+	public static final String[] SaludoInicial2 = { "Hola", "Quï¿½ tal", "Buenas", "Que hay" };
 
 	// FRASES DE NUESTRO SISTEMA
-	public static final String[] Despedida = { "Adiós.", "Hasta la próxima.", "Nos vemos.",
+	public static final String[] Despedida = { "Adiï¿½s.", "Hasta la prï¿½xima.", "Nos vemos.",
 			"Que te vaya bien.", "Ha sido un placer.", "Cuando quieras repetimos." };
+<<<<<<< HEAD
 	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras qué tal.",
 			"Que te guste.", "Ojalá te guste.", "A por las palomitas." };
 	public static final String InfoFuncionalidad = "Soy un cinéfilo, y me encantaría ayudarte a encontrar películas.";
@@ -163,9 +166,25 @@ public class Vocabulario {
 			"¿Quieres que te recomiende alguna?", "¿Necesitas ayuda para encontrar alguna?" };
 	public static final String[] Recomienda = { "podrías ver", "te sugiero", "te propongo" };
 	public static final String EligeGenero = "¿De que género te apetece ver la película?";
+=======
+	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras quï¿½ tal.",
+			"Que te guste.", "Ojalï¿½ te guste.", "A por las palomitas." };
+	public static final String InfoFuncionalidad = "Soy un cinï¿½filo, y me encantarï¿½a ayudarte a encontrar pelï¿½culas.";
+	public static final String[] NoEntendido = { "No he entendido lo que me has dicho.",
+			"Perdona, pero no he entendido bien.", "Lo siento, no he comprendido bien.",
+			"Perdona, no comprendo quï¿½ quieres decir." };
+	public static final String[] Params = { "Podrï¿½as introducir un aï¿½o.",
+			"Puedes aï¿½adir un actor a tu filtrado.", "Podrï¿½as aï¿½adir otro gï¿½nero a la bï¿½squeda.",
+			"Puedes introducir otro gï¿½nero, actor o aï¿½o como filtro" };
+	public static final String[] PeticionInfoGeneral = { "ï¿½Te puedo sugerir alguna hoy?",
+			"ï¿½Quieres que te recomiende alguna?", "ï¿½Necesitas ayuda para encontrar alguna?" };
+	public static final String PeticionInfoPeli = "ï¿½Podrï¿½a recomendarte alguna pelï¿½cula?";
+	public static final String[] Recomienda = { "podrï¿½as ver", "te sugiero", "te propongo" };
+	public static final String EligeGenero = "ï¿½De que gï¿½nero te apetece ver la pelï¿½cula?";
+>>>>>>> origin/master
 	// TODO mejorar la frase
-	public static final String LimpiarBusqueda = "La consulta con los parámetros dados no ha obtenido ningún resultado."
-			+ " Se limpian los parámetros de búsqueda.";
+	public static final String LimpiarBusqueda = "La consulta con los parï¿½metros dados no ha obtenido ningï¿½n resultado."
+			+ " Se limpian los parï¿½metros de bï¿½squeda.";
 
 	// FRASES ANTERIORES
 	public static final String ErrorObtencionInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";

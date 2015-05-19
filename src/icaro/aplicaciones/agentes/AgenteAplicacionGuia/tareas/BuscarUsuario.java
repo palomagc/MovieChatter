@@ -98,10 +98,6 @@ public class BuscarUsuario extends TareaSincrona {
 			else if (valoraciones.size() > 0
 					&& valoraciones.get(valoraciones.size() - 1).getNota() == null) {
 				Valoracion sinValorar = valoraciones.get(valoraciones.size() - 1);
-				/*Notificacion notif = new Notificacion();
-				notif.setTipoNotificacion(Vocabulario.NombreTipoNotificacionValorarUltimaPelicula);
-				getComunicator().enviarInfoAotroAgente(notif,
-						Vocabulario.IdentAgenteAplicacionGuia);*/
 				
 				Vocabulario.usuario.setPeliculaActual(sinValorar);
 				this.getEnvioHechos().insertarHecho(new ObtenerUltimaValoracion());
