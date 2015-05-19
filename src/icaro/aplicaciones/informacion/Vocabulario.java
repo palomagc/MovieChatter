@@ -156,15 +156,11 @@ public class Vocabulario {
 	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras qué tal.",
 			"Que te guste.", "Ojalá te guste.", "A por las palomitas." };
 	public static final String InfoFuncionalidad = "Soy un cinéfilo, y me encantaría ayudarte a encontrar películas.";
-	public static final String[] NoEntendido = { "No he entendido lo que me has dicho.",
-			"Perdona, pero no he entendido bien.", "Lo siento, no he comprendido bien.",
-			"Perdona, no comprendo qué quieres decir." };
 	public static final String[] Params = { "Podrías introducir un año.",
 			"Puedes añadir un actor a tu filtrado.", "Podrías añadir otro género a la búsqueda.",
 			"Puedes introducir otro género, actor o año como filtro" };
 	public static final String[] PeticionInfoGeneral = { "¿Te puedo sugerir alguna hoy?",
 			"¿Quieres que te recomiende alguna?", "¿Necesitas ayuda para encontrar alguna?" };
-	public static final String PeticionInfoPeli = "¿Podría recomendarte alguna película?";
 	public static final String[] Recomienda = { "podrías ver", "te sugiero", "te propongo" };
 	public static final String EligeGenero = "¿De que género te apetece ver la película?";
 	// TODO mejorar la frase

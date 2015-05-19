@@ -243,11 +243,16 @@ end
 rule "Mirar si puedes deducir un genero, o preguntale"
   when
     obj:ObtenerGenero(state==Objetivo.PENDING)
+    f:Focus(foco != obj)
   then
     
     //  Tareas para preguntar al usuario o deducir que genero le apetece ver
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirGenero.class);
     tarea.ejecutar(obj);
+    
+    f.setFoco(obj);
+    update(f);
+    
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
@@ -298,6 +303,10 @@ rule "Mirar si puedes deducir un actor, o preguntale"
     //  Tareas para preguntar al usuario que actor le apetece ver
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(DeducirActor.class);
     tarea.ejecutar();
+    
+    obj.setSolving();
+    update(obj);
+    
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
 end
@@ -315,7 +324,7 @@ rule "Proponer una pelicula por objetivo"
   when
     objAntiguo:RecomendarPelicula(state==Objetivo.SOLVING)
     obj:ObtenerPelicula(state==Objetivo.PENDING)
-    f:Focus(foco == objAntiguo)
+    f:Focus(foco != obj)
   then
     TareaSincrona tarea = gestorTareas.crearTareaSincrona(ProponerPelicula.class);
     tarea.ejecutar(obj, objAntiguo);
@@ -471,12 +480,15 @@ rule "Despedida"
 end
 rule "No hay extraccion semantica del texto del interlocutor"
   when
+  	f:Focus();
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.ExtraccionSemanticaNull)
   then
-    TareaSincrona tarea = gestorTareas.crearTareaSincrona(SolicitarInfoPeli.class);
-    tarea.ejecutar(identInterlc);
-    //recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
-    //recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
+    TareaSincrona tarea = gestorTareas.crearTareaSincrona(NoEntender.class);
+    tarea.ejecutar(f);
+    
+    retract(notif);
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
 
 

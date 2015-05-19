@@ -1,5 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
+import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerActor;
 import icaro.aplicaciones.informacion.Notificacion;
 import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
@@ -59,6 +60,7 @@ public class DeducirGenero extends TareaSincrona {
 					// QUE SEPA QUE LO HEMOS DEDUCIDO)
 					// TODO LANZAR UN OBJETIVO POR EJEMPLO EL DE PREGUNTAR SI QUIERE FILTRAR POR
 					// ALGUN ACTOR.
+					this.getEnvioHechos().actualizarHecho(new ObtenerActor());
 				} else {
 					// Si no se ha podido deducir un genero. Preguntamos al usuario.
 					// String identDeEstaTarea = this.getIdentTarea();

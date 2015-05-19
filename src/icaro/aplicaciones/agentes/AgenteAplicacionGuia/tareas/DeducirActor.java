@@ -24,7 +24,7 @@ public class DeducirActor extends TareaSincrona {
 	public void ejecutar(Object... params) {
 		try {
 			// Objetivo
-			Objetivo obj = (Objetivo) params[0];
+			//Objetivo obj = (Objetivo) params[0];
 
 			// TODO Mirar en el objeto estático usuario a ver si
 			// las 3 ultimas pelis contienen el mismo actor
@@ -49,7 +49,7 @@ public class DeducirActor extends TareaSincrona {
 
 						// Preguntar el género que le apetece ver
 						String mensajeAenviar = "De que actor te apetece ver la peli?";
-						obj.setSolving();	// ObtenerActor
+						//obj.setSolving();	// ObtenerActor
 						// TODO NO HACE FALTA HACER EL UPDATE? COMPROBAR QUE SE LANZA LA REGLA QUE
 						// ESPERA A LA RESPUESTA
 
