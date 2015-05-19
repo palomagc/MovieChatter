@@ -155,33 +155,16 @@ public class Vocabulario {
 	// FRASES DE NUESTRO SISTEMA
 	public static final String[] Despedida = { "Adiï¿½s.", "Hasta la prï¿½xima.", "Nos vemos.",
 			"Que te vaya bien.", "Ha sido un placer.", "Cuando quieras repetimos." };
-<<<<<<< HEAD
-	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras qué tal.",
-			"Que te guste.", "Ojalá te guste.", "A por las palomitas." };
-	public static final String InfoFuncionalidad = "Soy un cinéfilo, y me encantaría ayudarte a encontrar películas.";
-	public static final String[] Params = { "Podrías introducir un año.",
-			"Puedes añadir un actor a tu filtrado.", "Podrías añadir otro género a la búsqueda.",
-			"Puedes introducir otro género, actor o año como filtro" };
-	public static final String[] PeticionInfoGeneral = { "¿Te puedo sugerir alguna hoy?",
-			"¿Quieres que te recomiende alguna?", "¿Necesitas ayuda para encontrar alguna?" };
-	public static final String[] Recomienda = { "podrías ver", "te sugiero", "te propongo" };
-	public static final String EligeGenero = "¿De que género te apetece ver la película?";
-=======
 	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras quï¿½ tal.",
-			"Que te guste.", "Ojalï¿½ te guste.", "A por las palomitas." };
+			"Que te guste.", "Ojala te guste.", "A por las palomitas." };
 	public static final String InfoFuncionalidad = "Soy un cinï¿½filo, y me encantarï¿½a ayudarte a encontrar pelï¿½culas.";
-	public static final String[] NoEntendido = { "No he entendido lo que me has dicho.",
-			"Perdona, pero no he entendido bien.", "Lo siento, no he comprendido bien.",
-			"Perdona, no comprendo quï¿½ quieres decir." };
 	public static final String[] Params = { "Podrï¿½as introducir un aï¿½o.",
 			"Puedes aï¿½adir un actor a tu filtrado.", "Podrï¿½as aï¿½adir otro gï¿½nero a la bï¿½squeda.",
 			"Puedes introducir otro gï¿½nero, actor o aï¿½o como filtro" };
 	public static final String[] PeticionInfoGeneral = { "ï¿½Te puedo sugerir alguna hoy?",
-			"ï¿½Quieres que te recomiende alguna?", "ï¿½Necesitas ayuda para encontrar alguna?" };
-	public static final String PeticionInfoPeli = "ï¿½Podrï¿½a recomendarte alguna pelï¿½cula?";
-	public static final String[] Recomienda = { "podrï¿½as ver", "te sugiero", "te propongo" };
-	public static final String EligeGenero = "ï¿½De que gï¿½nero te apetece ver la pelï¿½cula?";
->>>>>>> origin/master
+			"Quieres que te recomiende alguna?", "ï¿½Necesitas ayuda para encontrar alguna?" };	
+	public static final String[] Recomienda = { "podrias ver", "te sugiero", "te propongo" };
+	public static final String EligeGenero = "¿De que genero te apetece ver la pelicula?";
 	// TODO mejorar la frase
 	public static final String LimpiarBusqueda = "La consulta con los parï¿½metros dados no ha obtenido ningï¿½n resultado."
 			+ " Se limpian los parï¿½metros de bï¿½squeda.";
