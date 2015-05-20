@@ -2,6 +2,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import java.util.Iterator;
 
+import constantes.Frases;
 import icaro.aplicaciones.informacion.Busqueda;
 import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
@@ -35,8 +36,8 @@ public class ProponerPelicula extends TareaSincrona {
 		try {
 			ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
-			Objetivo obj = (Objetivo) params[0];
-			Objetivo objAntiguo = (Objetivo) params[1];
+			Objetivo obj = (Objetivo) params[0]; // ObtenerPelicula
+			Objetivo objAntiguo = (Objetivo) params[1]; // RecomendarPelicula
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				String mensajeAenviar = "";
@@ -47,47 +48,50 @@ public class ProponerPelicula extends TareaSincrona {
 					final int MAX_A_MOSTRAR = 5;
 					int trueSize = busqueda.getResult().size();
 					int size = ((trueSize > MAX_A_MOSTRAR) ? MAX_A_MOSTRAR : trueSize);
-					mensajeAenviar += "Me sé unas cuantas, las " + size + " que más prometen son ";
+					if(!Vocabulario.usuario.conozcoListaPelis){
+						Vocabulario.usuario.conozcoListaPelis = true;
+						mensajeAenviar += "Me sé unas cuantas, las " + size + " que más prometen son ";
+						Iterator<Movie> itMovie = busqueda.getResult().iterator();
+						int count = 0;
+						while(itMovie.hasNext() && count < size) {
+							Movie m = itMovie.next();
+							mensajeAenviar += m.getTitle();
+							if(count == size-2){
+								mensajeAenviar += " y "; 
+							}else if(count < size-2){
+								mensajeAenviar += ", ";
+							}
+							count++;
+						}
+						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
+						mensajeAenviar = "";
+					}
+					
 					Iterator<Movie> itMovie = busqueda.getResult().iterator();
 					int count = 0;
 					while(itMovie.hasNext() && count < size) {
 						Movie m = itMovie.next();
-						mensajeAenviar += m.getTitle();
-						if(count == size-2){
-							mensajeAenviar += " y "; 
-						}else if(count < size-2){
-							mensajeAenviar += ", ";
-						}
-						count++;
-					}
-					recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-					mensajeAenviar = "";
-					
-					itMovie = busqueda.getResult().iterator();
-					count = 0;
-					while(itMovie.hasNext() && count < size) {
-						Movie m = itMovie.next();
 						if (movie == null && !usuario.getIdValoraciones().contains(Integer.toString(m.getId())) && !usuario.getPeliculasOdiadas().contains(Integer.toString(m.getId()))){
 							movie = m;
-						}else if(usuario.getIdValoraciones().contains(Integer.toString(m.getId()))){
+						}else if(usuario.getIdValoraciones().contains(Integer.toString(m.getId())) && !Vocabulario.usuario.conozcoListaPelis){
 							mensajeAenviar += m.getTitle() + " ya la has visto...\n";
 							recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 							mensajeAenviar = "";
-						}else if(usuario.getPeliculasOdiadas().contains(Integer.toString(m.getId()))){
+						}else if(usuario.getPeliculasOdiadas().contains(Integer.toString(m.getId())) && !Vocabulario.usuario.conozcoListaPelis){
 							mensajeAenviar += m.getTitle() + " la odias...\n";
 							recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 							mensajeAenviar = "";
 						}
 						count++;
 					}
+					
+					
 					if (movie != null) {
-						// Frase aleatoria + pelicipa que le queremos recomendar.
-						int numRecomienda = (int) ((100 * Math.random()) % Vocabulario.Recomienda.length);
-						mensajeAenviar += Vocabulario.Recomienda[numRecomienda] + "  ";
-						int numParams = (int) ((100 * Math.random()) % Vocabulario.Params.length);
-						// TODO parece que cuando le dices muchhas veces que no quieres ver la peli
+						// Frase aleatoria + pelicula que le queremos recomendar.
+						mensajeAenviar += Frases.Recomienda();
+						// TODO parece que cuando le dices muchas veces que no quieres ver la peli
 						// salta null pointer exception en la linea de aquí abajo.
-						mensajeAenviar += (movie.getTitle() + ". " + Vocabulario.Params[numParams]);
+						mensajeAenviar += (movie.getTitle() + ". " + Frases.Params());
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 						usuario.setPeliculaActual(new Valoracion(Integer.toString(movie.getId()),
 								null));

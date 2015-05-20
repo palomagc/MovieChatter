@@ -53,8 +53,7 @@ public class ProponerOtraPelicula extends TareaSincrona {
 					this.getEnvioHechos().actualizarHecho(objAntiguo);
 				} else if (notifica
 						.equals(Vocabulario.NombreTipoNotificacionAfirmacion)) {
-					usuario.addValoracion(new Valoracion(usuario.getPeliculaActual()
-							.getIdPelicula(), null));
+					itfUsoRecursoUsuario.nuevaValoracion(Vocabulario.usuario.getNombre(), new Valoracion(usuario.getPeliculaActual().getIdPelicula(), null));
 					usuario.setPeliculaActual(null);
 					Vocabulario.busqueda.reset();
 					int numDespedida = (int) ((100 * Math.random()) % Vocabulario.Despedida.length);

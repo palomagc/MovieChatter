@@ -82,4 +82,36 @@ public class Frases {
 		return frases[new Random().nextInt(frases.length)];
 	}
 	
+	public static String QuienSoy() {
+		String[] frases = new String[]{
+				"Yo me llamo Joker, soy un sistema multiagente de tu television inteligente"
+				};
+		return frases[new Random().nextInt(frases.length)];
+	}
+	
+	public static String UtilidadDelSistema() {
+		String[] frases = new String[]{
+				"Puedo ayudarte a encontrar peliculas que te apetezcan ver"
+				};
+		return frases[new Random().nextInt(frases.length)];
+	}
+	
+	public static String Recomienda() {
+		String[] frases = new String[]{
+				"Podrias ver ",
+				"Te sugiero ",
+				"Te propongo "
+				};
+		return frases[new Random().nextInt(frases.length)];
+	}
+	
+	public static String Params() {
+		String[] frases = new String[]{
+				"Si introduces un anio te pondré peliculas solo de ese anio",
+				"Si me dices uno o varios actores intentare que salgan",
+				"Si me dices otro genero procurare buscare pelis que mezclen todos los generos",
+				"Puedes decirme generos, actores o anios para buscar algo mas concreto"
+				};
+		return frases[new Random().nextInt(frases.length)];
+	}
 }

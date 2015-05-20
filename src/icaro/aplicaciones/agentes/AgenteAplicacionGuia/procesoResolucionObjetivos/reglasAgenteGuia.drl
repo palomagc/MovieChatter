@@ -527,7 +527,7 @@ end
 
 
 
-// A�adir anotaciones de insultos para redirigir la conversacion
+// Aniadir anotaciones de insultos para redirigir la conversacion
 rule "El usuario ha dicho alguna tonteria"
   when
     notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionTonterias)
@@ -549,15 +549,26 @@ end
 
 
 
-/*
+
 rule "Responder quien soy"
   when
-  	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionQuiensoyyquehago)
+  	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionQuien)
   then
-  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(Quiensoy.class);
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(Quien.class);
     tarea.ejecutar();
     
     retract(notif);
     
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
-end*/
+end
+rule "Responder que hago"
+  when
+  	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==Vocabulario.NombreTipoNotificacionUtilidad)
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(Utilidad.class);
+    tarea.ejecutar();
+    
+    retract(notif);
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end

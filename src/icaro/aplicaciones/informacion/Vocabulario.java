@@ -50,7 +50,7 @@ public class Vocabulario {
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
 			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista",
-			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento", "ValoracionPositiva", "ValoracionNegativa");
+			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento", "ValoracionPositiva", "ValoracionNegativa", "Quien", "Utilidad");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -72,6 +72,7 @@ public class Vocabulario {
 	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
 	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";
+	public static final String NombreTipoNotificacionUtilidad = "Utilidad";
 	// TODO objetivos, no notificaciones
 	public static final String NombreTipoNotificacionCitasConGuia = "CitasConGuia";
 	public static final String NombreTipoNotificacionComprobarDatosBusqueda = "ComprobarDatosBusqueda";
@@ -158,12 +159,8 @@ public class Vocabulario {
 	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras quï¿½ tal.",
 			"Que te guste.", "Ojala te guste.", "A por las palomitas." };
 	public static final String InfoFuncionalidad = "Soy un cinï¿½filo, y me encantarï¿½a ayudarte a encontrar pelï¿½culas.";
-	public static final String[] Params = { "Podrï¿½as introducir un aï¿½o.",
-			"Puedes aï¿½adir un actor a tu filtrado.", "Podrï¿½as aï¿½adir otro gï¿½nero a la bï¿½squeda.",
-			"Puedes introducir otro gï¿½nero, actor o aï¿½o como filtro" };
 	public static final String[] PeticionInfoGeneral = { "ï¿½Te puedo sugerir alguna hoy?",
-			"Quieres que te recomiende alguna?", "ï¿½Necesitas ayuda para encontrar alguna?" };	
-	public static final String[] Recomienda = { "podrias ver", "te sugiero", "te propongo" };
+			"Quieres que te recomiende alguna?", "ï¿½Necesitas ayuda para encontrar alguna?" };
 	public static final String EligeGenero = "¿De que genero te apetece ver la pelicula?";
 	// TODO mejorar la frase
 	public static final String LimpiarBusqueda = "La consulta con los parï¿½metros dados no ha obtenido ningï¿½n resultado."

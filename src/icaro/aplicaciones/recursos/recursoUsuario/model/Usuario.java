@@ -21,6 +21,7 @@ public class Usuario {
 	private ArrayList<String> actoresOdiados;
 	private ArrayList<String> peliculasOdiadas;
 	private Valoracion peliculaActual;
+	public boolean conozcoListaPelis;
 
 	/**
 	 * Nuevo usuario vacío (nombre=null, sexo=null, edad=-1)
@@ -35,6 +36,7 @@ public class Usuario {
 		this.actoresOdiados = new ArrayList<String>();
 		this.peliculasOdiadas = new ArrayList<String>();
 		this.peliculaActual = new Valoracion(null);
+		this.conozcoListaPelis = false;
 	}
 
 	/**
@@ -58,6 +60,7 @@ public class Usuario {
 		this.actoresOdiados = new ArrayList<String>();
 		this.peliculasOdiadas = new ArrayList<String>();
 		this.peliculaActual = new Valoracion(null);
+		this.conozcoListaPelis = false;
 	}
 
 	/**
@@ -83,6 +86,7 @@ public class Usuario {
 		this.actoresPreferidos = actoresPreferidos;
 		this.actoresOdiados = actoresOdiados;
 		this.peliculaActual = peliculaActual;
+		this.conozcoListaPelis = false;
 
 	}
 

@@ -31,6 +31,9 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 		String identAgenteOrdenante = this.getIdentAgente();
 		String notifica = (String) params[0];
 		String param = (String) params[1];
+		
+		Vocabulario.usuario.conozcoListaPelis = false; // Cada vez que pongo un filtro adicional le muestro unas cuantas pelis.
+		
 		Busqueda busqueda = Vocabulario.busqueda;
 		busqueda.setPage(1);
 		if (busqueda.getYear() == null && busqueda.getGenres().size() == 0
