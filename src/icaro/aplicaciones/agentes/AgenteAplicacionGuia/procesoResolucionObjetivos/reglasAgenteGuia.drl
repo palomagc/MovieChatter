@@ -549,3 +549,15 @@ end
 
 
 
+/*
+rule "Responder quien soy"
+  when
+  	notif:Notificacion(identInterlc:identNotificador, tipoNotificacion==VocabularioGestionCitas.NombreTipoNotificacionQuiensoyyquehago)
+  then
+  	TareaSincrona tarea = gestorTareas.crearTareaSincrona(Quiensoy.class);
+    tarea.ejecutar();
+    
+    retract(notif);
+    
+    recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA : " + drools.getRule().getName());
+end*/
