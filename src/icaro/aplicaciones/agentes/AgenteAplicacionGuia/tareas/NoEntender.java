@@ -57,7 +57,7 @@ public class NoEntender extends TareaSincrona {
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 				
 				
-				Constantes.CONTADOR_ERRORES++; // Aumentamos este contador para saber cuántas veces se ha equivocado el usuario y actuar de forma razonable.
+				Constantes.CONTADOR_ERRORES++; // Aumentamos este contador para saber cuÃ¡ntas veces se ha equivocado el usuario y actuar de forma razonable.
 				if(Constantes.CONTADOR_ERRORES >= Constantes.MAXIMO_ERRORES){
 					Constantes.CONTADOR_ERRORES = 0;
 					
@@ -68,7 +68,9 @@ public class NoEntender extends TareaSincrona {
 						mensajeAenviar = Frases.NoNosEntendemosDarPorVencido();
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 					}else{
-						this.getEnvioHechos().actualizarHecho(new RecomendarPelicula());
+						Objetivo obj = new RecomendarPelicula();
+						obj.setSolving();
+						this.getEnvioHechos().actualizarHecho(obj);
 						mensajeAenviar = Frases.SolicitarResponderPreguntasFacil();
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 					}
