@@ -118,7 +118,7 @@ public class BuscarUsuario extends TareaSincrona {
 				if (!exists) {
 					mensajeAenviar = "Hola " + identInterlocutor + ", no nos conocemos.";
 				} else {
-					mensajeAenviar = "Hola, " + identInterlocutor + " sabia que volverias!";
+					mensajeAenviar = "Sabía que volverías " + identInterlocutor + "!!";
 				}
 
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
