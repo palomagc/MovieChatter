@@ -110,22 +110,22 @@ public class Vocabulario {
 
 	public static final Map<String, Genero> Generos = new HashMap<String, Genero>();
 	static {
-		Generos.put("GeneroAccion", new Genero("Action", "acciï¿½n"));
+		Generos.put("GeneroAccion", new Genero("Action", "acción"));
 		Generos.put("GeneroAventura", new Genero("Adventure", "aventura"));
-		Generos.put("GeneroAnimacion", new Genero("Animation", "animaciï¿½n"));
+		Generos.put("GeneroAnimacion", new Genero("Animation", "animación"));
 		Generos.put("GeneroComedia", new Genero("Comedy", "comedia"));
 		Generos.put("GeneroCrimen", new Genero("Crime", "crimen"));
 		Generos.put("GeneroDocumental", new Genero("Documentary", "documental"));
 		Generos.put("GeneroDrama", new Genero("Drama", "drama"));
 		Generos.put("GeneroFamiliar", new Genero("Family", "familiar"));
-		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasï¿½a"));
+		Generos.put("GeneroFantasia", new Genero("Fantasy", "fantasía"));
 		Generos.put("GeneroExtranjero", new Genero("Foreign", "extranjero"));
-		Generos.put("GeneroHistorico", new Genero("History", "histï¿½rico"));
+		Generos.put("GeneroHistorico", new Genero("History", "histórico"));
 		Generos.put("GeneroTerror", new Genero("Horror", "terror"));
 		Generos.put("GeneroMusical", new Genero("Music", "musical"));
 		Generos.put("GeneroMisterio", new Genero("Mystery", "misterio"));
-		Generos.put("GeneroRomantico", new Genero("Romance", "romï¿½ntico"));
-		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficciï¿½n"));
+		Generos.put("GeneroRomantico", new Genero("Romance", "romántico"));
+		Generos.put("GeneroCienciaFiccion", new Genero("Science Fiction", "ciencia ficción"));
 		Generos.put("GeneroTV", new Genero("TV Movie", "tv"));
 		Generos.put("GeneroSuspense", new Genero("Thriller", "suspense"));
 		Generos.put("GeneroGuerra", new Genero("War", "guerra"));
@@ -150,21 +150,21 @@ public class Vocabulario {
 
 	// SALUDO
 	public static final String SaludoInicial1 = "Hola, yo soy " + Constantes.SYSTEM_NAME
-			+ ", tu recomendador de pelï¿½culas";
-	public static final String[] SaludoInicial2 = { "Hola", "Quï¿½ tal", "Buenas", "Que hay" };
+			+ ", tu recomendador de películas";
+	public static final String[] SaludoInicial2 = { "Hola", "Qué tal", "Buenas", "Que hay" };
 
 	// FRASES DE NUESTRO SISTEMA
-	public static final String[] Despedida = { "Adiï¿½s.", "Hasta la prï¿½xima.", "Nos vemos.",
+	public static final String[] Despedida = { "Adiós.", "Hasta la próxima.", "Nos vemos.",
 			"Que te vaya bien.", "Ha sido un placer.", "Cuando quieras repetimos." };
 	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras quï¿½ tal.",
-			"Que te guste.", "Ojala te guste.", "A por las palomitas." };
-	public static final String InfoFuncionalidad = "Soy un cinï¿½filo, y me encantarï¿½a ayudarte a encontrar pelï¿½culas.";
-	public static final String[] PeticionInfoGeneral = { "ï¿½Te puedo sugerir alguna hoy?",
-			"Quieres que te recomiende alguna?", "ï¿½Necesitas ayuda para encontrar alguna?" };
-	public static final String EligeGenero = "¿De que genero te apetece ver la pelicula?";
+			"Que te guste.", "Ojalá te guste.", "A por las palomitas." };
+	public static final String InfoFuncionalidad = "Soy un cinéfilo, y me encantaría ayudarte a encontrar películas.";
+	public static final String[] PeticionInfoGeneral = { "¿Te puedo sugerir alguna hoy?",
+			"¿Quieres que te recomiende alguna?", "¿Necesitas ayuda para encontrar alguna?" };
+	public static final String EligeGenero = "¿De que genero te apetece ver la película?";
 	// TODO mejorar la frase
-	public static final String LimpiarBusqueda = "La consulta con los parï¿½metros dados no ha obtenido ningï¿½n resultado."
-			+ " Se limpian los parï¿½metros de bï¿½squeda.";
+	public static final String LimpiarBusqueda = "La consulta con los parámetros dados no ha obtenido ningún resultado."
+			+ " Se limpian los parámetros de búsqueda.";
 
 	// FRASES ANTERIORES
 	public static final String ErrorObtencionInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";
