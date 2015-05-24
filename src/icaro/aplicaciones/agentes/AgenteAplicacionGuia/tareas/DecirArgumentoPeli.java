@@ -36,31 +36,32 @@ public class DecirArgumentoPeli extends TareaSincrona {
 					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
-				
-				String mensajeAenviar = "Pero... si no hemos dicho ninguna peli...! ";
-				
+
+				String mensajeAenviar = Vocabulario.NingunaPelicula;
+
 				Valoracion valoracion = Vocabulario.usuario.getPeliculaActual();
-				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
-				Movie movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(valoracion.getIdPelicula()), null);
-				
+				ItfUsoComunicacionTMDB itfUsoComunicacionTMDB = (ItfUsoComunicacionTMDB) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
+						.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionTMDB);
+				Movie movie = itfUsoComunicacionTMDB.getMovie(
+						Integer.parseInt(valoracion.getIdPelicula()), null);
+
 				mensajeAenviar = movie.getOverview();
-				if(mensajeAenviar.equals("")){
-					mensajeAenviar = "No sabría decirte";
+				if (mensajeAenviar.equals("")) {
+					mensajeAenviar = Vocabulario.NoSabria;
 				}
-				
+
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ Vocabulario.IdentRecursoComunicacionChat,
-					CausaTerminacionTarea.ERROR);
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
+							+ Vocabulario.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}

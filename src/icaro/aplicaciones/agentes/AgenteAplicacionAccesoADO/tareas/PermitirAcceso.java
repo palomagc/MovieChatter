@@ -7,7 +7,7 @@
  */
 package icaro.aplicaciones.agentes.AgenteAplicacionAccesoADO.tareas;
 
-import icaro.aplicaciones.informacion.VocabularioSistemaAcceso;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Tarea;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -32,18 +32,18 @@ public class PermitirAcceso extends Tarea {
 					.obtenerInterfaz(NombresPredefinidos.ITF_USO + identRecursoVisualizacionAcceso);
 			if (visualizadorAcceso == null)
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz_Recurso:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionRecurso
 								+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			else {
 				visualizadorAcceso.mostrarMensajeInformacion(identDeEstaTarea,
 						"Acceso permitido. Termina el servicio de Acceso ");
 				visualizadorAcceso.cerrarVisualizadorAcceso();
 				this.generarInformeOK(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, VocabularioSistemaAcceso.NotificacionAccesoAutorizado);
+						identAgenteOrdenante, Vocabulario.NotificacionAccesoAutorizado);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-AlUtilizar:Interfaces_Recurso:"
+					identAgenteOrdenante, Vocabulario.ErrorUtilizacionRecurso
 							+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

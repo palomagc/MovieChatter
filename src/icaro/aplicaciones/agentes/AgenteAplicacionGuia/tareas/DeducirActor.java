@@ -24,7 +24,7 @@ public class DeducirActor extends TareaSincrona {
 	public void ejecutar(Object... params) {
 		try {
 			// Objetivo
-			//Objetivo obj = (Objetivo) params[0];
+			// Objetivo obj = (Objetivo) params[0];
 
 			// TODO Mirar en el objeto estático usuario a ver si
 			// las 3 ultimas pelis contienen el mismo actor
@@ -44,12 +44,11 @@ public class DeducirActor extends TareaSincrona {
 					ItfUsoComunicacionChat recComunicacionChat = (ItfUsoComunicacionChat) NombresPredefinidos.REPOSITORIO_INTERFACES_OBJ
 							.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 					if (recComunicacionChat != null) {
-						recComunicacionChat
-								.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
+						recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 
 						// Preguntar el género que le apetece ver
-						String mensajeAenviar = "De que actor te apetece ver la peli?";
-						//obj.setSolving();	// ObtenerActor
+						String mensajeAenviar = Vocabulario.QueActor;
+						// obj.setSolving(); // ObtenerActor
 						// TODO NO HACE FALTA HACER EL UPDATE? COMPROBAR QUE SE LANZA LA REGLA QUE
 						// ESPERA A LA RESPUESTA
 
@@ -58,13 +57,14 @@ public class DeducirActor extends TareaSincrona {
 						identAgenteOrdenante = this.getAgente().getIdentAgente();
 						this.generarInformeConCausaTerminacion(identDeEstaTarea,
 								contextoEjecucionTarea, identAgenteOrdenante,
-								"Error-AlObtener:Interfaz:"
+								Vocabulario.ErrorObtencionInterfaz
 										+ Vocabulario.IdentRecursoComunicacionChat,
 								CausaTerminacionTarea.ERROR);
 					}
 				} catch (Exception e) {
 					this.generarInformeConCausaTerminacion(identDeEstaTarea,
-							contextoEjecucionTarea, identAgenteOrdenante, "Error-Acceso:Interfaz:"
+							contextoEjecucionTarea, identAgenteOrdenante,
+							Vocabulario.ErrorAccesoInterfaz
 									+ Vocabulario.IdentRecursoComunicacionChat,
 							CausaTerminacionTarea.ERROR);
 					e.printStackTrace();
@@ -73,7 +73,7 @@ public class DeducirActor extends TareaSincrona {
 		} catch (Exception e) {
 			e.printStackTrace();
 			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
-					"Error al ejecutar la tarea : " + this.getIdentTarea() + e,
+					Vocabulario.ErrorEjecucionTarea + this.getIdentTarea() + e,
 					InfoTraza.NivelTraza.error));
 		}
 	}

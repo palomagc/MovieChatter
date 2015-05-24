@@ -58,20 +58,20 @@ public class SolicitarUltimaValoracion extends TareaSincrona {
 						movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPeliculaActual),
 								null);
 					}
-					mensajeAenviar = "Anda, parece que te has dejado una película sin valorar. Que opinas de " + movie.getTitle() + "? Puedes ponerle una nota (del 0 al 5)";
+					mensajeAenviar = Vocabulario.ParecioUlt[0] + movie.getTitle() + Vocabulario.ParecioUlt[1];
 				} else
-					mensajeAenviar = "Ha ocurrido un error al solicitar la ultima valoración";
+					mensajeAenviar = Vocabulario.ErrorUltValoracion;
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
 							+ Vocabulario.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();

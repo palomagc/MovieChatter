@@ -792,21 +792,24 @@ public class ConexionIrc {
 	}
 
 	private String formatter(String input, boolean inputMode) {
-		// Cadena de caracteres original a sustituir. "Ãƒ" este no
-		String[] pantalla = { "Ã¡", "Ã ", "Ã¤", "Ã¢", "Ã£", "Ã©", "Ã¨", "Ã«", "Ãª", "Ã­", "Ã¬",
-				"Ã¯", "Ã®", "Ã³", "Ã²", "Ã¶", "Ã´", "Ãµ", "Ãº", "Ã¹", "Ã»", "Ã§", "Ã�", "Ã€", "Ã„",
-				"Ã‚", "Ã‰", "Ãˆ", "Ã‹", "ÃŠ", "Ã�", "ÃŒ", "Ã�", "ÃŽ", "Ã“", "Ã’", "Ã–", "Ã”", "Ã•",
-				"Ãš", "Ã™", "Ãœ", "Ã›", "Ã‡", "Â¿", "Â¡" };
+		// Cadena de caracteres original a sustituir. "Ãƒ" este no porque es "Ã"
+		// Tampoco "Â" -> "Ã‚"
+		String[] pantalla = { "Â¿", "Â¡", "Ã¡", "Ã ", "Ã¤", "Ã¢", "Ã£", "Ã©", "Ã¨", "Ã«", "Ãª",
+				"Ã­", "Ã¬", "Ã¯", "Ã®", "Ã³", "Ã²", "Ã¶", "Ã´", "Ãµ", "Ãº", "Ã¹", "Ã¼", "Ã»", "Ã§",
+				"Ã±", "Ã�", "Ã€", "Ã„", "Ã‰", "Ãˆ", "Ã‹", "ÃŠ", "Ã�", "ÃŒ", "Ã�", "ÃŽ", "Ã“", "Ã’",
+				"Ã–", "Ã”", "Ã•", "Ãš", "Ã™", "Ãœ", "Ã›", "Ã‡", "Ã‘" };
 		// Cadena de caracteres ASCII que reemplazarán los originales. "Ã" este no
-		String[] original = { "á", "à", "ä", "â", "ã", "é", "è", "ë", "ê", "í", "ì", "ï", "î", "ó",
-				"ò", "ö", "ô", "õ", "ú", "ù", "û", "ç", "Á", "À", "Ä", "Â", "É", "È", "Ë", "Ê",
-				"Í", "Ì", "Ï", "Î", "Ó", "Ò", "Ö", "Ô", "Õ", "Ú", "Ù", "Ü", "Û", "Ç", "¿", "¡" };
+		String[] original = { "¿", "¡", "á", "à", "ä", "â", "ã", "é", "è", "ë", "ê", "í", "ì", "ï",
+				"î", "ó", "ò", "ö", "ô", "õ", "ú", "ù", "ü", "û", "ç", "ñ", "Á", "À", "Ä", "É",
+				"È", "Ë", "Ê", "Í", "Ì", "Ï", "Î", "Ó", "Ò", "Ö", "Ô", "Õ", "Ú", "Ù", "Ü", "Û",
+				"Ç", "Ñ" };
 		String output = input;
 		for (int i = 0; i < pantalla.length; i++) {
-			if (inputMode)
+			if (inputMode) {
 				output = output.replace(pantalla[i], original[i]);
-			else
+			} else {
 				output = output.replace(original[i], pantalla[i]);
+			}
 		}
 		if (inputMode)
 			output.toLowerCase();

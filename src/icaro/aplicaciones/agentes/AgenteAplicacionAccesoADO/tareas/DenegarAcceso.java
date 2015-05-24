@@ -4,6 +4,7 @@
  */
 package icaro.aplicaciones.agentes.AgenteAplicacionAccesoADO.tareas;
 
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Tarea;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -19,7 +20,7 @@ public class DenegarAcceso extends Tarea {
 	private Objetivo contextoEjecucionTarea = null;
 
 	// private String identRecursoVisualizacionAcceso
-	// =VocabularioSistemaAcceso.IdentRecursoVisualizacionAccesoInicial;
+	// =Vocabulario.IdentRecursoVisualizacionAccesoInicial;
 	@Override
 	public void ejecutar(Object... params) {
 		String identDeEstaTarea = getClass().getSimpleName();
@@ -30,15 +31,15 @@ public class DenegarAcceso extends Tarea {
 					.obtenerInterfaz(NombresPredefinidos.ITF_USO + identRecursoVisualizacionAcceso);
 			if (visualizadorAcceso == null)
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz_Recurso:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionRecurso
 								+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			else
 				visualizadorAcceso
 						.mostrarMensajeError("Acceso denegado",
-								"Identificador de usuario o ContraseÃ±a incorrectas. Introduzcalas de nuevo");
+								"Identificador de usuario o Contraseña incorrectas. Introduzcalas de nuevo");
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-AlObtener:Interfaces_Recursos",
+					identAgenteOrdenante, Vocabulario.ErrorObtencionRecursos,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

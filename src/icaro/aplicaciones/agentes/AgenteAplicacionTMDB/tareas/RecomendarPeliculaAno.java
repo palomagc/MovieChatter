@@ -57,7 +57,7 @@ public class RecomendarPeliculaAno extends TareaSincrona {
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
 							+ Vocabulario.IdentRecursoComunicacionTMDB,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();

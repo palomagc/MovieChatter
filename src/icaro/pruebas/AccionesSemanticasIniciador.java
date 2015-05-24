@@ -1,6 +1,6 @@
 package icaro.pruebas;
 
-//import icaro.gestores.informacionComun.VocabularioGestores;
+//import icaro.gestores.informacionComun.Vocabulario;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
 import icaro.infraestructura.patronAgenteReactivo.control.acciones.AccionesSemanticasAgenteReactivo;
 import icaro.infraestructura.entidadesBasicas.excepciones.ExcepcionEnComponente;
@@ -423,7 +423,7 @@ public class AccionesSemanticasIniciador extends AccionesSemanticasAgenteReactiv
 				this.itfgestGestorInicial.arranca();
 				// this.informaraMiAutomata("GestorInicial_arrancado_ok", null);
 				this.procesarInput(new InformeArranqueGestor(identGestorNodo,
-						VocabularioGestores.ResultadoArranqueGestorOK), null);
+						Vocabulario.ResultadoArranqueGestorOK), null);
 				// this.itfUsoPropiadeEsteAgente.aceptaEvento(new EventoRecAgte(
 				// "GestorInicial_arrancado_ok",
 				// nombreAgente,
@@ -455,7 +455,7 @@ public class AccionesSemanticasIniciador extends AccionesSemanticasAgenteReactiv
 
 	public void analizarInformeArranque(InformeArranqueGestor informeRecibido) {
 		if (informeRecibido.getContenidoInforme().equals(
-				VocabularioGestores.ResultadoArranqueGestorOK))
+				Vocabulario.ResultadoArranqueGestorOK))
 			try {
 				this.terminarPorPropiaVoluntad();
 			} catch (Exception ex) {
@@ -470,7 +470,7 @@ public class AccionesSemanticasIniciador extends AccionesSemanticasAgenteReactiv
 	public void analizarInformeArranque(InformeArranqueGestor informeRecibido, String par1,
 			String par2) {
 		if (informeRecibido.getContenidoInforme().equals(
-				VocabularioGestores.ResultadoArranqueGestorOK))
+				Vocabulario.ResultadoArranqueGestorOK))
 			try {
 				this.terminarPorPropiaVoluntad();
 			} catch (Exception ex) {

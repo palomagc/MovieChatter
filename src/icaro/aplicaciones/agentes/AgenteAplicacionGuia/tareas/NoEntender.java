@@ -41,7 +41,6 @@ public class NoEntender extends TareaSincrona {
 
 	@Override
 	public void ejecutar(Object... params) {
-		// String identRecursoVisualizacionAcceso = "VisualizacionAcceso1";
 		String identDeEstaTarea = this.getIdentTarea();
 		String identAgenteOrdenante = this.getIdentAgente();
 		Objetivo objetivoDelFoco = ((Focus) params[0]).getFoco();
@@ -51,105 +50,106 @@ public class NoEntender extends TareaSincrona {
 					.obtenerInterfazUso(Vocabulario.IdentRecursoComunicacionChat);
 			if (recComunicacionChat != null) {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
-				
+
 				// Le decimos que lo ne hemos entendido.
 				String mensajeAenviar = Frases.NoEntendido();
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-				
-				
-				Constantes.CONTADOR_ERRORES++; // Aumentamos este contador para saber cuántas veces se ha equivocado el usuario y actuar de forma razonable.
-				if(Constantes.CONTADOR_ERRORES >= Constantes.MAXIMO_ERRORES){
+
+				Constantes.CONTADOR_ERRORES++; // Aumentamos este contador para saber cuántas veces
+												// se ha equivocado el usuario y actuar de forma
+												// razonable.
+				if (Constantes.CONTADOR_ERRORES >= Constantes.MAXIMO_ERRORES) {
 					Constantes.CONTADOR_ERRORES = 0;
-					
-					// Vamos a centrarnos en volver al objetivo inicial. Recomendar una peli, intentaremos hacerlo sencillo un par de veces, si no cierra la aplicacion.
+
+					// Vamos a centrarnos en volver al objetivo inicial. Recomendar una peli,
+					// intentaremos hacerlo sencillo un par de veces, si no cierra la aplicacion.
 					Constantes.CONTADOR_REINTENTO++;
-					
-					if(Constantes.CONTADOR_REINTENTO >= Constantes.MAXIMO_ERRORES){
+
+					if (Constantes.CONTADOR_REINTENTO >= Constantes.MAXIMO_ERRORES) {
 						mensajeAenviar = Frases.NoNosEntendemosDarPorVencido();
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-					}else{
+					} else {
 						Objetivo obj = new RecomendarPelicula();
 						obj.setSolving();
 						this.getEnvioHechos().actualizarHecho(obj);
 						mensajeAenviar = Frases.SolicitarResponderPreguntasFacil();
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 					}
-					
-				}else{
-				
-					// TODO AQUI DEBERIAMOS MIRAR CUAL ES EL OBJETIVO ACTUAL Y DAR PISTAS O DECIRLE QUE CAMBIAMOS DE OBJETIVO
-					if(ObtenerActor.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estamos intentando conseguir un actor!";
+
+				} else {
+
+					// TODO AQUI DEBERIAMOS MIRAR CUAL ES EL OBJETIVO ACTUAL Y DAR PISTAS O DECIRLE
+					// QUE CAMBIAMOS DE OBJETIVO
+					if (ObtenerActor.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoConseguirActor;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerDatosIniciales.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estamos consiguiendo tus datos iniciales!";
+
+					} else if (ObtenerDatosIniciales.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoDatosIni;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerEdad.class == objetivoDelFoco.getClass()){
+
+					} else if (ObtenerEdad.class == objetivoDelFoco.getClass()) {
 						mensajeAenviar = Frases.SolicitarEdad();
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerGenero.class == objetivoDelFoco.getClass()){
+
+					} else if (ObtenerGenero.class == objetivoDelFoco.getClass()) {
 						mensajeAenviar = Frases.SolicitarGenero();
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerInfoInterlocutor.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabamos intentando obtener tus datos!";
+
+					} else if (ObtenerInfoInterlocutor.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoDatos;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerPelicula.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabamos poniendonos de acuerdo en encontrar una peli!";
+
+					} else if (ObtenerPelicula.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoPelicula;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerSexo.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabamos averiguando tu sexo!";
+
+					} else if (ObtenerSexo.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoSexo;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerUltimaValoracion.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabamos intentando conseguir la valoracion de la peli que viste por ultima vez";
+
+					} else if (ObtenerUltimaValoracion.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoValorarUlt;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ObtenerValoracion.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabamos intentando que valorases la pelicula";
+
+					} else if (ObtenerValoracion.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoValorar;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(RecomendarPelicula.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabamos poniendonos de acuerdo en que te recomendase alguna peli";
+
+					} else if (RecomendarPelicula.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoRecomendar;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ReconocerActor.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabas intentando decirme un actor";
+
+					} else if (ReconocerActor.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoActor;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ReconocerDirector.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabas intentando decirme un director";
+
+					} else if (ReconocerDirector.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoDirector;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ReconocerPelicula.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabas intentando decirme una peli";
+
+					} else if (ReconocerPelicula.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoPelicula;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
-						
-					}else if(ReconocerUsuario.class == objetivoDelFoco.getClass()){
-						mensajeAenviar = "Estabas intentando decirme tu usuario";
+
+					} else if (ReconocerUsuario.class == objetivoDelFoco.getClass()) {
+						mensajeAenviar = Vocabulario.IntentandoUsuario;
 						recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 					}
-					
-				}
 
+				}
 
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ Vocabulario.IdentRecursoComunicacionChat,
-					CausaTerminacionTarea.ERROR);
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
+							+ Vocabulario.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}

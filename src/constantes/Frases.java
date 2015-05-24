@@ -18,7 +18,7 @@ public class Frases {
 	public static final String FrasesDePruebaConParametros(String... parametros){
 		String[] frases = new String[]{
 				"Esta es una frase de prueba. " + "El sexo del usuario es: " + parametros[0] + ". La edad del usuario es: " + parametros[1] + ".",
-				"Esta es una oracion de prueba. " + "El usuario es un " + parametros[0] + ". El usuario tiene " + parametros[1] + " anios."
+				"Esta es una oracion de prueba. " + "El usuario es un " + parametros[0] + ". El usuario tiene " + parametros[1] + " años."
 				};		
 		return frases[new Random().nextInt(frases.length)];
 	};
@@ -33,10 +33,10 @@ public class Frases {
 				"Perdona, pero no he entendido bien.",
 				"Lo siento, no he comprendido bien.",
 				"Perdona, no comprendo qué quieres decir.",
-				"No he entendido lo que me has dicho, repitemelo.",
+				"No he entendido lo que me has dicho, repítemelo.",
 				"Ehhmmm... no he entendido bien lo que has dicho.",
-				"Qué dices? No te he entendido.",
-				"No comprendo, qué quieres decir?",
+				"¿Qué dices? No te he entendido.",
+				"No comprendo, ¿qué quieres decir?",
 				"Cómo?",
 				"Qué?"
 				};
@@ -45,53 +45,53 @@ public class Frases {
 	
 	public static final String SolicitarGenero(){
 		String[] frases = new String[]{
-				"Podrias decirme el genero que te gustaria ver?",
-				"De que genero te apetece ver la peli?",
-				"Dime un genero y te recomiendo una pelicula",
-				"Si me dices un genero te recomiendo una peli"
+				"¿Podrías decirme el género que te gustaría ver?",
+				"¿De qué género te apetece ver la película?",
+				"Dime un género y te recomiendo una película",
+				"Si me dices un género te recomiendo una película"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}
 	
 	public static String SolicitarEdad() {
 		String[] frases = new String[]{
-				"Dime que edad tienes",
-				"Cuantos anios tienes?",
+				"Dime qué edad tienes",
+				"¿Cuantos años tienes?",
 				"Dime tu edad",
-				"Me dices tu edad?",
-				"Me puedes decir cuántos años tienes?"
+				"¿Me dices tu edad?",
+				"¿Me puedes decir cuántos años tienes?"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}
 	
 	public static String SolicitarResponderPreguntasFacil() {
 		String[] frases = new String[]{
-				"Vamos a hacerlo facil, yo voy a intentar recomendarte una peli, tu responde a mis preguntas",
-				"Vamos a centrarnos, solo se de peliculas, intenta responder a lo que te pregunto",
-				"A ver si nos ponemos de acuerdo, nada mas que entiendo de pelis, porfa responde a las preguntas"
+				"Vamos a hacerlo fácil, yo voy a intentar recomendarte una peli, tu responde a mis preguntas",
+				"Vamos a centrarnos, sólo sé de peliculas, intenta responder a lo que te pregunto",
+				"A ver si nos ponemos de acuerdo, nada más que entiendo de películas, por favor responde a las preguntas"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}
 	
 	public static String NoNosEntendemosDarPorVencido() {
 		String[] frases = new String[]{
-				"Parece que no hay forma de que nos entendamos, apaga el sistema. Adios.",
+				"Parece que no hay forma de que nos entendamos, apaga el sistema. Adiós.",
 				"Lo siento, pero no terminamos de ponernos de acuerdo, lo mejor es que lo dejemos. Chao",
-				"No conseguimos llegar a un acuerdo, deberiamos intentarlo en otra ocasion. Que te vaya bien"
+				"No conseguimos llegar a un acuerdo, deberíamos intentarlo en otra ocasión. Que te vaya bien"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}
 	
 	public static String QuienSoy() {
 		String[] frases = new String[]{
-				"Yo me llamo Joker, soy un sistema multiagente de tu television inteligente"
+				"Yo me llamo Joker, soy un sistema multiagente de tu televisión inteligente"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}
 	
 	public static String UtilidadDelSistema() {
 		String[] frases = new String[]{
-				"Puedo ayudarte a encontrar peliculas que te apetezcan ver"
+				"Puedo ayudarte a encontrar películas que te apetezcan ver"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}
@@ -107,10 +107,10 @@ public class Frases {
 	
 	public static String Params() {
 		String[] frases = new String[]{
-				"Si introduces un anio te pondré peliculas solo de ese anio",
-				"Si me dices uno o varios actores intentare que salgan",
-				"Si me dices otro genero procurare buscare pelis que mezclen todos los generos",
-				"Puedes decirme generos, actores o anios para buscar algo mas concreto"
+				"Si introduces un año te pondré películas sólo de ese año",
+				"Si me dices uno o varios actores intentaré que salgan",
+				"Si me dices otro género procuraré buscar pelis que mezclen todos los géneros",
+				"Puedes decirme géneros, actores o años para buscar algo más concreto"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}

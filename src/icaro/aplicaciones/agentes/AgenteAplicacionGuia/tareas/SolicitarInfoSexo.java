@@ -35,20 +35,19 @@ public class SolicitarInfoSexo extends TareaSincrona {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				// int numDespedida = (int) ((100 * Math.random()) %
 				// Vocabulario.Despedida.length);
-				String mensajeAenviar = "Eres hombre o mujer?";
+				String mensajeAenviar = Vocabulario.QueSexo;
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ Vocabulario.IdentRecursoComunicacionChat,
-					CausaTerminacionTarea.ERROR);
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
+							+ Vocabulario.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}

@@ -41,7 +41,7 @@ public class Vocabulario {
 	public static Usuario usuario = null;
 	public static Busqueda busqueda = new Busqueda();
 
-	// TODO Aï¿½adir aquï¿½ las anotaciones que quieres que se tengan en cuenta.
+	// TODO Añadir aquí las anotaciones que quieres que se tengan en cuenta.
 	// NOMBRES NOTIFICACIONES
 	public static final List<String> NombresTipoNotificacion = Arrays.asList("Saludo", "Despedida",
 			"Afirmacion", "Negacion", "SexoHombre", "SexoMujer", "Generos", "GeneroAccion",
@@ -50,7 +50,8 @@ public class Vocabulario {
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
 			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista",
-			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento", "ValoracionPositiva", "ValoracionNegativa", "Quien", "Utilidad");
+			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento", "ValoracionPositiva",
+			"ValoracionNegativa", "Quien", "Utilidad");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -136,12 +137,16 @@ public class Vocabulario {
 	public static final String IdentConexionAgte = "AgteMovies";
 
 	// NOMBRE AGENTES
+	public static final String IdentAgenteAplicacionAcceso = "AgenteAplicacionAcceso1";
 	public static final String IdentAgenteAplicacionDialogoCitas = "AgenteAplicacionDialogoCitas1";
 	public static final String IdentAgenteAplicacionGuia = "AgenteAplicacionGuia1";
 	public static final String IdentAgenteAplicacionUsuario = "AgenteAplicacionUsuario1";
 	public static final String IdentAgenteAplicacionTMDB = "AgenteAplicacionTMDB1";
 
 	// NOMBRE RECURSOS
+	public static final String IdentRecursoVisualizacionAccesoInicial = "VisualizacionAcceso1";
+	public static final String IdentRecursoVisualizacionAccesoAlta = "VisualizacionAccesoAlta1";
+	public static final String IdentRecursoPersistenciaAcceso = "Persistencia1";
 	public static final String IdentRecursoExtractorSemantico = "ExtractorSemantico1";
 	public static final String IdentRecursoComunicacionChat = "ComunicacionChat1";
 	public static final String IdentRecursoComunicacionTMDB = "ComunicacionTMDB1";
@@ -151,28 +156,76 @@ public class Vocabulario {
 	// SALUDO
 	public static final String SaludoInicial1 = "Hola, yo soy " + Constantes.SYSTEM_NAME
 			+ ", tu recomendador de películas";
-	public static final String[] SaludoInicial2 = { "Hola", "Qué tal", "Buenas", "Que hay" };
+	public static final String[] SaludoInicial2 = { "Hola, ", "Qué tal, ", "Buenas, ", "Que hay, " };
 
 	// FRASES DE NUESTRO SISTEMA
-	public static final String[] Despedida = { "Adiós.", "Hasta la próxima.", "Nos vemos.",
-			"Que te vaya bien.", "Ha sido un placer.", "Cuando quieras repetimos." };
-	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras quï¿½ tal.",
+	public static final String[] Despedida = { "Adiós, ", "Hasta la próxima, ", "Nos vemos, ",
+			"Que te vaya bien, ", "Ha sido un placer, ", "Cuando quieras repetimos, " };
+	public static final String[] Disfruta = { "Que la disfrutes.", "Ya me contaras qué tal.",
 			"Que te guste.", "Ojalá te guste.", "A por las palomitas." };
-	public static final String InfoFuncionalidad = "Soy un cinéfilo, y me encantaría ayudarte a encontrar películas.";
+	public static final String InfoFuncionalidad = "Soy un cinéfilo, y me encantaría ayudarte a encontrar películas. ";
 	public static final String[] PeticionInfoGeneral = { "¿Te puedo sugerir alguna hoy?",
 			"¿Quieres que te recomiende alguna?", "¿Necesitas ayuda para encontrar alguna?" };
 	public static final String EligeGenero = "¿De que genero te apetece ver la película?";
 	// TODO mejorar la frase
 	public static final String LimpiarBusqueda = "La consulta con los parámetros dados no ha obtenido ningún resultado."
 			+ " Se limpian los parámetros de búsqueda.";
+	public static final String NoConocemos = ", no nos conocemos.";
+	public static final String Volverias = ", ¡sabía que volverías!";
+	public static final String QueActor = "¿De qué actor te apetece ver la película?";
+	public static final String NoTacos = "¡No digas esas cosas!";
+	public static final String ErrorValoracion = "Ha ocurrido un error al solicitar la valoración";
+	public static final String ErrorUltValoracion = "Ha ocurrido un error al solicitar la última valoración";
+	public static final String[] Parecio = { "¿Qué te pareció ",
+			"? Puedes ponerle una nota (del 0 al 5)" };
+	public static final String[] ParecioUlt = {
+			"Anda, parece que te has dejado una película sin valorar. ¿Qué opinas de ",
+			"? Puedes ponerle una nota (del 0 al 5)" };
+	public static final String NingunaPelicula = "Pero... ¡si no hemos dicho ninguna película...! ";
+	public static final String NoSabria = "No sabría decirte";
+	public static final String ResponderPar = "¿Te gustaría responder a un par de preguntas para conocernos mejor?";
+	public static final String CuantosAnios = "¿Cuantos años tienes?";
+	public static final String QueSexo = "¿Eres hombre o mujer?";
+	public static final String[] Prometen = { "Me sé unas cuantas, las ", " que más prometen son ",
+			", ", " y " };
+	public static final String[] Valoraciones = { "Asi que no te ha gustado nada... Lo siento",
+			"Yo creo que no estaba tan mal", "Hay películas mejores, claro",
+			"Es... para pasar el rato...", "Esta guay, si", "¡Si, es estupenda!",
+			"No se que decir..." };
+	public static final String YaViste = " ya la has visto...\n";
+	public static final String YaOdias = " la odias...\n";
+	public static final String IntentandoConseguirActor = "¡Estamos intentando conseguir un actor!";
+	public static final String IntentandoDatosIni = "¡Estamos consiguiendo tus datos iniciales!";
+	public static final String IntentandoDatos = "¡Estabamos intentando obtener tus datos!";
+	public static final String IntentandoPelicula = "¡Estabamos poniendonos de acuerdo en encontrar una película!";
+	public static final String IntentandoSexo = "¡Estabamos averiguando tu sexo!";
+	public static final String IntentandoValorarUlt = "Estabamos intentando conseguir la valoracion de la película que viste por ultima vez";
+	public static final String IntentandoValorar = "Estabamos intentando que valorases la pelicula";
+	public static final String IntentandoRecomendar = "Estabamos poniendonos de acuerdo en que te recomendase alguna peli";
+	public static final String IntentandoActor = "Estabas intentando decirme un actor";
+	public static final String IntentandoDirector = "Estabas intentando decirme un director";
+	public static final String IntentandoPeli = "Estabas intentando decirme una peli";
+	public static final String IntentandoUsuario = "Estabas intentando decirme un usuario";
+
+	public static final String[] DisponemosGeneros = {
+			"Disponemos de los siguientes géneros de películas: ", ", ", " y ", "." };
 
 	// FRASES ANTERIORES
-	public static final String ErrorObtencionInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";
+	public static final String ErrorEjecucionTarea = "Error al ejecutar la tarea : ";
+	public static final String ErrorAccesoInterfaz = "Error-Acceso:Interfaz:";
+	public static final String ErrorObtencionInterfaz = "Error-AlObtener:Interfaz:";
+	public static final String ErrorObtencionRecurso = "Error-AlObtener:Interfaz_Recurso:";
+	public static final String ErrorObtencionRecursos = "Error-AlObtener:Interfaces_Recursos";
+	public static final String ErrorInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";
+	public static final String ErrorInterfaz_Agente = "Error-AlObtener:Interfaz_Agente:";
+	public static final String ErrorUtilizacionRecurso = "Error-AlUtilizar:Interfaces_Recurso:";
+	
 	public static final String ExtraccionSemanticaNull = "SinSemantica";
 	public static final String InfoUsuarioYaExiste = "infoUsuarioYaExistente";
 	public static final String InfoUsuarioAltaGuardada = "InfoAltaUsuarioGuardada";
 	public static final String NotificacionAccesoAutorizado = "Autorizacion_Acceso_Notificado_Al_Usuario";
 	public static final String ResultadoAutenticacion_DatosNoValidos = "usuarioNoValido";
 	public static final String ResultadoAutenticacion_DatosValidos = "usuarioValido";
-
+	public static final String ResultadoArranqueGestorOK = "arranqueConfirmado";
+	public static final String ResultadoVerificacionEntidadesDescripcionOK = "existenEntidadesDescripcion";
 }

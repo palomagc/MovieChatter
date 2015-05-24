@@ -5,8 +5,8 @@ import icaro.infraestructura.entidadesBasicas.informes.*;
 import icaro.infraestructura.patronAgenteCognitivo.procesadorObjetivos.gestorTareas.ItfGestorTareas;
 import icaro.infraestructura.entidadesBasicas.PerformativaUsuario;
 import icaro.aplicaciones.agentes.AgenteAplicacionAccesoCognitivo.objetivos.*;
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.InfoAccesoSinValidar;
-import icaro.aplicaciones.informacion.dominioClases.aplicacionAcceso.VocabularioSistemaAcceso;
+import icaro.aplicaciones.informacion.Vocabulario;
+import icaro.aplicaciones.informacion.InfoAccesoSinValidar;
 import icaro.aplicaciones.agentes.AgenteAplicacionAccesoCognitivo.tareas.*;
 
 global ItfGestorTareas gestorTareas;
@@ -48,7 +48,7 @@ rule "Solicitud de Datos Inicial"
    then
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : SolicitarDatosAcceso",InfoTraza.NivelTraza.debug));
      Tarea tarea = gestorTareas.crearTarea(SolicitarDatosAcceso.class);
-     tarea.ejecutar(VocabularioSistemaAcceso.IdentRecursoVisualizacionAccesoInicial);
+     tarea.ejecutar(Vocabulario.IdentRecursoVisualizacionAccesoInicial);
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Realizando el objetivo : "+obj.getgoalId()+"  Ejecutando la tarea : "+ tarea.getIdentTarea() ,InfoTraza.NivelTraza.debug));
     recursoTrazas.aceptaNuevaTrazaEjecReglas(agentId," EJECUTO LA REGLA: " + drools.getRule().getName());
 end
@@ -58,7 +58,7 @@ rule "Validacion de datos Iniciales de Acceso"
     obj:AutorizarAccesoUsuarios(state == Objetivo.SOLVING)
     Focus(foco==obj)
     perf:PerformativaUsuario ( nombrePerformativa=="informacion", nombreOperacion soundslike "autenticacion")
- //   evtContent:ExtractedInfo(origen==VocabularioSistemaAcceso.IdentRecursoVisualizacionAccesoInicial,contenido == perf)
+ //   evtContent:ExtractedInfo(origen==Vocabulario.IdentRecursoVisualizacionAccesoInicial,contenido == perf)
     
 then
     recursoTrazas.aceptaNuevaTraza(new InfoTraza(agentId,"Se ejecuta la tarea : ValidarDatosAutenticacionUsuarioIT",InfoTraza.NivelTraza.debug));
@@ -76,7 +76,7 @@ rule "Permiso del Acceso con Informe Tarea"
   informeTarea:InformeDeTarea(identTarea == "ValidarDatosAutenticacionUsuarioIT", contenidoInforme == "usuarioValido")
  then
   Tarea tarea = gestorTareas.crearTarea(PermitirAcceso.class);
-  tarea.ejecutar(VocabularioSistemaAcceso.IdentRecursoVisualizacionAccesoInicial);
+  tarea.ejecutar(Vocabulario.IdentRecursoVisualizacionAccesoInicial);
   retract(informeTarea);
 end
 rule "Denegacion del Acceso con Informe Tarea"
@@ -108,7 +108,7 @@ rule "Permiso del Acceso con Creencia"
   Focus(foco == obj)
  then
   Tarea tarea = gestorTareas.crearTarea(PermitirAcceso.class);
-  tarea.ejecutar(VocabularioSistemaAcceso.IdentRecursoVisualizacionAccesoInicial);
+  tarea.ejecutar(Vocabulario.IdentRecursoVisualizacionAccesoInicial);
   retract(cre);
 end
 rule "Peticion de Terminacion  del Acceso"
@@ -117,7 +117,7 @@ rule "Peticion de Terminacion  del Acceso"
     Focus(foco==obj)
     perf:PerformativaUsuario ( nombreOperacion soundslike "peticion_terminacion_usuario")
  //   cre:Creencia(emisor == "VisualizacionAcceso1", contenido == perf )
-     evtContent:ExtractedInfo(origen==VocabularioSistemaAcceso.IdentRecursoVisualizacionAccesoInicial,contenido == perf)
+     evtContent:ExtractedInfo(origen==Vocabulario.IdentRecursoVisualizacionAccesoInicial,contenido == perf)
   then
     Tarea tarea = gestorTareas.crearTarea(PeticionTerminacionAcceso.class);
     tarea.ejecutar();

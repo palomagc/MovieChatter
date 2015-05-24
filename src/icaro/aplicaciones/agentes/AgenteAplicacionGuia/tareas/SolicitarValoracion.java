@@ -58,22 +58,22 @@ public class SolicitarValoracion extends TareaSincrona {
 						movie = itfUsoComunicacionTMDB.getMovie(Integer.parseInt(idPeliculaActual),
 								null);
 					}
-					mensajeAenviar = "Que te parecio " + movie.getTitle() + "? Puedes ponerle una nota (del 0 al 5)";
+					mensajeAenviar = Vocabulario.Parecio[0] + movie.getTitle()
+							+ Vocabulario.Parecio[1];
 				} else
-					mensajeAenviar = "Ha ocurrido un error al solicitar la valoración";
+					mensajeAenviar = Vocabulario.ErrorValoracion;
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ Vocabulario.IdentRecursoComunicacionChat,
-					CausaTerminacionTarea.ERROR);
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
+							+ Vocabulario.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}

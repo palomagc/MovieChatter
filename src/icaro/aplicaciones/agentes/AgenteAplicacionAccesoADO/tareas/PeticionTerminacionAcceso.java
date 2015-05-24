@@ -1,5 +1,6 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionAccesoADO.tareas;
 
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Tarea;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -33,7 +34,7 @@ public class PeticionTerminacionAcceso extends Tarea {
 								NombresPredefinidos.ITF_USO);
 			if (visualizadorAcceso == null)
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz_Recurso:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionRecurso
 								+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			else {
 				visualizadorAcceso.cerrarVisualizadorAcceso();
@@ -46,7 +47,7 @@ public class PeticionTerminacionAcceso extends Tarea {
 				if (gestorAgentes == null)
 					this.generarInformeConCausaTerminacion(identDeEstaTarea,
 							contextoEjecucionTarea, identAgenteOrdenante,
-							"Error-AlObtener:Interfaz_Agente:"
+							Vocabulario.ErrorInterfaz_Agente
 									+ NombresPredefinidos.NOMBRE_GESTOR_AGENTES,
 							CausaTerminacionTarea.ERROR);
 				else {
@@ -55,14 +56,14 @@ public class PeticionTerminacionAcceso extends Tarea {
 
 					MensajeSimple mensaje = new MensajeSimple();
 					mensaje.setEmisor("Task:PedirTerminacionAGestor");
-					mensaje.setReceptor("AgenteAplicacionAcceso1");
+					mensaje.setReceptor(Vocabulario.IdentAgenteAplicacionAcceso);
 					mensaje.setContenido("peticionTerminacion");
 					this.getAgente().aceptaMensaje(mensaje);
 				}
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-AlUtilizar:Interfaces_Recurso:"
+					identAgenteOrdenante, Vocabulario.ErrorUtilizacionRecurso
 							+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

@@ -9,7 +9,7 @@ package icaro.aplicaciones.agentes.AgenteAplicacionAccesoCognitivo.tareas;
  * @author FGarijo
  */
 import icaro.aplicaciones.informacion.InfoAccesoSinValidar;
-import icaro.aplicaciones.informacion.VocabularioSistemaAcceso;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.persistenciaAccesoSimple.ItfUsoPersistenciaAccesoSimple;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -28,8 +28,8 @@ public class ValidarDatosAutenticacionUsuarioIT extends Tarea {
 
 	@Override
 	public void ejecutar(Object... params) {
-		String IdentRecursoVisualizacionAcceso = VocabularioSistemaAcceso.IdentRecursoVisualizacionAccesoInicial;
-		String IdentRecursoPersistencia = VocabularioSistemaAcceso.IdentRecursoPersistenciaAcceso;
+		String IdentRecursoVisualizacionAcceso = Vocabulario.IdentRecursoVisualizacionAccesoInicial;
+		String IdentRecursoPersistencia = Vocabulario.IdentRecursoPersistenciaAcceso;
 		// Se extraen los datos de los parametros
 		PerformativaUsuario infoUsuario = (PerformativaUsuario) params[0];
 		Object[] parametrosPerfortiva = (Object[]) infoUsuario.getParametros();
@@ -59,9 +59,9 @@ public class ValidarDatosAutenticacionUsuarioIT extends Tarea {
 						infoAcceso.tomaUsuario(), infoAcceso.tomaPassword());
 				String contenidoInformeTarea;
 				if (resultadoValidacion) {
-					contenidoInformeTarea = VocabularioSistemaAcceso.ResultadoAutenticacion_DatosValidos;
+					contenidoInformeTarea = Vocabulario.ResultadoAutenticacion_DatosValidos;
 				} else {
-					contenidoInformeTarea = VocabularioSistemaAcceso.ResultadoAutenticacion_DatosNoValidos;
+					contenidoInformeTarea = Vocabulario.ResultadoAutenticacion_DatosNoValidos;
 				}
 				this.generarInformeOK(identTarea, contextoEjecucionTarea, identAgenteOrdenante,
 						contenidoInformeTarea);
@@ -69,7 +69,7 @@ public class ValidarDatosAutenticacionUsuarioIT extends Tarea {
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.generarInformeConCausaTerminacion(this.getIdentTarea(), contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-AlObtener:Interfaz_Recurso_Persistencia",
+					identAgenteOrdenante, Vocabulario.ErrorInterfaz_RecPersistencia,
 					CausaTerminacionTarea.ERROR);
 		}
 	}

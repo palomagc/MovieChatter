@@ -12,7 +12,7 @@ import icaro.infraestructura.entidadesBasicas.componentesBasicos.automatas.gesto
 import icaro.infraestructura.patronAgenteReactivo.control.GestorAccionesAgteReactivoImp;
 import icaro.infraestructura.entidadesBasicas.factorias.FactoriaComponenteIcaro;
 import icaro.pruebas.InformeArranqueGestor;
-//import icaro.gestores.informacionComun.VocabularioGestores;
+//import icaro.gestores.informacionComun.Vocabulario;
 import icaro.infraestructura.entidadesBasicas.componentesBasicos.automatas.gestorAcciones.GestorAccionesAbstr;
 import icaro.infraestructura.patronAgenteReactivo.control.AutomataEFE.ItfUsoAutomataEFE;
 import java.util.logging.Level;
@@ -101,7 +101,7 @@ public class FactoriaAutomatas extends FactoriaComponenteIcaro {
 		// interpretePrueba.ejecutarTransicion("existenEntidadesDescripcion");
 		// interpretePrueba.procesaInput("existenEntidadesDescripcion", "a", "b");
 		// InformeArranqueGestor informePrueba = new InformeArranqueGestor ("Prueba Factoria",
-		// VocabularioGestores.ResultadoArranqueGestorOK);
+		// Vocabulario.ResultadoArranqueGestorOK);
 		// interpretePrueba.procesaInput(informePrueba, "a", "b");
 	}
 

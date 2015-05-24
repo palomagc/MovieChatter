@@ -7,6 +7,7 @@
  */
 package icaro.aplicaciones.agentes.AgenteAplicacionAccesoADO.tareas;
 
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.visualizacionAcceso.ItfUsoVisualizadorAcceso;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Tarea;
 import icaro.infraestructura.entidadesBasicas.NombresPredefinidos;
@@ -36,12 +37,12 @@ public class SolicitarDatosAcceso extends Tarea {
 			else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
 							+ identRecursoVisualizacionAcceso, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}

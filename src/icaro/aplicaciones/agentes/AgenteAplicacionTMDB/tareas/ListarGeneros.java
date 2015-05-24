@@ -53,21 +53,26 @@ public class ListarGeneros extends TareaSincrona {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				// int numRecomienda = (int) ((100 * Math.random()) %
 				// Vocabulario.Recomienda.length);
-				String mensajeAenviar = "Disponemos de los siguientes géneros de películas ";
+				String mensajeAenviar = Vocabulario.DisponemosGeneros[0];
 				for (Genre g : genres) {
-					mensajeAenviar += g.getName() + ", ";
+					if (genres.indexOf(g) == genres.size()-1)
+						mensajeAenviar += g.getName() + Vocabulario.DisponemosGeneros[3];
+					else if (genres.indexOf(g) == genres.size()-2)
+						mensajeAenviar += g.getName() + Vocabulario.DisponemosGeneros[2];
+					else
+						mensajeAenviar += g.getName() + Vocabulario.DisponemosGeneros[1];
 				}
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
 							+ Vocabulario.IdentRecursoComunicacionChat,
 					CausaTerminacionTarea.ERROR);
 			e.printStackTrace();

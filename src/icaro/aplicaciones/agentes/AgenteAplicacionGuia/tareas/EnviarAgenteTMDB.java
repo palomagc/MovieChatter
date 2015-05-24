@@ -75,7 +75,7 @@ public class EnviarAgenteTMDB extends TareaSincrona {
 					}
 				} catch (Exception e) {
 					this.generarInformeConCausaTerminacion(identDeEstaTarea,
-							contextoEjecucionTarea, identAgenteOrdenante, "Error-Acceso:Interfaz:"
+							contextoEjecucionTarea, identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
 									+ Vocabulario.IdentRecursoComunicacionTMDB,
 							CausaTerminacionTarea.ERROR);
 					e.printStackTrace();

@@ -45,23 +45,21 @@ public class SaludarYPresentarFuncionalidad extends TareaSincrona {
 				recComunicacionChat.comenzar(Vocabulario.IdentAgenteAplicacionGuia);
 				int numSaludo = (int) ((100 * Math.random()) % Vocabulario.SaludoInicial2.length);
 				int numPeticion = (int) ((100 * Math.random()) % Vocabulario.PeticionInfoGeneral.length);
-				String mensajeAenviar = Vocabulario.SaludoInicial2[numSaludo] + "  "
-						+ identInterlocutor + ",  "
-						+ Vocabulario.InfoFuncionalidad.toLowerCase() + ".  "
+				String mensajeAenviar = Vocabulario.SaludoInicial2[numSaludo] + identInterlocutor
+						+ ".  " + Vocabulario.InfoFuncionalidad
 						+ Vocabulario.PeticionInfoGeneral[numPeticion];
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ Vocabulario.IdentRecursoComunicacionChat,
-					CausaTerminacionTarea.ERROR);
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
+							+ Vocabulario.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}

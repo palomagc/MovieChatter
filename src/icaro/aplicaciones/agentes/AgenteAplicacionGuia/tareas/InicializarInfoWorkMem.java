@@ -6,6 +6,7 @@
 package icaro.aplicaciones.agentes.AgenteAplicacionGuia.tareas;
 
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerInfoInterlocutor;
+import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.Focus;
 import icaro.infraestructura.entidadesBasicas.procesadorCognitivo.TareaSincrona;
 import icaro.infraestructura.recursosOrganizacion.recursoTrazas.imp.componentes.InfoTraza;
@@ -31,7 +32,7 @@ public class InicializarInfoWorkMem extends TareaSincrona {
 		} catch (Exception e) {
 			e.printStackTrace();
 			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
-					"Error al ejecutar la tarea : " + this.getIdentTarea() + e,
+					Vocabulario.ErrorEjecucionTarea + this.getIdentTarea() + e,
 					InfoTraza.NivelTraza.error));
 		}
 	}

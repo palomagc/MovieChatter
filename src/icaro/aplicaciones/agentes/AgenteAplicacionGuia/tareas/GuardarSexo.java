@@ -61,7 +61,7 @@ public class GuardarSexo extends TareaSincrona {
 		} catch (Exception e) {
 			e.printStackTrace();
 			trazas.aceptaNuevaTraza(new InfoTraza(this.getIdentAgente(),
-					"Error al ejecutar la tarea : " + this.getIdentTarea() + e,
+					Vocabulario.ErrorEjecucionTarea + this.getIdentTarea() + e,
 					InfoTraza.NivelTraza.error));
 		}
 	}

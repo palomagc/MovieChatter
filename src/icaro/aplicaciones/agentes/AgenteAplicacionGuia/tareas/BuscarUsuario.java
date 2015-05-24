@@ -4,9 +4,7 @@ import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerDatosIni
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerEdad;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerSexo;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerUltimaValoracion;
-import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.ObtenerValoracion;
 import icaro.aplicaciones.agentes.AgenteAplicacionGuia.objetivos.RecomendarPelicula;
-import icaro.aplicaciones.informacion.Notificacion;
 import icaro.aplicaciones.informacion.Vocabulario;
 import icaro.aplicaciones.recursos.comunicacionChat.ConfigInfoComunicacionChat;
 import icaro.aplicaciones.recursos.comunicacionChat.ItfUsoComunicacionChat;
@@ -68,8 +66,8 @@ public class BuscarUsuario extends TareaSincrona {
 			this.getEnvioHechos().insertarHecho(new ObtenerDatosIniciales());
 			// Creamos un nuevo usuario con sexo a null y edad a -1
 			try {
-				Vocabulario.usuario = itfUsoRecursoUsuario.crearUsuario(
-						identInterlocutor, null, null);
+				Vocabulario.usuario = itfUsoRecursoUsuario.crearUsuario(identInterlocutor, null,
+						null);
 			} catch (Exception e) {
 				// TODo Auto-generated catch block
 				e.printStackTrace();
@@ -93,12 +91,12 @@ public class BuscarUsuario extends TareaSincrona {
 			// la anterior película que está sin valorar. En caso de que no la quiera valorar, le
 			// podemos
 			// asignar nota=-2 para saber que no hay que volver a preguntarle por esta peli
-			
+
 			// El usuario tiene la última pelicula sin votar
 			else if (valoraciones.size() > 0
 					&& valoraciones.get(valoraciones.size() - 1).getNota() == null) {
 				Valoracion sinValorar = valoraciones.get(valoraciones.size() - 1);
-				
+
 				Vocabulario.usuario.setPeliculaActual(sinValorar);
 				this.getEnvioHechos().insertarHecho(new ObtenerUltimaValoracion());
 			} else {
@@ -116,24 +114,23 @@ public class BuscarUsuario extends TareaSincrona {
 				// Vocabulario.Despedida.length);
 				String mensajeAenviar = "NULL";
 				if (!exists) {
-					mensajeAenviar = "Hola " + identInterlocutor + ", no nos conocemos.";
+					mensajeAenviar = identInterlocutor + Vocabulario.NoConocemos;
 				} else {
-					mensajeAenviar = "Hola, " + identInterlocutor + " sabia que volverias!";
+					mensajeAenviar = identInterlocutor + Vocabulario.Volverias;
 				}
 
 				recComunicacionChat.enviarMensagePrivado(mensajeAenviar);
 			} else {
 				identAgenteOrdenante = this.getAgente().getIdentAgente();
 				this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-						identAgenteOrdenante, "Error-AlObtener:Interfaz:"
+						identAgenteOrdenante, Vocabulario.ErrorObtencionInterfaz
 								+ Vocabulario.IdentRecursoComunicacionChat,
 						CausaTerminacionTarea.ERROR);
 			}
 		} catch (Exception e) {
 			this.generarInformeConCausaTerminacion(identDeEstaTarea, contextoEjecucionTarea,
-					identAgenteOrdenante, "Error-Acceso:Interfaz:"
-							+ Vocabulario.IdentRecursoComunicacionChat,
-					CausaTerminacionTarea.ERROR);
+					identAgenteOrdenante, Vocabulario.ErrorAccesoInterfaz
+							+ Vocabulario.IdentRecursoComunicacionChat, CausaTerminacionTarea.ERROR);
 			e.printStackTrace();
 		}
 	}
