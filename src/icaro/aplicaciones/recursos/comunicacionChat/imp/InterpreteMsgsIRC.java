@@ -92,10 +92,14 @@ public class InterpreteMsgsIRC {
 				"î", "ó", "ò", "ö", "ô", "õ", "ú", "ù", "ü", "û", "ç", "ñ", "Á", "À", "Ä", "É",
 				"È", "Ë", "Ê", "Í", "Ì", "Ï", "Î", "Ó", "Ò", "Ö", "Ô", "Õ", "Ú", "Ù", "Ü", "Û",
 				"Ç", "Ñ" };
+		String[] sistema = { "¿", "¡", "a", "a", "a", "a", "a", "e", "e", "e", "e", "i", "i", "i",
+				"i", "o", "o", "o", "o", "o", "u", "u", "u", "u", "ç", "ñ", "A", "A", "A", "E",
+				"E", "E", "E", "I", "I", "I", "I", "O", "O", "O", "O", "O", "U", "U", "U", "U",
+				"Ç", "Ñ" };
 		String output = input;
 		for (int i = 0; i < pantalla.length; i++) {
 			if (inputMode) {
-				output = output.replace(pantalla[i], original[i]);
+				output = output.replace(pantalla[i], sistema[i]);
 			} else {
 				output = output.replace(original[i], pantalla[i]);
 			}
