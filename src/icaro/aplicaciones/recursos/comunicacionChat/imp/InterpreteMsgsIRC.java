@@ -105,7 +105,7 @@ public class InterpreteMsgsIRC {
 			}
 		}
 		if (inputMode)
-			output.toLowerCase();
+			output = output.toLowerCase();
 		return output;
 	}
 

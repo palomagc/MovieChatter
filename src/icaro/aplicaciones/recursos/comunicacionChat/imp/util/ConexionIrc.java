@@ -816,7 +816,7 @@ public class ConexionIrc {
 			}
 		}
 		if (inputMode)
-			output.toLowerCase();
+			output = output.toLowerCase();
 		return output;
 	}
 

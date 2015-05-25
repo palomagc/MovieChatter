@@ -37,8 +37,8 @@ public class Frases {
 				"Ehhmmm... no he entendido bien lo que has dicho.",
 				"¿Qué dices? No te he entendido.",
 				"No comprendo, ¿qué quieres decir?",
-				"Cómo?",
-				"Qué?"
+				"¿Cómo?",
+				"¿Qué?"
 				};
 		return frases[new Random().nextInt(frases.length)];
 	}
