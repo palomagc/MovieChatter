@@ -50,8 +50,8 @@ public class Vocabulario {
 			"GeneroExtranjero", "GeneroHistorico", "GeneroTerror", "GeneroMusical",
 			"GeneroMisterio", "GeneroRomantico", "GeneroCienciaFiccion", "GeneroTV",
 			"GeneroSuspense", "GeneroGuerra", "GeneroOeste", "Actor", "Numero", "Anos", "YaVista",
-			"Orden", "Dinamico", "Nota", "Tonterias", "Argumento", "ValoracionPositiva",
-			"ValoracionNegativa", "Quien", "Utilidad");
+			"Orden", "Nota", "Tonterias", "Argumento", "ValoracionPositiva", "ValoracionNegativa",
+			"Quien", "Utilidad");
 
 	public static final String NombreTipoNotificacionSaludo = "Saludo";
 	public static final String NombreTipoNotificacionDespedida = "Despedida";
@@ -64,17 +64,16 @@ public class Vocabulario {
 	public static final String NombreTipoNotificacionNumero = "Numero";
 	public static final String NombreTipoNotificacionYaVista = "YaVista";
 	public static final String NombreTipoNotificacionOrden = "Orden";
-	public static final String NombreTipoNotificacionDinamico = "Dinamico";
 	public static final String NombreTipoNotificacionNota = "Nota";
 	public static final String NombreTipoNotificacionTonterias = "Tonterias";
 	public static final String NombreTipoNotificacionArgumento = "Argumento";
 	public static final String NombreTipoNotificacionValoracionPositiva = "ValoracionPositiva";
 	public static final String NombreTipoNotificacionValoracionNegativa = "ValoracionNegativa";
 	// TODO recomienda y quien no estan en la lista de arriba RECORDATORIO
-	public static final String NombreTipoNotificacionRecomienda = "Recomienda";
+	// public static final String NombreTipoNotificacionRecomienda = "Recomienda";
 	public static final String NombreTipoNotificacionQuien = "Quien";
 	public static final String NombreTipoNotificacionUtilidad = "Utilidad";
-	// TODO objetivos, no notificaciones
+	// Objetivos, no notificaciones
 	public static final String NombreTipoNotificacionCitasConGuia = "CitasConGuia";
 	public static final String NombreTipoNotificacionComprobarDatosBusqueda = "ComprobarDatosBusqueda";
 	public static final String NombreTipoNotificacionValorarUltimaPelicula = "ValorarUltimaPelicula";
@@ -219,7 +218,7 @@ public class Vocabulario {
 	public static final String ErrorInterfaz_RecPersistencia = "Error-AlObtener:Interfaz_Recurso_Persistencia";
 	public static final String ErrorInterfaz_Agente = "Error-AlObtener:Interfaz_Agente:";
 	public static final String ErrorUtilizacionRecurso = "Error-AlUtilizar:Interfaces_Recurso:";
-	
+
 	public static final String ExtraccionSemanticaNull = "SinSemantica";
 	public static final String InfoUsuarioYaExiste = "infoUsuarioYaExistente";
 	public static final String InfoUsuarioAltaGuardada = "InfoAltaUsuarioGuardada";
