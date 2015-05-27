@@ -100,11 +100,15 @@ public class ClaseGeneradoraComunicacionTMDB extends ImplRecursoSimple implement
 
 	@Override
 	public Movie getMovie(Movie movie, String language) {
+		if (language == null)
+			language = "es";
 		return getMovie(movie.getId(), language);
 	}
 
 	@Override
 	public Movie getMovie(int movieId, String language) {
+		if (language == null)
+			language = "es";
 		DAOMoviesFactory fMovies = DAOMoviesFactory.getInstance();
 		DAOMovies dao = fMovies.getDaoMovies();
 		return dao.getMovie(movieId, language);
